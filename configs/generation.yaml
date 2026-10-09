@@ -1,0 +1,59 @@
+# UBT synthetic data-generation configuration
+
+data_root: datasets
+
+doc_mixture: {single: 0.60, intra_switch: 0.15, inter_k2: 0.12, inter_k3: 0.05, inter_k4: 0.03, math: 0.05}
+single_length: {one_sent: 0.40, two_three_sent: 0.40, paragraph: 0.20}   # paragraph = 4-8 sentences
+
+intra_switch:
+  natural_first: true                       # keep Latin tokens during source cleaning
+  splice: {en_term: 0.6, en_phrase: 0.2, digits_dates: 0.2}
+  density: {light: 0.67, heavy: 0.33}       # light = 1 embedded span, heavy = 2+
+
+inter_mixed:
+  regimes: {anchor: 0.60, uniform: 0.25, confusable: 0.15}
+  anchor_langs: {en: 0.50, fr: 0.12, es: 0.08, ru: 0.08, ar: 0.08, cmn: 0.06, de: 0.04, pt: 0.04}
+
+coverage_floor: {min_docs_per_table: 300}
+
+math:
+  enabled: false            # enable once the latex2nemeth / MathCAT backends are wired
+  backends: [latex2nemeth, mathcat]
+  carrier_langs: [en, fr, es, ko, de, cmn, ar, ru, hi]
+
+holdout_languages: [hr, mt, sw]   # zeroshot split only, never in train
+
+# Head languages: wiki-backed (wiki_txt_A train, wiki_txt_B eval).
+head_langs: [en, cmn, es, ar, hi, pt, fr, ru, bn, de, ko, vi, it, tr, ja]
+# Head-language share of singles sampling mass, set below the 30-40% target because rejections on the small
+# FLORES tail sources shift accepted mass toward head languages by about +8pp.
+head_share: 0.28
+
+# Script-group map for auto-derived confusable groups (no pan-Latin group).
+script_groups:
+  Hangul: [ko]
+  Han: [cmn, yue]
+  Cyrillic: [ru, uk, bg, sr, mk]
+  Arabic: [ar, fa, ur]
+  Devanagari: [hi, mr, ne]
+
+table_dirs:
+  ko2020: work/liblouis/share/liblouis/tables   # tables of the patched liblouis build
+
+# Table sampling: p(θ) ∝ (currency_factor × usage_tier)^α; excluded and duplicate-excluded tables are always 0.
+alpha: 0.7
+status_factors:
+  current: 1.0
+  parallel: 0.6
+  pending: 0.5                  # reserved, currently unused
+  superseded: 0.15
+  excluded: 0.0
+
+# Alias dedup: same-base_lang tables whose forward output collides on >= 99.9% of sentences.
+# Listed tables are excluded; their alias partner stays (keeper = higher status rank, then alphabetical).
+empirical_alias_dedup:
+  min_pairwise_collision: 0.999
+  exclude:
+    - sr-g1.ctb                # alias of sr-Cyrl.ctb
+    - ja-kantenji.utb          # alias of ja-kantenji-ucs2.utb
+    - no-no-8dot.utb           # alias of no-no-8dot-fallback-6dot-g0.utb

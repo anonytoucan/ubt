@@ -1,0 +1,28 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -911,6 +911,13 @@
+ # 제32항(연속 로마 단어 first-to-last)·제35항(숫자): latin+공백+숫자는 같은
+ # 로마자 묶음 — 종료표 없이 공백만
+ # Capital markers at the current letter survive preceding contractions.
++# Numbered parts continue into their number (2024 article 35).
++noback context #1=1_5!%latin"Part"[%realspace]$d @0
++noback context #1=1_4`"Part"[%realspace]$d @0
++noback context #1=1_5!%latin"part"[%realspace]$d @0
++noback context #1=1_4`"part"[%realspace]$d @0
++noback context #1=1_5!%latin"PART"[%realspace]$d @0
++noback context #1=1_4`"PART"[%realspace]$d @0
+ noback context #4=0%latin[%realspace]$d @0
+ # 하이픈 뒤 대문자 (Submarine-Launched)
+ # 로마자 묶음 안의 수 뒤 쉼표·쌍점은 UEB 부호(쉼표 ⠂, 쌍점 ⠒).
+@@ -1884,6 +1891,11 @@
+ noback context #1=1[";"]%realspace%latin @23
+ noback context #1=1_1%latin["-"]%hangall @256-36#1=0#2=0
+ noback context #1=1_1%latin["/"]%hangall @256-456-34#1=0#2=0
++# Hangul labels within a Roman domain address (2024 article 39).
++noback context #1=1["."]%hangall1-63"."%latin @256-456-12356#1=3
++noback context #1=3["."]%latin @456-23456-256#1=1
++# Korean-facing underscore; purely Roman identifiers retain UEB.
++noback context _1%latin["_"]%hangall @456-36
+ noback context #1=1["."]%hangall @256#1=0#2=0
+ noback context #1=1["."] @256
+ noback context #1=1[","]%realspace%hangall @5#1=0#2=0

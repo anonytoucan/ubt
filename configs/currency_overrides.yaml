@@ -1,0 +1,70 @@
+# Per-language currency status for LibLouis tables.
+#
+# Within each scope the first matching glob wins. Overrides here beat the generic rule in code, which marks a table
+# whose name has a year token (19xx/20xx/_19xx) superseded when its language has an unmarked sibling; ko-2020-* is
+# year-stamped but current. Unmatched tables fall through to that rule, then to `current`. Tables declaring
+# `#+direction: backward` are excluded in code (forward-only pipeline). Patterns that match nothing in a build are
+# harmless; content-identical tables are deduplicated by the inventory.
+#
+# Status factors (multipliers) live in generation.yaml: status_factors.
+
+global_rules:
+  - {pattern: "th-comp8-backward.utb", status: excluded}   # backward-only; the pipeline is forward-only
+
+locales:
+  ko:
+    # 2020 Korean Braille Standard (patches/liblouis/korean_2020_tables.patch).
+    - {pattern: "ko-2020-*", status: current}
+    - {pattern: "ko-2006-*", status: superseded}
+    - {pattern: "ko-g1*",    status: superseded}   # pre-2020 lineage shipped upstream
+    - {pattern: "ko-g2*",    status: superseded}
+
+  en:
+    - {pattern: "en-ueb-*",     status: current}     # UEB; en-ueb-math.ctb is unused: external libs own math
+    - {pattern: "en-us-g*",     status: superseded}  # EBAE
+    - {pattern: "en-GB-g2*",    status: superseded}  # BAUK contracted
+    - {pattern: "en-gb-g1*",    status: superseded}  # BAUK uncontracted
+    - {pattern: "en-us-comp*",  status: parallel}    # US computer braille still in real use
+    - {pattern: "en-nabcc*",    status: parallel}
+    - {pattern: "en-gb-comp8*", status: parallel}
+    - {pattern: "en-in-g1*",    status: parallel}    # regional
+    - {pattern: "en-chess*",    status: excluded}    # domain notation, out of scope
+    - {pattern: "en-us-interline*", status: excluded}
+    - {pattern: "en-us-mathtext*",  status: excluded} # math-adjacent: external libs own math
+    # underscore-named wrappers escape the en-us-*/en-GB-* globs but carry EBAE/BAUK content
+    - {pattern: "en_US*", status: superseded}   # EBAE-content wrapper
+    - {pattern: "en_GB*", status: superseded}   # BAUK-content wrapper
+
+  cmn:
+    # zhcn-cbs.ctb is the 2018 National Common Braille Scheme; the pre-reform tables remain in wide transitional
+    # use, so they are parallel, not superseded.
+    - {pattern: "zhcn-cbs*", status: current}       # 2018 reform standard
+    - {pattern: "zhcn-g1*",  status: parallel}      # pre-reform, tones marked
+    - {pattern: "zh-chn*",   status: parallel}      # pre-reform, no tones
+    - {pattern: "zh_CHN*",   status: parallel}
+    - {pattern: "zhcn-g2*",  status: superseded}    # double-phonic system
+    - {pattern: "zh-tw*",    status: parallel}      # Taiwan bopomofo braille, regional
+    - {pattern: "zh_TW*",    status: parallel}
+
+  yue:
+    - {pattern: "zh-hk*", status: current}          # Cantonese braille: distinct system, current for yue
+    - {pattern: "zh_HK*", status: current}
+
+  da:
+    # Unmarked base is current; _1993-stamped is superseded.
+    - {pattern: "*_1993*", status: superseded}
+    - {pattern: "da-*",    status: current}
+
+  sv:
+    - {pattern: "sv-1989*", status: superseded}
+    - {pattern: "sv-1996*", status: superseded}
+    - {pattern: "sv-g*",    status: current}
+
+  vi:
+    - {pattern: "vi-vn-*",     status: current}     # national standard
+    - {pattern: "vi-saigon-*", status: parallel}    # regional parallel, not superseded
+    - {pattern: "vi-cb8*",     status: parallel}    # computer braille
+
+  no:
+    - {pattern: "no-no-generic*", status: parallel}
+    - {pattern: "no-no-*",        status: current}

@@ -1,0 +1,712 @@
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -5109,3 +5109,709 @@
+ noback context #1=1_16`%upperconsonant16[%ucase_1"GG"]%upperconsonant.~ @1245-1245
+ noback context #1=1_17!%latin%upperconsonant16[%ucase_1"GG"]%upperconsonant.!%latin @1245-1245
+ noback context #1=1_17!%latin%upperconsonant16[%ucase_1"GG"]%upperconsonant.~ @1245-1245
++
++# Standard UEB word readings outside all-uppercase abbreviations.
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] you ^ 13456-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] you ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 13456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] your ^ 13456-1235-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] your ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 13456-1235
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] about ^ 1-12-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] about ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-12
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] above ^ 1-12-1236-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] above ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-12-1236
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] according ^ 1-14-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] according ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-14
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] across ^ 1-14-1235-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] across ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-14-1235
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] after ^ 1-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] after ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] afternoon ^ 1-124-1345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] afternoon ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-124-1345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] afterward ^ 1-124-2456-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] afterward ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-124-2456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] again ^ 1-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] again ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] against ^ 1-1245-34-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] against ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-1245-34
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] almost ^ 1-123-134-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] almost ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-123-134
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] already ^ 1-123-1235-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] already ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-123-1235
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] also ^ 1-123-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] also ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-123
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] although ^ 1-123-1456-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] although ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-123-1456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] altogether ^ 1-123-2345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] altogether ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-123-2345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] always ^ 1-123-2456-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] always ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1-123-2456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] because ^ 23-14-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] because ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-14
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] before ^ 23-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] before ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] behind ^ 23-125-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] behind ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-125
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] below ^ 23-123-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] below ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-123
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] beneath ^ 23-1345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] beneath ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-1345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] beside ^ 23-234-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] beside ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-234
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] between ^ 23-2345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] between ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-2345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] beyond ^ 23-13456-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] beyond ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 23-13456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] blind ^ 12-123-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] blind ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 12-123
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] braille ^ 12-1235-123-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] braille ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 12-1235-123
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] children ^ 16-1345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] children ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 16-1345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] conceive ^ 25-14-1236-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] conceive ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 25-14-1236
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] conceiving ^ 25-14-1236-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] conceiving ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 25-14-1236-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] could ^ 14-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] could ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 14-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] deceive ^ 145-14-1236-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] deceive ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 145-14-1236
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] deceiving ^ 145-14-1236-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] deceiving ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 145-14-1236-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] declare ^ 145-14-123-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] declare ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 145-14-123
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] declaring ^ 145-14-123-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] declaring ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 145-14-123-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] either ^ 15-24-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] either ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 15-24
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] first ^ 124-34-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] first ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 124-34
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] friend ^ 124-1235-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] friend ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 124-1235
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] good ^ 1245-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] good ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1245-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] great ^ 1245-1235-2345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] great ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1245-1235-2345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] herself ^ 125-12456-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] herself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 125-12456-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] him ^ 125-134-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] him ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 125-134
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] himself ^ 125-134-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] himself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 125-134-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] immediate ^ 24-134-134-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] immediate ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 24-134-134
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] immediately ^ 24-134-134-123-13456-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] immediately ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 24-134-134-123-13456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] its ^ 1346-234-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] its ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1346-234
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] itself ^ 1346-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] itself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1346-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] letter ^ 123-1235-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] letter ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 123-1235
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] little ^ 123-123-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] little ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 123-123
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] much ^ 134-16-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] much ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 134-16
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] must ^ 134-34-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] must ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 134-34
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] myself ^ 134-13456-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] myself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 134-13456-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] necessary ^ 1345-15-14-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] necessary ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1345-15-14
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] neither ^ 1345-15-24-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] neither ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1345-15-24
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] oneself ^ 5-135-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] oneself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 5-135-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] ourselves ^ 1256-1235-1236-234-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] ourselves ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1256-1235-1236-234
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] paid ^ 1234-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] paid ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1234-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] perceive ^ 1234-12456-14-1236-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] perceive ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1234-12456-14-1236
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] perceiving ^ 1234-12456-14-1236-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] perceiving ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1234-12456-14-1236-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] perhaps ^ 1234-12456-125-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] perhaps ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1234-12456-125
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] quick ^ 12345-13-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] quick ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 12345-13
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] receive ^ 1235-14-1236-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] receive ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1235-14-1236
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] receiving ^ 1235-14-1236-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] receiving ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1235-14-1236-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] rejoice ^ 1235-245-14-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] rejoice ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1235-245-14
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] rejoicing ^ 1235-245-14-1245-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] rejoicing ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1235-245-14-1245
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] said ^ 234-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] said ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 234-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] should ^ 146-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] should ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 146-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] such ^ 234-16-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] such ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 234-16
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] themselves ^ 2346-134-1236-234-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] themselves ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 2346-134-1236-234
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] thyself ^ 1456-13456-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] thyself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1456-13456-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] today ^ 2345-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] today ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 2345-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] together ^ 2345-1245-1235-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] together ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 2345-1245-1235
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] tomorrow ^ 2345-134-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] tomorrow ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 2345-134
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] tonight ^ 2345-1345-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] tonight ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 2345-1345
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] would ^ 2456-145-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] would ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 2456-145
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] yourself ^ 13456-1235-124-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] yourself ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 13456-1235-124
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] yourselves ^ 13456-1235-1236-234-256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] yourselves ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 13456-1235-1236-234
++
++
++# Spell repeated-letter runs of length three within uppercase Roman tokens.
++noback context #1=1_1!%latin[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_1!%latin[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1`[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1`[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_2!%latin%ucase1[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_2!%latin%ucase1[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_1`%ucase1[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_1`%ucase1[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_3!%latin%ucase2[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_3!%latin%ucase2[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_2`%ucase2[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_2`%ucase2[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_4!%latin%ucase3[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_4!%latin%ucase3[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_3`%ucase3[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_3`%ucase3[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_5!%latin%ucase4[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_5!%latin%ucase4[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_4`%ucase4[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_4`%ucase4[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_6!%latin%ucase5[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_6!%latin%ucase5[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_5`%ucase5[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_5`%ucase5[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_7!%latin%ucase6[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_7!%latin%ucase6[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_6`%ucase6[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_6`%ucase6[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_8!%latin%ucase7[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_8!%latin%ucase7[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_7`%ucase7[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_7`%ucase7[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_9!%latin%ucase8[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_9!%latin%ucase8[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_8`%ucase8[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_8`%ucase8[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_10!%latin%ucase9[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_10!%latin%ucase9[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_9`%ucase9[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_9`%ucase9[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_11!%latin%ucase10[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_11!%latin%ucase10[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_10`%ucase10[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_10`%ucase10[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_12!%latin%ucase11[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_12!%latin%ucase11[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_11`%ucase11[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_11`%ucase11[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_13!%latin%ucase12[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_13!%latin%ucase12[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_12`%ucase12[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_12`%ucase12[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_14!%latin%ucase13[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_14!%latin%ucase13[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_13`%ucase13[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_13`%ucase13[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_15!%latin%ucase14[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_15!%latin%ucase14[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_14`%ucase14[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_14`%ucase14[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_16!%latin%ucase15[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_16!%latin%ucase15[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_15`%ucase15[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_15`%ucase15[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_17!%latin%ucase16[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_17!%latin%ucase16[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_16`%ucase16[%ucase_1"BBB"]%ucase.!%latin @12-12-12
++noback context #1=1_16`%ucase16[%ucase_1"BBB"]%ucase.~ @12-12-12
++noback context #1=1_1!%latin[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_1!%latin[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1`[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1`[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_2!%latin%ucase1[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_2!%latin%ucase1[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_1`%ucase1[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_1`%ucase1[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_3!%latin%ucase2[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_3!%latin%ucase2[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_2`%ucase2[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_2`%ucase2[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_4!%latin%ucase3[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_4!%latin%ucase3[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_3`%ucase3[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_3`%ucase3[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_5!%latin%ucase4[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_5!%latin%ucase4[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_4`%ucase4[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_4`%ucase4[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_6!%latin%ucase5[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_6!%latin%ucase5[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_5`%ucase5[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_5`%ucase5[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_7!%latin%ucase6[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_7!%latin%ucase6[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_6`%ucase6[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_6`%ucase6[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_8!%latin%ucase7[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_8!%latin%ucase7[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_7`%ucase7[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_7`%ucase7[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_9!%latin%ucase8[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_9!%latin%ucase8[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_8`%ucase8[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_8`%ucase8[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_10!%latin%ucase9[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_10!%latin%ucase9[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_9`%ucase9[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_9`%ucase9[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_11!%latin%ucase10[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_11!%latin%ucase10[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_10`%ucase10[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_10`%ucase10[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_12!%latin%ucase11[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_12!%latin%ucase11[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_11`%ucase11[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_11`%ucase11[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_13!%latin%ucase12[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_13!%latin%ucase12[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_12`%ucase12[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_12`%ucase12[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_14!%latin%ucase13[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_14!%latin%ucase13[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_13`%ucase13[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_13`%ucase13[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_15!%latin%ucase14[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_15!%latin%ucase14[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_14`%ucase14[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_14`%ucase14[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_16!%latin%ucase15[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_16!%latin%ucase15[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_15`%ucase15[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_15`%ucase15[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_17!%latin%ucase16[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_17!%latin%ucase16[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_16`%ucase16[%ucase_1"CCC"]%ucase.!%latin @14-14-14
++noback context #1=1_16`%ucase16[%ucase_1"CCC"]%ucase.~ @14-14-14
++noback context #1=1_1!%latin[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_1!%latin[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1`[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1`[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_2!%latin%ucase1[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_2!%latin%ucase1[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_1`%ucase1[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_1`%ucase1[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_3!%latin%ucase2[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_3!%latin%ucase2[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_2`%ucase2[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_2`%ucase2[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_4!%latin%ucase3[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_4!%latin%ucase3[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_3`%ucase3[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_3`%ucase3[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_5!%latin%ucase4[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_5!%latin%ucase4[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_4`%ucase4[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_4`%ucase4[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_6!%latin%ucase5[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_6!%latin%ucase5[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_5`%ucase5[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_5`%ucase5[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_7!%latin%ucase6[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_7!%latin%ucase6[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_6`%ucase6[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_6`%ucase6[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_8!%latin%ucase7[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_8!%latin%ucase7[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_7`%ucase7[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_7`%ucase7[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_9!%latin%ucase8[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_9!%latin%ucase8[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_8`%ucase8[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_8`%ucase8[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_10!%latin%ucase9[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_10!%latin%ucase9[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_9`%ucase9[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_9`%ucase9[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_11!%latin%ucase10[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_11!%latin%ucase10[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_10`%ucase10[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_10`%ucase10[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_12!%latin%ucase11[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_12!%latin%ucase11[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_11`%ucase11[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_11`%ucase11[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_13!%latin%ucase12[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_13!%latin%ucase12[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_12`%ucase12[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_12`%ucase12[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_14!%latin%ucase13[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_14!%latin%ucase13[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_13`%ucase13[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_13`%ucase13[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_15!%latin%ucase14[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_15!%latin%ucase14[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_14`%ucase14[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_14`%ucase14[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_16!%latin%ucase15[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_16!%latin%ucase15[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_15`%ucase15[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_15`%ucase15[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_17!%latin%ucase16[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_17!%latin%ucase16[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_16`%ucase16[%ucase_1"FFF"]%ucase.!%latin @124-124-124
++noback context #1=1_16`%ucase16[%ucase_1"FFF"]%ucase.~ @124-124-124
++noback context #1=1_1!%latin[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_1!%latin[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1`[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1`[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_2!%latin%ucase1[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_2!%latin%ucase1[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_1`%ucase1[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_1`%ucase1[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_3!%latin%ucase2[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_3!%latin%ucase2[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_2`%ucase2[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_2`%ucase2[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_4!%latin%ucase3[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_4!%latin%ucase3[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_3`%ucase3[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_3`%ucase3[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_5!%latin%ucase4[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_5!%latin%ucase4[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_4`%ucase4[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_4`%ucase4[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_6!%latin%ucase5[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_6!%latin%ucase5[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_5`%ucase5[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_5`%ucase5[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_7!%latin%ucase6[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_7!%latin%ucase6[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_6`%ucase6[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_6`%ucase6[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_8!%latin%ucase7[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_8!%latin%ucase7[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_7`%ucase7[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_7`%ucase7[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_9!%latin%ucase8[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_9!%latin%ucase8[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_8`%ucase8[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_8`%ucase8[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_10!%latin%ucase9[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_10!%latin%ucase9[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_9`%ucase9[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_9`%ucase9[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_11!%latin%ucase10[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_11!%latin%ucase10[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_10`%ucase10[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_10`%ucase10[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_12!%latin%ucase11[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_12!%latin%ucase11[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_11`%ucase11[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_11`%ucase11[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_13!%latin%ucase12[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_13!%latin%ucase12[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_12`%ucase12[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_12`%ucase12[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_14!%latin%ucase13[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_14!%latin%ucase13[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_13`%ucase13[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_13`%ucase13[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_15!%latin%ucase14[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_15!%latin%ucase14[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_14`%ucase14[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_14`%ucase14[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_16!%latin%ucase15[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_16!%latin%ucase15[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_15`%ucase15[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_15`%ucase15[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_17!%latin%ucase16[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_17!%latin%ucase16[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++noback context #1=1_16`%ucase16[%ucase_1"GGG"]%ucase.!%latin @1245-1245-1245
++noback context #1=1_16`%ucase16[%ucase_1"GGG"]%ucase.~ @1245-1245-1245
++
++# Empty suffix as well as a nonempty uppercase suffix.
++
++noback context #1=1_1!%latin[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_1!%latin[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1`[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1`[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_2!%latin%ucase1[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_2!%latin%ucase1[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_1`%ucase1[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_1`%ucase1[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_3!%latin%ucase2[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_3!%latin%ucase2[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_2`%ucase2[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_2`%ucase2[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_4!%latin%ucase3[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_4!%latin%ucase3[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_3`%ucase3[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_3`%ucase3[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_5!%latin%ucase4[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_5!%latin%ucase4[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_4`%ucase4[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_4`%ucase4[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_6!%latin%ucase5[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_6!%latin%ucase5[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_5`%ucase5[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_5`%ucase5[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_7!%latin%ucase6[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_7!%latin%ucase6[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_6`%ucase6[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_6`%ucase6[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_8!%latin%ucase7[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_8!%latin%ucase7[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_7`%ucase7[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_7`%ucase7[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_9!%latin%ucase8[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_9!%latin%ucase8[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_8`%ucase8[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_8`%ucase8[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_10!%latin%ucase9[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_10!%latin%ucase9[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_9`%ucase9[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_9`%ucase9[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_11!%latin%ucase10[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_11!%latin%ucase10[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_10`%ucase10[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_10`%ucase10[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_12!%latin%ucase11[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_12!%latin%ucase11[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_11`%ucase11[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_11`%ucase11[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_13!%latin%ucase12[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_13!%latin%ucase12[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_12`%ucase12[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_12`%ucase12[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_14!%latin%ucase13[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_14!%latin%ucase13[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_13`%ucase13[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_13`%ucase13[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_15!%latin%ucase14[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_15!%latin%ucase14[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_14`%ucase14[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_14`%ucase14[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_16!%latin%ucase15[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_16!%latin%ucase15[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_15`%ucase15[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_15`%ucase15[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_17!%latin%ucase16[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_17!%latin%ucase16[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_16`%ucase16[%ucase_1"BBB"]!%latin @12-12-12
++noback context #1=1_16`%ucase16[%ucase_1"BBB"]~ @12-12-12
++noback context #1=1_1!%latin[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_1!%latin[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1`[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1`[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_2!%latin%ucase1[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_2!%latin%ucase1[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_1`%ucase1[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_1`%ucase1[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_3!%latin%ucase2[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_3!%latin%ucase2[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_2`%ucase2[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_2`%ucase2[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_4!%latin%ucase3[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_4!%latin%ucase3[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_3`%ucase3[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_3`%ucase3[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_5!%latin%ucase4[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_5!%latin%ucase4[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_4`%ucase4[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_4`%ucase4[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_6!%latin%ucase5[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_6!%latin%ucase5[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_5`%ucase5[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_5`%ucase5[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_7!%latin%ucase6[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_7!%latin%ucase6[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_6`%ucase6[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_6`%ucase6[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_8!%latin%ucase7[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_8!%latin%ucase7[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_7`%ucase7[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_7`%ucase7[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_9!%latin%ucase8[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_9!%latin%ucase8[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_8`%ucase8[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_8`%ucase8[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_10!%latin%ucase9[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_10!%latin%ucase9[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_9`%ucase9[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_9`%ucase9[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_11!%latin%ucase10[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_11!%latin%ucase10[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_10`%ucase10[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_10`%ucase10[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_12!%latin%ucase11[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_12!%latin%ucase11[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_11`%ucase11[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_11`%ucase11[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_13!%latin%ucase12[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_13!%latin%ucase12[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_12`%ucase12[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_12`%ucase12[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_14!%latin%ucase13[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_14!%latin%ucase13[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_13`%ucase13[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_13`%ucase13[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_15!%latin%ucase14[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_15!%latin%ucase14[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_14`%ucase14[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_14`%ucase14[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_16!%latin%ucase15[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_16!%latin%ucase15[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_15`%ucase15[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_15`%ucase15[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_17!%latin%ucase16[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_17!%latin%ucase16[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_16`%ucase16[%ucase_1"CCC"]!%latin @14-14-14
++noback context #1=1_16`%ucase16[%ucase_1"CCC"]~ @14-14-14
++noback context #1=1_1!%latin[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_1!%latin[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1`[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1`[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_2!%latin%ucase1[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_2!%latin%ucase1[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_1`%ucase1[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_1`%ucase1[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_3!%latin%ucase2[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_3!%latin%ucase2[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_2`%ucase2[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_2`%ucase2[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_4!%latin%ucase3[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_4!%latin%ucase3[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_3`%ucase3[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_3`%ucase3[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_5!%latin%ucase4[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_5!%latin%ucase4[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_4`%ucase4[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_4`%ucase4[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_6!%latin%ucase5[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_6!%latin%ucase5[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_5`%ucase5[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_5`%ucase5[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_7!%latin%ucase6[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_7!%latin%ucase6[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_6`%ucase6[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_6`%ucase6[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_8!%latin%ucase7[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_8!%latin%ucase7[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_7`%ucase7[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_7`%ucase7[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_9!%latin%ucase8[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_9!%latin%ucase8[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_8`%ucase8[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_8`%ucase8[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_10!%latin%ucase9[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_10!%latin%ucase9[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_9`%ucase9[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_9`%ucase9[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_11!%latin%ucase10[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_11!%latin%ucase10[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_10`%ucase10[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_10`%ucase10[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_12!%latin%ucase11[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_12!%latin%ucase11[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_11`%ucase11[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_11`%ucase11[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_13!%latin%ucase12[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_13!%latin%ucase12[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_12`%ucase12[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_12`%ucase12[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_14!%latin%ucase13[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_14!%latin%ucase13[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_13`%ucase13[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_13`%ucase13[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_15!%latin%ucase14[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_15!%latin%ucase14[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_14`%ucase14[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_14`%ucase14[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_16!%latin%ucase15[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_16!%latin%ucase15[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_15`%ucase15[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_15`%ucase15[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_17!%latin%ucase16[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_17!%latin%ucase16[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_16`%ucase16[%ucase_1"FFF"]!%latin @124-124-124
++noback context #1=1_16`%ucase16[%ucase_1"FFF"]~ @124-124-124
++noback context #1=1_1!%latin[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_1!%latin[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1`[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1`[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_2!%latin%ucase1[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_2!%latin%ucase1[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_1`%ucase1[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_1`%ucase1[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_3!%latin%ucase2[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_3!%latin%ucase2[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_2`%ucase2[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_2`%ucase2[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_4!%latin%ucase3[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_4!%latin%ucase3[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_3`%ucase3[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_3`%ucase3[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_5!%latin%ucase4[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_5!%latin%ucase4[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_4`%ucase4[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_4`%ucase4[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_6!%latin%ucase5[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_6!%latin%ucase5[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_5`%ucase5[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_5`%ucase5[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_7!%latin%ucase6[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_7!%latin%ucase6[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_6`%ucase6[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_6`%ucase6[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_8!%latin%ucase7[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_8!%latin%ucase7[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_7`%ucase7[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_7`%ucase7[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_9!%latin%ucase8[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_9!%latin%ucase8[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_8`%ucase8[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_8`%ucase8[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_10!%latin%ucase9[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_10!%latin%ucase9[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_9`%ucase9[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_9`%ucase9[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_11!%latin%ucase10[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_11!%latin%ucase10[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_10`%ucase10[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_10`%ucase10[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_12!%latin%ucase11[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_12!%latin%ucase11[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_11`%ucase11[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_11`%ucase11[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_13!%latin%ucase12[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_13!%latin%ucase12[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_12`%ucase12[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_12`%ucase12[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_14!%latin%ucase13[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_14!%latin%ucase13[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_13`%ucase13[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_13`%ucase13[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_15!%latin%ucase14[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_15!%latin%ucase14[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_14`%ucase14[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_14`%ucase14[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_16!%latin%ucase15[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_16!%latin%ucase15[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_15`%ucase15[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_15`%ucase15[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_17!%latin%ucase16[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_17!%latin%ucase16[%ucase_1"GGG"]~ @1245-1245-1245
++noback context #1=1_16`%ucase16[%ucase_1"GGG"]!%latin @1245-1245-1245
++noback context #1=1_16`%ucase16[%ucase_1"GGG"]~ @1245-1245-1245

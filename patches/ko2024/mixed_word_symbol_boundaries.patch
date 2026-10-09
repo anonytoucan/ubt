@@ -1,0 +1,549 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -58,6 +58,10 @@
+ midendnumericmodechars ,
+ punctuation ? 236
+ punctuation ! 235
++# A signed number at a nonalphanumeric boundary uses the minus sign.
++noback context _1%realspace["-"]$d @35#1=0#2=0
++noback context _1"("["-"]$d @35
++
+ punctuation - 36
+ punctuation : 5-2
+ punctuation ; 56-23
+@@ -1222,6 +1226,45 @@
+ noback context _1%latin["."]%lcase @256
+ 
+ # ═══ 구간 안(#1=1) 구분자 규칙: 종료표·로마자표 없이 UEB 형으로 이어 간다 ═══
++
++# A single Roman letter after a space keeps its grade-1 indicator before Korean explanations and closing quotes.
++noback context #4=1#1=1_1%latin[%realspace]%goneu"("%hangall @0
++noback context #1=1_1%latin[%realspace]%goneu"("%hangall @0-56
++noback context #4=1#1=1_1%latin[%realspace]%goneu"\x2019"!%latin @0
++noback context #1=1_1%latin[%realspace]%goneu"\x2019"!%latin @0-56
++noback context #4=1#1=1_1%latin[%realspace]%goneu"\x2019"~ @0
++noback context #1=1_1%latin[%realspace]%goneu"\x2019"~ @0-56
++noback context #4=1#1=1_1%latin[%realspace]%goneu"\x201d"!%latin @0
++noback context #1=1_1%latin[%realspace]%goneu"\x201d"!%latin @0-56
++noback context #4=1#1=1_1%latin[%realspace]%goneu"\x201d"~ @0
++noback context #1=1_1%latin[%realspace]%goneu"\x201d"~ @0-56
++noback context #1=1_1%latin[%realspace]%gonel"("%hangall @0-56
++noback context #1=1_1%latin[%realspace]%gonel"\x2019"!%latin @0-56
++noback context #1=1_1%latin[%realspace]%gonel"\x2019"~ @0-56
++noback context #1=1_1%latin[%realspace]%gonel"\x201d"!%latin @0-56
++noback context #1=1_1%latin[%realspace]%gonel"\x201d"~ @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu"("%hangall @0
++noback context #1=1_1$d[%realspace]%goneu"("%hangall @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu"\x2019"!%latin @0
++noback context #1=1_1$d[%realspace]%goneu"\x2019"!%latin @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu"\x2019"~ @0
++noback context #1=1_1$d[%realspace]%goneu"\x2019"~ @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu"\x201d"!%latin @0
++noback context #1=1_1$d[%realspace]%goneu"\x201d"!%latin @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu"\x201d"~ @0
++noback context #1=1_1$d[%realspace]%goneu"\x201d"~ @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu!%latdig @0
++noback context #1=1_1$d[%realspace]%goneu!%latdig @0-56
++noback context #4=1#1=1_1$d[%realspace]%goneu~ @0
++noback context #1=1_1$d[%realspace]%goneu~ @0-56
++noback context #1=1_1$d[%realspace]%gonel"("%hangall @0-56
++noback context #1=1_1$d[%realspace]%gonel"\x2019"!%latin @0-56
++noback context #1=1_1$d[%realspace]%gonel"\x2019"~ @0-56
++noback context #1=1_1$d[%realspace]%gonel"\x201d"!%latin @0-56
++noback context #1=1_1$d[%realspace]%gonel"\x201d"~ @0-56
++noback context #1=1_1$d[%realspace]%gonel!%latdig @0-56
++noback context #1=1_1$d[%realspace]%gonel~ @0-56
++
+ # (b) 단독 글자: UEB 기호 1자표 ⠰ (a·i·o 제외) — 2024 제32항 예 ‘a, b, c’, 제34항 ‘k, t, p’,
+ #     제36항 George V, v-x (PDF p.27-30). ⠰ 는 대문자표 앞.
+ # (주의: 부정 속성 !%x 는 문자열 끝에서 거짓이 되므로 끝(~) 형을 따로 둔다)
+--- a/ko-2020-spacing.cti
++++ b/ko-2020-spacing.cti
+@@ -155,3 +155,11 @@
+ noback correct _1"="[]%hangall "\s"
+ noback correct _1";"[]%hangall "\s"
+ noback correct _1!%realspace[%realspace1-9]";" ?
++
++# Multiplication attached to a Korean label or quantity is spaced on both sides.
++# A standalone cross can be a Korean omission sign and keeps its source spacing.
++noback correct _1%hangall[]"×" "\s"
++noback correct _2%hangall"×"[]%hangall "\s"
++noback correct _2%hangall"×"[]$d "\s"
++# Korean suffix-plus before an explanatory parenthesis.
++noback correct _2%hangall"+"[]"(" "\s"
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -245,6 +245,38 @@
+ match %[^_~]%<* : %a 56-25
+ match %[^_~]%<* ; %a 56-23
+ 
++
++# Word-final mixed-script boundaries; retain UEB left boundary.
++notallcaps match %[^_~]%<* as ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1356
++notallcaps match %[^_~]%<* but ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 12
++notallcaps match %[^_~]%<* can ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 14
++notallcaps match %[^_~]%<* do ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 145
++notallcaps match %[^_~]%<* every ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 15
++notallcaps match %[^_~]%<* from ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 124
++notallcaps match %[^_~]%<* go ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1245
++notallcaps match %[^_~]%<* have ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 125
++notallcaps match %[^_~]%<* it ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1346
++notallcaps match %[^_~]%<* just ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 245
++notallcaps match %[^_~]%<* knowledge ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 13
++notallcaps match %[^_~]%<* like ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 123
++notallcaps match %[^_~]%<* more ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 134
++notallcaps match %[^_~]%<* not ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1345
++notallcaps match %[^_~]%<* people ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1234
++notallcaps match %[^_~]%<* quite ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 12345
++notallcaps match %[^_~]%<* rather ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1235
++notallcaps match %[^_~]%<* so ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 234
++notallcaps match %[^_~]%<* that ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 2345
++notallcaps match %[^_~]%<* us ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 136
++notallcaps match %[^_~]%<* very ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1236
++notallcaps match %[^_~]%<* will ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 2456
++notallcaps match %[^_~]%<* you ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 13456
++notallcaps match %[^_~]%<* child ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 16
++notallcaps match %[^_~]%<* out ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1256
++notallcaps match %[^_~]%<* shall ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 146
++notallcaps match %[^_~]%<* still ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 34
++notallcaps match %[^_~]%<* this ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 1456
++notallcaps match %[^_~]%<* which ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] 156
++
+ #   10.1   Alphabetic Wordsigns
+ #   - 10.1.1   standing alone
+ #   - 10.1.2   followed by 'd, 'll, 're, 's, 't, 've and standing alone
+@@ -400,6 +432,14 @@
+ # Single letters retain Korean context indicators: contraction Y
+ # Single letters retain Korean context indicators: contraction Z
+ 
++
++# Complete strong wordsigns at mixed Korean/Latin boundaries.
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] child ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 16
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] out ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1256
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] shall ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 146
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] still ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 34
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] this ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 1456
++notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] which ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@] 156
+ 
+ #   10.2   Strong Wordsigns
+ #   - 10.2.1   standing alone
+@@ -5910,3 +5950,419 @@
+ noback context #1=1_17!%latin%ucase16[%ucase_1"GGG"]~ @1245-1245-1245
+ noback context #1=1_16`%ucase16[%ucase_1"GGG"]!%latin @1245-1245-1245
+ noback context #1=1_16`%ucase16[%ucase_1"GGG"]~ @1245-1245-1245
++
++# Consonant-only uppercase initialisms spell strong groupsigns as letters.
++noback context #1=1`[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1`[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_1!%latin[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_1!%latin[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"CH"]%upperconsonant.!%latin @14-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"CH"]%upperconsonant.~ @14-125
++noback context #1=1`[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1`[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_1!%latin[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_1!%latin[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"GH"]%upperconsonant.!%latin @1245-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"GH"]%upperconsonant.~ @1245-125
++noback context #1=1`[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1`[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_1!%latin[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_1!%latin[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"SH"]%upperconsonant.!%latin @234-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"SH"]%upperconsonant.~ @234-125
++noback context #1=1`[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1`[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_1!%latin[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_1!%latin[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"TH"]%upperconsonant.!%latin @2345-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"TH"]%upperconsonant.~ @2345-125
++noback context #1=1`[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1`[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_1!%latin[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_1!%latin[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_1`%upperconsonant1[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_2`%upperconsonant2[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_3`%upperconsonant3[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_4`%upperconsonant4[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_5`%upperconsonant5[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_6`%upperconsonant6[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_7`%upperconsonant7[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_8`%upperconsonant8[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_9`%upperconsonant9[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_10`%upperconsonant10[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_11`%upperconsonant11[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_12`%upperconsonant12[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_13`%upperconsonant13[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_14`%upperconsonant14[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_15`%upperconsonant15[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_16`%upperconsonant16[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"WH"]%upperconsonant.!%latin @2456-125
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"WH"]%upperconsonant.~ @2456-125
++noback context #1=1`[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1`[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_1!%latin[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_1!%latin[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_1`%upperconsonant1[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_1`%upperconsonant1[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_2!%latin%upperconsonant1[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_2`%upperconsonant2[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_2`%upperconsonant2[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_3!%latin%upperconsonant2[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_3`%upperconsonant3[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_3`%upperconsonant3[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_4!%latin%upperconsonant3[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_4`%upperconsonant4[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_4`%upperconsonant4[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_5!%latin%upperconsonant4[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_5`%upperconsonant5[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_5`%upperconsonant5[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_6!%latin%upperconsonant5[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_6`%upperconsonant6[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_6`%upperconsonant6[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_7!%latin%upperconsonant6[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_7`%upperconsonant7[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_7`%upperconsonant7[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_8!%latin%upperconsonant7[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_8`%upperconsonant8[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_8`%upperconsonant8[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_9!%latin%upperconsonant8[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_9`%upperconsonant9[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_9`%upperconsonant9[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_10!%latin%upperconsonant9[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_10`%upperconsonant10[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_10`%upperconsonant10[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_11!%latin%upperconsonant10[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_11`%upperconsonant11[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_11`%upperconsonant11[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_12!%latin%upperconsonant11[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_12`%upperconsonant12[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_12`%upperconsonant12[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_13!%latin%upperconsonant12[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_13`%upperconsonant13[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_13`%upperconsonant13[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_14!%latin%upperconsonant13[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_14`%upperconsonant14[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_14`%upperconsonant14[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_15!%latin%upperconsonant14[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_15`%upperconsonant15[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_15`%upperconsonant15[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_16!%latin%upperconsonant15[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_16`%upperconsonant16[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_16`%upperconsonant16[%ucase_1"ST"]%upperconsonant.~ @234-2345
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"ST"]%upperconsonant.!%latin @234-2345
++noback context #1=1_17!%latin%upperconsonant16[%ucase_1"ST"]%upperconsonant.~ @234-2345
++
++# Wh as a complete case-sensitive token is the watt-hour symbol.
++noback context #1=1`[%ucase_1"Wh"]!%latin @2456-125
++noback context #1=1`[%ucase_1"Wh"]~ @2456-125
++noback context #1=1_1!%latin[%ucase_1"Wh"]!%latin @2456-125
++noback context #1=1_1!%latin[%ucase_1"Wh"]~ @2456-125

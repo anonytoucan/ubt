@@ -1,0 +1,138 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -1497,30 +1497,32 @@
+ noback context #1=1_1!%latin["AED"]!%latin @1-15-145
+ noback context `#1=1["AR"]!%latin @1-1235
+ noback context #1=1_1!%latin["AR"]!%latin @1-1235
+-noback context #1=1_1$d["AR"]%lcase @1-1235
++# Longer mixed-case words retain the consumed uppercase prefix.
++# In three-letter words, native individual capitals must visit each letter.
++noback context #1=1_1$d["AR"]%lcase%latin @1-1235
+ noback context `#1=1["ARS"]!%latin @1-1235-234
+ noback context #1=1_1!%latin["ARS"]!%latin @1-1235-234
+ noback context `#1=1["CH"]!%latin @14-125
+ noback context #1=1_1!%latin["CH"]!%latin @14-125
+-noback context #1=1_1$d["CH"]%lcase @14-125
++noback context #1=1_1$d["CH"]%lcase%latin @14-125
+ noback context `#1=1["EA"]!%latin @15-1
+ noback context #1=1_1!%latin["EA"]!%latin @15-1
+-noback context #1=1_1$d["EA"]%lcase @15-1
++noback context #1=1_1$d["EA"]%lcase%latin @15-1
+ noback context `#1=1["ED"]!%latin @15-145
+ noback context #1=1_1!%latin["ED"]!%latin @15-145
+-noback context #1=1_1$d["ED"]%lcase @15-145
++noback context #1=1_1$d["ED"]%lcase%latin @15-145
+ noback context `#1=1["EDGC"]!%latin @15-145-1245-14
+ noback context #1=1_1!%latin["EDGC"]!%latin @15-145-1245-14
+ noback context `#1=1["EDSCG"]!%latin @15-145-234-14-1245
+ noback context #1=1_1!%latin["EDSCG"]!%latin @15-145-234-14-1245
+ noback context `#1=1["EN"]!%latin @15-1345
+ noback context #1=1_1!%latin["EN"]!%latin @15-1345
+-noback context #1=1_1$d["EN"]%lcase @15-1345
++noback context #1=1_1$d["EN"]%lcase%latin @15-1345
+ noback context `#1=1["ENM"]!%latin @15-1345-134
+ noback context #1=1_1!%latin["ENM"]!%latin @15-1345-134
+ noback context `#1=1["ER"]!%latin @15-1235
+ noback context #1=1_1!%latin["ER"]!%latin @15-1235
+-noback context #1=1_1$d["ER"]%lcase @15-1235
++noback context #1=1_1$d["ER"]%lcase%latin @15-1235
+ noback context `#1=1["ERA"]!%latin @15-1235-1
+ noback context #1=1_1!%latin["ERA"]!%latin @15-1235-1
+ noback context `#1=1["ERP"]!%latin @15-1235-1234
+@@ -1529,10 +1531,10 @@
+ noback context #1=1_1!%latin["ETH"]!%latin @15-2345-125
+ noback context `#1=1["GH"]!%latin @1245-125
+ noback context #1=1_1!%latin["GH"]!%latin @1245-125
+-noback context #1=1_1$d["GH"]%lcase @1245-125
++noback context #1=1_1$d["GH"]%lcase%latin @1245-125
+ noback context `#1=1["IN"]!%latin @24-1345
+ noback context #1=1_1!%latin["IN"]!%latin @24-1345
+-noback context #1=1_1$d["IN"]%lcase @24-1345
++noback context #1=1_1$d["IN"]%lcase%latin @24-1345
+ noback context `#1=1["IND"]!%latin @24-1345-145
+ noback context #1=1_1!%latin["IND"]!%latin @24-1345-145
+ noback context `#1=1["LED"]!%latin @123-15-145
+@@ -1547,25 +1549,25 @@
+ noback context #1=1_1!%latin["OST"]!%latin @135-234-2345
+ noback context `#1=1["OU"]!%latin @135-136
+ noback context #1=1_1!%latin["OU"]!%latin @135-136
+-noback context #1=1_1$d["OU"]%lcase @135-136
++noback context #1=1_1$d["OU"]%lcase%latin @135-136
+ noback context `#1=1["OW"]!%latin @135-2456
+ noback context #1=1_1!%latin["OW"]!%latin @135-2456
+-noback context #1=1_1$d["OW"]%lcase @135-2456
++noback context #1=1_1$d["OW"]%lcase%latin @135-2456
+ noback context `#1=1["QLED"]!%latin @12345-123-15-145
+ noback context #1=1_1!%latin["QLED"]!%latin @12345-123-15-145
+ noback context `#1=1["SH"]!%latin @234-125
+ noback context #1=1_1!%latin["SH"]!%latin @234-125
+-noback context #1=1_1$d["SH"]%lcase @234-125
++noback context #1=1_1$d["SH"]%lcase%latin @234-125
+ noback context `#1=1["SOFC"]!%latin @234-135-124-14
+ noback context #1=1_1!%latin["SOFC"]!%latin @234-135-124-14
+ noback context `#1=1["ST"]!%latin @234-2345
+ noback context #1=1_1!%latin["ST"]!%latin @234-2345
+-noback context #1=1_1$d["ST"]%lcase @234-2345
++noback context #1=1_1$d["ST"]%lcase%latin @234-2345
+ noback context `#1=1["STO"]!%latin @234-2345-135
+ noback context #1=1_1!%latin["STO"]!%latin @234-2345-135
+ noback context `#1=1["TH"]!%latin @2345-125
+ noback context #1=1_1!%latin["TH"]!%latin @2345-125
+-noback context #1=1_1$d["TH"]%lcase @2345-125
++noback context #1=1_1$d["TH"]%lcase%latin @2345-125
+ noback context `#1=1["THC"]!%latin @2345-125-14
+ noback context #1=1_1!%latin["THC"]!%latin @2345-125-14
+ noback context `#1=1["UST"]!%latin @136-234-2345
+@@ -1576,7 +1578,7 @@
+ noback context #1=1_1!%latin["VAR"]!%latin @1236-1-1235
+ noback context `#1=1["WH"]!%latin @2456-125
+ noback context #1=1_1!%latin["WH"]!%latin @2456-125
+-noback context #1=1_1$d["WH"]%lcase @2456-125
++noback context #1=1_1$d["WH"]%lcase%latin @2456-125
+ noback context `#1=1["WHO"]!%latin @2456-125-135
+ noback context #1=1_1!%latin["WHO"]!%latin @2456-125-135
+ noback context #1=2["A"]%realspace$d @1#1=1
+@@ -1692,6 +1694,8 @@
+ endcapsphrase afterletters 6-3
+ lencapsphrase 3
+ capsphrasevar 4
++# Short mixed-case tokens use individual capitals before a lowercase suffix.
++capsminpartialword 3 3
+ 
+ # The percentage-point unit is atomic, including its capital P. Resolve it
+ # in liblouis's correct pass before capital spans are computed.
+--- a/ko-2020-symbols-core.cti
++++ b/ko-2020-symbols-core.cti
+@@ -919,3 +919,10 @@
+ noback correct ["\x339c"] "mm"
+ noback correct ["\x33be"] "kW"
+ noback correct ["\x33bf"] "MW"
++
++# Mixed-case compatibility units share the bounded native capital policy.
++noback correct ["\x3392"] "MHz"
++noback correct ["\x3393"] "GHz"
++noback correct ["\x3394"] "THz"
++noback correct ["\x33ab"] "MPa"
++noback correct ["\x33ac"] "GPa"
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -4699,6 +4699,19 @@
+ noback context #1=1_1!%latin[%ucase_1"EN"]!%latin @15-1345
+ noback context #1=1_1!%latin[%ucase_1"EN"]~ @15-1345
+ 
++# Watt-hour symbols use letter readings, including SI-prefixed units.
++attribute wattprefix qryzafpnumcdhkMGTPEZYRQ\x00b5\x03bc
++noback context #1=1_2!%latin%wattprefix["Wh"]!%latin @2456-125
++noback context #1=1_2!%latin%wattprefix["Wh"]~ @2456-125
++noback context #1=1_1`%wattprefix["Wh"]!%latin @2456-125
++noback context #1=1_1`%wattprefix["Wh"]~ @2456-125
++noback context #1=1_3!%latin"da"["Wh"]!%latin @2456-125
++noback context #1=1_2`"da"["Wh"]!%latin @2456-125
++noback context #1=1_1$d["Wh"]!%latin @2456-125
++noback context #1=1_1$d["Wh"]~ @2456-125
++noback context #1=1_2$d%realspace["Wh"]!%latin @2456-125
++noback context #1=1_2$d%realspace["Wh"]~ @2456-125
++
+ # kWh is a unit symbol; do not read Wh as an English groupsign.
+ noback context #1=1_1"k"["Wh"]!%latin @2456-125
+ noback context #1=1_1"k"["Wh"]~ @2456-125

@@ -1,0 +1,191 @@
+--- a/liblouis/internal.h
++++ b/liblouis/internal.h
+@@ -276,6 +276,7 @@
+ 
+ 	CTO_CapsModeChars,
+ 	CTO_CapsPhraseVar,
++	CTO_CapsMinPartialWord,
+ 	CTO_ContractionCasedWord,
+ 	CTO_EmphModeChars,
+ 	CTO_NoEmphChars,
+@@ -461,6 +462,8 @@
+ 	int hasCapsModeChars;
+ 	int capsPhraseAfterLetters;
+ 	int capsPhraseVar;
++	int capsMinPartialWord;
++	int capsPartialWordLimit;
+ 	int contractionCasedWord;
+ 	TranslationTableOffset undefined;
+ 	TranslationTableOffset letterSign;
+--- a/liblouis/compileTranslationTable.c
++++ b/liblouis/compileTranslationTable.c
+@@ -200,6 +200,7 @@
+ 	"lenemphphrase",
+ 	"capsmodechars",
+ 	"capsphrasevar",
++	"capsminpartialword",
+ 		"contractioncasedword",
+ 	"emphmodechars",
+ 	"noemphchars",
+@@ -3882,6 +3883,18 @@
+ 		case CTO_ContractionCasedWord:
+ 			(*table)->contractionCasedWord = 1;
+ 			return 1;
++		case CTO_CapsMinPartialWord: {
++			int minimum = compileNumber(file);
++			int limit = compileNumber(file);
++			if (minimum < 2 || minimum > 16 || limit < minimum || limit > 32) {
++				compileError(file,
++						"capsminpartialword requires minimum 2..16 and word limit minimum..32");
++				return 0;
++			}
++			(*table)->capsMinPartialWord = minimum;
++			(*table)->capsPartialWordLimit = limit;
++			return 1;
++		}
+ 		case CTO_CapsPhraseVar: {
+ 			int variable = compileNumber(file);
+ 			if (variable <= 0 || variable >= NUMVAR) {
+--- a/liblouis/lou_translateString.c
++++ b/liblouis/lou_translateString.c
+@@ -2772,6 +2772,26 @@
+ 	}
+ }
+ 
++/* A bounded, opt-in policy for short mixed-case words. Count all cased
++ * letters of the surrounding word, including those before this capitals run. */
++static int
++shortPartialCapsWord(int pos, const TranslationTableHeader *table,
++		const InString *input, const EmphasisClass *class,
++		const unsigned int *wordBuffer) {
++	int count = 0, gap = 0;
++	if (!table->capsPartialWordLimit) return 0;
++	while (pos > 0 && (wordBuffer[pos - 1] & WORD_CHAR)) pos--;
++	for (; pos < input->length && (wordBuffer[pos] & WORD_CHAR); pos++) {
++		if (isEmphasizable(input->chars[pos], table, class)) {
++			/* A symbol between letters is not part of a short alphabetic token. */
++			if (gap || ++count > table->capsPartialWordLimit) return 0;
++		} else if (count) {
++			gap = 1;
++		}
++	}
++	return count > 0;
++}
++
+ static void
+ resolveEmphasisWords(EmphasisInfo *buffer, const EmphasisClass *class,
+ 		const TranslationTableHeader *table, const InString *input,
+@@ -2809,7 +2829,15 @@
+ 				if (in_word && word_start >= 0) {
+ 					/* if word is one symbol, turn it into a symbol (unless emphletter is
+ 					 * not defined) */
+-					if (letter_defined && char_cnt == 1)
++					if (letter_defined && class->mode == CTC_UpperCase &&
++							char_cnt < table->capsMinPartialWord &&
++							(wordBuffer[i] & WORD_CHAR) &&
++							shortPartialCapsWord(i, table, input, class, wordBuffer)) {
++						/* Mark each capital separately; no word terminator is needed. */
++						for (int j = word_start; j < i; j++)
++							if (checkCharAttr(input->chars[j], CTC_UpperCase, table))
++								buffer[j].symbol |= class->value;
++					} else if (letter_defined && char_cnt == 1)
+ 						buffer[word_start].symbol |= class->value;
+ 					else {
+ 						/* else mark the word start point and, if emphasis ended inside a
+--- a/doc/liblouis.texi
++++ b/doc/liblouis.texi
+@@ -786,6 +786,19 @@
+ its last cased letter. Punctuation, digits, signs, and caseless letters
+ break such a passage. This lets tables for mixed-script text choose
+ their own boundary behavior without changing the default used by UEB.
++
++@opcode{capsminpartialword, minimum wordlimit}
++Use individual capital-letter indicators for a capitals run shorter than
++@var{minimum} when it ends inside a mixed-case word containing at most
++@var{wordlimit} cased letters. Count the complete surrounding word, not
++only the capitals run and its following lowercase letters. Words with
++non-cased symbols between their cased letters are excluded. The option
++requires @var{minimum} from 2 to 16 and @var{wordlimit} from @var{minimum}
++to 32. It is disabled unless declared. Complete capitals words, longer
++mixed-case words, and other emphasis classes retain their usual indicators.
++For example, @code{capsminpartialword 3 3} uses individual indicators in
++@code{ABc}, but keeps the existing word indicators in @code{ABC},
++@code{ABcd}, @code{xABc}, and @code{aBC}.
+ 
+ @opcode{capsphrasevar, variable}
+ Expose the sentence-wide capitals-passage analysis to forward context
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -228,6 +228,7 @@
+ 
+ dist_yaml_TESTS =				\
+ 	yaml/context_shortform_boundaries.yaml	\
++	yaml/short_mixed_caps.yaml		\
+ 	yaml/notallcaps_match.yaml		\
+ 	yaml/native_roman_scope.yaml		\
+ 	yaml/attribute.yaml			\
+--- /dev/null
++++ b/tests/yaml/short_mixed_caps.yaml
+@@ -0,0 +1,62 @@
++display: tables/unicode.dis
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  math + 26
++  capsminpartialword 3 3
++flags: {testmode: forward}
++tests:
++  - [ABc, "⠠⠁⠠⠃⠉"]
++  - [AB+c, "⠠⠠⠁⠃⠢⠉"]
++  - [GWh, "⠠⠛⠠⠺⠓"]
++  - [NOx, "⠠⠝⠠⠕⠭"]
++  - [ABC, "⠠⠠⠁⠃⠉"]
++  - [ABcd, "⠠⠠⠁⠃⠠⠄⠉⠙"]
++  - [xABc, "⠭⠠⠠⠁⠃⠠⠄⠉"]
++  - [aBC, "⠁⠠⠠⠃⠉"]
++  - [ABcD, "⠠⠠⠁⠃⠠⠄⠉⠠⠙"]
++  - [ABc, "⠠⠁⠠⠃⠉", {typeform: {no_contract: "+++"}}]
++  - ["ABc ABcd", "⠠⠁⠠⠃⠉⠀⠠⠠⠁⠃⠠⠄⠉⠙"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  math + 26
++flags: {testmode: forward}
++tests:
++  - [AB+c, "⠠⠠⠁⠃⠢⠉"]
++  - [ABc, "⠠⠠⠁⠃⠠⠄⠉"]
++  - [GWh, "⠠⠠⠛⠺⠠⠄⠓"]
++  - [ABC, "⠠⠠⠁⠃⠉"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  capsminpartialword 3 4
++flags: {testmode: forward}
++tests:
++  - [ABcd, "⠠⠁⠠⠃⠉⠙"]
++  - [xABc, "⠭⠠⠁⠠⠃⠉"]
++  - [ABcde, "⠠⠠⠁⠃⠠⠄⠉⠙⠑"]
++  - [ABCd, "⠠⠠⠁⠃⠉⠠⠄⠙"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  capsminpartialword 4 4
++flags: {testmode: forward}
++tests:
++  - [ABCd, "⠠⠁⠠⠃⠠⠉⠙"]
++  - [ABCD, "⠠⠠⠁⠃⠉⠙"]

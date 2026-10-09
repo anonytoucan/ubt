@@ -1,0 +1,128 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -82,6 +82,13 @@
+ punctuation \x201d 356
+ punctuation \x2018 6-236
+ punctuation \x2019 356-3
++
++# ASCII title delimiters share Unicode angle-bracket rules. Preserve a
++# numeric comparison and an unmatched >. Correct-pass variable 10 counts
++# title openings within the input, including nested titles.
++noback correct `["<"] "\x3008"#10+
++noback correct _1!$d["<"] "\x3008"#10+
++noback correct #10>0[">"] "\x3009"#10-
+ 
+ # Korean-specific brackets
+ punctuation \x300c 5-236
+@@ -1326,7 +1333,11 @@
+ noback context #1=0["&"]%ucase @356-4-12346#1=1
+ noback context #1=0["&"]%latin @356-4-12346#1=1
+ # = 와 수의 부호 +, - 는 한글 점자 수학 기호(⠒⠒ ⠢ ⠤)로 적으므로 구간이 끝난다
+-noback context #1=1["="] @25-25#1=0#2=0
++# An equality sign ends the Roman passage; consume existing adjacent spaces.
++noback context #1=1[%realspace1-9"="%realspace1-9] @256-0-25-25-0#1=0#2=0
++noback context #1=1[%realspace1-9"="] @256-0-25-25-0#1=0#2=0
++noback context #1=1["="%realspace1-9] @256-0-25-25-0#1=0#2=0
++noback context #1=1["="] @256-0-25-25-0#1=0#2=0
+ noback context #1=1_1!%latin["+"]$d @26#1=0#2=0
+ noback context #1=1_1%realspace["-"]$d @36#1=0#2=0
+ # 닫는 따옴표(’ ”)로 묶인 로마자(제34항)도 따옴표에서 구간이 끝난다.
+--- a/ko-2020-spacing.cti
++++ b/ko-2020-spacing.cti
+@@ -163,3 +163,10 @@
+ noback correct _2%hangall"×"[]$d "\s"
+ # Korean suffix-plus before an explanatory parenthesis.
+ noback correct _2%hangall"+"[]"(" "\s"
++
++# A spaced ASCII hyphen used as a separator retains the hyphen without adjacent blanks.
++noback correct _1!%realspace[%realspace1-9"-"%realspace1-9]!%realspace "-"
++
++# Compact an asymmetrically spaced single solidus; preserve verse / and // separators.
++noback correct _1!%realspace[%realspace1-9]"/"!%realspace_1!"/" ?
++noback correct _1!%realspace_1!"/""/"[%realspace1-9]!%realspace ?
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -1985,6 +1985,83 @@
+ match %[_~^]%<* your ([Ss]|['’][Ss])?%>*%[_~^] 13456-1235
+ match %[_~^]%<* yourself ([Ss]|['’][Ss])?%>*%[_~^] 13456-1235-124
+ match %[_~^]%<* yourselves ([Ss]|['’][Ss])?%>*%[_~^] 13456-1235-1236-234
++
++# Mixed-script shortforms retain UEB inflection and suffix conditions.
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) about ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-12
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) above ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-12-1236
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) according ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-14
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) across ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-14-1235
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@])%a* after ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) afternoon ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-124-1345
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) afterward ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-124-2456
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) again ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) against ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-1245-34
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) almost ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-123-134
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) already ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-123-1235
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) also ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-123
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) although ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-123-1456
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) altogether ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-123-2345
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) always ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1-123-2456
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) because ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-14
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) before ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) behind ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-125
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) below ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-123
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) beneath ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-1345
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) beside ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-234
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) between ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-2345
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) beyond ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 23-13456
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) blind (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 12-123   appendix 1.4
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@])%a* braille %a*([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 12-1235-123   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@])%a* children (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 16-1345   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) conceive ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 25-14-1236
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) conceiving ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 25-14-1236-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) could ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 14-145
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) deceive ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 145-14-1236
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) deceiving ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 145-14-1236-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) declare ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 145-14-123
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) declaring ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 145-14-123-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) either ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 15-24
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) first (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 124-34   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) friend (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 124-1235   appendix 1.4
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) good (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1245-145   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@])%a* great %a*([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1245-1235-2345   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) herself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 125-12456-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) him ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 125-134
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) himself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 125-134-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) immediate ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 24-134-134
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) its ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1346-234
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) itself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1346-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) letter (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 123-1235   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) little (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 123-123   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) much ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 134-16
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) must ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 134-34
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) myself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 134-13456-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) necessary ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1345-15-14
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) neither ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1345-15-24
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) oneself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 5-135-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) ourselves ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1256-1235-1236-234
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) paid ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1234-145
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) perceive ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1234-12456-14-1236
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) perceiving ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1234-12456-14-1236-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) perhaps ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1234-12456-125
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) quick (%2%a*)?([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 12345-13   10.9.3
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) receive ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1235-14-1236
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) receiving ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1235-14-1236-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) rejoice ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1235-245-14
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) rejoicing ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1235-245-14-1245
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) said ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 234-145
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) should ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 146-145
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) such ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 234-16
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) themselves ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 2346-134-1236-234
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) thyself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 1456-13456-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) today ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 2345-145
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) together ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 2345-1245-1235
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) tomorrow ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 2345-134
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) tonight ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 2345-1345
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) would ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 2456-145
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) your ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 13456-1235
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) yourself ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 13456-1235-124
++notallcaps match (^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) yourselves ([Ss]|['’][Ss])?(^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@]) 13456-1235-1236-234
+ 
+ #TODO:  backmatch should be able to merge these
+ nofor word about  1-12

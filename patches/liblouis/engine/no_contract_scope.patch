@@ -1,0 +1,22 @@
+--- a/liblouis/lou_translateString.c
++++ b/liblouis/lou_translateString.c
+@@ -3669,7 +3669,8 @@
+ 		setBefore(table, pos, input, &beforeAttributes);
+ 		if (pos >= input->length) break;
+ 
+-		if (!dontContract) dontContract = typebuf[pos] & no_contract;
++		/* Explicit typeforms are scoped per character; keep them out of the
++		 * word-level state used by numeric mode and the nocont opcode. */
+ 		if (typebuf[pos] & no_translate) {
+ 			if (!warnedForNoTranslate) {
+ 				_lou_logMessage(LOU_LOG_WARN,
+@@ -3700,7 +3701,8 @@
+ 		for_selectRule(table, pos, *output, posMapping, mode, input, typebuf,
+ 				emphasisBuffer, &transOpcode, prevTransOpcode, &transRule, &transCharslen,
+ 				&passCharDots, &passInstructions, &passIC, &patternMatch, posIncremented,
+-				*cursorPosition, &repwordLength, dontContract, compbrlStart, compbrlEnd,
++				*cursorPosition, &repwordLength, dontContract || (typebuf[pos] & no_contract),
++				compbrlStart, compbrlEnd,
+ 				beforeAttributes, &curCharDef, &groupingRule, &groupingOp);
+ 
+ 		switch (transOpcode) /* Rules that pre-empt context and swap */

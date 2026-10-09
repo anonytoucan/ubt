@@ -1,0 +1,404 @@
+--- a/liblouis/lou_translateString.c
++++ b/liblouis/lou_translateString.c
+@@ -2073,11 +2073,12 @@
+ 							return;
+ 						case CTO_Context:
+ 							// check posIncremented to avoid endless loop
+-							if (!posIncremented ||
+-									!passDoTest(table, pos, input, *transOpcode,
++							if (!passDoTest(table, pos, input, *transOpcode,
+ 											*transRule, passCharDots, passInstructions,
+ 											passIC, patternMatch, groupingRule,
+ 											groupingOp))
++								break;
++							if (!posIncremented && patternMatch->endReplace <= pos)
+ 								break;
+ 							return;
+ 						case CTO_LargeSign:
+@@ -2621,6 +2622,12 @@
+ 	 * the isEmphasizable function. */
+ 	const int word_enabled = table->emphRules[emphClass->rule][begWordOffset];
+ 	if (emphClass->mode == CTC_UpperCase) {
++		if (table->capsPhraseAfterLetters &&
++				checkCharAttr(c, CTC_Punctuation | CTC_Digit | CTC_Sign, table))
++			return 1;
++		if (checkCharAttr(c, CTC_Letter, table) &&
++				!isEmphasizable(c, table, emphClass))
++			return 1;
+ 		/* The old behavior was that words are determined by spaces. However for some
+ 		 * tables it is a requirement that words are determined based on letters and
+ 		 * capsmodechars. While the latter probably makes most sense, we don't want to
+@@ -2656,6 +2663,16 @@
+ 
+ 	for (int i = 0; i < input->length; i++) {
+ 		int isSpace = !(wordBuffer[i] & WORD_CHAR);
++		if (class->mode == CTC_UpperCase &&
++				checkCharAttr(input->chars[i], CTC_Letter, table) &&
++				!isEmphasizable(input->chars[i], table, class)) {
++			if (emph_start >= 0) {
++				buffer[emph_start].begin |= class->value;
++				buffer[emph ? i : last_word].end |= class->value;
++			}
++			emph_start = last_word = -1;
++			emph = 0;
++		}
+ 		if (isSpace) {
+ 			/* character is a space */
+ 			last_space = i;
+@@ -2815,13 +2832,15 @@
+ 			last_char = i;
+ 			char_cnt = 1;
+ 		} else if (in_word &&
+-				(endphraseafter_defined /* hack to achieve old behavior of endemphphrase
+-										 * after: if the last word of the passage ends
+-										 * with unemphasizable characters, the indicator
+-										 * is inserted after them  */
++				/* Preserve trailing punctuation for ordinary endemphphrase-after.
++				 * afterletters instead ends capitals at the last cased letter. */
++				((endphraseafter_defined &&
++						 !(class->mode == CTC_UpperCase && table->capsPhraseAfterLetters))
+ 						|| isEmphasizable(input->chars[i], table, class))) {
+ 			last_char = i;
+-			if (in_emp) char_cnt++;
++			if (in_emp && (class->mode != CTC_UpperCase ||
++						  isEmphasizable(input->chars[i], table, class)))
++				char_cnt++;
+ 		}
+ 	}
+ 
+@@ -2888,6 +2907,8 @@
+ 	for (i = pass_start; i <= pass_end; i++) {
+ 		buffer[i].symbol &= ~class->value;
+ 		buffer[i].word &= ~class->value;
++		if (class->mode == CTC_UpperCase)
++			buffer[i].capsPhrase = 1;
+ 		wordBuffer[i] &= ~WORD_WHOLE;
+ 	}
+ 
+@@ -2983,7 +3004,13 @@
+ 			}
+ 		} else { /* check if at end of passage */
+ 			if (in_pass) {
+-				if (in_word && !(in_emph_word || last_emph_symbol == i)) {
++				if ((in_word && !(in_emph_word || last_emph_symbol == i)) ||
++						(class->mode == CTC_UpperCase &&
++								((checkCharAttr(input->chars[i], CTC_Letter, table) &&
++										 !isEmphasizable(input->chars[i], table, class)) ||
++										(table->capsPhraseAfterLetters &&
++												checkCharAttr(input->chars[i],
++														CTC_Punctuation | CTC_Digit | CTC_Sign, table))))) {
+ 				end_passage:
+ 					in_pass = 0;
+ 					if (last_pass_word_end < last_pass_word_start) {
+@@ -3698,6 +3725,14 @@
+ 			continue;
+ 		}
+ 		repwordLength = 0;
++		/* Expose the precomputed passage scope to table context rules. Re-read
++		 * by input position so zero-width actions and rewinds cannot leak state. */
++		if (table->capsPhraseVar) {
++			widechar assignment[] = { pass_eq, table->capsPhraseVar,
++				emphasisBuffer[pos].capsPhrase };
++			int instruction = 0;
++			_lou_handlePassVariableAction(assignment, &instruction);
++		}
+ 		for_selectRule(table, pos, *output, posMapping, mode, input, typebuf,
+ 				emphasisBuffer, &transOpcode, prevTransOpcode, &transRule, &transCharslen,
+ 				&passCharDots, &passInstructions, &passIC, &patternMatch, posIncremented,
+@@ -3716,6 +3751,17 @@
+ 		default:
+ 			break;
+ 		}
++
++		/* Resolve context before automatic indicators. In particular, a
++		 * zero-width language opener must not cause the same grade-1 or
++		 * capital indicator to be emitted both before and after the opener. */
++		int havePassRule = transOpcode == CTO_Context ||
++				(posIncremented &&
++						findForPassRule(table, pos, currentPass, input, &transOpcode,
++								&transRule, &transCharslen, &passCharDots,
++								&passInstructions, &passIC, &patternMatch, &groupingRule,
++								&groupingOp));
++		int zeroWidthContext = transOpcode == CTO_Context && patternMatch.endReplace == pos;
+ 
+ 		/* Skip repword separator to make caps/emph indicators appear before repword
+ 		 * indicator */
+@@ -3746,31 +3792,29 @@
+ 						pos, input, output, posMapping, cursorPosition, cursorStatus);
+ 		}
+ 		/* insert letter sign */
+-		if (!insertLetterSign(table, pos, input, output, posMapping, transOpcode,
++		if (!zeroWidthContext && !insertLetterSign(table, pos, input, output, posMapping, transOpcode,
+ 					cursorPosition, cursorStatus, beforeAttributes))
+ 			goto failure;
+-		/* insert caps start indicator */
+-		insertEmphasesAt(1, 0, 1, 0, pos, table, pos, input, output, posMapping,
+-				emphasisBuffer, cursorPosition, cursorStatus);
++		/* Select a context action before emitting capitals. A zero-width
++		 * action may open a language passage and must precede its first
++		 * capital indicator. Emit capitals on the next consuming action. */
++		if (!zeroWidthContext)
++			insertEmphasesAt(1, 0, 1, 0, pos, table, pos, input, output, posMapping,
++					emphasisBuffer, cursorPosition, cursorStatus);
+ 		/* insert number sign (not if numericmodechars, midnumericmodechars or
+ 		 * numericnocontchars has been defined) */
+-		if (!table->usesNumericMode)
++		if (!zeroWidthContext && !table->usesNumericMode)
+ 			if (!insertNumberSign(table, pos, input, output, posMapping, prevTransOpcode,
+ 						cursorPosition, cursorStatus, beforeAttributes))
+ 				goto failure;
+ 		/* insert number sign and number cancel sign (nocontractsign) (only if
+ 		 * numericmodechars, midnumericmodechars or numericnocontchars has been defined)
+ 		 */
+-		if (table->usesNumericMode)
++		if (!zeroWidthContext && table->usesNumericMode)
+ 			checkNumericMode(table, pos, input, output, posMapping, cursorPosition,
+ 					cursorStatus, &dontContract, &numericMode);
+ 
+-		if (transOpcode == CTO_Context ||
+-				(posIncremented &&
+-						findForPassRule(table, pos, currentPass, input, &transOpcode,
+-								&transRule, &transCharslen, &passCharDots,
+-								&passInstructions, &passIC, &patternMatch, &groupingRule,
+-								&groupingOp))) {
++		if (havePassRule) {
+ 			posIncremented = 1;
+ 			switch (transOpcode) {
+ 			case CTO_Context: {
+--- a/liblouis/internal.h
++++ b/liblouis/internal.h
+@@ -275,6 +275,7 @@
+ 	/* End of ordered opcodes */
+ 
+ 	CTO_CapsModeChars,
++	CTO_CapsPhraseVar,
+ 	CTO_EmphModeChars,
+ 	CTO_NoEmphChars,
+ 	CTO_BegComp,
+@@ -455,6 +456,8 @@
+ 	int usesSequences;
+ 	int usesNumericMode;
+ 	int hasCapsModeChars;
++	int capsPhraseAfterLetters;
++	int capsPhraseVar;
+ 	TranslationTableOffset undefined;
+ 	TranslationTableOffset letterSign;
+ 	TranslationTableOffset numberSign;
+@@ -528,6 +531,7 @@
+ 	unsigned int end : 16;
+ 	unsigned int word : 16;
+ 	unsigned int symbol : 16;
++	unsigned int capsPhrase : 1;
+ } EmphasisInfo;
+ 
+ typedef enum { noEncoding, bigEndian, littleEndian, ascii8 } EncodingType;
+--- a/liblouis/compileTranslationTable.c
++++ b/liblouis/compileTranslationTable.c
+@@ -199,6 +199,7 @@
+ 	"endemphphrase",
+ 	"lenemphphrase",
+ 	"capsmodechars",
++	"capsphrasevar",
+ 	"emphmodechars",
+ 	"noemphchars",
+ 	"begcomp",
+@@ -2693,15 +2694,18 @@
+ }
+ 
+ static int
+-compileBeforeAfter(FileInfo *file) {
+-	/* 1=before, 2=after, 0=error */
++compileBeforeAfter(FileInfo *file, int allowAfterLetters) {
++	/* 1=before, 2=after, 3=afterletters, 0=error */
+ 	CharsString token;
+ 	CharsString tmp;
+ 	if (!getToken(file, &token, "last word before or after")) return 0;
+ 	if (!parseChars(file, &tmp, &token)) return 0;
+-	if (eqasc2uni((unsigned char *)"before", tmp.chars, 6))
++	if (allowAfterLetters && tmp.length == 12 &&
++			eqasc2uni((unsigned char *)"afterletters", tmp.chars, 12))
++		return 3;
++	if (tmp.length == 6 && eqasc2uni((unsigned char *)"before", tmp.chars, 6))
+ 		return 1;
+-	else if (eqasc2uni((unsigned char *)"after", tmp.chars, 5))
++	else if (tmp.length == 5 && eqasc2uni((unsigned char *)"after", tmp.chars, 5))
+ 		return 2;
+ 	return 0;
+ }
+@@ -3295,7 +3299,8 @@
+ 			}
+ 			case CTO_EndModePhrase: {
+ 				TranslationTableOffset ruleOffset;
+-				switch (compileBeforeAfter(file)) {
++				int location = compileBeforeAfter(file, i == 0);
++				switch (location) {
+ 				case 1:	 // before
+ 					if ((*table)->emphRules[MAX_EMPH_CLASSES + i][endPhraseAfterOffset]) {
+ 						compileError(
+@@ -3312,6 +3317,7 @@
+ 							ruleOffset;
+ 					return 1;
+ 				case 2:	 // after
++				case 3:	 // after letters, before trailing punctuation
+ 					if ((*table)->emphRules[MAX_EMPH_CLASSES + i]
+ 										   [endPhraseBeforeOffset]) {
+ 						compileError(
+@@ -3326,6 +3332,7 @@
+ 						return 0;
+ 					(*table)->emphRules[MAX_EMPH_CLASSES + i][endPhraseAfterOffset] =
+ 							ruleOffset;
++					if (i == 0) (*table)->capsPhraseAfterLetters = location == 3;
+ 					return 1;
+ 				default:  // error
+ 					compileError(file, "Invalid lastword indicator location.");
+@@ -3605,7 +3612,7 @@
+ 				break;
+ 			}
+ 			case CTO_EndEmphPhrase:
+-				switch (compileBeforeAfter(file)) {
++				switch (compileBeforeAfter(file, 0)) {
+ 				case 1: {  // before
+ 					if ((*table)->emphRules[i][endPhraseAfterOffset]) {
+ 						compileError(file, "last word after already defined.");
+@@ -3861,6 +3868,15 @@
+ 			(*table)->seqAfterExpressionLength = ruleChars.length;
+ 			return 1;
+ 
++		case CTO_CapsPhraseVar: {
++			int variable = compileNumber(file);
++			if (variable <= 0 || variable >= NUMVAR) {
++				compileError(file, "capsphrasevar requires a variable from 1 to %d", NUMVAR - 1);
++				return 0;
++			}
++			(*table)->capsPhraseVar = variable;
++			return 1;
++		}
+ 		case CTO_CapsModeChars:
+ 			if (!getRuleCharsText(file, &ruleChars)) return 0;
+ 			for (int k = 0; k < ruleChars.length; k++) {
+--- a/doc/liblouis.texi
++++ b/doc/liblouis.texi
+@@ -777,6 +777,25 @@
+ 
+ @code{endemph} (@pxopref{endemph}) is the counterpart of
+ @code{endmode} for indication of emphasis.
++
++@opcode{endcapsphrase, before|after|afterletters dots}
++Define the terminator for a capitals passage introduced by
++@code{begcapsphrase}. @code{before} places it before the final word;
++@code{after} includes trailing punctuation in that word.
++The forward-translation option @code{afterletters} ends the passage after
++its last cased letter. Punctuation, digits, signs, and caseless letters
++break such a passage. This lets tables for mixed-script text choose
++their own boundary behavior without changing the default used by UEB.
++
++@opcode{capsphrasevar, variable}
++Expose the sentence-wide capitals-passage analysis to forward context
++rules through a multipass variable numbered 1 to 49. At each input
++position the engine sets the variable to 1 inside a capitals passage,
++including its ending boundary, or 0 outside. The value is recomputed
++by input position, including after zero-width context actions and
++translation rewinds. Tables should reserve this variable for tests,
++not assign to it. No capitals-passage analysis is performed by the
++context rules themselves.
+ 
+ @opcode{letsign, dots}
+ This indicator is needed in Grade 2 to show that a single letter is
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -227,6 +227,7 @@
+ endif
+ 
+ dist_yaml_TESTS =				\
++	yaml/native_roman_scope.yaml		\
+ 	yaml/attribute.yaml			\
+ 	yaml/back_cont_then_punc.yaml		\
+ 	yaml/backtranslation_emphasis.yaml	\
+--- a/tests/braille-specs/en-ueb.yaml
++++ b/tests/braille-specs/en-ueb.yaml
+@@ -1208,13 +1208,11 @@
+   - '444 "<,see ,atta*;t ,a">4 ,a ,,csp "<,c>riage ,s}vice ,provid}"> has obliga;ns to 444'
+   - typeform:
+       passage_break: '                      +'
+-    xfail: passage_break typeform not supported in YAML
+ 
+ - - Go to point A. BUT NOT YET!
+   - ',g to po9t ,a4 ,,,b n yet6,'''
+   - typeform:
+       passage_break: '               +           '
+-    xfail: passage_break typeform not supported in YAML
+     
+ - - He worked for the ABC. A BBC journalist reported ...
+   - ',he "w$ = ! ,,abc4 ,a ,,bbc j|rnali/ report$ 444'
+@@ -4261,7 +4259,7 @@
+ - [N S, ';,n ;,s']
+ - [Xft., ',xft4']
+ - [G.B.S., ',g4,b4,s4']
+-- [C. P. E. Bach, ';,c4 ;,p4 ;,e4 ,ba*', xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt]
++- [C. P. E. Bach, ';,c4 ;,p4 ;,e4 ,ba*']
+ - [J-P. Sartre, ';;,j-,p4 ,s>tre', xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt]
+ - [V & A, ';,v `& ,a']
+ - [p. 15, ';p4 #ae']
+@@ -4496,7 +4494,7 @@
+   -  xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt
+ - [w-i-n-d-o-w, ';;w-i-n-d-o-w', xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt]
+ - [M-a-c-L-e-a-n, ';;,m-a-c-,l-e-a-n', xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt]
+-- [N O W!, ';,n ,o ;,w6', xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt]
++- [N O W!, ';,n ,o ;,w6']
+ - [U-N-I-T-E-D, ';;,u-,n-,i-,t-,e-,d', xfail: note that this test was not enabled in ueb_test_data/input-ueb-10-13-contractions.txt]
+ 
+ #   10.12.16 page 161
+--- /dev/null
++++ b/tests/yaml/native_roman_scope.yaml
+@@ -0,0 +1,51 @@
++# Native scope analysis and context/indicator ordering. No Korean corpus rows.
++display: tables/unicode.dis
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  letter 가 123456
++  punctuation . 256
++  punctuation - 36
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  begcapsphrase 6-6-6
++  endcapsphrase after 6-3
++  lencapsphrase 3
++  attribute roman abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
++  noback context #1=0[]%roman @356#1=1
++  noback context #1=1["ab"] @1234
++  noback context #1=1["가"] @256-123456#1=0
++  contraction abc
++  seqdelimiter -
++  nocontractsign 56
++flags: {testmode: forward}
++tests:
++  - [ab, "⠴⠏"]
++  - [ABC, "⠴⠰⠠⠠⠁⠃⠉"]
++  - [A가, "⠴⠠⠁⠲⠿"]
++  - [AB가CD EF, "⠴⠠⠠⠁⠃⠲⠿⠴⠠⠠⠉⠙⠀⠠⠠⠑⠋"]
++  - [AB CD EF., "⠴⠠⠠⠠⠁⠃⠀⠉⠙⠀⠑⠋⠲⠠⠄"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  letter 가 123456
++  punctuation . 256
++  punctuation - 36
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  begcapsphrase 6-6-6
++  endcapsphrase afterletters 6-3
++  lencapsphrase 3
++  capsphrasevar 4
++  noback context #4=1["\s"] @0
++  noback context #4=0["\s"] @0-56
++flags: {testmode: forward}
++tests:
++  - [A B C, "⠠⠠⠠⠁⠀⠃⠀⠉⠠⠄"]
++  - [A B C. D, "⠠⠠⠠⠁⠀⠃⠀⠉⠠⠄⠲⠀⠰⠠⠙"]
++  - [A B C가DE FG, "⠠⠠⠠⠁⠀⠃⠀⠉⠠⠄⠿⠠⠠⠙⠑⠀⠰⠠⠠⠋⠛"]
++  - [A-가, "⠠⠁⠤⠿"]
++  - [AB CD EF. GH IJ KL, "⠠⠠⠠⠁⠃⠀⠉⠙⠀⠑⠋⠠⠄⠲⠀⠰⠠⠠⠠⠛⠓⠀⠊⠚⠀⠅⠇⠠⠄"]

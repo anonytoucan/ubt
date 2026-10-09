@@ -1,0 +1,150 @@
+{
+ "description": "Korean Braille Standard 2024 tables: apply the patches in order to a copy of the 16 Korean tables of the patched liblouis tree (patches/liblouis); scripts/liblouis/build_liblouis.sh does this and checks every hash. The top table is ko-2020-g2.ctb, exposed to the data builder as ko-2024-g2.ctb.",
+ "certified": false,
+ "baseline_table_sha256": {
+  "ko-1997.cti": "fde98715a3e7d4dd7627fa7a5fd2e7c7c3bb8960be0a4a9083e7aaf4df2d517e",
+  "ko-2006-g1.ctb": "fcf19e7adf9aa9d7af7a4a25e5fdc292b48c37c989881af6a0976508c4d597fe",
+  "ko-2006-g2.ctb": "1f0910a2bbbbd6f6b2c26fefb9e76aac57eab8bc8270e828d0ab9f8d8a558e50",
+  "ko-2006.cti": "f87188f5f99913ac9c20dfa948c5d9eb0575e8b73368ef02257470ef500f707a",
+  "ko-2020-base.cti": "8d8b2066d034fe00f5f28b8ed4c44898fb92aaf78b9ba27ef13664b62a0c5c1b",
+  "ko-2020-context.cti": "39faba0448d828cb1ffbad91c1692194a51f7def5d04d5a8c72fc34ae5a195d8",
+  "ko-2020-g2.ctb": "b7cf86b877f83050a0198934070bf96c5350cdfb97359536030005b43dc14233",
+  "ko-2020-jamo.cti": "543c15d2edb328ff6b1b7f20fb3cc6b2ac335e5e7db18ef88063991a140fc08b",
+  "ko-2020-syllables.cti": "8e75d03a0db80c9d69335d41669e0d591dbdfaf4ad92cf9fd4cd2979fb1fc6f5",
+  "ko-2020-ueb-contractions.cti": "4d88b8dd72ba2ae62ea84282b01692e26ca6f5f4a68cb645f1845b781e67e310",
+  "ko-2020-word-abbr.cti": "674df1203df7454509f74928ace78f67bee757ab3cf6b53eebd611846b07101d",
+  "ko-chars.cti": "c284a1a6b4891d36914499ae2f64c07b8ff26cc231388fcc4a220325fccee887",
+  "ko-g1-rules.cti": "8f32f3584b81d32b2d6da509555e71767b0129e2917ba5af3bd98d03fc83175a",
+  "ko-g1.ctb": "91cf21963188d48cb6d780d88d9fe1fdf4ad3b6875f0926040bb450c36b8505f",
+  "ko-g2-rules.cti": "02054535b3a6d9212f4fc1c1bcc6370c7ead2eafd52b18e19f364d23471361fc",
+  "ko-g2.ctb": "c772e6a6120667e75489510c62645171323fdb5d54e20a0c1288bf7bfe8a11c7"
+ },
+ "patches": [
+  {
+   "file": "hangul.patch",
+   "sha256": "5393d08660361152c4cdd7eaa706ef4740f342f5bed35b1b0bc8b565db6e720e"
+  },
+  {
+   "file": "common_symbols.patch",
+   "sha256": "f304768008209d6bd9b82c0d31e6da7680b60a00f9290d7352b0bf68f542a1b5"
+  },
+  {
+   "file": "term12.patch",
+   "sha256": "de982b93afe3d11f21e21dfc6019ba5fd2267561f078e42741d6bb2d5218f5f7"
+  },
+  {
+   "file": "start_passage.patch",
+   "sha256": "4be48ba41f710e4d85e3b5106b741ee00cf26d4b3a7ae995bdb0a0629da96671"
+  },
+  {
+   "file": "symbols_numbers_groups.patch",
+   "sha256": "a2d18fdf9fa135de7796d5435a4aecfc0fd98cbd494d84f3b55d8449f33b770e"
+  },
+  {
+   "file": "camel_capitals.patch",
+   "sha256": "6effa1bcbcb071a1ca3f53cbbcc82c2da98a9925771085082f98b920b085f352"
+  },
+  {
+   "file": "lexical_readings.patch",
+   "sha256": "75ba753483003e2333ef30a90174ccdad24ebf2ec8890e359cdae2b17e380bfd"
+  },
+  {
+   "file": "units_boundaries_jamo.patch",
+   "sha256": "28015d8d7259e6849d8afac62881c7ce4e9aa257404e26326abad1e9a8c3e5aa"
+  },
+  {
+   "file": "caps_notation_eof.patch",
+   "sha256": "25c117eddacf32d16dd9315a484d2d808b1430c8266d5754cd42097f0000b550"
+  },
+  {
+   "file": "punctuation_spacing_grade1.patch",
+   "sha256": "3423d2a109c8cb1397ce76eabcaa23d4d4375ca393d3aa55089b3499e2635eb7"
+  },
+  {
+   "file": "roman_readings_boundaries.patch",
+   "sha256": "5d27c92ac2114a1d238c01c4cf804653ae0512300602005ba6ea68dbe68a4390"
+  },
+  {
+   "file": "native_roman_scope.patch",
+   "sha256": "1e3515136c371649c271842ce1cd30ded89b95b0459b10714d106e7d0409aa9a"
+  },
+  {
+   "file": "domain_number_boundaries.patch",
+   "sha256": "217ab9a03efd0a71399ed1a276b4a845105b24fcc34ae44123381ef3bec47258"
+  },
+  {
+   "file": "it_korean_context.patch",
+   "sha256": "f6a8254b3c9288887bee78bf3e041a63ecb29b2478645619b83c758e8b97ecb1"
+  },
+  {
+   "file": "context_initialism_shortform.patch",
+   "sha256": "946db17ad88d0b0455512436c4b0ded57f04663a7b1642ab4661658415d2452f"
+  },
+  {
+   "file": "initialism_plural_consonant_spacing.patch",
+   "sha256": "a064961bfe81b03c1eabb9a8ed0f788be3c406a490adbb8fd64f7c024e9376e7"
+  },
+  {
+   "file": "lexical_case_triple_consonants.patch",
+   "sha256": "31ffed80e721f1ff7a165acbf41d4dd67c700bbf31280bb67dd91ccdde84964c"
+  },
+  {
+   "file": "roman_number_unit_scope.patch",
+   "sha256": "082868dd0fad28947e534751661d7861758f9cc5d7efd90a5db2a8f0331690ae"
+  },
+  {
+   "file": "prefix_roman_plus_scope.patch",
+   "sha256": "956b7960744a28d4613cc4cfe661248e1d16a79dfdb5c450055af6e707bd2313"
+  },
+  {
+   "file": "short_mixed_units.patch",
+   "sha256": "0439eefdd17320c84ba518aab6178dc17b5d7d47cfa99ca1c778b287c210da0e"
+  },
+  {
+   "file": "mixed_word_symbol_boundaries.patch",
+   "sha256": "222dddac60ca902692e3e0e37689b2a201925a56bdb00287c49be8adc5eb043e"
+  },
+  {
+   "file": "shortform_punctuation_scope.patch",
+   "sha256": "4574263368c6bdecbef96a73681e6be101bdd3ba23f8a2c5541384f01ea371da"
+  }
+ ],
+ "accepted_table_sha256": {
+  "ko-1997.cti": "fde98715a3e7d4dd7627fa7a5fd2e7c7c3bb8960be0a4a9083e7aaf4df2d517e",
+  "ko-2006-g1.ctb": "fcf19e7adf9aa9d7af7a4a25e5fdc292b48c37c989881af6a0976508c4d597fe",
+  "ko-2006-g2.ctb": "1f0910a2bbbbd6f6b2c26fefb9e76aac57eab8bc8270e828d0ab9f8d8a558e50",
+  "ko-2006.cti": "f87188f5f99913ac9c20dfa948c5d9eb0575e8b73368ef02257470ef500f707a",
+  "ko-2020-base.cti": "15dc8dff6aabb4b52107677893aaf7360c567815f465e5108207d68a4bad26f5",
+  "ko-2020-common-symbols.cti": "09191e3f21a3444d041e62f365044e0da0846b1392e39996a9f2fa68edfc1932",
+  "ko-2020-context.cti": "39faba0448d828cb1ffbad91c1692194a51f7def5d04d5a8c72fc34ae5a195d8",
+  "ko-2020-g2.ctb": "8e591645299cac41b05858c0d5dea614f092660546585da3a1ca0046104db279",
+  "ko-2020-hangul-fixes.cti": "53e024c43e6696b4ddb2c8ed0c6119fdec39c9771826eaef9cae04a58385bd82",
+  "ko-2020-jamo-attached.cti": "67ac02c8cd72035df64814704e0d7c245283b098091907505f7d1207f670125f",
+  "ko-2020-jamo.cti": "543c15d2edb328ff6b1b7f20fb3cc6b2ac335e5e7db18ef88063991a140fc08b",
+  "ko-2020-spacing.cti": "0ab9ef289a1779917d2fa4500fe614527fffed991c40f74cf23783dbc6636fb3",
+  "ko-2020-syllables.cti": "8e75d03a0db80c9d69335d41669e0d591dbdfaf4ad92cf9fd4cd2979fb1fc6f5",
+  "ko-2020-symbols-core.cti": "6850a04fc5695b3394d42ca2022da36c1c214396ce2b1756c268ac89afa90f28",
+  "ko-2020-ueb-contractions.cti": "7a9796ca18705e71b71535cdce1c488b758626d4681243234e7b789a4c36baf0",
+  "ko-2020-word-abbr.cti": "674df1203df7454509f74928ace78f67bee757ab3cf6b53eebd611846b07101d",
+  "ko-chars.cti": "c284a1a6b4891d36914499ae2f64c07b8ff26cc231388fcc4a220325fccee887",
+  "ko-g1-rules.cti": "8f32f3584b81d32b2d6da509555e71767b0129e2917ba5af3bd98d03fc83175a",
+  "ko-g1.ctb": "91cf21963188d48cb6d780d88d9fe1fdf4ad3b6875f0926040bb450c36b8505f",
+  "ko-g2-rules.cti": "02054535b3a6d9212f4fc1c1bcc6370c7ead2eafd52b18e19f364d23471361fc",
+  "ko-g2.ctb": "c772e6a6120667e75489510c62645171323fdb5d54e20a0c1288bf7bfe8a11c7"
+ },
+ "measurement": {
+  "nikl_dev": {
+   "n": 251319,
+   "exact": 247012,
+   "pct": 98.2862
+  },
+  "rule_examples": {
+   "n": 563,
+   "ok": 552
+  },
+  "engine_library_sha256": "c30ae3e5006c011ea0f06752d8fbcc88b0536565a0d260465cfaf37ba51668ec"
+ },
+ "unresolved_baseline_regressions": 1,
+ "nikl_test_split_evaluated": false,
+ "regression_cases": "regression_cases.json"
+}

@@ -1,0 +1,96 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -1261,3 +1261,5 @@
+ math \x00f7 34-34
+ 
+ # 문서 시작 대문자 Latin: caps가 로마자표보다 먼저 방출되는 역순 교정 (시작 앵커라 안전)
++
++include ko-2020-common-symbols.cti
+--- a/ko-2020-common-symbols.cti
++++ b/ko-2020-common-symbols.cti
+@@ -0,0 +1,85 @@
++# Common symbols of the 2024 standard (the subset adopted for these tables).
++attribute amp &
++# ── 제71항 자주 쓰이는 기호. [다만] 한글과 혼동되는 앰퍼샌드(&)·섹션(§)·문단(¶)·저작권(©)·
++#    등록 상표(®)·상표(™)는 로마자표와 로마자 종료표를 사용하여 적는다 → 로마자 묶음의
++#    일원(latin 클래스)으로 둔다: 한글 사이 '&' ⠴⠈⠯⠲, 로마자 사이 R&D ⠴⠠⠗⠈⠯⠠⠙⠲
++sign \x00ae 45-1235
++sign \x2122 45-2345
++sign \x00a9 45-14
++sign \x00a7 45-234
++sign \x00b6 45-1234
++attribute latin &\x00ae\x2122\x00a9\x00a7\x00b6
++noback context `["\x00ae"]%space @356-45-1235
++noback context `["\x00ae"]%closeafter @356-45-1235-256
++noback context !%latin["\x00ae"]%closeafter @356-45-1235-256
++noback context `["\x2122"]%space @356-45-2345
++noback context `["\x2122"]%closeafter @356-45-2345-256
++noback context !%latin["\x2122"]%closeafter @356-45-2345-256
++noback context `["\x00a9"]%space @356-45-14
++noback context `["\x00a9"]%closeafter @356-45-14-256
++noback context !%latin["\x00a9"]%closeafter @356-45-14-256
++noback context `["\x00a7"]%space @356-45-234
++noback context `["\x00a7"]%closeafter @356-45-234-256
++noback context !%latin["\x00a7"]%closeafter @356-45-234-256
++noback context `["\x00b6"]%space @356-45-1234
++noback context `["\x00b6"]%closeafter @356-45-1234-256
++noback context !%latin["\x00b6"]%closeafter @356-45-1234-256
++noback context `[%amp]%ucase%ucase @356-4-12346-6-6
++noback context `[%amp]"A" @356-4-12346-6
++noback context `[%amp]"B" @356-4-12346-6
++noback context `[%amp]"C" @356-4-12346-6
++noback context `[%amp]"D" @356-4-12346-6
++noback context `[%amp]"E" @356-4-12346-6
++noback context `[%amp]"F" @356-4-12346-6
++noback context `[%amp]"G" @356-4-12346-6
++noback context `[%amp]"H" @356-4-12346-6
++noback context `[%amp]"I" @356-4-12346-6
++noback context `[%amp]"J" @356-4-12346-6
++noback context `[%amp]"K" @356-4-12346-6
++noback context `[%amp]"L" @356-4-12346-6
++noback context `[%amp]"M" @356-4-12346-6
++noback context `[%amp]"N" @356-4-12346-6
++noback context `[%amp]"O" @356-4-12346-6
++noback context `[%amp]"P" @356-4-12346-6
++noback context `[%amp]"Q" @356-4-12346-6
++noback context `[%amp]"R" @356-4-12346-6
++noback context `[%amp]"S" @356-4-12346-6
++noback context `[%amp]"T" @356-4-12346-6
++noback context `[%amp]"U" @356-4-12346-6
++noback context `[%amp]"V" @356-4-12346-6
++noback context `[%amp]"W" @356-4-12346-6
++noback context `[%amp]"X" @356-4-12346-6
++noback context `[%amp]"Y" @356-4-12346-6
++noback context `[%amp]"Z" @356-4-12346-6
++noback context [%amp]%ucase%ucase @4-12346-6-6
++noback context [%amp]"A" @4-12346-6
++noback context [%amp]"B" @4-12346-6
++noback context [%amp]"C" @4-12346-6
++noback context [%amp]"D" @4-12346-6
++noback context [%amp]"E" @4-12346-6
++noback context [%amp]"F" @4-12346-6
++noback context [%amp]"G" @4-12346-6
++noback context [%amp]"H" @4-12346-6
++noback context [%amp]"I" @4-12346-6
++noback context [%amp]"J" @4-12346-6
++noback context [%amp]"K" @4-12346-6
++noback context [%amp]"L" @4-12346-6
++noback context [%amp]"M" @4-12346-6
++noback context [%amp]"N" @4-12346-6
++noback context [%amp]"O" @4-12346-6
++noback context [%amp]"P" @4-12346-6
++noback context [%amp]"Q" @4-12346-6
++noback context [%amp]"R" @4-12346-6
++noback context [%amp]"S" @4-12346-6
++noback context [%amp]"T" @4-12346-6
++noback context [%amp]"U" @4-12346-6
++noback context [%amp]"V" @4-12346-6
++noback context [%amp]"W" @4-12346-6
++noback context [%amp]"X" @4-12346-6
++noback context [%amp]"Y" @4-12346-6
++noback context [%amp]"Z" @4-12346-6
++
++# Preserve Roman passage across digit + ampersand.
++noback correct _2%latin$d["&"] "\xe003"
++sign \xe003 4-12346
++attribute amp \xe003

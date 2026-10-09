@@ -1,0 +1,1665 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -51,6 +51,11 @@
+ # 소수점은 수 모드를 끊지 않음 (0.5 → ⠼⠚⠲⠑, ⠼ 재발화 없음 — NIKL 전수 우세)
+ midendnumericmodechars .
+ punctuation , 5
++# 자릿점 쉼표도 수 모드를 끊지 않는다 (2024 제41·43항: 숫자 사이 쉼표는 ⠂,
++# 뒤 숫자에 수표를 다시 적지 않음). 자릿점 규칙이 _1 lookback으로 쉼표 위치에서 발화하므로
++# 쉼표에서 수 모드가 꺼지면 1,000 → ⠼⠁⠂⠚⠼⠚⠚ 처럼 ⠼가 샌다. 수 뒤 쉼표 다음에 공백·글자가
++# 오면 그 문자에서 수 모드가 꺼지므로 영향 없음.
++midendnumericmodechars ,
+ punctuation ? 236
+ punctuation ! 235
+ punctuation - 36
+@@ -85,6 +90,33 @@
+ punctuation \x3009 2356-2
+ 
+ punctuation \x2026 6-6-6
++# 분수 문자(2024 제47항 신설): 분모, 분수표 ⠌, 분자 순으로, 각 수에 수표.
++# 대분수는 정수와 붙여 적는다(5⅓ → ⠼⠑⠼⠉⠌⠼⠁).
++attribute vfrac \x00bd\x2153\x2154\x00bc\x00be\x2155\x2156\x2157\x2158\x2159\x215a\x2150\x215b\x215c\x215d\x215e\x2151\x2152\x2189
++always \x00bd 3456-12-34-3456-1
++always \x2153 3456-14-34-3456-1
++always \x2154 3456-14-34-3456-12
++always \x00bc 3456-145-34-3456-1
++always \x00be 3456-145-34-3456-14
++always \x2155 3456-15-34-3456-1
++always \x2156 3456-15-34-3456-12
++always \x2157 3456-15-34-3456-14
++always \x2158 3456-15-34-3456-145
++always \x2159 3456-124-34-3456-1
++always \x215a 3456-124-34-3456-15
++always \x2150 3456-1245-34-3456-1
++always \x215b 3456-125-34-3456-1
++always \x215c 3456-125-34-3456-14
++always \x215d 3456-125-34-3456-15
++always \x215e 3456-125-34-3456-1245
++always \x2151 3456-24-34-3456-1
++always \x2152 3456-1-245-34-3456-1
++always \x2189 3456-14-34-3456-245
++# 2024 제53항(= 2020 제67항): 가운뎃점 줄임표 ……(…×2)도 ⠠⠠⠠ 하나로 적는다.
++always \x2026\x2026 6-6-6
++# 제53항: 마침표 줄임표 ......(6개)는 원칙대로 ⠲⠲⠲. 그 밖의 개수(....,
++# .....)는 [다만](점의 개수를 밝혀야 할 때 묵자 개수만큼)에 따라 글자 수대로 둔다(NIKL 5/6).
++# 로마자 바로 뒤(로마자 묶음 안)에서는 발화하지 않는다: 소비하면 뒤 로마자의 로마자표가 빠진다.
+ always \x33a1 356-134-45-3456-12
+ 
+ # Other punctuation
+@@ -209,7 +241,6 @@
+ attribute latdig abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&(’”\x0022
+ # 괄호 안(UEB 괄호 판정): 한글·괄호를 제외한 로마자 구간 문자
+ attribute pin abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-/&':;+%!?#@_~=*\s\x2019\x2018\x201c\x201d\x00b7
+-attribute pinnl 0123456789.,-/&':;+%!?#@_~=*\s\x2019\x2018\x201c\x201d\x00b7
+ # 로마자 구간 안 단어 머리 앞 구분자(대문자표를 글자 위치에서 적는 경우)
+ attribute sepx &()/:;,'+!?#@_~=*[]\x2019\x2018\x201c\x201d\x0022-
+ # 가운뎃점(한글 문장 부호 ⠐⠆): 로마자 구간을 끝낸다
+@@ -221,9 +252,7 @@
+ # 로마자표로 시작하는 기호 단위(sign 정의): 뒤 로마자는 같은 구간(㎡·㎥·㎢ 제외)
+ attribute unitsign \x339c\x338d\x33bf\x33be\x339a
+ # 로마자표로 시작하는 단위 기호(제69항): 뒤 로마자는 같은 구간(㎾h, ㎜Hg, ㎎/L, ㎜ K12)
+-attribute unitsym \x338f\x339d\x339e\x33a1\x2113\x338e\x33a5\x339c\x338d\x33bf\x33be\x33a2\x339a
+ # openafter 에서 한글·숫자를 뺀 것(단독 글자 규칙의 공백 뒤 종료 조건)
+-attribute oanh .!?…·:;~―%℃€$\x0022“”‘’()[]「」『』《》〈〉
+ # 단독 글자 ⠰ 앞자리(공백 외)
+ attribute gonepre -(\x2018\x201c
+ attribute openafter 가각갂갃간갅갆갇갈갉갊갋갌갍갎갏감갑값갓갔강갖갗갘같갚갛개객갞갟갠갡갢갣갤갥갦갧갨갩갪갫갬갭갮갯갰갱갲갳갴갵갶갷갸갹갺갻갼갽갾갿걀걁걂걃걄걅걆걇걈걉걊걋걌걍걎걏걐걑걒걓걔걕걖걗걘걙걚걛걜걝걞걟걠걡걢걣걤걥걦걧걨걩걪걫걬걭걮걯거걱걲걳건걵걶걷걸걹걺걻걼걽걾걿검겁겂것겄겅겆겇겈겉겊겋게겍겎겏겐겑겒겓겔겕겖겗겘겙겚겛겜겝겞겟겠겡겢겣겤겥겦겧겨격겪겫견겭겮겯결겱겲겳겴겵겶겷겸겹겺겻겼경겾겿곀곁곂곃계곅곆곇
+@@ -768,6 +797,8 @@
+ attribute hangulonly 운욵욶
+ # 숫자+한글: 초성 ㄴㄷㅁㅋㅌㅍㅎ 앞에서만 빈칸 (도트 충돌 조항)
+ noback context $d[]%hangulonly @0
++# 제44항 [다만]: 분수 문자 뒤 ㄴㄷㅁㅋㅌㅍㅎ 첫소리 한글도 띄어 쓴다.
++noback context _1%vfrac[]%hangulonly @0
+ attribute dquote \x0022
+ noback context `[%dquote] @236
+ noback context %realspace[%dquote] @236
+@@ -780,7 +811,7 @@
+ noback context #1=0["AR"]%openafter @356-6-6-1-1235#1=1
+ noback context #1=0["AR"]%realspace @356-6-6-1-1235#1=1
+ noback context #1=1["AR"]%closeafter @1-1235-256#1=0
+-noback context #1=1["AR"]%realspace @1-1235-0
++noback context #1=1["AR"]%realspace @1-1235
+ noback context #1=1["AR"]~ @1-1235-256#1=0
+ # ED: 구간 밖(#1=0) 형
+ noback context #1=0["ED"]%closeafter @356-6-6-15-145-256
+@@ -789,7 +820,7 @@
+ noback context #1=0["ED"]%openafter @356-6-6-15-145#1=1
+ noback context #1=0["ED"]%realspace @356-6-6-15-145#1=1
+ noback context #1=1["ED"]%closeafter @15-145-256#1=0
+-noback context #1=1["ED"]%realspace @15-145-0
++noback context #1=1["ED"]%realspace @15-145
+ noback context #1=1["ED"]~ @15-145-256#1=0
+ # ER: 구간 밖(#1=0) 형
+ noback context #1=0["ER"]%closeafter @356-6-6-15-1235-256
+@@ -798,7 +829,7 @@
+ noback context #1=0["ER"]%openafter @356-6-6-15-1235#1=1
+ noback context #1=0["ER"]%realspace @356-6-6-15-1235#1=1
+ noback context #1=1["ER"]%closeafter @15-1235-256#1=0
+-noback context #1=1["ER"]%realspace @15-1235-0
++noback context #1=1["ER"]%realspace @15-1235
+ noback context #1=1["ER"]~ @15-1235-256#1=0
+ # OW: 구간 밖(#1=0) 형
+ noback context #1=0["OW"]%closeafter @356-6-6-135-2456-256
+@@ -807,7 +838,7 @@
+ noback context #1=0["OW"]%openafter @356-6-6-135-2456#1=1
+ noback context #1=0["OW"]%realspace @356-6-6-135-2456#1=1
+ noback context #1=1["OW"]%closeafter @135-2456-256#1=0
+-noback context #1=1["OW"]%realspace @135-2456-0
++noback context #1=1["OW"]%realspace @135-2456
+ noback context #1=1["OW"]~ @135-2456-256#1=0
+ # OU: 구간 밖(#1=0) 형
+ noback context #1=0["OU"]%closeafter @356-6-6-135-136-256
+@@ -816,7 +847,7 @@
+ noback context #1=0["OU"]%openafter @356-6-6-135-136#1=1
+ noback context #1=0["OU"]%realspace @356-6-6-135-136#1=1
+ noback context #1=1["OU"]%closeafter @135-136-256#1=0
+-noback context #1=1["OU"]%realspace @135-136-0
++noback context #1=1["OU"]%realspace @135-136
+ noback context #1=1["OU"]~ @135-136-256#1=0
+ # SH: 구간 밖(#1=0) 형
+ noback context #1=0["SH"]%closeafter @356-6-6-234-125-256
+@@ -825,7 +856,7 @@
+ noback context #1=0["SH"]%openafter @356-6-6-234-125#1=1
+ noback context #1=0["SH"]%realspace @356-6-6-234-125#1=1
+ noback context #1=1["SH"]%closeafter @234-125-256#1=0
+-noback context #1=1["SH"]%realspace @234-125-0
++noback context #1=1["SH"]%realspace @234-125
+ noback context #1=1["SH"]~ @234-125-256#1=0
+ # ST: 구간 밖(#1=0) 형
+ noback context #1=0["ST"]%closeafter @356-6-6-234-2345-256
+@@ -834,7 +865,7 @@
+ noback context #1=0["ST"]%openafter @356-6-6-234-2345#1=1
+ noback context #1=0["ST"]%realspace @356-6-6-234-2345#1=1
+ noback context #1=1["ST"]%closeafter @234-2345-256#1=0
+-noback context #1=1["ST"]%realspace @234-2345-0
++noback context #1=1["ST"]%realspace @234-2345
+ noback context #1=1["ST"]~ @234-2345-256#1=0
+ # CH: 구간 밖(#1=0) 형
+ noback context #1=0["CH"]%closeafter @356-6-6-14-125-256
+@@ -843,7 +874,7 @@
+ noback context #1=0["CH"]%openafter @356-6-6-14-125#1=1
+ noback context #1=0["CH"]%realspace @356-6-6-14-125#1=1
+ noback context #1=1["CH"]%closeafter @14-125-256#1=0
+-noback context #1=1["CH"]%realspace @14-125-0
++noback context #1=1["CH"]%realspace @14-125
+ noback context #1=1["CH"]~ @14-125-256#1=0
+ # WH: 구간 밖(#1=0) 형
+ noback context #1=0["WH"]%closeafter @356-6-6-2456-125-256
+@@ -852,7 +883,7 @@
+ noback context #1=0["WH"]%openafter @356-6-6-2456-125#1=1
+ noback context #1=0["WH"]%realspace @356-6-6-2456-125#1=1
+ noback context #1=1["WH"]%closeafter @2456-125-256#1=0
+-noback context #1=1["WH"]%realspace @2456-125-0
++noback context #1=1["WH"]%realspace @2456-125
+ noback context #1=1["WH"]~ @2456-125-256#1=0
+ # TH: 구간 밖(#1=0) 형
+ noback context #1=0["TH"]%closeafter @356-6-6-2345-125-256
+@@ -861,7 +892,7 @@
+ noback context #1=0["TH"]%openafter @356-6-6-2345-125#1=1
+ noback context #1=0["TH"]%realspace @356-6-6-2345-125#1=1
+ noback context #1=1["TH"]%closeafter @2345-125-256#1=0
+-noback context #1=1["TH"]%realspace @2345-125-0
++noback context #1=1["TH"]%realspace @2345-125
+ noback context #1=1["TH"]~ @2345-125-256#1=0
+ # IN: 구간 밖(#1=0) 형
+ noback context #1=0["IN"]%closeafter @356-6-6-24-1345-256
+@@ -870,7 +901,7 @@
+ noback context #1=0["IN"]%openafter @356-6-6-24-1345#1=1
+ noback context #1=0["IN"]%realspace @356-6-6-24-1345#1=1
+ noback context #1=1["IN"]%closeafter @24-1345-256#1=0
+-noback context #1=1["IN"]%realspace @24-1345-0
++noback context #1=1["IN"]%realspace @24-1345
+ noback context #1=1["IN"]~ @24-1345-256#1=0
+ # EN: 구간 밖(#1=0) 형
+ noback context #1=0["EN"]%closeafter @356-6-6-15-1345-256
+@@ -879,7 +910,7 @@
+ noback context #1=0["EN"]%openafter @356-6-6-15-1345#1=1
+ noback context #1=0["EN"]%realspace @356-6-6-15-1345#1=1
+ noback context #1=1["EN"]%closeafter @15-1345-256#1=0
+-noback context #1=1["EN"]%realspace @15-1345-0
++noback context #1=1["EN"]%realspace @15-1345
+ noback context #1=1["EN"]~ @15-1345-256#1=0
+ # EA: 구간 밖(#1=0) 형
+ noback context #1=0["EA"]%closeafter @356-6-6-15-1-256
+@@ -888,7 +919,7 @@
+ noback context #1=0["EA"]%openafter @356-6-6-15-1#1=1
+ noback context #1=0["EA"]%realspace @356-6-6-15-1#1=1
+ noback context #1=1["EA"]%closeafter @15-1-256#1=0
+-noback context #1=1["EA"]%realspace @15-1-0
++noback context #1=1["EA"]%realspace @15-1
+ noback context #1=1["EA"]~ @15-1-256#1=0
+ # GH: 구간 밖(#1=0) 형
+ noback context #1=0["GH"]%closeafter @356-6-6-1245-125-256
+@@ -897,7 +928,7 @@
+ noback context #1=0["GH"]%openafter @356-6-6-1245-125#1=1
+ noback context #1=0["GH"]%realspace @356-6-6-1245-125#1=1
+ noback context #1=1["GH"]%closeafter @1245-125-256#1=0
+-noback context #1=1["GH"]%realspace @1245-125-0
++noback context #1=1["GH"]%realspace @1245-125
+ noback context #1=1["GH"]~ @1245-125-256#1=0
+ noback context #1=1["AR"]%openafter @1-1235
+ noback context #1=1["ED"]%openafter @15-145
+@@ -1258,6 +1289,9 @@
+ attribute hangall 함합핪핫핬항핮핯핰핱핲핳해핵핶핷핸핹핺핻핼핽핾핿햀햁햂햃햄햅햆햇했행햊햋햌햍햎햏햐햑햒햓햔햕햖햗햘햙햚햛햜햝햞햟햠햡햢햣햤향햦햧햨햩햪햫햬햭햮햯햰햱햲햳햴햵햶햷햸햹햺햻햼햽햾햿헀헁헂헃헄헅헆헇허헉헊헋헌헍헎헏헐헑헒헓헔헕헖헗험헙헚헛헜헝헞헟헠헡헢헣헤헥헦헧헨헩헪헫헬헭헮헯헰헱헲헳헴헵헶헷헸헹헺헻헼헽헾헿혀혁혂혃현혅혆혇혈혉혊혋혌혍혎혏혐협혒혓혔형혖혗혘혙혚혛혜혝혞혟혠혡혢혣혤혥혦혧혨혩혪혫혬혭혮혯
+ attribute hangall 혰혱혲혳혴혵혶혷호혹혺혻혼혽혾혿홀홁홂홃홄홅홆홇홈홉홊홋홌홍홎홏홐홑홒홓화확홖홗환홙홚홛활홝홞홟홠홡홢홣홤홥홦홧홨황홪홫홬홭홮홯홰홱홲홳홴홵홶홷홸홹홺홻홼홽홾홿횀횁횂횃횄횅횆횇횈횉횊횋회획횎횏횐횑횒횓횔횕횖횗횘횙횚횛횜횝횞횟횠횡횢횣횤횥횦횧효횩횪횫횬횭횮횯횰횱횲횳횴횵횶횷횸횹횺횻횼횽횾횿훀훁훂훃후훅훆훇훈훉훊훋훌훍훎훏훐훑훒훓훔훕훖훗훘훙훚훛훜훝훞훟훠훡훢훣훤훥훦훧훨훩훪훫훬훭훮훯훰훱훲훳훴훵훶훷
+ attribute hangall 훸훹훺훻훼훽훾훿휀휁휂휃휄휅휆휇휈휉휊휋휌휍휎휏휐휑휒휓휔휕휖휗휘휙휚휛휜휝휞휟휠휡휢휣휤휥휦휧휨휩휪휫휬휭휮휯휰휱휲휳휴휵휶휷휸휹휺휻휼휽휾휿흀흁흂흃흄흅흆흇흈흉흊흋흌흍흎흏흐흑흒흓흔흕흖흗흘흙흚흛흜흝흞흟흠흡흢흣흤흥흦흧흨흩흪흫희흭흮흯흰흱흲흳흴흵흶흷흸흹흺흻흼흽흾흿힀힁힂힃힄힅힆힇히힉힊힋힌힍힎힏힐힑힒힓힔힕힖힗힘힙힚힛힜힝힞힟힠힡힢힣
++# 마침표 6개 줄임표 ⠲⠲⠲ (위 ellipsis 블록 설명 참조). 로마자 뒤에서는 불발.
++noback context `["......"] @256-256-256
++noback context _1!%latin["......"] @256-256-256
+ # %+한글: blank 삽입 (NIKL 전수 7851:1010 blank 우세, 초성 무관)
+ 
+ # 퍼센트포인트 %p: 비로마자 단위 기호 한 덩어리 ⠴⠏⠏ (2024 제69항 [붙임 2] PDF p.50;
+@@ -1360,30 +1394,491 @@
+ noback context #1=0_1!%latin["z"]%ucase%ucase @356-1356-6-6#1=1
+ noback context #1=0_1!%latin["z"]%ucase @356-1356-6#1=1
+ noback context #1=0_1!%latin[]%latin @356#1=1
+-noback context $d[",1"]$d @2-1
+-noback context $d[",1"] @2-1
+-noback context $d[",2"]$d @2-12
+-noback context $d[",2"] @2-12
+-noback context $d[",3"]$d @2-14
+-noback context $d[",3"] @2-14
+-noback context $d[",4"]$d @2-145
+-noback context $d[",4"] @2-145
+-noback context $d[",5"]$d @2-15
+-noback context $d[",5"] @2-15
+-noback context $d[",6"]$d @2-124
+-noback context $d[",6"] @2-124
+-noback context $d[",7"]$d @2-1245
+-noback context $d[",7"] @2-1245
+-noback context $d[",8"]$d @2-125
+-noback context $d[",8"] @2-125
+-noback context $d[",9"]$d @2-24
+-noback context $d[",9"] @2-24
+-noback context $d[",0"]$d @2-245
+-noback context $d[",0"] @2-245
++# 수의 자릿점 쉼표 (2024 제41항; 2020 제47항 [다만]): 숫자 사이 쉼표는 ⠂(2) — 쉼표
++# 일반형(5)과 구분. 쉼표+숫자 동시 소비: 쉼표만 소비하면 다음 숫자에 ⠼ 재발화.
++# 선행 숫자는 _1 lookback으로 판정한다. 이전 형태 $d[",N"]는
++# 커서가 선행 숫자 위에 있을 때만 성립(전방 매칭)하므로, 앞 쉼표 규칙이 ",N"을
++# 소비한 직후의 쉼표(1,2,4 / 1,2,3차)에서 불발해 ⠐⠼로 새었다.
++noback context _1$d[",1"] @2-1
++noback context _1$d[",2"] @2-12
++noback context _1$d[",3"] @2-14
++noback context _1$d[",4"] @2-145
++noback context _1$d[",5"] @2-15
++noback context _1$d[",6"] @2-124
++noback context _1$d[",7"] @2-1245
++noback context _1$d[",8"] @2-125
++noback context _1$d[",9"] @2-24
++noback context _1$d[",0"] @2-245
++# 위 규칙이 쉼표 뒤 숫자 하나를 함께 소비하므로 그 숫자 위치에서 발화하는
++# 제44항 [다만] 규칙($d[]%hangulonly)이 불발한다(3,4호기 → ⠼⠉⠂⠙⠚⠥). 소비된 'd,d' 뒤 한글 위치에서 보충.
++noback context _3$d","$d[]%hangulonly @0
+ # 제32항(연속 로마 단어 first-to-last)·제35항(숫자): latin+공백+숫자는 같은
+ # 로마자 묶음 — 종료표 없이 공백만
+ noback context %latin[%realspace]$d @0
+ # 하이픈 뒤 대문자 (Submarine-Launched)
++# 로마자 묶음 안의 수 뒤 쉼표·쌍점은 UEB 부호(쉼표 ⠂, 쌍점 ⠒).
++# 근거: 2024 제32항(로마자표와 종료표 사이는 통일영어점자), 제33항(로마자와 로마자 사이의
++# 문장 부호는 UEB), 제35항(로마자 뒤 숫자는 종료표 없이 같은 묶음: 'KBS 1 TV').
++# 조건: 부호 바로 앞의 수(숫자·- . : 런, 끝은 숫자)가 로마자 바로 뒤 또는 로마자+공백 뒤에서
++# 시작하고(BBC1, U-16, ID.3, ISO14040:2006, Award 2020, SOC 1), 부호 뒤로 묶음이 이어질 때:
++#   쉼표 — 공백+로마자 / 공백+숫자런+로마자 / 공백+숫자런+공백+로마자
++#   쌍점 — 숫자런+위의 쉼표 꼴(9001:2015, ISO) / 숫자런+공백+로마자(9001:2015 ISO) /
++#          공백+로마자(T1419: Bloom) / 로마자(Vol.1:NFT)
++# 한글·괄호 뒤의 수(코스피200, (19, …), 9001, ISO)는 한국 쉼표 ⠐ 유지. 수 뒤에 한글이 오는
++# 쌍점(22:35에)은 한국 쌍점 ⠐⠂. 쌍점 바로 뒤 로마자는 여기서 대문자 기호까지
++# 적는다(쌍점을 소비하므로 쌍점 위치에서 성립하는 오프너 규칙이 불발).
++# liblouis lookback(_N)은 고정 길이라 수의 길이 1–16을 build_tables.py가 펼쳐 적는다.
++# 같은 커서 위치에서는 먼저 정의된 규칙이 이기므로 아래 ","%realspace[] 오프너보다 앞에 둔다.
++attribute numsep 0123456789-.:
++noback context _2%latin$d[":"]$d.","%realspace%latin @25
++noback context _3%latin%realspace$d[":"]$d.","%realspace%latin @25
++noback context _2%latin$d[":"]$d.","%realspace$d.%latin @25
++noback context _3%latin%realspace$d[":"]$d.","%realspace$d.%latin @25
++noback context _2%latin$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _3%latin%realspace$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _2%latin$d[":"]$d.%realspace%latin @25
++noback context _3%latin%realspace$d[":"]$d.%realspace%latin @25
++noback context _2%latin$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _3%latin%realspace$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _2%latin$d[":"%realspace]%ucase @25-0-6
++noback context _3%latin%realspace$d[":"%realspace]%ucase @25-0-6
++noback context _2%latin$d[":"%realspace]%lcase @25-0
++noback context _3%latin%realspace$d[":"%realspace]%lcase @25-0
++noback context _2%latin$d[":"]%ucase%ucase @25-6-6
++noback context _3%latin%realspace$d[":"]%ucase%ucase @25-6-6
++noback context _2%latin$d[":"]%ucase @25-6
++noback context _3%latin%realspace$d[":"]%ucase @25-6
++noback context _2%latin$d[":"]%lcase @25
++noback context _3%latin%realspace$d[":"]%lcase @25
++noback context _3%latin%numsep1$d[":"]$d.","%realspace%latin @25
++noback context _4%latin%realspace%numsep1$d[":"]$d.","%realspace%latin @25
++noback context _3%latin%numsep1$d[":"]$d.","%realspace$d.%latin @25
++noback context _4%latin%realspace%numsep1$d[":"]$d.","%realspace$d.%latin @25
++noback context _3%latin%numsep1$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _4%latin%realspace%numsep1$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _3%latin%numsep1$d[":"]$d.%realspace%latin @25
++noback context _4%latin%realspace%numsep1$d[":"]$d.%realspace%latin @25
++noback context _3%latin%numsep1$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _4%latin%realspace%numsep1$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _3%latin%numsep1$d[":"%realspace]%ucase @25-0-6
++noback context _4%latin%realspace%numsep1$d[":"%realspace]%ucase @25-0-6
++noback context _3%latin%numsep1$d[":"%realspace]%lcase @25-0
++noback context _4%latin%realspace%numsep1$d[":"%realspace]%lcase @25-0
++noback context _3%latin%numsep1$d[":"]%ucase%ucase @25-6-6
++noback context _4%latin%realspace%numsep1$d[":"]%ucase%ucase @25-6-6
++noback context _3%latin%numsep1$d[":"]%ucase @25-6
++noback context _4%latin%realspace%numsep1$d[":"]%ucase @25-6
++noback context _3%latin%numsep1$d[":"]%lcase @25
++noback context _4%latin%realspace%numsep1$d[":"]%lcase @25
++noback context _4%latin%numsep2$d[":"]$d.","%realspace%latin @25
++noback context _5%latin%realspace%numsep2$d[":"]$d.","%realspace%latin @25
++noback context _4%latin%numsep2$d[":"]$d.","%realspace$d.%latin @25
++noback context _5%latin%realspace%numsep2$d[":"]$d.","%realspace$d.%latin @25
++noback context _4%latin%numsep2$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _5%latin%realspace%numsep2$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _4%latin%numsep2$d[":"]$d.%realspace%latin @25
++noback context _5%latin%realspace%numsep2$d[":"]$d.%realspace%latin @25
++noback context _4%latin%numsep2$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _5%latin%realspace%numsep2$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _4%latin%numsep2$d[":"%realspace]%ucase @25-0-6
++noback context _5%latin%realspace%numsep2$d[":"%realspace]%ucase @25-0-6
++noback context _4%latin%numsep2$d[":"%realspace]%lcase @25-0
++noback context _5%latin%realspace%numsep2$d[":"%realspace]%lcase @25-0
++noback context _4%latin%numsep2$d[":"]%ucase%ucase @25-6-6
++noback context _5%latin%realspace%numsep2$d[":"]%ucase%ucase @25-6-6
++noback context _4%latin%numsep2$d[":"]%ucase @25-6
++noback context _5%latin%realspace%numsep2$d[":"]%ucase @25-6
++noback context _4%latin%numsep2$d[":"]%lcase @25
++noback context _5%latin%realspace%numsep2$d[":"]%lcase @25
++noback context _5%latin%numsep3$d[":"]$d.","%realspace%latin @25
++noback context _6%latin%realspace%numsep3$d[":"]$d.","%realspace%latin @25
++noback context _5%latin%numsep3$d[":"]$d.","%realspace$d.%latin @25
++noback context _6%latin%realspace%numsep3$d[":"]$d.","%realspace$d.%latin @25
++noback context _5%latin%numsep3$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _6%latin%realspace%numsep3$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _5%latin%numsep3$d[":"]$d.%realspace%latin @25
++noback context _6%latin%realspace%numsep3$d[":"]$d.%realspace%latin @25
++noback context _5%latin%numsep3$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _6%latin%realspace%numsep3$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _5%latin%numsep3$d[":"%realspace]%ucase @25-0-6
++noback context _6%latin%realspace%numsep3$d[":"%realspace]%ucase @25-0-6
++noback context _5%latin%numsep3$d[":"%realspace]%lcase @25-0
++noback context _6%latin%realspace%numsep3$d[":"%realspace]%lcase @25-0
++noback context _5%latin%numsep3$d[":"]%ucase%ucase @25-6-6
++noback context _6%latin%realspace%numsep3$d[":"]%ucase%ucase @25-6-6
++noback context _5%latin%numsep3$d[":"]%ucase @25-6
++noback context _6%latin%realspace%numsep3$d[":"]%ucase @25-6
++noback context _5%latin%numsep3$d[":"]%lcase @25
++noback context _6%latin%realspace%numsep3$d[":"]%lcase @25
++noback context _6%latin%numsep4$d[":"]$d.","%realspace%latin @25
++noback context _7%latin%realspace%numsep4$d[":"]$d.","%realspace%latin @25
++noback context _6%latin%numsep4$d[":"]$d.","%realspace$d.%latin @25
++noback context _7%latin%realspace%numsep4$d[":"]$d.","%realspace$d.%latin @25
++noback context _6%latin%numsep4$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _7%latin%realspace%numsep4$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _6%latin%numsep4$d[":"]$d.%realspace%latin @25
++noback context _7%latin%realspace%numsep4$d[":"]$d.%realspace%latin @25
++noback context _6%latin%numsep4$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _7%latin%realspace%numsep4$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _6%latin%numsep4$d[":"%realspace]%ucase @25-0-6
++noback context _7%latin%realspace%numsep4$d[":"%realspace]%ucase @25-0-6
++noback context _6%latin%numsep4$d[":"%realspace]%lcase @25-0
++noback context _7%latin%realspace%numsep4$d[":"%realspace]%lcase @25-0
++noback context _6%latin%numsep4$d[":"]%ucase%ucase @25-6-6
++noback context _7%latin%realspace%numsep4$d[":"]%ucase%ucase @25-6-6
++noback context _6%latin%numsep4$d[":"]%ucase @25-6
++noback context _7%latin%realspace%numsep4$d[":"]%ucase @25-6
++noback context _6%latin%numsep4$d[":"]%lcase @25
++noback context _7%latin%realspace%numsep4$d[":"]%lcase @25
++noback context _7%latin%numsep5$d[":"]$d.","%realspace%latin @25
++noback context _8%latin%realspace%numsep5$d[":"]$d.","%realspace%latin @25
++noback context _7%latin%numsep5$d[":"]$d.","%realspace$d.%latin @25
++noback context _8%latin%realspace%numsep5$d[":"]$d.","%realspace$d.%latin @25
++noback context _7%latin%numsep5$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _8%latin%realspace%numsep5$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _7%latin%numsep5$d[":"]$d.%realspace%latin @25
++noback context _8%latin%realspace%numsep5$d[":"]$d.%realspace%latin @25
++noback context _7%latin%numsep5$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _8%latin%realspace%numsep5$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _7%latin%numsep5$d[":"%realspace]%ucase @25-0-6
++noback context _8%latin%realspace%numsep5$d[":"%realspace]%ucase @25-0-6
++noback context _7%latin%numsep5$d[":"%realspace]%lcase @25-0
++noback context _8%latin%realspace%numsep5$d[":"%realspace]%lcase @25-0
++noback context _7%latin%numsep5$d[":"]%ucase%ucase @25-6-6
++noback context _8%latin%realspace%numsep5$d[":"]%ucase%ucase @25-6-6
++noback context _7%latin%numsep5$d[":"]%ucase @25-6
++noback context _8%latin%realspace%numsep5$d[":"]%ucase @25-6
++noback context _7%latin%numsep5$d[":"]%lcase @25
++noback context _8%latin%realspace%numsep5$d[":"]%lcase @25
++noback context _8%latin%numsep6$d[":"]$d.","%realspace%latin @25
++noback context _9%latin%realspace%numsep6$d[":"]$d.","%realspace%latin @25
++noback context _8%latin%numsep6$d[":"]$d.","%realspace$d.%latin @25
++noback context _9%latin%realspace%numsep6$d[":"]$d.","%realspace$d.%latin @25
++noback context _8%latin%numsep6$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _9%latin%realspace%numsep6$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _8%latin%numsep6$d[":"]$d.%realspace%latin @25
++noback context _9%latin%realspace%numsep6$d[":"]$d.%realspace%latin @25
++noback context _8%latin%numsep6$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _9%latin%realspace%numsep6$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _8%latin%numsep6$d[":"%realspace]%ucase @25-0-6
++noback context _9%latin%realspace%numsep6$d[":"%realspace]%ucase @25-0-6
++noback context _8%latin%numsep6$d[":"%realspace]%lcase @25-0
++noback context _9%latin%realspace%numsep6$d[":"%realspace]%lcase @25-0
++noback context _8%latin%numsep6$d[":"]%ucase%ucase @25-6-6
++noback context _9%latin%realspace%numsep6$d[":"]%ucase%ucase @25-6-6
++noback context _8%latin%numsep6$d[":"]%ucase @25-6
++noback context _9%latin%realspace%numsep6$d[":"]%ucase @25-6
++noback context _8%latin%numsep6$d[":"]%lcase @25
++noback context _9%latin%realspace%numsep6$d[":"]%lcase @25
++noback context _9%latin%numsep7$d[":"]$d.","%realspace%latin @25
++noback context _10%latin%realspace%numsep7$d[":"]$d.","%realspace%latin @25
++noback context _9%latin%numsep7$d[":"]$d.","%realspace$d.%latin @25
++noback context _10%latin%realspace%numsep7$d[":"]$d.","%realspace$d.%latin @25
++noback context _9%latin%numsep7$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _10%latin%realspace%numsep7$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _9%latin%numsep7$d[":"]$d.%realspace%latin @25
++noback context _10%latin%realspace%numsep7$d[":"]$d.%realspace%latin @25
++noback context _9%latin%numsep7$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _10%latin%realspace%numsep7$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _9%latin%numsep7$d[":"%realspace]%ucase @25-0-6
++noback context _10%latin%realspace%numsep7$d[":"%realspace]%ucase @25-0-6
++noback context _9%latin%numsep7$d[":"%realspace]%lcase @25-0
++noback context _10%latin%realspace%numsep7$d[":"%realspace]%lcase @25-0
++noback context _9%latin%numsep7$d[":"]%ucase%ucase @25-6-6
++noback context _10%latin%realspace%numsep7$d[":"]%ucase%ucase @25-6-6
++noback context _9%latin%numsep7$d[":"]%ucase @25-6
++noback context _10%latin%realspace%numsep7$d[":"]%ucase @25-6
++noback context _9%latin%numsep7$d[":"]%lcase @25
++noback context _10%latin%realspace%numsep7$d[":"]%lcase @25
++noback context _10%latin%numsep8$d[":"]$d.","%realspace%latin @25
++noback context _11%latin%realspace%numsep8$d[":"]$d.","%realspace%latin @25
++noback context _10%latin%numsep8$d[":"]$d.","%realspace$d.%latin @25
++noback context _11%latin%realspace%numsep8$d[":"]$d.","%realspace$d.%latin @25
++noback context _10%latin%numsep8$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _11%latin%realspace%numsep8$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _10%latin%numsep8$d[":"]$d.%realspace%latin @25
++noback context _11%latin%realspace%numsep8$d[":"]$d.%realspace%latin @25
++noback context _10%latin%numsep8$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _11%latin%realspace%numsep8$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _10%latin%numsep8$d[":"%realspace]%ucase @25-0-6
++noback context _11%latin%realspace%numsep8$d[":"%realspace]%ucase @25-0-6
++noback context _10%latin%numsep8$d[":"%realspace]%lcase @25-0
++noback context _11%latin%realspace%numsep8$d[":"%realspace]%lcase @25-0
++noback context _10%latin%numsep8$d[":"]%ucase%ucase @25-6-6
++noback context _11%latin%realspace%numsep8$d[":"]%ucase%ucase @25-6-6
++noback context _10%latin%numsep8$d[":"]%ucase @25-6
++noback context _11%latin%realspace%numsep8$d[":"]%ucase @25-6
++noback context _10%latin%numsep8$d[":"]%lcase @25
++noback context _11%latin%realspace%numsep8$d[":"]%lcase @25
++noback context _11%latin%numsep9$d[":"]$d.","%realspace%latin @25
++noback context _12%latin%realspace%numsep9$d[":"]$d.","%realspace%latin @25
++noback context _11%latin%numsep9$d[":"]$d.","%realspace$d.%latin @25
++noback context _12%latin%realspace%numsep9$d[":"]$d.","%realspace$d.%latin @25
++noback context _11%latin%numsep9$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _12%latin%realspace%numsep9$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _11%latin%numsep9$d[":"]$d.%realspace%latin @25
++noback context _12%latin%realspace%numsep9$d[":"]$d.%realspace%latin @25
++noback context _11%latin%numsep9$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _12%latin%realspace%numsep9$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _11%latin%numsep9$d[":"%realspace]%ucase @25-0-6
++noback context _12%latin%realspace%numsep9$d[":"%realspace]%ucase @25-0-6
++noback context _11%latin%numsep9$d[":"%realspace]%lcase @25-0
++noback context _12%latin%realspace%numsep9$d[":"%realspace]%lcase @25-0
++noback context _11%latin%numsep9$d[":"]%ucase%ucase @25-6-6
++noback context _12%latin%realspace%numsep9$d[":"]%ucase%ucase @25-6-6
++noback context _11%latin%numsep9$d[":"]%ucase @25-6
++noback context _12%latin%realspace%numsep9$d[":"]%ucase @25-6
++noback context _11%latin%numsep9$d[":"]%lcase @25
++noback context _12%latin%realspace%numsep9$d[":"]%lcase @25
++noback context _12%latin%numsep10$d[":"]$d.","%realspace%latin @25
++noback context _13%latin%realspace%numsep10$d[":"]$d.","%realspace%latin @25
++noback context _12%latin%numsep10$d[":"]$d.","%realspace$d.%latin @25
++noback context _13%latin%realspace%numsep10$d[":"]$d.","%realspace$d.%latin @25
++noback context _12%latin%numsep10$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _13%latin%realspace%numsep10$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _12%latin%numsep10$d[":"]$d.%realspace%latin @25
++noback context _13%latin%realspace%numsep10$d[":"]$d.%realspace%latin @25
++noback context _12%latin%numsep10$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _13%latin%realspace%numsep10$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _12%latin%numsep10$d[":"%realspace]%ucase @25-0-6
++noback context _13%latin%realspace%numsep10$d[":"%realspace]%ucase @25-0-6
++noback context _12%latin%numsep10$d[":"%realspace]%lcase @25-0
++noback context _13%latin%realspace%numsep10$d[":"%realspace]%lcase @25-0
++noback context _12%latin%numsep10$d[":"]%ucase%ucase @25-6-6
++noback context _13%latin%realspace%numsep10$d[":"]%ucase%ucase @25-6-6
++noback context _12%latin%numsep10$d[":"]%ucase @25-6
++noback context _13%latin%realspace%numsep10$d[":"]%ucase @25-6
++noback context _12%latin%numsep10$d[":"]%lcase @25
++noback context _13%latin%realspace%numsep10$d[":"]%lcase @25
++noback context _13%latin%numsep11$d[":"]$d.","%realspace%latin @25
++noback context _14%latin%realspace%numsep11$d[":"]$d.","%realspace%latin @25
++noback context _13%latin%numsep11$d[":"]$d.","%realspace$d.%latin @25
++noback context _14%latin%realspace%numsep11$d[":"]$d.","%realspace$d.%latin @25
++noback context _13%latin%numsep11$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _14%latin%realspace%numsep11$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _13%latin%numsep11$d[":"]$d.%realspace%latin @25
++noback context _14%latin%realspace%numsep11$d[":"]$d.%realspace%latin @25
++noback context _13%latin%numsep11$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _14%latin%realspace%numsep11$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _13%latin%numsep11$d[":"%realspace]%ucase @25-0-6
++noback context _14%latin%realspace%numsep11$d[":"%realspace]%ucase @25-0-6
++noback context _13%latin%numsep11$d[":"%realspace]%lcase @25-0
++noback context _14%latin%realspace%numsep11$d[":"%realspace]%lcase @25-0
++noback context _13%latin%numsep11$d[":"]%ucase%ucase @25-6-6
++noback context _14%latin%realspace%numsep11$d[":"]%ucase%ucase @25-6-6
++noback context _13%latin%numsep11$d[":"]%ucase @25-6
++noback context _14%latin%realspace%numsep11$d[":"]%ucase @25-6
++noback context _13%latin%numsep11$d[":"]%lcase @25
++noback context _14%latin%realspace%numsep11$d[":"]%lcase @25
++noback context _14%latin%numsep12$d[":"]$d.","%realspace%latin @25
++noback context _15%latin%realspace%numsep12$d[":"]$d.","%realspace%latin @25
++noback context _14%latin%numsep12$d[":"]$d.","%realspace$d.%latin @25
++noback context _15%latin%realspace%numsep12$d[":"]$d.","%realspace$d.%latin @25
++noback context _14%latin%numsep12$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _15%latin%realspace%numsep12$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _14%latin%numsep12$d[":"]$d.%realspace%latin @25
++noback context _15%latin%realspace%numsep12$d[":"]$d.%realspace%latin @25
++noback context _14%latin%numsep12$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _15%latin%realspace%numsep12$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _14%latin%numsep12$d[":"%realspace]%ucase @25-0-6
++noback context _15%latin%realspace%numsep12$d[":"%realspace]%ucase @25-0-6
++noback context _14%latin%numsep12$d[":"%realspace]%lcase @25-0
++noback context _15%latin%realspace%numsep12$d[":"%realspace]%lcase @25-0
++noback context _14%latin%numsep12$d[":"]%ucase%ucase @25-6-6
++noback context _15%latin%realspace%numsep12$d[":"]%ucase%ucase @25-6-6
++noback context _14%latin%numsep12$d[":"]%ucase @25-6
++noback context _15%latin%realspace%numsep12$d[":"]%ucase @25-6
++noback context _14%latin%numsep12$d[":"]%lcase @25
++noback context _15%latin%realspace%numsep12$d[":"]%lcase @25
++noback context _15%latin%numsep13$d[":"]$d.","%realspace%latin @25
++noback context _16%latin%realspace%numsep13$d[":"]$d.","%realspace%latin @25
++noback context _15%latin%numsep13$d[":"]$d.","%realspace$d.%latin @25
++noback context _16%latin%realspace%numsep13$d[":"]$d.","%realspace$d.%latin @25
++noback context _15%latin%numsep13$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _16%latin%realspace%numsep13$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _15%latin%numsep13$d[":"]$d.%realspace%latin @25
++noback context _16%latin%realspace%numsep13$d[":"]$d.%realspace%latin @25
++noback context _15%latin%numsep13$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _16%latin%realspace%numsep13$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _15%latin%numsep13$d[":"%realspace]%ucase @25-0-6
++noback context _16%latin%realspace%numsep13$d[":"%realspace]%ucase @25-0-6
++noback context _15%latin%numsep13$d[":"%realspace]%lcase @25-0
++noback context _16%latin%realspace%numsep13$d[":"%realspace]%lcase @25-0
++noback context _15%latin%numsep13$d[":"]%ucase%ucase @25-6-6
++noback context _16%latin%realspace%numsep13$d[":"]%ucase%ucase @25-6-6
++noback context _15%latin%numsep13$d[":"]%ucase @25-6
++noback context _16%latin%realspace%numsep13$d[":"]%ucase @25-6
++noback context _15%latin%numsep13$d[":"]%lcase @25
++noback context _16%latin%realspace%numsep13$d[":"]%lcase @25
++noback context _16%latin%numsep14$d[":"]$d.","%realspace%latin @25
++noback context _17%latin%realspace%numsep14$d[":"]$d.","%realspace%latin @25
++noback context _16%latin%numsep14$d[":"]$d.","%realspace$d.%latin @25
++noback context _17%latin%realspace%numsep14$d[":"]$d.","%realspace$d.%latin @25
++noback context _16%latin%numsep14$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _17%latin%realspace%numsep14$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _16%latin%numsep14$d[":"]$d.%realspace%latin @25
++noback context _17%latin%realspace%numsep14$d[":"]$d.%realspace%latin @25
++noback context _16%latin%numsep14$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _17%latin%realspace%numsep14$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _16%latin%numsep14$d[":"%realspace]%ucase @25-0-6
++noback context _17%latin%realspace%numsep14$d[":"%realspace]%ucase @25-0-6
++noback context _16%latin%numsep14$d[":"%realspace]%lcase @25-0
++noback context _17%latin%realspace%numsep14$d[":"%realspace]%lcase @25-0
++noback context _16%latin%numsep14$d[":"]%ucase%ucase @25-6-6
++noback context _17%latin%realspace%numsep14$d[":"]%ucase%ucase @25-6-6
++noback context _16%latin%numsep14$d[":"]%ucase @25-6
++noback context _17%latin%realspace%numsep14$d[":"]%ucase @25-6
++noback context _16%latin%numsep14$d[":"]%lcase @25
++noback context _17%latin%realspace%numsep14$d[":"]%lcase @25
++noback context _17%latin%numsep15$d[":"]$d.","%realspace%latin @25
++noback context _18%latin%realspace%numsep15$d[":"]$d.","%realspace%latin @25
++noback context _17%latin%numsep15$d[":"]$d.","%realspace$d.%latin @25
++noback context _18%latin%realspace%numsep15$d[":"]$d.","%realspace$d.%latin @25
++noback context _17%latin%numsep15$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _18%latin%realspace%numsep15$d[":"]$d.","%realspace$d.%realspace%latin @25
++noback context _17%latin%numsep15$d[":"]$d.%realspace%latin @25
++noback context _18%latin%realspace%numsep15$d[":"]$d.%realspace%latin @25
++noback context _17%latin%numsep15$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _18%latin%realspace%numsep15$d[":"%realspace]%ucase%ucase @25-0-6-6
++noback context _17%latin%numsep15$d[":"%realspace]%ucase @25-0-6
++noback context _18%latin%realspace%numsep15$d[":"%realspace]%ucase @25-0-6
++noback context _17%latin%numsep15$d[":"%realspace]%lcase @25-0
++noback context _18%latin%realspace%numsep15$d[":"%realspace]%lcase @25-0
++noback context _17%latin%numsep15$d[":"]%ucase%ucase @25-6-6
++noback context _18%latin%realspace%numsep15$d[":"]%ucase%ucase @25-6-6
++noback context _17%latin%numsep15$d[":"]%ucase @25-6
++noback context _18%latin%realspace%numsep15$d[":"]%ucase @25-6
++noback context _17%latin%numsep15$d[":"]%lcase @25
++noback context _18%latin%realspace%numsep15$d[":"]%lcase @25
++noback context _2%latin$d[","]%realspace%latin @2
++noback context _3%latin%realspace$d[","]%realspace%latin @2
++noback context _2%latin$d[","]%realspace$d.%latin @2
++noback context _3%latin%realspace$d[","]%realspace$d.%latin @2
++noback context _2%latin$d[","]%realspace$d.%realspace%latin @2
++noback context _3%latin%realspace$d[","]%realspace$d.%realspace%latin @2
++noback context _3%latin%numsep1$d[","]%realspace%latin @2
++noback context _4%latin%realspace%numsep1$d[","]%realspace%latin @2
++noback context _3%latin%numsep1$d[","]%realspace$d.%latin @2
++noback context _4%latin%realspace%numsep1$d[","]%realspace$d.%latin @2
++noback context _3%latin%numsep1$d[","]%realspace$d.%realspace%latin @2
++noback context _4%latin%realspace%numsep1$d[","]%realspace$d.%realspace%latin @2
++noback context _4%latin%numsep2$d[","]%realspace%latin @2
++noback context _5%latin%realspace%numsep2$d[","]%realspace%latin @2
++noback context _4%latin%numsep2$d[","]%realspace$d.%latin @2
++noback context _5%latin%realspace%numsep2$d[","]%realspace$d.%latin @2
++noback context _4%latin%numsep2$d[","]%realspace$d.%realspace%latin @2
++noback context _5%latin%realspace%numsep2$d[","]%realspace$d.%realspace%latin @2
++noback context _5%latin%numsep3$d[","]%realspace%latin @2
++noback context _6%latin%realspace%numsep3$d[","]%realspace%latin @2
++noback context _5%latin%numsep3$d[","]%realspace$d.%latin @2
++noback context _6%latin%realspace%numsep3$d[","]%realspace$d.%latin @2
++noback context _5%latin%numsep3$d[","]%realspace$d.%realspace%latin @2
++noback context _6%latin%realspace%numsep3$d[","]%realspace$d.%realspace%latin @2
++noback context _6%latin%numsep4$d[","]%realspace%latin @2
++noback context _7%latin%realspace%numsep4$d[","]%realspace%latin @2
++noback context _6%latin%numsep4$d[","]%realspace$d.%latin @2
++noback context _7%latin%realspace%numsep4$d[","]%realspace$d.%latin @2
++noback context _6%latin%numsep4$d[","]%realspace$d.%realspace%latin @2
++noback context _7%latin%realspace%numsep4$d[","]%realspace$d.%realspace%latin @2
++noback context _7%latin%numsep5$d[","]%realspace%latin @2
++noback context _8%latin%realspace%numsep5$d[","]%realspace%latin @2
++noback context _7%latin%numsep5$d[","]%realspace$d.%latin @2
++noback context _8%latin%realspace%numsep5$d[","]%realspace$d.%latin @2
++noback context _7%latin%numsep5$d[","]%realspace$d.%realspace%latin @2
++noback context _8%latin%realspace%numsep5$d[","]%realspace$d.%realspace%latin @2
++noback context _8%latin%numsep6$d[","]%realspace%latin @2
++noback context _9%latin%realspace%numsep6$d[","]%realspace%latin @2
++noback context _8%latin%numsep6$d[","]%realspace$d.%latin @2
++noback context _9%latin%realspace%numsep6$d[","]%realspace$d.%latin @2
++noback context _8%latin%numsep6$d[","]%realspace$d.%realspace%latin @2
++noback context _9%latin%realspace%numsep6$d[","]%realspace$d.%realspace%latin @2
++noback context _9%latin%numsep7$d[","]%realspace%latin @2
++noback context _10%latin%realspace%numsep7$d[","]%realspace%latin @2
++noback context _9%latin%numsep7$d[","]%realspace$d.%latin @2
++noback context _10%latin%realspace%numsep7$d[","]%realspace$d.%latin @2
++noback context _9%latin%numsep7$d[","]%realspace$d.%realspace%latin @2
++noback context _10%latin%realspace%numsep7$d[","]%realspace$d.%realspace%latin @2
++noback context _10%latin%numsep8$d[","]%realspace%latin @2
++noback context _11%latin%realspace%numsep8$d[","]%realspace%latin @2
++noback context _10%latin%numsep8$d[","]%realspace$d.%latin @2
++noback context _11%latin%realspace%numsep8$d[","]%realspace$d.%latin @2
++noback context _10%latin%numsep8$d[","]%realspace$d.%realspace%latin @2
++noback context _11%latin%realspace%numsep8$d[","]%realspace$d.%realspace%latin @2
++noback context _11%latin%numsep9$d[","]%realspace%latin @2
++noback context _12%latin%realspace%numsep9$d[","]%realspace%latin @2
++noback context _11%latin%numsep9$d[","]%realspace$d.%latin @2
++noback context _12%latin%realspace%numsep9$d[","]%realspace$d.%latin @2
++noback context _11%latin%numsep9$d[","]%realspace$d.%realspace%latin @2
++noback context _12%latin%realspace%numsep9$d[","]%realspace$d.%realspace%latin @2
++noback context _12%latin%numsep10$d[","]%realspace%latin @2
++noback context _13%latin%realspace%numsep10$d[","]%realspace%latin @2
++noback context _12%latin%numsep10$d[","]%realspace$d.%latin @2
++noback context _13%latin%realspace%numsep10$d[","]%realspace$d.%latin @2
++noback context _12%latin%numsep10$d[","]%realspace$d.%realspace%latin @2
++noback context _13%latin%realspace%numsep10$d[","]%realspace$d.%realspace%latin @2
++noback context _13%latin%numsep11$d[","]%realspace%latin @2
++noback context _14%latin%realspace%numsep11$d[","]%realspace%latin @2
++noback context _13%latin%numsep11$d[","]%realspace$d.%latin @2
++noback context _14%latin%realspace%numsep11$d[","]%realspace$d.%latin @2
++noback context _13%latin%numsep11$d[","]%realspace$d.%realspace%latin @2
++noback context _14%latin%realspace%numsep11$d[","]%realspace$d.%realspace%latin @2
++noback context _14%latin%numsep12$d[","]%realspace%latin @2
++noback context _15%latin%realspace%numsep12$d[","]%realspace%latin @2
++noback context _14%latin%numsep12$d[","]%realspace$d.%latin @2
++noback context _15%latin%realspace%numsep12$d[","]%realspace$d.%latin @2
++noback context _14%latin%numsep12$d[","]%realspace$d.%realspace%latin @2
++noback context _15%latin%realspace%numsep12$d[","]%realspace$d.%realspace%latin @2
++noback context _15%latin%numsep13$d[","]%realspace%latin @2
++noback context _16%latin%realspace%numsep13$d[","]%realspace%latin @2
++noback context _15%latin%numsep13$d[","]%realspace$d.%latin @2
++noback context _16%latin%realspace%numsep13$d[","]%realspace$d.%latin @2
++noback context _15%latin%numsep13$d[","]%realspace$d.%realspace%latin @2
++noback context _16%latin%realspace%numsep13$d[","]%realspace$d.%realspace%latin @2
++noback context _16%latin%numsep14$d[","]%realspace%latin @2
++noback context _17%latin%realspace%numsep14$d[","]%realspace%latin @2
++noback context _16%latin%numsep14$d[","]%realspace$d.%latin @2
++noback context _17%latin%realspace%numsep14$d[","]%realspace$d.%latin @2
++noback context _16%latin%numsep14$d[","]%realspace$d.%realspace%latin @2
++noback context _17%latin%realspace%numsep14$d[","]%realspace$d.%realspace%latin @2
++noback context _17%latin%numsep15$d[","]%realspace%latin @2
++noback context _18%latin%realspace%numsep15$d[","]%realspace%latin @2
++noback context _17%latin%numsep15$d[","]%realspace$d.%latin @2
++noback context _18%latin%realspace%numsep15$d[","]%realspace$d.%latin @2
++noback context _17%latin%numsep15$d[","]%realspace$d.%realspace%latin @2
++noback context _18%latin%realspace%numsep15$d[","]%realspace$d.%realspace%latin @2
++# UEB 쉼표 뒤 공백 다음 대문자: 로마자 묶음이 이어지므로(로마자표 없음)
++# 대문자 기호만 적는다(BBC1, BBC3 → ⠂ ⠠⠠⠃⠃⠉; Apple, Google → ⠂ ⠠⠛). UEB 쉼표 규칙들만
++# 쉼표+공백 앞에서 쉼표를 소비하므로(한국 쉼표는 ","%realspace[] 오프너가 공백까지 소비)
++# 이 lookback은 UEB 쉼표 뒤에서만 성립한다.
++noback context _1","[%realspace]%ucase%ucase @0-6-6
++# Preserve standing-alone single-letter grade-1 indicator after a comma.
++noback context _1","[%realspace]%goneu!%latdig @0-56-6
++noback context _1","[%realspace]"A" @0-6
++noback context _1","[%realspace]"B" @0-6
++noback context _1","[%realspace]"C" @0-6
++noback context _1","[%realspace]"D" @0-6
++noback context _1","[%realspace]"E" @0-6
++noback context _1","[%realspace]"F" @0-6
++noback context _1","[%realspace]"G" @0-6
++noback context _1","[%realspace]"H" @0-6
++noback context _1","[%realspace]"I" @0-6
++noback context _1","[%realspace]"J" @0-6
++noback context _1","[%realspace]"K" @0-6
++noback context _1","[%realspace]"L" @0-6
++noback context _1","[%realspace]"M" @0-6
++noback context _1","[%realspace]"N" @0-6
++noback context _1","[%realspace]"O" @0-6
++noback context _1","[%realspace]"P" @0-6
++noback context _1","[%realspace]"Q" @0-6
++noback context _1","[%realspace]"R" @0-6
++noback context _1","[%realspace]"S" @0-6
++noback context _1","[%realspace]"T" @0-6
++noback context _1","[%realspace]"U" @0-6
++noback context _1","[%realspace]"V" @0-6
++noback context _1","[%realspace]"W" @0-6
++noback context _1","[%realspace]"X" @0-6
++noback context _1","[%realspace]"Y" @0-6
++noback context _1","[%realspace]"Z" @0-6
+ # 쉼표+공백 뒤 latin run 오프너 (쉼표는 openafter 제외 유지)
+ noback context #1=0","%realspace[]%ucase%ucase @356-6-6#1=1
+ noback context #1=0","%realspace[]%ucase @356-6#1=1
+@@ -1794,3 +2289,4 @@
+ # 문서 시작 대문자 Latin: caps가 로마자표보다 먼저 방출되는 역순 교정 (시작 앵커라 안전)
+ 
+ include ko-2020-common-symbols.cti
++include ko-2020-symbols-core.cti
+--- a/ko-2020-symbols-core.cti
++++ b/ko-2020-symbols-core.cti
+@@ -0,0 +1,600 @@
++# liblouis: Korean — symbols defined or changed by the 2024 standard
++#
++# Article numbers follow 「한국 점자 규정」
++# (2024, 문화체육관광부 고시 제2024-5호) 한글 점자.
++
++# ── 보조 문자 클래스
++attribute opclose )]}\x2019\x201d\x300d\x300f\x3009\x300b
++attribute qopenprev \s([{\x201c\x2018\x300c\x300e
++attribute arrnb \s([{\x2018\x201c
++attribute arrna \s)]}\x2019\x201d,.;:
++# ── 제68항 위 첨자 ⠘ / 아래 첨자 ⠰ + 첨자 내용(숫자는 수표). [붙임 1] 숫자 첨자 뒤에
++#    숫자와 혼동되는 한글(ㄴㄷㅁㅋㅌㅍㅎ 첫소리 = hangulonly, 제44항과 같은 클래스)이 오면 한 칸
++sign \x2070 45-3456-245
++noback context ["\x2070"]%hangulonly @45-3456-245-0
++sign \x2080 56-3456-245
++noback context ["\x2080"]%hangulonly @56-3456-245-0
++sign \x00b9 45-3456-1
++noback context ["\x00b9"]%hangulonly @45-3456-1-0
++sign \x2081 56-3456-1
++noback context ["\x2081"]%hangulonly @56-3456-1-0
++sign \x00b2 45-3456-12
++noback context ["\x00b2"]%hangulonly @45-3456-12-0
++sign \x2082 56-3456-12
++noback context ["\x2082"]%hangulonly @56-3456-12-0
++sign \x00b3 45-3456-14
++noback context ["\x00b3"]%hangulonly @45-3456-14-0
++sign \x2083 56-3456-14
++noback context ["\x2083"]%hangulonly @56-3456-14-0
++sign \x2074 45-3456-145
++noback context ["\x2074"]%hangulonly @45-3456-145-0
++sign \x2084 56-3456-145
++noback context ["\x2084"]%hangulonly @56-3456-145-0
++sign \x2075 45-3456-15
++noback context ["\x2075"]%hangulonly @45-3456-15-0
++sign \x2085 56-3456-15
++noback context ["\x2085"]%hangulonly @56-3456-15-0
++sign \x2076 45-3456-124
++noback context ["\x2076"]%hangulonly @45-3456-124-0
++sign \x2086 56-3456-124
++noback context ["\x2086"]%hangulonly @56-3456-124-0
++sign \x2077 45-3456-1245
++noback context ["\x2077"]%hangulonly @45-3456-1245-0
++sign \x2087 56-3456-1245
++noback context ["\x2087"]%hangulonly @56-3456-1245-0
++sign \x2078 45-3456-125
++noback context ["\x2078"]%hangulonly @45-3456-125-0
++sign \x2088 56-3456-125
++noback context ["\x2088"]%hangulonly @56-3456-125-0
++sign \x2079 45-3456-24
++noback context ["\x2079"]%hangulonly @45-3456-24-0
++sign \x2089 56-3456-24
++noback context ["\x2089"]%hangulonly @56-3456-24-0
++
++# ── 제69항 [붙임 2] 비로마자 단위 기호: 단위표 ⠴ + 점형, 뒤에 한글이 오면 한 칸.
++#    %p ⠴⠏⠏, ‰ ⠴⠏⠍, ° ⠴⠙, ℃ ⠴⠙⠠⠉, ℉ ⠴⠙⠠⠋, ′ ⠴⠤, ″ ⠴⠤⠤, Å ⠴⠡
++noback correct ["\x00b0C"] "\x2103"
++noback correct ["\x00b0F"] "\x2109"
++sign \x2030 356-1234-134
++noback context ["\x2030"]%hangall @356-1234-134-0
++sign \x00b0 356-145
++noback context ["\x00b0"]%hangall @356-145-0
++noback context ["\x2103"]%hangall @356-145-6-14-0
++sign \x2109 356-145-6-124
++noback context ["\x2109"]%hangall @356-145-6-124-0
++sign \x2032 356-36
++noback context ["\x2032"]%hangall @356-36-0
++sign \x2033 356-36-36
++noback context ["\x2033"]%hangall @356-36-36-0
++sign \x212b 356-16
++noback context ["\x212b"]%hangall @356-16-0
++attribute openafter \x2030\x00b0\x2103\x2109\x2032\x2033\x212b
++attribute closeafter \x2030\x00b0\x2103\x2109\x2032\x2033\x212b
++
++# ── 제65항 화폐 기호: ⠴ + ⠈ + 로마자. [붙임] 뒤에 한글이 오면 한 칸. 로마자 묶음 안에서는
++#    UEB 화폐 기호(⠈ + 로마자)
++sign $ 356-4-234
++noback context _1%latin["$"] @4-234
++noback context ["$"]%hangall @356-4-234-0
++sign \x20a9 356-4-2456
++noback context _1%latin["\x20a9"] @4-2456
++noback context ["\x20a9"]%hangall @356-4-2456-0
++sign \xffe6 356-4-2456
++noback context _1%latin["\xffe6"] @4-2456
++noback context ["\xffe6"]%hangall @356-4-2456-0
++sign \x00a2 356-4-14
++noback context _1%latin["\x00a2"] @4-14
++noback context ["\x00a2"]%hangall @356-4-14-0
++sign \xffe0 356-4-14
++noback context _1%latin["\xffe0"] @4-14
++noback context ["\xffe0"]%hangall @356-4-14-0
++sign \x20ac 356-4-15
++noback context _1%latin["\x20ac"] @4-15
++noback context ["\x20ac"]%hangall @356-4-15-0
++sign \x00a3 356-4-123
++noback context _1%latin["\x00a3"] @4-123
++noback context ["\x00a3"]%hangall @356-4-123-0
++sign \xffe1 356-4-123
++noback context _1%latin["\xffe1"] @4-123
++noback context ["\xffe1"]%hangall @356-4-123-0
++sign \x20a3 356-4-124
++noback context _1%latin["\x20a3"] @4-124
++noback context ["\x20a3"]%hangall @356-4-124-0
++sign \x00a5 356-4-13456
++noback context _1%latin["\x00a5"] @4-13456
++noback context ["\x00a5"]%hangall @356-4-13456-0
++sign \xffe5 356-4-13456
++noback context _1%latin["\xffe5"] @4-13456
++noback context ["\xffe5"]%hangall @356-4-13456-0
++attribute openafter $\x20a9\xffe6\x00a2\xffe0\x20ac\x00a3\xffe1\x20a3\x00a5\xffe5
++
++# ── 제45항 연산 기호와 비교 기호: + ⠢, − ⠔, × ⠡, ÷ ⠌⠌, = ⠒⠒, > ⠢⠢, < ⠔⠔.
++# ── 제70항 화살표: → ⠒⠕, ← ⠪⠒, ↔ ⠪⠒⠕, ↓ ⠘⠒⠕, ↑ ⠰⠒⠕, 앞뒤를 한 칸씩 띄어 쓴다
++noback correct _1!%arrnb["\x2192"]!%arrna "\s\x2192\s"
++noback correct _1!%arrnb["\x2192"] "\s\x2192"
++noback correct _1%arrnb["\x2192"]!%arrna "\x2192\s"
++noback correct `["\x2192"]!%arrna "\x2192\s"
++noback correct _1!%arrnb["\x2190"]!%arrna "\s\x2190\s"
++noback correct _1!%arrnb["\x2190"] "\s\x2190"
++noback correct _1%arrnb["\x2190"]!%arrna "\x2190\s"
++noback correct `["\x2190"]!%arrna "\x2190\s"
++sign \x2190 246-25
++noback correct _1!%arrnb["\x2194"]!%arrna "\s\x2194\s"
++noback correct _1!%arrnb["\x2194"] "\s\x2194"
++noback correct _1%arrnb["\x2194"]!%arrna "\x2194\s"
++noback correct `["\x2194"]!%arrna "\x2194\s"
++sign \x2194 246-25-135
++noback correct _1!%arrnb["\x2193"]!%arrna "\s\x2193\s"
++noback correct _1!%arrnb["\x2193"] "\s\x2193"
++noback correct _1%arrnb["\x2193"]!%arrna "\x2193\s"
++noback correct `["\x2193"]!%arrna "\x2193\s"
++sign \x2193 45-25-135
++noback correct _1!%arrnb["\x2191"]!%arrna "\s\x2191\s"
++noback correct _1!%arrnb["\x2191"] "\s\x2191"
++noback correct _1%arrnb["\x2191"]!%arrna "\x2191\s"
++noback correct `["\x2191"]!%arrna "\x2191\s"
++sign \x2191 56-25-135
++attribute closeafter \x2192\x2190\x2194\x2193\x2191
++attribute openafter \x2192\x2190\x2194\x2193\x2191
++
++# ── ASCII 작은따옴표/아포스트로피('): 로마자 사이·뒤에서는 UEB 아포스트로피 ⠄(제61항),
++#    숫자 앞(연도 생략)에서는 수표 뒤 ⠄(제61항 ’22 → ⠼⠄⠃⠃), 한글 앞 여는 자리 ‘, 한글·닫는 괄호
++#    뒤 닫는 자리 ’ 로 본다(제49항 작은따옴표)
++sign ' 3
++noback correct _1!%latin["'"]$d2!$d "\xe000"
++noback correct `["'"]$d2!$d "\xe000"
++noback correct _1%qopenprev["\x2019"]$d2!$d "\xe000"
++noback correct `["\x2019"]$d2!$d "\xe000"
++noback correct _1%qopenprev["'"] "\x2018"
++noback correct `["'"] "\x2018"
++noback correct _1%hangall["'"] "\x2019"
++noback correct _1%opclose["'"] "\x2019"
++digit \xe000 3
++# 로마자 묶음 안 아포스트로피 뒤 대문자 (L'Eco)
++noback context _1%latin["'"]"A" @3-6
++noback context _1%latin["'"]"B" @3-6
++noback context _1%latin["'"]"C" @3-6
++noback context _1%latin["'"]"D" @3-6
++noback context _1%latin["'"]"E" @3-6
++noback context _1%latin["'"]"F" @3-6
++noback context _1%latin["'"]"G" @3-6
++noback context _1%latin["'"]"H" @3-6
++noback context _1%latin["'"]"I" @3-6
++noback context _1%latin["'"]"J" @3-6
++noback context _1%latin["'"]"K" @3-6
++noback context _1%latin["'"]"L" @3-6
++noback context _1%latin["'"]"M" @3-6
++noback context _1%latin["'"]"N" @3-6
++noback context _1%latin["'"]"O" @3-6
++noback context _1%latin["'"]"P" @3-6
++noback context _1%latin["'"]"Q" @3-6
++noback context _1%latin["'"]"R" @3-6
++noback context _1%latin["'"]"S" @3-6
++noback context _1%latin["'"]"T" @3-6
++noback context _1%latin["'"]"U" @3-6
++noback context _1%latin["'"]"V" @3-6
++noback context _1%latin["'"]"W" @3-6
++noback context _1%latin["'"]"X" @3-6
++noback context _1%latin["'"]"Y" @3-6
++noback context _1%latin["'"]"Z" @3-6
++noback context _1%latin["'"]"Α" @3-6
++noback context _1%latin["'"]"Β" @3-6
++noback context _1%latin["'"]"Γ" @3-6
++noback context _1%latin["'"]"Δ" @3-6
++noback context _1%latin["'"]"Ε" @3-6
++noback context _1%latin["'"]"Ζ" @3-6
++noback context _1%latin["'"]"Η" @3-6
++noback context _1%latin["'"]"Θ" @3-6
++noback context _1%latin["'"]"Ι" @3-6
++noback context _1%latin["'"]"Κ" @3-6
++noback context _1%latin["'"]"Λ" @3-6
++noback context _1%latin["'"]"Μ" @3-6
++noback context _1%latin["'"]"Ν" @3-6
++noback context _1%latin["'"]"Ξ" @3-6
++noback context _1%latin["'"]"Ο" @3-6
++noback context _1%latin["'"]"Π" @3-6
++noback context _1%latin["'"]"Ρ" @3-6
++noback context _1%latin["'"]"Σ" @3-6
++noback context _1%latin["'"]"Τ" @3-6
++noback context _1%latin["'"]"Υ" @3-6
++noback context _1%latin["'"]"Φ" @3-6
++noback context _1%latin["'"]"Χ" @3-6
++noback context _1%latin["'"]"Ψ" @3-6
++noback context _1%latin["'"]"Ω" @3-6
++
++# ── 제64항 동그라미 숫자: 수표 뒤에 숫자의 점형을 한 단 내려 적는다 (① ⠼⠂)
++sign \x2460 3456-2
++sign \x2461 3456-23
++sign \x2462 3456-25
++sign \x2463 3456-256
++sign \x2464 3456-26
++sign \x2465 3456-235
++sign \x2466 3456-2356
++sign \x2467 3456-236
++sign \x2468 3456-35
++sign \x2469 3456-2-356
++sign \x246a 3456-2-2
++sign \x246b 3456-2-23
++sign \x246c 3456-2-25
++sign \x246d 3456-2-256
++sign \x246e 3456-2-26
++sign \x246f 3456-2-235
++sign \x2470 3456-2-2356
++sign \x2471 3456-2-236
++sign \x2472 3456-2-35
++sign \x2473 3456-23-356
++sign \x24ea 3456-356
++# 그 밖의 동그라미 문자는 ⠶ ⠶ 으로 묶는다 (ⓐ ⠶⠴⠁⠶)
++noback correct ["\x24d0"] "\x2780a\x2781"
++noback correct ["\x24b6"] "\x2780A\x2781"
++noback correct ["\x24d1"] "\x2780b\x2781"
++noback correct ["\x24b7"] "\x2780B\x2781"
++noback correct ["\x24d2"] "\x2780c\x2781"
++noback correct ["\x24b8"] "\x2780C\x2781"
++noback correct ["\x24d3"] "\x2780d\x2781"
++noback correct ["\x24b9"] "\x2780D\x2781"
++noback correct ["\x24d4"] "\x2780e\x2781"
++noback correct ["\x24ba"] "\x2780E\x2781"
++noback correct ["\x24d5"] "\x2780f\x2781"
++noback correct ["\x24bb"] "\x2780F\x2781"
++noback correct ["\x24d6"] "\x2780g\x2781"
++noback correct ["\x24bc"] "\x2780G\x2781"
++noback correct ["\x24d7"] "\x2780h\x2781"
++noback correct ["\x24bd"] "\x2780H\x2781"
++noback correct ["\x24d8"] "\x2780i\x2781"
++noback correct ["\x24be"] "\x2780I\x2781"
++noback correct ["\x24d9"] "\x2780j\x2781"
++noback correct ["\x24bf"] "\x2780J\x2781"
++noback correct ["\x24da"] "\x2780k\x2781"
++noback correct ["\x24c0"] "\x2780K\x2781"
++noback correct ["\x24db"] "\x2780l\x2781"
++noback correct ["\x24c1"] "\x2780L\x2781"
++noback correct ["\x24dc"] "\x2780m\x2781"
++noback correct ["\x24c2"] "\x2780M\x2781"
++noback correct ["\x24dd"] "\x2780n\x2781"
++noback correct ["\x24c3"] "\x2780N\x2781"
++noback correct ["\x24de"] "\x2780o\x2781"
++noback correct ["\x24c4"] "\x2780O\x2781"
++noback correct ["\x24df"] "\x2780p\x2781"
++noback correct ["\x24c5"] "\x2780P\x2781"
++noback correct ["\x24e0"] "\x2780q\x2781"
++noback correct ["\x24c6"] "\x2780Q\x2781"
++noback correct ["\x24e1"] "\x2780r\x2781"
++noback correct ["\x24c7"] "\x2780R\x2781"
++noback correct ["\x24e2"] "\x2780s\x2781"
++noback correct ["\x24c8"] "\x2780S\x2781"
++noback correct ["\x24e3"] "\x2780t\x2781"
++noback correct ["\x24c9"] "\x2780T\x2781"
++noback correct ["\x24e4"] "\x2780u\x2781"
++noback correct ["\x24ca"] "\x2780U\x2781"
++noback correct ["\x24e5"] "\x2780v\x2781"
++noback correct ["\x24cb"] "\x2780V\x2781"
++noback correct ["\x24e6"] "\x2780w\x2781"
++noback correct ["\x24cc"] "\x2780W\x2781"
++noback correct ["\x24e7"] "\x2780x\x2781"
++noback correct ["\x24cd"] "\x2780X\x2781"
++noback correct ["\x24e8"] "\x2780y\x2781"
++noback correct ["\x24ce"] "\x2780Y\x2781"
++noback correct ["\x24e9"] "\x2780z\x2781"
++noback correct ["\x24cf"] "\x2780Z\x2781"
++sign \x2780 2356
++sign \x2781 2356
++attribute openafter \x2780
++# ── 제36항 로마 숫자: 해당 로마자로 적는다 (Ⅰ Ⅱ Ⅲ 는 기존 규칙)
++noback correct ["\x2163"] "IV"
++noback correct ["\x2164"] "V"
++noback correct ["\x2165"] "VI"
++noback correct ["\x2166"] "VII"
++noback correct ["\x2167"] "VIII"
++noback correct ["\x2168"] "IX"
++noback correct ["\x2169"] "X"
++noback correct ["\x216a"] "XI"
++noback correct ["\x216b"] "XII"
++noback correct ["\x216c"] "L"
++noback correct ["\x216d"] "C"
++noback correct ["\x216e"] "D"
++noback correct ["\x216f"] "M"
++noback correct ["\x2170"] "i"
++noback correct ["\x2171"] "ii"
++noback correct ["\x2172"] "iii"
++noback correct ["\x2173"] "iv"
++noback correct ["\x2174"] "v"
++noback correct ["\x2175"] "vi"
++noback correct ["\x2176"] "vii"
++noback correct ["\x2177"] "viii"
++noback correct ["\x2178"] "ix"
++noback correct ["\x2179"] "x"
++noback correct ["\x217a"] "xi"
++noback correct ["\x217b"] "xii"
++# ── 제47항 분수: 분모, 분수표 ⠌, 분자 순 (⅔ ⠼⠉⠌⠼⠃)
++sign \x00bd 3456-12-34-3456-1
++sign \x2153 3456-14-34-3456-1
++sign \x2154 3456-14-34-3456-12
++sign \x00bc 3456-145-34-3456-1
++sign \x00be 3456-145-34-3456-14
++sign \x2155 3456-15-34-3456-1
++sign \x2156 3456-15-34-3456-12
++sign \x2157 3456-15-34-3456-14
++sign \x2158 3456-15-34-3456-145
++sign \x2159 3456-124-34-3456-1
++sign \x215a 3456-124-34-3456-15
++sign \x215b 3456-125-34-3456-1
++sign \x215c 3456-125-34-3456-14
++sign \x215d 3456-125-34-3456-15
++sign \x215e 3456-125-34-3456-1245
++sign \x2150 3456-1245-34-3456-1
++sign \x2151 3456-24-34-3456-1
++sign \x2152 3456-1-245-34-3456-1
++
++# ── 제57항 숨김표: ○ × △ □ 가 여러 개 붙어 나오면 ⠸ 과 ⠇ 사이에 점형을 개수만큼
++#    (김○○ ⠸⠴⠴⠇, △△ ⠸⠬⠬⠇). 한 개는 제72항 글머리 기호 ○ ⠸⠴, □ ⠸⠶, △ ⠸⠬.
++noback context ["\x25cb\x25cb\x25cb\x25cb"] @456-356-356-356-356-123
++noback context ["\x25cb\x25cb\x25cb"] @456-356-356-356-123
++noback context ["\x25cb\x25cb"] @456-356-356-123
++noback context ["\x25b3\x25b3\x25b3\x25b3"] @456-346-346-346-346-123
++noback context ["\x25b3\x25b3\x25b3"] @456-346-346-346-123
++noback context ["\x25b3\x25b3"] @456-346-346-123
++noback context ["\x25a1\x25a1\x25a1\x25a1"] @456-2356-2356-2356-2356-123
++noback context ["\x25a1\x25a1\x25a1"] @456-2356-2356-2356-123
++noback context ["\x25a1\x25a1"] @456-2356-2356-123
++noback context ["\x25b2\x25b2\x25b2\x25b2"] @456-346-346-346-346-123
++noback context ["\x25b2\x25b2\x25b2"] @456-346-346-346-123
++noback context ["\x25b2\x25b2"] @456-346-346-123
++noback context ["\x00d7\x00d7\x00d7\x00d7"] @456-1346-1346-1346-1346-123
++noback context ["\x00d7\x00d7\x00d7"] @456-1346-1346-1346-123
++noback context ["\x00d7\x00d7"] @456-1346-1346-123
++noback context ["\x2606\x2606\x2606\x2606"] @456-35-35-35-35-123
++noback context ["\x2606\x2606\x2606"] @456-35-35-35-123
++noback context ["\x2606\x2606"] @456-35-35-123
++noback context ["\x25c7\x25c7\x25c7\x25c7"] @456-26-26-26-26-123
++noback context ["\x25c7\x25c7\x25c7"] @456-26-26-26-123
++noback context ["\x25c7\x25c7"] @456-26-26-123
++noback context ["\x25c6\x25c6\x25c6\x25c6"] @456-135-135-135-135-123
++noback context ["\x25c6\x25c6\x25c6"] @456-135-135-135-123
++noback context ["\x25c6\x25c6"] @456-135-135-123
++# 한 개의 ○ 가 한글에 붙으면 숨김표(○명 ⠸⠴⠇⠑⠻), 빈칸 뒤 × + 한글도 숨김표(×란 ⠸⠭⠇)
++noback context ["\x25cb"]%hangall @456-356-123
++noback context _1%realspace["\x00d7"]%hangall @456-1346-123
++noback context `["\x00d7"]%hangall @456-1346-123
++# 빈칸 뒤 한 개의 ☆ ◇ ◆ 가 한글에 붙으면 점역자 정의 숨김표 (2016년 ◇월 ◆일)
++noback context _1%realspace["\x2606"]%hangall @456-35-123
++noback context _1%realspace["\x25c7"]%hangall @456-26-123
++noback context _1%realspace["\x25c6"]%hangall @456-135-123
++sign \x2606 456-35
++sign \x25cb 456-356
++sign \x25a1 456-2356
++sign \x25a0 456-2356
++sign \x25ce 456-356-356
++sign \x25a3 456-2356-2356
++sign \x25c7 456-26
++sign \x25c6 456-246
++sign \x25b6 456-345
++sign \x25b7 456-345
++sign \x2022 456-256
++attribute openafter \x25b3\x25b2\x25cb\x25a1\x25a0\x25ce\x25a3\x25c7\x25c6\x25b6\x25b7\x2022
++attribute openafter \x2460\x2461\x2462\x2463\x2464\x2465\x2466\x2467\x2468\x2469\x246a\x246b\x246c\x246d\x246e\x246f\x2470\x2471\x2472\x2473
++# ── 제60항 참고표(※) ⠐⠔ (별표와 같음), 앞뒤를 한 칸씩 띄어 쓴다
++sign \x203b 5-35
++noback correct ["\x203b"]!%realspace "\x203b\s"
++# ── 제62항 상동 기호(〃) ⠴⠴
++sign \x3003 356-356
++
++# ── 입력 정규화: 전각 문자(U+FF01–FF5E)는 대응 ASCII로, 가운뎃점 변이(‧ ･ ․ ∙ ・)는 ·,
++#    줄표·붙임표 변이(– ‐ ‑)는 -, 물결 변이(〜)는 ~, 거북 괄호 〔〕는 [ ], 표시 없는 제어 문자는 제거
++noback correct ["\xff01"] "!"
++noback correct ["\xff02"] "\""
++noback correct ["\xff03"] "#"
++noback correct ["\xff04"] "$"
++noback correct ["\xff05"] "%"
++noback correct ["\xff06"] "&"
++noback correct ["\xff07"] "'"
++noback correct ["\xff08"] "("
++noback correct ["\xff09"] ")"
++noback correct ["\xff0a"] "*"
++noback correct ["\xff0b"] "+"
++noback correct ["\xff0c"] ","
++noback correct ["\xff0d"] "-"
++noback correct ["\xff0e"] "."
++noback correct ["\xff0f"] "/"
++noback correct ["\xff10"] "0"
++noback correct ["\xff11"] "1"
++noback correct ["\xff12"] "2"
++noback correct ["\xff13"] "3"
++noback correct ["\xff14"] "4"
++noback correct ["\xff15"] "5"
++noback correct ["\xff16"] "6"
++noback correct ["\xff17"] "7"
++noback correct ["\xff18"] "8"
++noback correct ["\xff19"] "9"
++noback correct ["\xff1a"] ":"
++noback correct ["\xff1b"] ";"
++noback correct ["\xff1c"] "<"
++noback correct ["\xff1d"] "="
++noback correct ["\xff1e"] ">"
++noback correct ["\xff1f"] "?"
++noback correct ["\xff20"] "@"
++noback correct ["\xff21"] "A"
++noback correct ["\xff22"] "B"
++noback correct ["\xff23"] "C"
++noback correct ["\xff24"] "D"
++noback correct ["\xff25"] "E"
++noback correct ["\xff26"] "F"
++noback correct ["\xff27"] "G"
++noback correct ["\xff28"] "H"
++noback correct ["\xff29"] "I"
++noback correct ["\xff2a"] "J"
++noback correct ["\xff2b"] "K"
++noback correct ["\xff2c"] "L"
++noback correct ["\xff2d"] "M"
++noback correct ["\xff2e"] "N"
++noback correct ["\xff2f"] "O"
++noback correct ["\xff30"] "P"
++noback correct ["\xff31"] "Q"
++noback correct ["\xff32"] "R"
++noback correct ["\xff33"] "S"
++noback correct ["\xff34"] "T"
++noback correct ["\xff35"] "U"
++noback correct ["\xff36"] "V"
++noback correct ["\xff37"] "W"
++noback correct ["\xff38"] "X"
++noback correct ["\xff39"] "Y"
++noback correct ["\xff3a"] "Z"
++noback correct ["\xff3b"] "["
++noback correct ["\xff3c"] "\\"
++noback correct ["\xff3d"] "]"
++noback correct ["\xff3e"] "^"
++noback correct ["\xff3f"] "_"
++noback correct ["\xff40"] "`"
++noback correct ["\xff41"] "a"
++noback correct ["\xff42"] "b"
++noback correct ["\xff43"] "c"
++noback correct ["\xff44"] "d"
++noback correct ["\xff45"] "e"
++noback correct ["\xff46"] "f"
++noback correct ["\xff47"] "g"
++noback correct ["\xff48"] "h"
++noback correct ["\xff49"] "i"
++noback correct ["\xff4a"] "j"
++noback correct ["\xff4b"] "k"
++noback correct ["\xff4c"] "l"
++noback correct ["\xff4d"] "m"
++noback correct ["\xff4e"] "n"
++noback correct ["\xff4f"] "o"
++noback correct ["\xff50"] "p"
++noback correct ["\xff51"] "q"
++noback correct ["\xff52"] "r"
++noback correct ["\xff53"] "s"
++noback correct ["\xff54"] "t"
++noback correct ["\xff55"] "u"
++noback correct ["\xff56"] "v"
++noback correct ["\xff57"] "w"
++noback correct ["\xff58"] "x"
++noback correct ["\xff59"] "y"
++noback correct ["\xff5a"] "z"
++noback correct ["\xff5b"] "{"
++noback correct ["\xff5c"] "|"
++noback correct ["\xff5d"] "}"
++noback correct ["\xff5e"] "~"
++noback correct ["\x2027"] "\x00b7"
++noback correct ["\xff65"] "\x00b7"
++noback correct ["\x2024"] "\x00b7"
++noback correct ["\x2219"] "\x00b7"
++noback correct ["\x2010"] "-"
++noback correct ["\x2011"] "-"
++noback correct ["\x2012"] "-"
++noback correct _1!%hangall["\x2013"] "-"
++noback correct `["\x2013"] "-"
++# 제49항 줄표 ― ⠤⠤: 전각 대시(— U+2014)는 줄표(― U+2015)로 적는다 (묵자에서 줄표를 흔히 —로 입력)
++noback correct ["\x2014"] "\x2015"
++noback correct ["\x301c"] "~"
++# 표시되지 않는 형식 문자(소프트 하이픈, 이모지 변이 선택자)는 지운다; ˚(ring above)는 도(°)
++noback correct ["\x00ad"] ""
++noback correct ["\xfe0f"] ""
++noback correct ["\xfe0e"] ""
++noback correct ["\x02da"] "\x00b0"
++noback correct ["\x3014"] "["
++noback correct ["\x3015"] "]"
++punctuation { 236-2
++punctuation } 5-356
++# 전화 기호 ☎ ☏ : 말뭉치 점역 관행(Tel) — 규정 미정의 기호, 점역자 표기
++noback correct ["\x260e"] "Tel"
++noback correct ["\x260f"] "Tel"
++# 제63항 긴소리표(ː) ⠠⠄, 앞뒤를 붙여 쓴다
++sign \x02d0 6-3
++# 제71항 역빗금(\) ⠸⠡, 세로선(|) ⠸⠳
++sign \x005c 456-16
++sign | 456-1256
++# 제68항 위 첨자 +, − : ⠘ 뒤에 적고, [붙임 2] 첨자 +/− 뒤는 한 칸 띄어 쓴다 (1⁺⁺등급, A⁻ 학점)
++sign \x207a 45-26
++sign \x207b 45-35
++noback context ["\x207a\x207a"]%realspace @45-26-26
++noback context ["\x207a\x207a"]~ @45-26-26
++noback context ["\x207a\x207a"] @45-26-26-0
++noback context ["\x207a"]%realspace @45-26
++noback context ["\x207a"]~ @45-26
++noback context ["\x207a"] @45-26-0
++noback context ["\x207b"]%realspace @45-35
++noback context ["\x207b"]~ @45-35
++noback context ["\x207b"] @45-35-0
++# 제69항 [붙임 2] 퍼센타일(%ile) ⠴⠏⠞
++noback context ["%ile"]%hangall @356-1234-2345-0
++noback context ["%ile"] @356-1234-2345
++# 제64항 네모 문자(결합 문자 U+20DE): ⠸⠦ + 내용 + ⠴⠇
++sign \x20de 356-123
++sign \xe005 456-236
++sign \xe006 356-123
++noback correct ["0\x20de"] "\xe0050\xe006"
++noback correct ["1\x20de"] "\xe0051\xe006"
++noback correct ["2\x20de"] "\xe0052\xe006"
++noback correct ["3\x20de"] "\xe0053\xe006"
++noback correct ["4\x20de"] "\xe0054\xe006"
++noback correct ["5\x20de"] "\xe0055\xe006"
++noback correct ["6\x20de"] "\xe0056\xe006"
++noback correct ["7\x20de"] "\xe0057\xe006"
++noback correct ["8\x20de"] "\xe0058\xe006"
++noback correct ["9\x20de"] "\xe0059\xe006"
++noback context []%hangall"\x20de" @456-236
++noback context []%latin"\x20de" @456-236-356
++# 제64항 그 밖의 동그라미 문자(㉠ ㉮): ⠶ ⠶ 으로 묶는다
++noback correct ["\x3260"] "\x2780\x3131\x2781"
++noback correct ["\x3261"] "\x2780\x3134\x2781"
++noback correct ["\x3262"] "\x2780\x3137\x2781"
++noback correct ["\x3263"] "\x2780\x3139\x2781"
++noback correct ["\x3264"] "\x2780\x3141\x2781"
++noback correct ["\x3265"] "\x2780\x3142\x2781"
++noback correct ["\x3266"] "\x2780\x3145\x2781"
++noback correct ["\x3267"] "\x2780\x3147\x2781"
++noback correct ["\x3268"] "\x2780\x3148\x2781"
++noback correct ["\x3269"] "\x2780\x314a\x2781"
++noback correct ["\x326a"] "\x2780\x314b\x2781"
++noback correct ["\x326b"] "\x2780\x314c\x2781"
++noback correct ["\x326c"] "\x2780\x314d\x2781"
++noback correct ["\x326d"] "\x2780\x314e\x2781"
++noback correct ["\x326e"] "\x2780\xac00\x2781"
++noback correct ["\x326f"] "\x2780\xb098\x2781"
++noback correct ["\x3270"] "\x2780\xb2e4\x2781"
++noback correct ["\x3271"] "\x2780\xb77c\x2781"
++noback correct ["\x3272"] "\x2780\xb9c8\x2781"
++noback correct ["\x3273"] "\x2780\xbc14\x2781"
++noback correct ["\x3274"] "\x2780\xc0ac\x2781"
++noback correct ["\x3275"] "\x2780\xc544\x2781"
++noback correct ["\x3276"] "\x2780\xc790\x2781"
++noback correct ["\x3277"] "\x2780\xcc28\x2781"
++noback correct ["\x3278"] "\x2780\xce74\x2781"
++noback correct ["\x3279"] "\x2780\xd0c0\x2781"
++noback correct ["\x327a"] "\x2780\xd30c\x2781"
++noback correct ["\x327b"] "\x2780\xd558\x2781"
++# 제64항 네모 한글 자모(ㄱ⃞)
++attribute jamo \x3131\x3132\x3133\x3134\x3135\x3136\x3137\x3138\x3139\x313a\x313b\x313c\x313d\x313e\x313f\x3140\x3141\x3142\x3143\x3144\x3145\x3146\x3147\x3148\x3149\x314a\x314b\x314c\x314d\x314e\x314f\x3150\x3151\x3152\x3153\x3154\x3155\x3156\x3157\x3158\x3159\x315a\x315b\x315c\x315d\x315e\x315f\x3160\x3161\x3162\x3163\x3164\x3165\x3166\x3167\x3168\x3169\x316a\x316b\x316c\x316d\x316e\x316f\x3170\x3171\x3172\x3173\x3174\x3175\x3176\x3177\x3178\x3179\x317a\x317b\x317c\x317d\x317e\x317f\x3180\x3181\x3182\x3183\x3184\x3185\x3186\x3187\x3188\x3189\x318a\x318b\x318c\x318d\x318e
++noback context []%jamo"\x20de" @456-236
++# 제53항 줄임표: 가운뎃점으로 쓴 줄임표(……, …, ‥‥‥)는 ⠠⠠⠠, 마침표로 쓴 줄임표(......, ...)는 ⠲⠲⠲
++noback context ["\x2026\x2026"] @6-6-6
++noback context ["\x2025\x2025\x2025"] @6-6-6
++noback context ["......"] @256-256-256
++# 제67항 점형표: 묵자에 표기된 점형은 앞에 ⠸⠿ 을 적고 뒤는 한 칸 띄어 쓴다
++swapcd brlself \x2801\x2802\x2803\x2804\x2805\x2806\x2807\x2808\x2809\x280a\x280b\x280c\x280d\x280e\x280f\x2810\x2811\x2812\x2813\x2814\x2815\x2816\x2817\x2818\x2819\x281a\x281b\x281c\x281d\x281e\x281f\x2820\x2821\x2822\x2823\x2824\x2825\x2826\x2827\x2828\x2829\x282a\x282b\x282c\x282d\x282e\x282f\x2830\x2831\x2832\x2833\x2834\x2835\x2836\x2837\x2838\x2839\x283a\x283b\x283c\x283d\x283e\x283f 1,2,12,3,13,23,123,4,14,24,124,34,134,234,1234,5,15,25,125,35,135,235,1235,45,145,245,1245,345,1345,2345,12345,6,16,26,126,36,136,236,1236,46,146,246,1246,346,1346,2346,12346,56,156,256,1256,356,1356,2356,12356,456,1456,2456,12456,3456,13456,23456,123456
++attribute brlsp \s\x2801\x2802\x2803\x2804\x2805\x2806\x2807\x2808\x2809\x280a\x280b\x280c\x280d\x280e\x280f\x2810\x2811\x2812\x2813\x2814\x2815\x2816\x2817\x2818\x2819\x281a\x281b\x281c\x281d\x281e\x281f\x2820\x2821\x2822\x2823\x2824\x2825\x2826\x2827\x2828\x2829\x282a\x282b\x282c\x282d\x282e\x282f\x2830\x2831\x2832\x2833\x2834\x2835\x2836\x2837\x2838\x2839\x283a\x283b\x283c\x283d\x283e\x283f
++attribute brlc \x2801\x2802\x2803\x2804\x2805\x2806\x2807\x2808\x2809\x280a\x280b\x280c\x280d\x280e\x280f\x2810\x2811\x2812\x2813\x2814\x2815\x2816\x2817\x2818\x2819\x281a\x281b\x281c\x281d\x281e\x281f\x2820\x2821\x2822\x2823\x2824\x2825\x2826\x2827\x2828\x2829\x282a\x282b\x282c\x282d\x282e\x282f\x2830\x2831\x2832\x2833\x2834\x2835\x2836\x2837\x2838\x2839\x283a\x283b\x283c\x283d\x283e\x283f
++noback context `[%brlself]%brlself @456-123456%brlself
++noback context _1!%brlc[%brlself]%brlself @456-123456%brlself
++noback context `[%brlself]%realspace @456-123456%brlself
++noback context `[%brlself]~ @456-123456%brlself
++noback context _1!%brlc[%brlself]%realspace @456-123456%brlself
++noback context _1!%brlc[%brlself]~ @456-123456%brlself
++noback context `[%brlself] @456-123456%brlself@0
++noback context _1!%brlc[%brlself] @456-123456%brlself@0
++noback context _1%brlself[%brlself]!%brlsp %brlself@0
++# 백틱(`)은 여는 작은따옴표로
++noback correct _1%hangall["`"] "\x2019"
++noback correct _1%opclose["`"] "\x2019"
++noback correct ["`"] "\x2018"
++# 제49항 [붙임] 빈칸 뒤에 단독으로 쓰인 물음표는 ⠦(여는 큰따옴표와 같은 점형)와 혼동되므로 ⠸⠦ 을 적고
++#    한 칸 띄운 뒤 명칭 ‘물음표’를 점역자 주표 ⠠⠄ ⠠⠄ 로 묶는다: ‘? 대신’ ⠸⠦ ⠠⠄⠑⠯⠪⠢⠙⠬⠠⠄ ⠊⠗⠠⠟, ‘?는’ ⠸⠦ ⠠⠄⠑⠯⠪⠢⠙⠬⠠⠄⠉⠵
++#    (문장 끝의 ‘… ?’처럼 뒤에 아무것도 없는 물음표는 해당하지 않는다). 규정 예시의 단독 마침표(‘.를’)는 ⠲ 그대로이며,
++#    UEB 문맥 규칙(마침표+문자 → ⠰⠲)이 한글 앞의 단독 마침표에 적용되지 않게 한다.
++noback context _1%realspace["?"]%realspace @456-236-0-6-3-15-12346-246-26-145-346-6-3
++noback context _1%realspace["?"]%hangall @456-236-0-6-3-15-12346-246-26-145-346-6-3
++noback context _1%realspace["."]%hangall @256
++noback context `["?"]%realspace @456-236-0-6-3-15-12346-246-26-145-346-6-3
++noback context `["?"]%hangall @456-236-0-6-3-15-12346-246-26-145-346-6-3
++noback context `["."]%hangall @256
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -695,7 +695,7 @@
+ #   - 10.6.10
+ 
+ # bb   10.6.5   10.6.6
+-match %a bb %a 23
++match [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] bb [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 23
+ 
+ sufword dumbbell 145-136-134-12-12-15-123-123
+ sufword subbasement 234-136-12-12-1-234-15-56-2345
+@@ -703,21 +703,21 @@
+ 
+ # be   10.6.1   10.6.2   10.6.3   10.6.4
+ empmatchafter match %[^_~]%<* be [Aa][Pp][Rr][Oo][Nn] 23
+-word beata 23-1-2345-1
+-word beatae 23-1-2345-1-15
+-word beati 23-1-2345-24
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beata ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-1
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beatae ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-1-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beati ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-24
+ empmatchafter match %[^_~]%<* be [Aa][Tt][Ii]![Nn] 23               beati*
+ empmatchafter match %[^_~]%<* be [Aa][Tt][Rr] 23                    bea*
+-word beatus 23-1-2345-136-234
+-word beche 12-15-16-15
+-word beches 12-15-16-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beatus ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-136-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beche ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-16-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beches ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-16-15-234
+ empmatchafter match %[^_~]%<* bech [DTdt] 12-15-16
+ empmatchafter match %[^_~]%<* beclome [Tt][Hh] =    beclomethasone
+ empmatchafter match %[^_~]%<* beconas [AEIOUYaeiouy] =
+ empmatchafter match %[^_~]%<* be [Cc]([HLRhlr])?[AEIOUYaeiouy] 23                   bec*
+-word bede 12-1246-15
+-word beden 12-1246-26
+-word bedes 12-1246-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bede ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-1246-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beden ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-1246-26
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bedes ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-1246-15-234
+ empmatchafter match %[^_~]%<* be [Dd][AIOUaiou] 23                        bed*
+ empmatchafter match %[^_~]%<* bede [Gg]([Uu]?)[Aa][Rr] 12-1246-15
+ empmatchafter match %[^_~]%<* bede [Hh][Oo][Uu][Ss] 12-1246-15
+@@ -745,8 +745,8 @@
+ empmatchafter match %[^_~]%<* beh [BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz] =
+ empmatchafter match %[^_~]%<* be [HYhy][AEIOUYaeiouy] 23                   beh* or bey*
+ empmatchafter match %[^_~]%<* bein ['’] 23-24-1345
+-word bein 12-15-35
+-word beins 12-15-35-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bein ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-35
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beins ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-35-234
+ empmatchafter match %[^_~]%<* be [Ii][Nn] 23                        bei*
+ sufword bekesy =
+ empmatchafter match %[^_~]%<* bek [HKRThkrt][AIai] =
+@@ -760,8 +760,8 @@
+ empmatchafter match %[^_~]%<* belon ([AEIOUYaeiouy]*)[DTdt] =      e.g. -nid, -nite, -noid
+ empmatchafter match %[^_~]%<* be [Ll][AEIOUWYaeiouwy] 23            bel*
+ sufword benadryl 12-26-1-145-1235-13456-123
+-word benammi 12-26-1-134-134-24     Normally written hyphenated
+-word benefic 23-1345-15-124-24-14   Different from below
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] benammi ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-26-1-134-134-24     Normally written hyphenated
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] benefic ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1345-15-124-24-14   Different from below
+ empmatchafter match %[^_~]%<* be [Nn][Ee][Ff][Ii][Cc][Ee][Nn] 23    beneficen*
+ empmatchafter match %[^_~]%<* be [Nn][Ee][Tt](['’]s)?%>*%[_~^] 23   benet
+ empmatchafter match %[^_~]%<* beneven [Tt] 12-26-15-1236-26
+@@ -779,21 +779,21 @@
+ empmatchafter match %[^_~]%<* bering [Ll][Ee][Tt] 23-1235-346
+ empmatchafter match %[^_~]%<* be [Rr][AOUaou] 23                        bere*
+ empmatchafter match %[^_~]%<* be [Rr][Ee]![NTZntz] 23                   ber*
+-word best 12-15-34
+-word bested 12-15-34-1246
+-word bester 12-15-34-12456
+-word bestest 12-15-34-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] best ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bested ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-1246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bester ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bestest ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-15-34
+ empmatchafter match %[^_~]%<* best [Ii][AEae] 12-15-34
+ empmatchafter match %[^_~]%<* best [Ii][Cc][Uu] 12-15-34
+-word besting 12-15-34-346
+-word bestness 12-15-34-56-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] besting ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-346
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bestness ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-56-234
+ empmatchafter match %[^_~]%<* best [Ss] 12-15-34   bests and bestsell*
+-word besty 12-15-34-13456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] besty ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-13456
+ #empmatchafter match %[^_~]%<* be [Ss]![Ss] 23                     bes*
+ empmatchafter match %[^_~]%<* be [Ss]([CHKLMNPQTWchklmnpqtw])?([Rr])?[AEIOUYaeiouy] 23                     bes*
+ empmatchafter match %[^_~]%<* betafi [Tt][AEIOUaeiou] =
+-word bete =
+-word betes =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bete ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] betes ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ sufword bethabar 23-1456-1-12-345
+ sufword bethank 23-1456-1-1345-13
+ sufword bethesda 23-2346-234-145-1
+@@ -802,8 +802,8 @@
+ sufword bethune 12-15-1456-136-1345-15
+ empmatchafter match %[^_~]%<* bethylid [Aa][Ee] 23-1456-13456-123-24-145
+ empmatchafter match %[^_~]%<* be [Tt][Hh][IORUWioruw]%a 23
+-word betonies =
+-word betony =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] betonies ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] betony ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match - betula [Cc] =
+ match - betul [Ii][Nn] =
+ #empmatchafter match %[^_~]%<* be [Tt]![CHJKSTZchjkstz'’] 23               bet*
+@@ -811,8 +811,8 @@
+ empmatchafter match %[^_~]%<* beun [Ii] 23-136-1345 
+ empmatchafter match %[^_~]%<* be [Vv][Uu][Ee] 23
+ sufword bewick =
+-word bewit =
+-word bewits =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bewit ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bewits ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ empmatchafter match %[^_~]%<* bew [BCDFGJKLMNPQSTVWXZbcdfgjklmnpqstvwxz] =
+ empmatchafter match %[^_~]%<* bex [BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz] =
+ empmatchafter match %[^_~]%<* bey [AOao][Nn]([Ss]?)[Tt] 23-13456
+@@ -825,19 +825,19 @@
+ nofor sufword be 23
+ 
+ #   be[cfhlnsty] are handled in 10.9.5
+-word beg =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beg ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ 
+ sufword   bein'   23-24-1345-3
+ always    betws   12-15-2345-2456-234
+ 
+ #   easier if after "be" cause both are dots 23
+ # bb   10.6.5   10.6.6
+-empmatchbefore empmatchafter match %a bb %a 23
++empmatchbefore empmatchafter match [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] bb [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 23
+ 
+ nofor midword bb 23
+ 
+ # cc   10.6.5   10.6.6
+-empmatchbefore empmatchafter match %a cc %a 25
++empmatchbefore empmatchafter match [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] cc [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 25
+ always cch 14-16  CH always takes priority
+ match - cchildren ![AEIOUYaeiouy] 14-16-1345   edge case for test word
+ match - cchn ![AEIOUYaeiouy] 14-14-125-1345   edge case for test word
+@@ -860,11 +860,11 @@
+ 
+ # dis   10.6.1   10.6.2   10.6.3   10.6.4
+ 
+-word dish 145-24-146
+-word disher 145-24-146-12456
+-word dishers 145-24-146-12456-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] dish ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-24-146
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] disher ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-24-146-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] dishers ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-24-146-12456-234
+ match ^|!%a dishi ([Ee]([Rr]|([Ss][Tt]))) 145-24-146-24
+-word dishy 145-24-146-13456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] dishy ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-24-146-13456
+ empmatchafter match ^|!%a diss ^|!%a =    word diss
+ empmatchafter match %[^_~]%<* dis [Cc]([HLRhlr]?)[AEIOUYaeiouy] 256
+ empmatchafter match %[^_~]%<* dis [Hh][Ee]![DSVdsv] 256
+@@ -874,10 +874,10 @@
+ 
+ nofor begword dis 256
+ 
+-word disulphide 145-24-234-136-123-1234-125-24-145-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] disulphide ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-24-234-136-123-1234-125-24-145-15
+ 
+ # ea   10.6.5   10.6.6   10.6.7
+-empmatchbefore empmatchafter match %a ea %a 2
++empmatchbefore empmatchafter match [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] ea [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2
+ 
+ #   cheap fix, still fails with ,ea,ea,
+ nofor always , 2
+@@ -934,8 +934,8 @@
+ sufword readd = readd readdress
+ match  %[^_~]%<* read [Hh][Ee][RSrs] = readhere and derivatives
+ begword readj = readjust
+-word readme 1235-2-145-134-15
+-word readmes 1235-2-145-134-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] readme ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-2-145-134-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] readmes ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-2-145-134-15-234
+ begword readm = readmit
+ sufword readonly 1235-2-145-135-1345-123-13456
+ sufword readout 1235-2-145-1256-2345
+@@ -967,10 +967,10 @@
+ begword reatt = reattach reattain
+ match  %[^_~]%<* reau [Dd] = reaudition
+ match ^|!%a reau [Tt][Hh] = reauthorise
+-word reave 1235-2-1236-15
+-word reaved 1235-2-1236-1246
+-word reaves 1235-2-1236-15-234
+-word reaving 1235-2-1236-346
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] reave ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-2-1236-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] reaved ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-2-1236-1246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] reaves ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-2-1236-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] reaving ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-2-1236-346
+ begword reav = reavail reaver reavoid 
+ begword reaw = reawaken
+ sufword seaway 234-2-2456-1-13456
+@@ -986,9 +986,9 @@
+ sufword boreas 12-135-1235-15-1-234
+ sufword roseann 1235-135-234-15-1-1345-1345
+ sufword leah 123-15-1-125
+-word leann 123-15-1-1345-1345   leanness
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] leann ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 123-15-1-1345-1345   leanness
+ sufword leanna 123-15-1-1345-1345-1
+-word leanne 123-15-1-1345-1345-15   leanness
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] leanne ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 123-15-1-1345-1345-15   leanness
+ 
+ # en   10.6.8   10.6.9
+ match %[^_~]%<* en %>*%[_~^] =   must be first
+@@ -1005,7 +1005,7 @@
+ sufword turtleneck 2345-136-1235-2345-123-15-1345-15-14-13
+ 
+ # ff   10.6.5   10.6.6
+-empmatchbefore empmatchafter match %a ff %a 235
++empmatchbefore empmatchafter match [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] ff [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 235
+ always ffor 124-123456 FOR always has priority
+ 
+ nofor midword ff 235
+@@ -1013,7 +1013,7 @@
+ sufword chifforobe 16-24-235-135-1235-135-12-15
+ 
+ # gg   10.6.5   10.6.6
+-empmatchbefore empmatchafter match %a gg %a 2356
++empmatchbefore empmatchafter match [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] gg [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2356
+ 
+ nofor midword gg 2356
+ 
+@@ -1060,7 +1060,7 @@
+ sufword guenevere 1245-136-26-15-1236-12456-15 variant spelling
+ sufword guinevere 1245-136-35-15-1236-12456-15
+ sufword monteverdi 134-135-1345-2345-15-1236-12456-145-24
+-word nevers 1345-15-1236-12456-234 place name
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] nevers ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1345-15-1236-12456-234 place name
+ sufword preverb 1234-1235-15-1236-12456-12
+ sufword preverna 1234-1235-15-1236-12456-1345-1
+ match - primever [IOio] 1234-1235-24-134-15-1236-12456
+@@ -1159,7 +1159,7 @@
+ match - phereclu [Ss] 1234-125-12456-15-14-123-136
+ match - pherecra [Tt][EIei] 1234-125-12456-15-14-1235-1
+ match - pheremi [Aa] 1234-125-12456-15-134-24
+-word pheres 1234-125-12456-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] pheres ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1234-125-12456-15-234
+ match - phere [Ss][Ss] 1234-125-12456-15
+ 
+ # know
+@@ -1283,12 +1283,12 @@
+ sufword doblon = plural is -es pron. -eez
+ sufword donelson =
+ match - donev [AEae][Nn] =
+-word epulones =
+-word erigone 12456-24-1245-135-1345-15
+-word falcones =
+-word gaberones 1245-1-12-12456-135-1345-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] epulones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] erigone ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12456-24-1245-135-1345-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] falcones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] gaberones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1245-1-12-12456-135-1345-15-234
+ sufword gaborone =
+-word gekkones =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] gekkones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ sufword giorgione 1245-24-135-1235-1245-24-135-1345-15
+ sufword halcyone =
+ sufword hermione 125-12456-134-24-135-1345-15
+@@ -1317,15 +1317,15 @@
+ sufword monembry =
+ sufword monepi =
+ sufword monet 134-135-1345-15-2345
+-word moneth 134-135-1345-15-1456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] moneth ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 134-135-1345-15-1456
+ match - monetari [LSls] 134-5-135-2345-345-24 -ily -ism -ist
+ always monetary 134-5-135-2345-345-13456
+ match - moneti [SZsz][AEIaei] 134-5-135-2345-24 monetization
+ sufword montefiascone =
+ sufword morone =
+ sufword myrmidones =
+-word none 1345-5-135
+-word nones 1345-5-135-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] none ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1345-5-135
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] nones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1345-5-135-234
+ #word nonesuch ## handled under shortforms app. 1
+ sufword nonesuches 1345-5-135-234-136-16-15-234
+ sufword nonetheless 1345-5-135-2346-46-234
+@@ -1346,27 +1346,27 @@
+ sufword padrone =
+ sufword panettone =
+ sufword papiliones =
+-word pensione 1234-26-234-24-135-1345-15
+-word pensiones 1234-26-234-24-135-1345-15-234
+-word peones =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] pensione ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1234-26-234-24-135-1345-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] pensiones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1234-26-234-24-135-1345-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] peones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ sufword persephone 1234-12456-234-15-1234-125-135-1345-15
+ match - phones [Tt][Hh][Ee][Mm] =
+ sufword pronegotia = pronegotiation
+ sufword sawboneses 234-1-2456-12-5-135-234-15-234
+ sufword schiavone 234-16-24-1-1236-135-1345-15
+-word scorpiones =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] scorpiones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match ^|!%a shoshon [EIei] 146-135-146-135-1345
+ sufword sirione =
+ sufword soffione 234-12356-124-24-135-1345-15
+ sufword spumone 234-1234-136-134-135-1345-15
+ match - stonegat [Ee] 34-5-135-1245-1-2345
+ sufword stonestreet 34-5-135-34-1235-15-15-2345
+-word struthiones 34-1235-136-1456-24-135-1345-15-234
+-word sturiones 34-136-1235-24-135-1345-15-234
+-word suiones =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] struthiones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 34-1235-136-1456-24-135-1345-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] sturiones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 34-136-1235-24-135-1345-15-234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] suiones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match - sulfon [Ee][Tt][Hh][AEIOUYaeiouy] =
+ match - sulphon [Ee][Tt][Hh][AEIOUYaeiouy] =
+-word sycones =
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] sycones ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ sufword tarsonemid 2345-345-234-135-1345-15-134-24-145
+ sufword tonelada =
+ sufword torrone =
+@@ -1533,12 +1533,12 @@
+ noback pass2 [@6-3-56-13456b]  @6-3-24-2345-13456
+ noback pass2 [@56-13456b]      @56-13456
+ 
+-word biscuity 12-24-234-14-136-24-2345-13456
+-word dacoity 145-1-14-135-24-2345-13456
+-word fruity 124-1235-136-24-2345-13456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] biscuity ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-24-234-14-136-24-2345-13456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] dacoity ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-1-14-135-24-2345-13456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] fruity ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 124-1235-136-24-2345-13456
+ word hoity-toity 125-135-24-2345-13456-36-2345-135-24-2345-13456
+-word rabbity 1235-1-23-24-2345-13456
+-word pityard 1234-24-2345-13456-345-145
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] rabbity ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1235-1-23-24-2345-13456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] pityard ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 1234-24-2345-13456-345-145
+ 
+ sufword antitype 1-1345-2345-24-2345-13456-1234-15
+ sufword captainess 14-1-1234-2345-1-24-35-15-234-234

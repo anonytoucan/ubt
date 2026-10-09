@@ -1,0 +1,1376 @@
+[
+  {
+    "source": "carro [까ㄹㄹ로]",
+    "expected": "⠴⠉⠜⠗⠕⠲ ⠦⠆⠠⠫⠸⠂⠸⠂⠐⠥⠰⠴",
+    "reference": "guide2024 p19 제10항"
+  },
+  {
+    "source": "study는 [ㅅ떠디이]로, ice는 [아이ㅅ]와 같이 발음한다.",
+    "expected": "⠴⠌⠥⠙⠽⠲⠉⠵ ⠦⠆⠸⠄⠠⠊⠎⠊⠕⠕⠰⠴⠐⠥⠐ ⠴⠊⠉⠑⠲⠉⠵ ⠦⠆⠣⠕⠸⠄⠰⠴⠧ ⠫⠦⠕ ⠘⠂⠪⠢⠚⠒⠊⠲",
+    "reference": "guide2024 p19 제10항"
+  },
+  {
+    "source": "헷갈리거나 확신이 없을 때에는 Umm ...이라고 말한다.",
+    "expected": "⠚⠝⠄⠫⠂⠐⠕⠈⠎⠉ ⠚⠧⠁⠠⠟⠕ ⠎⠃⠄⠮ ⠠⠊⠗⠝⠉⠵ ⠴⠠⠥⠍⠍ ⠲⠲⠲⠕⠐⠣⠈⠥ ⠑⠂⠚⠒⠊⠲",
+    "reference": "guide2024 p29 제33항"
+  },
+  {
+    "source": "KTX/새마을호/무궁화호",
+    "expected": "⠴⠠⠠⠅⠞⠭⠲⠸⠌⠠⠗⠑⠣⠮⠚⠥⠸⠌⠑⠍⠈⠍⠶⠚⠧⠚⠥",
+    "reference": "guide2024 p29 제33항"
+  },
+  {
+    "source": "U-도서관",
+    "expected": "⠴⠠⠥⠲⠤⠊⠥⠠⠎⠈⠧⠒",
+    "reference": "guide2024 p29 제33항"
+  },
+  {
+    "source": "다음 ⓐ, ⓑ, ⓒ가 가리키는 것은?",
+    "expected": "⠊⠣⠪⠢ ⠶⠴⠁⠶⠐ ⠶⠴⠃⠶⠐ ⠶⠴⠉⠶⠫ ⠫⠐⠕⠋⠕⠉⠵ ⠸⠎⠵⠦",
+    "reference": "guide2024 p55 제64항"
+  },
+  {
+    "source": "10,000㎡는 1㏊이다.",
+    "expected": "⠼⠁⠚⠂⠚⠚⠚⠴⠍⠘⠼⠃ ⠉⠵ ⠼⠁⠴⠓⠁⠲⠕⠊⠲",
+    "reference": "guide2024 p59 제68항"
+  },
+  {
+    "source": "1in는 2.54cm이다.",
+    "expected": "⠼⠁⠴⠊⠝⠲⠉⠵ ⠼⠃⠲⠑⠙⠴⠉⠍⠲⠕⠊⠲",
+    "reference": "guide2024 p60 제69항"
+  },
+  {
+    "source": "국방 FM의 주파수는 수도권 기준으로 96.7 ㎒이다.",
+    "expected": "⠈⠍⠁⠘⠶ ⠴⠠⠠⠋⠍⠲⠺ ⠨⠍⠙⠠⠍⠉⠵ ⠠⠍⠊⠥⠈⠏⠒ ⠈⠕⠨⠛⠪⠐⠥ ⠼⠊⠋⠲⠛ ⠴⠠⠍⠠⠓⠵⠲⠕⠊⠲",
+    "reference": "guide2024 p60 제69항"
+  },
+  {
+    "source": "Ω는 전기 저항의 단위이다.",
+    "expected": "⠴⠠⠨⠺⠲⠉⠵ ⠨⠾⠈⠕ ⠨⠎⠚⠶⠺ ⠊⠒⠍⠗⠕⠊⠲",
+    "reference": "guide2024 p61 제69항"
+  },
+  {
+    "source": "80킬로미터/h",
+    "expected": "⠼⠓⠚ ⠋⠕⠂⠐⠥⠑⠕⠓⠎⠸⠌⠴⠓⠲",
+    "reference": "guide2024 p61 제69항"
+  },
+  {
+    "source": "min",
+    "expected": "⠴⠍⠔⠲",
+    "reference": "guide2024 p62 제69항"
+  },
+  {
+    "source": "_",
+    "expected": "⠸⠤",
+    "reference": "guide2024 p63 제71항"
+  },
+  {
+    "source": "a⃞",
+    "expected": "⠸⠦⠴⠁⠴⠇",
+    "reference": "kbr2024 p47 제64항"
+  },
+  {
+    "source": "사자성어 채우기: 고성__",
+    "expected": "⠇⠨⠠⠻⠎ ⠰⠗⠍⠈⠕⠐⠂ ⠈⠥⠠⠻⠸⠤⠸⠤",
+    "reference": "kbr2024 p54 제73항 [다만]"
+  },
+  {
+    "source": "KIOST",
+    "expected": "⠴⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "UEB whole-word reading; Korean Roman passage"
+  },
+  {
+    "source": "KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠲",
+    "reference": "Explicit uncontracted reading must override lexical contraction"
+  },
+  {
+    "source": "GREEN NEW DEAL",
+    "expected": "⠴⠠⠠⠠⠛⠗⠑⠢ ⠝⠑⠺ ⠙⠂⠇⠠⠄⠲",
+    "reference": "Three-word uppercase passage, including capitals and Roman terminators"
+  },
+  {
+    "source": "GREEN NEW DEAL. New stuff",
+    "expected": "⠴⠠⠠⠠⠛⠗⠑⠢ ⠝⠑⠺ ⠙⠂⠇⠠⠄⠲ ⠠⠝⠑⠺ ⠌⠥⠋⠋⠲",
+    "reference": "Capitals state must end before the next mixed-case word"
+  },
+  {
+    "source": "GREEN NEW DEAL; Next",
+    "expected": "⠴⠠⠠⠠⠛⠗⠑⠢ ⠝⠑⠺ ⠙⠂⠇⠠⠄⠆ ⠠⠝⠑⠭⠞⠲",
+    "reference": "Capitals state must end at semicolon without entering the next word"
+  },
+  {
+    "source": "(GREEN NEW DEAL) A",
+    "expected": "⠦⠄⠴⠠⠠⠠⠛⠗⠑⠢ ⠝⠑⠺ ⠙⠂⠇⠠⠄⠠⠴ ⠴⠠⠁⠲",
+    "reference": "Parenthesis closes capitals state; subsequent Roman passage ends independently"
+  },
+  {
+    "source": "FOO BAR FORTRAN",
+    "expected": "⠴⠠⠠⠠⠋⠕⠕ ⠃⠜ ⠿⠞⠗⠁⠝⠠⠄⠲",
+    "reference": "Whole-word contraction at EOF with capitals/Roman terminators; BAR ar contraction independently checked against unmodified en-ueb-g2.ctb"
+  },
+  {
+    "source": "청군:백군",
+    "expected": "⠰⠻⠈⠛⠐⠂⠘⠗⠁⠈⠛",
+    "reference": "guide2024 p43 제51항 [다만 2]"
+  },
+  {
+    "source": "‘ㄱ, ㄷ, ㅂ’은 자음 앞이나 어말에서는 ‘k, t, p’로 적는다.",
+    "expected": "⠠⠦⠿⠁⠐ ⠿⠔⠐ ⠿⠃⠴⠄⠵ ⠨⠣⠪⠢ ⠣⠲⠕⠉ ⠎⠑⠂⠝⠠⠎⠉⠵ ⠠⠦⠴⠅⠂ ⠰⠞⠂ ⠰⠏⠴⠄⠐⠥ ⠨⠹⠉⠵⠊⠲",
+    "reference": "kbr2024 p29 제34항"
+  },
+  {
+    "source": "기호 『 』",
+    "expected": "⠈⠕⠚⠥ ⠰⠦ ⠴⠆",
+    "reference": "Empty bracket pair retains its interior blank"
+  },
+  {
+    "source": "‘k, t, P’",
+    "expected": "⠠⠦⠴⠅⠂ ⠰⠞⠂ ⠰⠠⠏⠴⠄",
+    "reference": "Quoted Roman list: grade-1 indicator precedes capital indicator"
+  },
+  {
+    "source": "‘k, t, a’",
+    "expected": "⠠⠦⠴⠅⠂ ⠰⠞⠂ ⠁⠴⠄",
+    "reference": "Quoted Roman list: a needs no grade-1 indicator"
+  },
+  {
+    "source": "“k, t, P”로",
+    "expected": "⠦⠴⠅⠂ ⠰⠞⠂ ⠰⠠⠏⠴⠐⠥",
+    "reference": "Quoted Roman list: double closing quote and Korean suffix"
+  },
+  {
+    "source": "‘k, t, p’s",
+    "expected": "⠠⠦⠴⠅⠂ ⠰⠞⠂ ⠏⠴⠄⠎⠲",
+    "reference": "Preserve existing apostrophe-with-Latin-suffix behavior; no closing-quote rule"
+  },
+  {
+    "source": "기호 ( KIOST )",
+    "options": {
+      "roman_no_contract": [
+        [
+          5,
+          10
+        ]
+      ]
+    },
+    "expected": "⠈⠕⠚⠥ ⠦⠄⠴⠠⠠⠅⠊⠕⠎⠞⠠⠴",
+    "reference": "Source offsets for no_contract remain correct after interior bracket spaces are removed"
+  },
+  {
+    "source": "KIOST · KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          8,
+          13
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠌⠐⠆⠴⠠⠠⠅⠊⠕⠎⠞⠲",
+    "reference": "After middot space removal, only the explicitly selected second token is uncontracted"
+  },
+  {
+    "source": "you",
+    "expected": "⠴⠽⠲",
+    "reference": "UEB alphabetic wordsign recognized before internal EOF delimiter"
+  },
+  {
+    "source": "can",
+    "expected": "⠴⠉⠲",
+    "reference": "UEB alphabetic wordsign recognized before internal EOF delimiter"
+  },
+  {
+    "source": "good",
+    "expected": "⠴⠛⠙⠲",
+    "reference": "UEB shortform recognized before internal EOF delimiter"
+  },
+  {
+    "source": "TIGER",
+    "expected": "⠴⠠⠠⠞⠊⠛⠻⠲",
+    "reference": "Ordinary English word reading from en-ueb-g2 tiger"
+  },
+  {
+    "source": "WINNER",
+    "expected": "⠴⠠⠠⠺⠔⠝⠻⠲",
+    "reference": "Ordinary English word reading from en-ueb-g2 winner"
+  },
+  {
+    "source": "GHost",
+    "expected": "⠴⠠⠠⠣⠠⠄⠕⠌⠲",
+    "reference": "UEB GHost capitals boundary after gh groupsign"
+  },
+  {
+    "source": "MaSTer",
+    "expected": "⠴⠠⠍⠁⠠⠠⠌⠠⠄⠻⠲",
+    "reference": "UEB MaSTer capitals boundary after st groupsign"
+  },
+  {
+    "source": "riBBon SPHEREx riBBon",
+    "expected": "⠴⠗⠊⠠⠠⠆⠠⠄⠕⠝ ⠠⠠⠎⠏⠐⠓⠠⠄⠭ ⠗⠊⠠⠠⠆⠠⠄⠕⠝⠲",
+    "reference": "Reset capital-termination state when each new capitals run opens"
+  },
+  {
+    "source": "ARTUμ",
+    "expected": "⠴⠠⠠⠜⠞⠥⠠⠄⠨⠍⠲",
+    "reference": "Preserve existing Greek boundary; do not duplicate its capitals terminator"
+  },
+  {
+    "source": "TNFα",
+    "expected": "⠴⠠⠠⠞⠝⠋⠠⠄⠨⠁⠲",
+    "reference": "Preserve existing Greek boundary after initialism"
+  },
+  {
+    "source": "모음에는 (a), (e), (i), (o), (u)가 있다.",
+    "expected": "⠑⠥⠪⠢⠝⠉⠵ ⠴⠐⠣⠁⠐⠜⠂ ⠐⠣⠰⠑⠐⠜⠂ ⠐⠣⠊⠐⠜⠂ ⠐⠣⠕⠐⠜⠂ ⠐⠣⠰⠥⠐⠜⠲⠫ ⠕⠌⠊⠲",
+    "reference": "J1 rulebook parenthesized single-letter list"
+  },
+  {
+    "source": "(a)와 (e)",
+    "expected": "⠦⠄⠴⠁⠠⠴⠧ ⠦⠄⠴⠑⠠⠴",
+    "reference": "Korean conjunction does not trigger Roman parenthesized-list rule"
+  },
+  {
+    "source": "(a), (word)",
+    "expected": "⠦⠄⠴⠁⠠⠴⠐ ⠦⠄⠴⠘⠺⠠⠴",
+    "reference": "Multi-letter second parenthesis does not trigger single-letter list rule"
+  },
+  {
+    "source": "TIGER",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠞⠊⠛⠑⠗⠲",
+    "reference": "Explicit whole-token no_contract overrides new lexical reading"
+  },
+  {
+    "source": "KIOST KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞ ⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          6,
+          11
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠌ ⠠⠠⠅⠊⠕⠎⠞⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ],
+        [
+          6,
+          11
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞ ⠠⠠⠅⠊⠕⠎⠞⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "FOO BAR FORTRAN",
+    "options": {
+      "roman_no_contract": [
+        [
+          4,
+          7
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠠⠋⠕⠕ ⠃⠁⠗ ⠿⠞⠗⠁⠝⠠⠄⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST · KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠐⠆⠴⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST, KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠂ ⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST/KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠸⠌⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST-KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠤⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST와 KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠲⠧ ⠴⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST(KIOST)",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠐⠣⠠⠠⠅⠊⠕⠌⠐⠜",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST.KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠲⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST:KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠒⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST123KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠅⠊⠕⠎⠞⠼⠁⠃⠉⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "KIOST KIOST KIOST",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          5
+        ],
+        [
+          12,
+          17
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠠⠅⠊⠕⠎⠞ ⠅⠊⠕⠌ ⠅⠊⠕⠎⠞⠠⠄⠲",
+    "reference": "Engine no_contract typeform scope: only explicitly marked Roman runs are uncontracted; preserve ordinary separators and capitals"
+  },
+  {
+    "source": "I LOVE YOU",
+    "expected": "⠴⠠⠠⠠⠊ ⠇⠕⠧⠑ ⠽⠠⠄⠲",
+    "reference": "Native capitals passage may start with a one-letter word"
+  },
+  {
+    "source": "R A I",
+    "expected": "⠴⠠⠠⠠⠗ ⠁ ⠊⠠⠄⠲",
+    "reference": "Native capitals scope suppresses isolated-letter indicators inside the passage"
+  },
+  {
+    "source": "SHINee",
+    "expected": "⠴⠠⠠⠩⠔⠠⠄⠑⠑⠲",
+    "reference": "Native capitals end after the contracted uppercase segment"
+  },
+  {
+    "source": "AB한글 CD EF",
+    "expected": "⠴⠰⠠⠠⠁⠃⠲⠚⠒⠈⠮ ⠴⠰⠠⠠⠉⠙ ⠠⠠⠑⠋⠲",
+    "reference": "Caseless Korean letters break the native capitals passage; AB/CD disambiguate UEB shortforms about/could before capitals."
+  },
+  {
+    "source": "대통령실의 누리집 주소는 www.대통령.kr이다.",
+    "expected": "⠊⠗⠓⠿⠐⠻⠠⠕⠂⠺ ⠉⠍⠐⠕⠨⠕⠃ ⠨⠍⠠⠥⠉⠵ ⠴⠺⠺⠺⠲⠸⠷⠊⠗⠓⠿⠐⠻⠸⠾⠲⠅⠗⠲⠕⠊⠲",
+    "reference": "guide2024 p31 제39항"
+  },
+  {
+    "source": "추가 내용은 Part 3을 참고하세요.",
+    "expected": "⠰⠍⠫ ⠉⠗⠬⠶⠵ ⠴⠠⠐⠏ ⠼⠉⠮ ⠰⠣⠢⠈⠥⠚⠠⠝⠬⠲",
+    "reference": "kbr2024 p30 제35항"
+  },
+  {
+    "source": "Part 3",
+    "expected": "⠴⠠⠐⠏ ⠼⠉",
+    "reference": "synthetic boundary regression: numbered part at start"
+  },
+  {
+    "source": "part 12",
+    "expected": "⠴⠐⠏ ⠼⠁⠃",
+    "reference": "synthetic boundary regression: lowercase numbered part"
+  },
+  {
+    "source": "PART 3",
+    "expected": "⠴⠠⠠⠐⠏ ⠼⠉",
+    "reference": "synthetic boundary regression: uppercase numbered part"
+  },
+  {
+    "source": "CounterPart 3",
+    "expected": "⠴⠠⠉⠨⠞⠻⠠⠐⠏ ⠼⠉",
+    "reference": "General Roman-to-number continuation applies to the whole CounterPart token; no suffix-specific Part rule is needed"
+  },
+  {
+    "source": "주소 www.한국.kr이다.",
+    "expected": "⠨⠍⠠⠥ ⠴⠺⠺⠺⠲⠸⠷⠚⠒⠈⠍⠁⠸⠾⠲⠅⠗⠲⠕⠊⠲",
+    "reference": "synthetic boundary regression: domain returns to Korean prose"
+  },
+  {
+    "source": "TOP_Art_콘테스트",
+    "expected": "⠴⠠⠠⠞⠕⠏⠨⠤⠠⠜⠞⠸⠤⠋⠷⠓⠝⠠⠪⠓⠪",
+    "reference": "synthetic boundary regression: Roman and Korean underscore shapes"
+  },
+  {
+    "source": "foo_bar",
+    "expected": "⠴⠋⠕⠕⠨⠤⠃⠜⠲",
+    "reference": "synthetic boundary regression: preserve Roman identifier underscore"
+  },
+  {
+    "source": "Part 3과 KIOST",
+    "expected": "⠴⠠⠐⠏ ⠼⠉⠈⠧ ⠴⠠⠠⠅⠊⠕⠌⠲",
+    "reference": "synthetic boundary regression: numbered part does not leak language scope"
+  },
+  {
+    "source": "한국 IT 업계",
+    "expected": "⠚⠒⠈⠍⠁ ⠴⠠⠠⠊⠞⠲ ⠎⠃⠈⠌",
+    "reference": "synthetic IT context regression: uppercase initialism before Korean prose"
+  },
+  {
+    "source": "한국 it 업계",
+    "expected": "⠚⠒⠈⠍⠁ ⠴⠭⠲ ⠎⠃⠈⠌",
+    "reference": "synthetic IT context regression: lowercase English wordsign preserved"
+  },
+  {
+    "source": "DO IT NOW",
+    "expected": "⠴⠠⠠⠠⠙ ⠭ ⠝⠪⠠⠄⠲",
+    "reference": "synthetic IT context regression: English capitals passage retains wordsign"
+  },
+  {
+    "source": "한국 BIT 업계",
+    "expected": "⠚⠒⠈⠍⠁ ⠴⠠⠠⠃⠊⠞⠲ ⠎⠃⠈⠌",
+    "reference": "synthetic IT context regression: no suffix match in longer word"
+  },
+  {
+    "source": "한국 IT 업계 KIOST 연구",
+    "expected": "⠚⠒⠈⠍⠁ ⠴⠠⠠⠊⠞⠲ ⠎⠃⠈⠌ ⠴⠠⠠⠅⠊⠕⠌⠲ ⠡⠈⠍",
+    "reference": "synthetic IT context regression: contraction of following word preserved"
+  },
+  {
+    "source": "한국 IT 업계 KIOST 연구",
+    "expected": "⠚⠒⠈⠍⠁ ⠴⠠⠠⠊⠞⠲ ⠎⠃⠈⠌ ⠴⠠⠠⠅⠊⠕⠎⠞⠲ ⠡⠈⠍",
+    "reference": "synthetic IT context regression: following explicit non-contraction preserved",
+    "options": {
+      "roman_no_contract": [
+        [
+          9,
+          14
+        ]
+      ]
+    }
+  },
+  {
+    "source": "한국 IT 업계 KIOST 연구",
+    "expected": "⠚⠒⠈⠍⠁ ⠴⠠⠠⠊⠞⠲ ⠎⠃⠈⠌ ⠴⠠⠠⠅⠊⠕⠌⠲ ⠡⠈⠍",
+    "reference": "synthetic IT context regression: initialism option does not leak",
+    "options": {
+      "roman_no_contract": [
+        [
+          3,
+          5
+        ]
+      ]
+    }
+  },
+  {
+    "source": "IT 업계",
+    "expected": "⠴⠠⠠⠊⠞⠲ ⠎⠃⠈⠌",
+    "reference": "A consuming initialism rule remains eligible after the zero-width opener."
+  },
+  {
+    "source": "KIST 연구",
+    "expected": "⠴⠠⠠⠅⠊⠌⠲ ⠡⠈⠍",
+    "reference": "An ST initialism rule must not consume the suffix of a longer Roman word."
+  },
+  {
+    "source": "CAR AR",
+    "expected": "⠴⠠⠠⠉⠜ ⠠⠠⠁⠗⠲",
+    "reference": "AR spelling is bounded; a longer word retains its contraction."
+  },
+  {
+    "source": "OLED 자료",
+    "expected": "⠴⠠⠠⠕⠇⠑⠙⠲ ⠨⠐⠬",
+    "reference": "Whole initialism reading does not depend on an ED suffix override."
+  },
+  {
+    "source": "PER 지표",
+    "expected": "⠴⠠⠠⠏⠑⠗⠲ ⠨⠕⠙⠬",
+    "reference": "Whole initialism reading does not depend on an ER suffix override."
+  },
+  {
+    "source": "한글+한글",
+    "expected": "⠚⠒⠈⠮ ⠢ ⠚⠒⠈⠮",
+    "reference": "Korean operands around an addition sign are separated."
+  },
+  {
+    "source": "1kWh",
+    "expected": "⠼⠁⠴⠅⠠⠺⠓⠲",
+    "reference": "Unit kWh is letter-spelled; Wh is not an English groupsign."
+  },
+  {
+    "source": "CD금리",
+    "expected": "⠴⠰⠠⠠⠉⠙⠲⠈⠪⠢⠐⠕",
+    "reference": "UEB shortform could is disambiguated before attached Korean text."
+  },
+  {
+    "source": "한글(CD)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠰⠠⠠⠉⠙⠠⠴",
+    "reference": "Parentheses and Hangul bound a shortform-collision initialism."
+  },
+  {
+    "source": "ABCDEF",
+    "expected": "⠴⠠⠠⠁⠃⠉⠙⠑⠋⠲",
+    "reference": "Embedded AB and CD are not standalone shortform collisions."
+  },
+  {
+    "source": "CD1",
+    "expected": "⠴⠠⠠⠉⠙⠼⠁",
+    "reference": "A digit continues an alphanumeric token for shortform detection."
+  },
+  {
+    "source": "IN 규격",
+    "expected": "⠴⠠⠠⠊⠝⠲ ⠈⠩⠈⠱⠁",
+    "reference": "Uppercase IN is treated as an initialism at a complete token boundary."
+  },
+  {
+    "source": "EN 규격",
+    "expected": "⠴⠠⠠⠑⠝⠲ ⠈⠩⠈⠱⠁",
+    "reference": "Uppercase EN is treated as an initialism at a complete token boundary."
+  },
+  {
+    "source": "in the room",
+    "expected": "⠴⠔ ⠮ ⠗⠕⠕⠍⠲",
+    "reference": "The lowercase English word in retains its ordinary contraction."
+  },
+  {
+    "source": "ACS",
+    "expected": "⠴⠠⠠⠁⠉⠎⠲",
+    "reference": "All-uppercase initialism is not inferred to be an inflected shortform."
+  },
+  {
+    "source": "acs",
+    "expected": "⠴⠰⠁⠉⠎⠲",
+    "reference": "Lowercase shortform collision still carries its grade-1 indicator."
+  },
+  {
+    "source": "AC",
+    "expected": "⠴⠰⠠⠠⠁⠉⠲",
+    "reference": "A base shortform collision retains its indicator."
+  },
+  {
+    "source": "SDS 자료",
+    "expected": "⠴⠠⠠⠎⠙⠎⠲ ⠨⠐⠬",
+    "reference": "The uppercase plural-looking initialism policy applies within Korean prose."
+  },
+  {
+    "source": "ACSX",
+    "expected": "⠴⠠⠠⠁⠉⠎⠭⠲",
+    "reference": "Initialism policy is bounded by the complete Roman token."
+  },
+  {
+    "source": "KRCCD",
+    "expected": "⠴⠠⠠⠅⠗⠉⠉⠙⠲",
+    "reference": "A vowelless uppercase token spells the doubled consonant."
+  },
+  {
+    "source": "한글 FCCSP 자료",
+    "expected": "⠚⠒⠈⠮ ⠴⠠⠠⠋⠉⠉⠎⠏⠲ ⠨⠐⠬",
+    "reference": "Vowelless-token lookbehind works after a Korean word boundary."
+  },
+  {
+    "source": "HACCP",
+    "expected": "⠴⠠⠠⠓⠁⠒⠏⠲",
+    "reference": "An uppercase token containing a vowel retains the previous word reading."
+  },
+  {
+    "source": "AKRCCD",
+    "expected": "⠴⠠⠠⠁⠅⠗⠒⠙⠲",
+    "reference": "Do not misclassify a consonant-only suffix as a complete vowel-free token."
+  },
+  {
+    "source": "abbc",
+    "expected": "⠴⠁⠆⠉⠲",
+    "reference": "Lowercase double-consonant groupsign is unchanged."
+  },
+  {
+    "source": "항목=값",
+    "expected": "⠚⠶⠑⠭ ⠒⠒ ⠫⠃⠄",
+    "reference": "Korean labels on both sides of equals are separated."
+  },
+  {
+    "source": "항목 ; 값",
+    "expected": "⠚⠶⠑⠭⠰⠆ ⠫⠃⠄",
+    "reference": "Semicolon attaches to the preceding word and separates following Korean."
+  },
+  {
+    "source": "5=7",
+    "expected": "⠼⠑⠒⠒⠼⠛",
+    "reference": "The Korean label-spacing policy does not change a numeric expression."
+  },
+  {
+    "source": "한글(Good) 자료",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠛⠙⠠⠴ ⠨⠐⠬",
+    "reference": "UEB shortform bounded by Korean annotation"
+  },
+  {
+    "source": "한글(GOOD) 자료",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠠⠛⠕⠕⠙⠠⠴ ⠨⠐⠬",
+    "reference": "notallcaps preserves existing uppercase annotation reading"
+  },
+  {
+    "source": "한글(You) 자료",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠽⠠⠴ ⠨⠐⠬",
+    "reference": "UEB you wordsign at Korean annotation boundary"
+  },
+  {
+    "source": "한글(YOU) 자료",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠠⠽⠳⠠⠴ ⠨⠐⠬",
+    "reference": "Uppercase abbreviation remains on prior rule path"
+  },
+  {
+    "source": "한글(Beyond) 자료",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠆⠽⠠⠴ ⠨⠐⠬",
+    "reference": "UEB beyond shortform at Korean annotation boundary"
+  },
+  {
+    "source": "자료 Good",
+    "expected": "⠨⠐⠬ ⠴⠠⠛⠙⠲",
+    "reference": "Consumed final word retains one Roman closing marker"
+  },
+  {
+    "source": "YouTube",
+    "expected": "⠴⠠⠽⠳⠠⠞⠥⠃⠑⠲",
+    "reference": "No word contraction inside longer mixed-case token"
+  },
+  {
+    "source": "good2",
+    "expected": "⠴⠛⠕⠕⠙⠼⠃",
+    "reference": "Digit-adjacent identifiers do not gain a word contraction"
+  },
+  {
+    "source": "O.Together",
+    "expected": "⠴⠠⠕⠲⠠⠞⠕⠛⠑⠮⠗⠲",
+    "reference": "Dotted names do not gain a word contraction"
+  },
+  {
+    "source": "ABCCC 자료",
+    "expected": "⠴⠠⠠⠁⠃⠉⠉⠉⠲ ⠨⠐⠬",
+    "reference": "Three repeated uppercase consonants at the token end"
+  },
+  {
+    "source": "ABBBA 자료",
+    "expected": "⠴⠠⠠⠁⠃⠃⠃⠁⠲ ⠨⠐⠬",
+    "reference": "Three repeated uppercase consonants inside a token"
+  },
+  {
+    "source": "ABCCCC",
+    "expected": "⠴⠠⠠⠁⠃⠉⠉⠉⠉⠲",
+    "reference": "Four repeated consonants retain every letter and final marker"
+  },
+  {
+    "source": "abccc",
+    "expected": "⠴⠁⠃⠒⠉⠲",
+    "reference": "Lowercase medial groupsign remains unchanged"
+  },
+  {
+    "source": "한글(Good) 자료",
+    "options": {
+      "roman_no_contract": [
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠛⠕⠕⠙⠠⠴ ⠨⠐⠬",
+    "reference": "Explicit no_contract overrides notallcaps lexical match"
+  },
+  {
+    "source": "CD 1장",
+    "expected": "⠴⠰⠠⠠⠉⠙ ⠼⠁⠨⠶",
+    "reference": "2024 section 35: CD followed by a spaced number omits the Roman terminator"
+  },
+  {
+    "source": "Model 3",
+    "expected": "⠴⠠⠍⠕⠙⠑⠇ ⠼⠉",
+    "reference": "Uncontracted ending follows the same number-continuation rule"
+  },
+  {
+    "source": "TIGER 자료",
+    "expected": "⠴⠠⠠⠞⠊⠛⠻⠲ ⠨⠐⠬",
+    "reference": "A following Korean word still terminates a contracted Roman token"
+  },
+  {
+    "source": "A 자료",
+    "expected": "⠴⠠⠁⠲ ⠨⠐⠬",
+    "reference": "Single-letter closure before a Korean word remains intact"
+  },
+  {
+    "source": "10㎜까지",
+    "expected": "⠼⠁⠚⠴⠍⠍⠲⠠⠫⠨⠕",
+    "reference": "Compatibility mm uses the same Roman closure as spelled mm"
+  },
+  {
+    "source": "5㎾h",
+    "expected": "⠼⠑⠴⠅⠠⠺⠓⠲",
+    "reference": "Compatibility kW plus h stays in one unit passage"
+  },
+  {
+    "source": "1㎍",
+    "expected": "⠼⠁⠴⠨⠍⠛⠲",
+    "reference": "Microgram compatibility unit follows the Greek-plus-Roman unit path"
+  },
+  {
+    "source": "2㎚는",
+    "expected": "⠼⠃⠴⠝⠍⠲⠉⠵",
+    "reference": "Nanometre compatibility unit closes before Hangul"
+  },
+  {
+    "source": "3㎿ 발전",
+    "expected": "⠼⠉⠴⠠⠠⠍⠺⠲ ⠘⠂⠨⠾",
+    "reference": "Megawatt compatibility unit closes before a Korean word"
+  },
+  {
+    "source": "96.7㎒이다",
+    "expected": "⠼⠊⠋⠲⠛⠴⠠⠍⠠⠓⠵⠲⠕⠊",
+    "reference": "Mixed-capital frequency glyph retains individual unit capitals"
+  },
+  {
+    "source": "1㎜ TIGER",
+    "options": {
+      "roman_no_contract": [
+        [
+          3,
+          8
+        ]
+      ]
+    },
+    "expected": "⠼⠁⠴⠍⠍ ⠠⠠⠞⠊⠛⠑⠗⠲",
+    "reference": "Source no_contract offsets survive compatibility-unit expansion before the marked Roman token"
+  },
+  {
+    "source": "한글(Consumer)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠒⠎⠥⠍⠻⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(Discovery)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠲⠉⠕⠧⠻⠽⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(Bespoke)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠆⠎⠏⠕⠅⠑⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(Conan)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠉⠕⠝⠁⠝⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(conned)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠉⠕⠝⠝⠫⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(dish)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠙⠊⠩⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(best)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠃⠑⠌⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(beaver)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠃⠂⠧⠻⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(CONSUMER)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠠⠉⠕⠝⠎⠥⠍⠻⠠⠴",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "xConsumer",
+    "expected": "⠴⠭⠠⠉⠕⠝⠎⠥⠍⠻⠲",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "a.con",
+    "expected": "⠴⠁⠲⠉⠕⠝⠲",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "OPEC+가",
+    "expected": "⠴⠠⠠⠕⠏⠑⠉⠐⠖⠲⠫",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "C++개발",
+    "expected": "⠴⠠⠉⠢⠢ ⠈⠗⠘⠂",
+    "reference": "Repeated plus notation is outside the single Roman plus rule"
+  },
+  {
+    "source": "A+B",
+    "expected": "⠴⠠⠁⠐⠖⠠⠃⠲",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "가+나",
+    "expected": "⠫ ⠢ ⠉",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "+한글",
+    "expected": "⠢ ⠚⠒⠈⠮",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "5+7",
+    "expected": "⠼⠑⠢⠼⠛",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "A+2",
+    "expected": "⠴⠠⠁⠐⠖⠼⠃",
+    "reference": "UEB prefix boundaries and Roman plus scope; lexical readings cross-checked with unchanged en-ueb-g2.ctb; source-driven boundary controls"
+  },
+  {
+    "source": "한글(Consumer)",
+    "options": {
+      "roman_no_contract": [
+        [
+          3,
+          11
+        ]
+      ]
+    },
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠉⠕⠝⠎⠥⠍⠑⠗⠠⠴",
+    "reference": "Explicit no_contract must override the added prefix match"
+  },
+  {
+    "source": "GWh",
+    "expected": "⠴⠠⠛⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "1GWh",
+    "expected": "⠼⠁⠴⠠⠛⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "한글(NOx)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠝⠠⠕⠭⠠⠴",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "1GHz",
+    "expected": "⠼⠁⠴⠠⠛⠠⠓⠵⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "3MPa",
+    "expected": "⠼⠉⠴⠠⠍⠠⠏⠁⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "10Wh",
+    "expected": "⠼⠁⠚⠴⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "10 Wh",
+    "expected": "⠼⠁⠚ ⠴⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "kWh",
+    "expected": "⠴⠅⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "1daWh",
+    "expected": "⠼⠁⠴⠙⠁⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "1㎓까지",
+    "expected": "⠼⠁⠴⠠⠛⠠⠓⠵⠲⠠⠫⠨⠕",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "1㎫까지",
+    "expected": "⠼⠁⠴⠠⠍⠠⠏⠁⠲⠠⠫⠨⠕",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "ABC",
+    "expected": "⠴⠠⠠⠁⠃⠉⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "ABcd",
+    "expected": "⠴⠠⠠⠁⠃⠠⠄⠉⠙⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "xABc",
+    "expected": "⠴⠭⠠⠠⠁⠃⠠⠄⠉⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "aBC",
+    "expected": "⠴⠁⠠⠠⠃⠉⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "ABcD",
+    "expected": "⠴⠠⠠⠁⠃⠠⠄⠉⠠⠙⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "Whale",
+    "expected": "⠴⠠⠱⠁⠇⠑⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "비교 1GWh와 2MWh",
+    "expected": "⠘⠕⠈⠬ ⠼⠁⠴⠠⠛⠠⠺⠓⠲⠧ ⠼⠃⠴⠠⠍⠠⠺⠓⠲",
+    "reference": "Bounded mixed capitals and unit scope; preserve full capitals, long words, and English Wh contraction"
+  },
+  {
+    "source": "NOx",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠝⠠⠕⠭⠲",
+    "reference": "Explicit no_contract retains the selected capital indicators"
+  },
+  {
+    "source": "1㎓ Consumer",
+    "options": {
+      "roman_no_contract": [
+        [
+          3,
+          11
+        ]
+      ]
+    },
+    "expected": "⠼⠁⠴⠠⠛⠠⠓⠵ ⠠⠉⠕⠝⠎⠥⠍⠑⠗⠲",
+    "reference": "Correct-pass unit expansion preserves source-bound option offsets"
+  },
+  {
+    "source": "AI+x",
+    "expected": "⠴⠠⠠⠁⠊⠐⠖⠭⠲",
+    "reference": "A symbol between cased letters excludes the bounded mixed-word capital policy"
+  },
+  {
+    "source": "한글(AI+x)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠠⠁⠊⠐⠖⠭⠠⠴",
+    "reference": "A symbol between cased letters excludes the bounded mixed-word capital policy"
+  },
+  {
+    "source": "어휘(Child)",
+    "expected": "⠎⠚⠍⠗⠦⠄⠴⠠⠡⠠⠴",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "어휘(Still)",
+    "expected": "⠎⠚⠍⠗⠦⠄⠴⠠⠌⠠⠴",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "어휘(Which)",
+    "expected": "⠎⠚⠍⠗⠦⠄⠴⠠⠱⠠⠴",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "out.com",
+    "expected": "⠴⠳⠞⠲⠉⠕⠍⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "a that.com",
+    "expected": "⠴⠁ ⠹⠁⠞⠲⠉⠕⠍⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "a That2",
+    "expected": "⠴⠁ ⠠⠹⠁⠞⠼⠃",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "OUT",
+    "expected": "⠴⠠⠠⠳⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "STX",
+    "expected": "⠴⠠⠠⠎⠞⠭⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "STX3",
+    "expected": "⠴⠠⠠⠎⠞⠭⠼⠉",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "CHMP",
+    "expected": "⠴⠠⠠⠉⠓⠍⠏⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "SHR",
+    "expected": "⠴⠠⠠⠎⠓⠗⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "WHC",
+    "expected": "⠴⠠⠠⠺⠓⠉⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "THB",
+    "expected": "⠴⠠⠠⠞⠓⠃⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "BEST",
+    "expected": "⠴⠠⠠⠃⠑⠌⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "Chmp",
+    "expected": "⠴⠠⠡⠍⠏⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "BSTa",
+    "expected": "⠴⠠⠠⠃⠌⠠⠄⠁⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "Wh",
+    "expected": "⠴⠠⠺⠓⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "한글×한글",
+    "expected": "⠚⠒⠈⠮ ⠡ ⠚⠒⠈⠮",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "이 ×××야!",
+    "expected": "⠕ ⠸⠭⠭⠭⠇⠜⠖",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "한글+(설명)",
+    "expected": "⠚⠒⠈⠮ ⠢ ⠦⠄⠠⠞⠑⠻⠠⠴",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "증감 -3.5%",
+    "expected": "⠨⠪⠶⠫⠢ ⠔⠼⠉⠲⠑⠴⠏",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "(-3.5%)",
+    "expected": "⠦⠄⠔⠼⠉⠲⠑⠴⠏⠠⠴",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "-2008년",
+    "expected": "⠤⠼⠃⠚⠚⠓ ⠉⠡",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "3-5",
+    "expected": "⠼⠉⠤⠼⠑",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "F-35",
+    "expected": "⠴⠠⠋⠤⠼⠉⠑",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "STX",
+    "options": {
+      "roman_no_contract": [
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    "expected": "⠴⠠⠠⠎⠞⠭⠲",
+    "reference": "Reviewed mixed-script boundary/initialism/symbol case; English wordsigns checked against unmodified en-ueb-g2, literal letters and numeric-minus control; source-only scope, explicit no-contract when present."
+  },
+  {
+    "source": "한글(Goods)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠛⠙⠎⠠⠴",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "한글(Goodwill)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠛⠙⠺⠊⠇⠇⠠⠴",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "한글(Goodbye)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠛⠙⠃⠽⠑⠠⠴",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "한글(Friendly)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠋⠗⠇⠽⠠⠴",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "한글(Letters)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠇⠗⠎⠠⠴",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "한글(GOODS)",
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠠⠛⠕⠕⠙⠎⠠⠴",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "XGoods",
+    "expected": "⠴⠠⠠⠭⠛⠠⠄⠕⠕⠙⠎⠲",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "Goods2",
+    "expected": "⠴⠠⠛⠕⠕⠙⠎⠼⠃",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "Goods.example",
+    "expected": "⠴⠠⠛⠕⠕⠙⠎⠲⠑⠭⠁⠍⠏⠇⠑⠲",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "<새책>",
+    "expected": "⠐⠶⠠⠗⠰⠗⠁⠶⠂",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "〈새책〉",
+    "expected": "⠐⠶⠠⠗⠰⠗⠁⠶⠂",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "<새책> <다른책>",
+    "expected": "⠐⠶⠠⠗⠰⠗⠁⠶⠂ ⠐⠶⠊⠐⠵⠰⠗⠁⠶⠂",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "<책 <속책> 끝>",
+    "expected": "⠐⠶⠰⠗⠁ ⠐⠶⠠⠭⠰⠗⠁⠶⠂ ⠠⠈⠪⠦⠶⠂",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가 - 나",
+    "expected": "⠫⠤⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가-나",
+    "expected": "⠫⠤⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "- 질문",
+    "expected": "⠤ ⠨⠕⠂⠑⠛",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가 -- 나",
+    "expected": "⠫ ⠤⠤ ⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가 / 나",
+    "expected": "⠫ ⠸⠌ ⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가 // 나",
+    "expected": "⠫ ⠸⠌⠸⠌ ⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가/ 나",
+    "expected": "⠫⠸⠌⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가 /나",
+    "expected": "⠫⠸⠌⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가// 나",
+    "expected": "⠫⠸⠌⠸⠌ ⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "가 //나",
+    "expected": "⠫ ⠸⠌⠸⠌⠉",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "A=1",
+    "expected": "⠴⠠⠁⠲ ⠒⠒ ⠼⠁",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "A = 1",
+    "expected": "⠴⠠⠁⠲ ⠒⠒ ⠼⠁",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "A= 1",
+    "expected": "⠴⠠⠁⠲ ⠒⠒ ⠼⠁",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "A =1",
+    "expected": "⠴⠠⠁⠲ ⠒⠒ ⠼⠁",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "B/C = 0.92",
+    "expected": "⠴⠠⠃⠸⠌⠠⠉⠲ ⠒⠒ ⠼⠚⠲⠊⠃",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "a=b",
+    "expected": "⠴⠁⠲ ⠒⠒ ⠴⠃⠲",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "10=10",
+    "expected": "⠼⠁⠚⠒⠒⠼⠁⠚",
+    "reference": "Reviewed shortform suffix and punctuation boundary controls; shortforms independently checked against unmodified en-ueb-g2; original Unicode delimiters, spaced verse separators, leading/repeated dash and numeric equality retained."
+  },
+  {
+    "source": "한글(Goods)",
+    "options": {
+      "roman_no_contract": [
+        [
+          3,
+          8
+        ]
+      ]
+    },
+    "expected": "⠚⠒⠈⠮⠦⠄⠴⠠⠛⠕⠕⠙⠎⠠⠴",
+    "reference": "Explicit source-span no-contract overrides mixed-script shortform suffix contraction."
+  }
+]

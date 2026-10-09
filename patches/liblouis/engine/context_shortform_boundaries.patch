@@ -1,0 +1,219 @@
+--- a/liblouis/lou_translateString.c
++++ b/liblouis/lou_translateString.c
+@@ -206,6 +206,7 @@
+ 
+ static int
+ findForPassRule(const TranslationTableHeader *table, int pos, int currentPass,
++		int requireProgress,
+ 		const InString *input, int *transOpcode, const TranslationTableRule **transRule,
+ 		int *transCharslen, int *passCharDots, widechar const **passInstructions,
+ 		int *passIC, PassRuleMatch *match, TranslationTableRule **groupingRule,
+@@ -220,7 +221,8 @@
+ 		*transRule = (TranslationTableRule *)&table->ruleArea[ruleOffset];
+ 		*transOpcode = (*transRule)->opcode;
+ 		if (passDoTest(table, pos, input, *transOpcode, *transRule, passCharDots,
+-					passInstructions, passIC, match, groupingRule, groupingOp))
++					passInstructions, passIC, match, groupingRule, groupingOp) &&
++				(!requireProgress || match->endReplace > pos))
+ 			return 1;
+ 		ruleOffset = (*transRule)->charsnext;
+ 	}
+@@ -284,7 +286,7 @@
+ 		int tryThis = 0;
+ 		// check posIncremented to avoid endless loop
+ 		if (!(posIncremented &&
+-					findForPassRule(table, pos, 0, input, &transOpcode, &transRule,
++					findForPassRule(table, pos, 0, 0, input, &transOpcode, &transRule,
+ 							&transCharslen, &passCharDots, &passInstructions, &passIC,
+ 							&patternMatch, &groupingRule, &groupingOp)))
+ 			while (tryThis < 3) {
+@@ -1044,7 +1046,7 @@
+ 		int *transCharslen, int *passCharDots, widechar const **passInstructions,
+ 		int *passIC, PassRuleMatch *match, TranslationTableRule **groupingRule,
+ 		widechar *groupingOp) {
+-	if (!findForPassRule(table, pos, currentPass, input, transOpcode, transRule,
++	if (!findForPassRule(table, pos, currentPass, 0, input, transOpcode, transRule,
+ 				transCharslen, passCharDots, passInstructions, passIC, match,
+ 				groupingRule, groupingOp)) {
+ 		*transOpcode = CTO_Always;
+@@ -1951,6 +1953,20 @@
+ 	}
+ 
+ 	return 1;
++}
++
++/* True for a cased letter even when the current character is lowercase.
++ * Caseless scripts may use the lowercase opcode without an uppercase variant. */
++static int
++isCasedLetter(widechar c, const TranslationTableHeader *table) {
++	const TranslationTableCharacter *chardef = getChar(c, table);
++	if (chardef->basechar)
++		chardef = (TranslationTableCharacter *)&table->ruleArea[chardef->basechar];
++	for (;;) {
++		if (chardef->attributes & CTC_UpperCase) return 1;
++		if (!chardef->linked) return 0;
++		chardef = (TranslationTableCharacter *)&table->ruleArea[chardef->linked];
++	}
+ }
+ 
+ static void
+@@ -2098,6 +2114,17 @@
+ 							if (checkEmphasisChange(pos, *transCharslen, emphasisBuffer))
+ 								break;
+ 						case CTO_Contraction:
++							/* A mixed-script table can bound shortform collisions by
++							 * cased letters and digits without changing contraction
++							 * or punctuation boundaries for the rest of the table. */
++							if (*transOpcode == CTO_Contraction && table->contractionCasedWord) {
++								if (!((beforeAttributes | afterAttributes) & CTC_Digit) &&
++										(pos == 0 || !isCasedLetter(input->chars[pos - 1], table)) &&
++										(pos + *transCharslen == input->length ||
++												!isCasedLetter(input->chars[pos + *transCharslen], table)))
++									return;
++								break;
++							}
+ 							if (table->usesSequences) {
+ 								if (inSequence(table, pos, input, *transRule)) return;
+ 							} else {
+@@ -3755,12 +3782,13 @@
+ 		/* Resolve context before automatic indicators. In particular, a
+ 		 * zero-width language opener must not cause the same grade-1 or
+ 		 * capital indicator to be emitted both before and after the opener. */
++		/* A zero-width opener only forbids another zero-width action. Attribute-led
++		 * consuming contexts must remain eligible, just like literal contexts. */
+ 		int havePassRule = transOpcode == CTO_Context ||
+-				(posIncremented &&
+-						findForPassRule(table, pos, currentPass, input, &transOpcode,
+-								&transRule, &transCharslen, &passCharDots,
+-								&passInstructions, &passIC, &patternMatch, &groupingRule,
+-								&groupingOp));
++				findForPassRule(table, pos, currentPass, !posIncremented, input,
++						&transOpcode, &transRule, &transCharslen, &passCharDots,
++						&passInstructions, &passIC, &patternMatch, &groupingRule,
++						&groupingOp);
+ 		int zeroWidthContext = transOpcode == CTO_Context && patternMatch.endReplace == pos;
+ 
+ 		/* Skip repword separator to make caps/emph indicators appear before repword
+--- a/liblouis/internal.h
++++ b/liblouis/internal.h
+@@ -276,6 +276,7 @@
+ 
+ 	CTO_CapsModeChars,
+ 	CTO_CapsPhraseVar,
++	CTO_ContractionCasedWord,
+ 	CTO_EmphModeChars,
+ 	CTO_NoEmphChars,
+ 	CTO_BegComp,
+@@ -458,6 +459,7 @@
+ 	int hasCapsModeChars;
+ 	int capsPhraseAfterLetters;
+ 	int capsPhraseVar;
++	int contractionCasedWord;
+ 	TranslationTableOffset undefined;
+ 	TranslationTableOffset letterSign;
+ 	TranslationTableOffset numberSign;
+--- a/liblouis/compileTranslationTable.c
++++ b/liblouis/compileTranslationTable.c
+@@ -200,6 +200,7 @@
+ 	"lenemphphrase",
+ 	"capsmodechars",
+ 	"capsphrasevar",
++		"contractioncasedword",
+ 	"emphmodechars",
+ 	"noemphchars",
+ 	"begcomp",
+@@ -3868,6 +3869,9 @@
+ 			(*table)->seqAfterExpressionLength = ruleChars.length;
+ 			return 1;
+ 
++		case CTO_ContractionCasedWord:
++			(*table)->contractionCasedWord = 1;
++			return 1;
+ 		case CTO_CapsPhraseVar: {
+ 			int variable = compileNumber(file);
+ 			if (variable <= 0 || variable >= NUMVAR) {
+--- a/doc/liblouis.texi
++++ b/doc/liblouis.texi
+@@ -847,6 +847,15 @@
+ @c FIXME: In what way is the nocontractsign opcode different from the
+ @c letsign opcode, apart from apparently being a more focused version of
+ @c letsign?
++
++@opcode{contractioncasedword}
++For forward translation in mixed-script tables, treat a @code{contraction}
++rule as a complete cased-letter word when neither adjacent character is
++a digit or has an uppercase variant. A caseless character remains a
++boundary even when its definition uses the @code{lowercase} opcode.
++This affects shortform disambiguation with @code{nocontractsign} only;
++ordinary contraction and punctuation rules keep their existing boundaries.
++Without this option, @code{contraction} uses the normal sequence rules.
+ 
+ @opcode{numsign, dots}
+ The translator inserts this indicator before numbers to show that they
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -227,6 +227,7 @@
+ endif
+ 
+ dist_yaml_TESTS =				\
++	yaml/context_shortform_boundaries.yaml	\
+ 	yaml/native_roman_scope.yaml		\
+ 	yaml/attribute.yaml			\
+ 	yaml/back_cont_then_punc.yaml		\
+--- /dev/null
++++ b/tests/yaml/context_shortform_boundaries.yaml
+@@ -0,0 +1,54 @@
++display: tables/unicode.dis
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  attribute roman abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
++  attribute initiali I
++  noback context #1=0[]%roman @356#1=1
++  noback context #1=1[%initiali"T"] @24-2345
++  always it 1346
++flags: {testmode: forward}
++tests:
++  - [IT, "⠴⠊⠞"]
++  - [it, "⠴⠭"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  lowercase 가 123456
++  digit 1 1
++  numsign 3456
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  nocontractsign 56
++  contraction cd
++  always it 1346
++  contractioncasedword
++flags: {testmode: forward}
++tests:
++  - [CD가, "⠰⠠⠠⠉⠙⠿"]
++  - [가CD, "⠿⠰⠠⠠⠉⠙"]
++  - [가cd가, "⠿⠰⠉⠙⠿"]
++  - [XCDY, "⠠⠠⠭⠉⠙⠽"]
++  - [xcd, "⠭⠉⠙"]
++  - [CD1, "⠠⠠⠉⠙⠼⠁"]
++  - [it가, "⠭⠿"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  lowercase 가 123456
++  digit 1 1
++  numsign 3456
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  nocontractsign 56
++  contraction cd
++  always it 1346
++flags: {testmode: forward}
++tests:
++  - [CD가, "⠠⠠⠉⠙⠿"]
++  - [가CD, "⠿⠠⠠⠉⠙"]
++  - [cd, "⠰⠉⠙"]

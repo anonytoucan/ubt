@@ -1,0 +1,135 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -705,6 +705,8 @@
+ noback context #1=1_4`"part"[%realspace]$d @0
+ noback context #1=1_5!%latin"PART"[%realspace]$d @0
+ noback context #1=1_4`"PART"[%realspace]$d @0
++# Preserve Roman scope before spaced digits even when the last word was consumed.
++noback context #1=1_1%latin[%realspace]$d @0
+ noback context #4=0%latin[%realspace]$d @0
+ # 하이픈 뒤 대문자 (Submarine-Launched)
+ # 로마자 묶음 안의 수 뒤 쉼표·쌍점은 UEB 부호(쉼표 ⠂, 쌍점 ⠒).
+@@ -1571,57 +1573,109 @@
+ noback context #1=1_1$d["WH"]%lcase @2456-125
+ noback context `#1=1["WHO"]!%latin @2456-125-135
+ noback context #1=1_1!%latin["WHO"]!%latin @2456-125-135
++noback context #1=2["A"]%realspace$d @1#1=1
+ noback context #1=2["A"] @1-256#1=0#2=0
++noback context #1=2["B"]%realspace$d @12#1=1
+ noback context #1=2["B"] @12-256#1=0#2=0
++noback context #1=2["C"]%realspace$d @14#1=1
+ noback context #1=2["C"] @14-256#1=0#2=0
++noback context #1=2["D"]%realspace$d @145#1=1
+ noback context #1=2["D"] @145-256#1=0#2=0
++noback context #1=2["E"]%realspace$d @15#1=1
+ noback context #1=2["E"] @15-256#1=0#2=0
++noback context #1=2["F"]%realspace$d @124#1=1
+ noback context #1=2["F"] @124-256#1=0#2=0
++noback context #1=2["G"]%realspace$d @1245#1=1
+ noback context #1=2["G"] @1245-256#1=0#2=0
++noback context #1=2["H"]%realspace$d @125#1=1
+ noback context #1=2["H"] @125-256#1=0#2=0
++noback context #1=2["I"]%realspace$d @24#1=1
+ noback context #1=2["I"] @24-256#1=0#2=0
++noback context #1=2["J"]%realspace$d @245#1=1
+ noback context #1=2["J"] @245-256#1=0#2=0
++noback context #1=2["K"]%realspace$d @13#1=1
+ noback context #1=2["K"] @13-256#1=0#2=0
++noback context #1=2["L"]%realspace$d @123#1=1
+ noback context #1=2["L"] @123-256#1=0#2=0
++noback context #1=2["M"]%realspace$d @134#1=1
+ noback context #1=2["M"] @134-256#1=0#2=0
++noback context #1=2["N"]%realspace$d @1345#1=1
+ noback context #1=2["N"] @1345-256#1=0#2=0
++noback context #1=2["O"]%realspace$d @135#1=1
+ noback context #1=2["O"] @135-256#1=0#2=0
++noback context #1=2["P"]%realspace$d @1234#1=1
+ noback context #1=2["P"] @1234-256#1=0#2=0
++noback context #1=2["Q"]%realspace$d @12345#1=1
+ noback context #1=2["Q"] @12345-256#1=0#2=0
++noback context #1=2["R"]%realspace$d @1235#1=1
+ noback context #1=2["R"] @1235-256#1=0#2=0
++noback context #1=2["S"]%realspace$d @234#1=1
+ noback context #1=2["S"] @234-256#1=0#2=0
++noback context #1=2["T"]%realspace$d @2345#1=1
+ noback context #1=2["T"] @2345-256#1=0#2=0
++noback context #1=2["U"]%realspace$d @136#1=1
+ noback context #1=2["U"] @136-256#1=0#2=0
++noback context #1=2["V"]%realspace$d @1236#1=1
+ noback context #1=2["V"] @1236-256#1=0#2=0
++noback context #1=2["W"]%realspace$d @2456#1=1
+ noback context #1=2["W"] @2456-256#1=0#2=0
++noback context #1=2["X"]%realspace$d @1346#1=1
+ noback context #1=2["X"] @1346-256#1=0#2=0
++noback context #1=2["Y"]%realspace$d @13456#1=1
+ noback context #1=2["Y"] @13456-256#1=0#2=0
++noback context #1=2["Z"]%realspace$d @1356#1=1
+ noback context #1=2["Z"] @1356-256#1=0#2=0
++noback context #1=2["a"]%realspace$d @1#1=1
+ noback context #1=2["a"] @1-256#1=0#2=0
++noback context #1=2["b"]%realspace$d @12#1=1
+ noback context #1=2["b"] @12-256#1=0#2=0
++noback context #1=2["c"]%realspace$d @14#1=1
+ noback context #1=2["c"] @14-256#1=0#2=0
++noback context #1=2["d"]%realspace$d @145#1=1
+ noback context #1=2["d"] @145-256#1=0#2=0
++noback context #1=2["e"]%realspace$d @15#1=1
+ noback context #1=2["e"] @15-256#1=0#2=0
++noback context #1=2["f"]%realspace$d @124#1=1
+ noback context #1=2["f"] @124-256#1=0#2=0
++noback context #1=2["g"]%realspace$d @1245#1=1
+ noback context #1=2["g"] @1245-256#1=0#2=0
++noback context #1=2["h"]%realspace$d @125#1=1
+ noback context #1=2["h"] @125-256#1=0#2=0
++noback context #1=2["i"]%realspace$d @24#1=1
+ noback context #1=2["i"] @24-256#1=0#2=0
++noback context #1=2["j"]%realspace$d @245#1=1
+ noback context #1=2["j"] @245-256#1=0#2=0
++noback context #1=2["k"]%realspace$d @13#1=1
+ noback context #1=2["k"] @13-256#1=0#2=0
++noback context #1=2["l"]%realspace$d @123#1=1
+ noback context #1=2["l"] @123-256#1=0#2=0
++noback context #1=2["m"]%realspace$d @134#1=1
+ noback context #1=2["m"] @134-256#1=0#2=0
++noback context #1=2["n"]%realspace$d @1345#1=1
+ noback context #1=2["n"] @1345-256#1=0#2=0
++noback context #1=2["o"]%realspace$d @135#1=1
+ noback context #1=2["o"] @135-256#1=0#2=0
++noback context #1=2["p"]%realspace$d @1234#1=1
+ noback context #1=2["p"] @1234-256#1=0#2=0
++noback context #1=2["q"]%realspace$d @12345#1=1
+ noback context #1=2["q"] @12345-256#1=0#2=0
++noback context #1=2["r"]%realspace$d @1235#1=1
+ noback context #1=2["r"] @1235-256#1=0#2=0
++noback context #1=2["s"]%realspace$d @234#1=1
+ noback context #1=2["s"] @234-256#1=0#2=0
++noback context #1=2["t"]%realspace$d @2345#1=1
+ noback context #1=2["t"] @2345-256#1=0#2=0
++noback context #1=2["u"]%realspace$d @136#1=1
+ noback context #1=2["u"] @136-256#1=0#2=0
++noback context #1=2["v"]%realspace$d @1236#1=1
+ noback context #1=2["v"] @1236-256#1=0#2=0
++noback context #1=2["w"]%realspace$d @2456#1=1
+ noback context #1=2["w"] @2456-256#1=0#2=0
++noback context #1=2["x"]%realspace$d @1346#1=1
+ noback context #1=2["x"] @1346-256#1=0#2=0
++noback context #1=2["y"]%realspace$d @13456#1=1
+ noback context #1=2["y"] @13456-256#1=0#2=0
++noback context #1=2["z"]%realspace$d @1356#1=1
+ noback context #1=2["z"] @1356-256#1=0#2=0
+ 
+ # Roman language scope; capitalization is resolved by liblouis markEmphases.
+--- a/ko-2020-symbols-core.cti
++++ b/ko-2020-symbols-core.cti
+@@ -911,3 +911,11 @@
+ noback context ["\x33a5"]%hangulonly @356-134-45-3456-14-0
+ 
+ # Numeric quantity followed by the inch unit must spell in.
++
++# Normalize simple compatibility units through the ordinary Roman scope rules.
++# Mixed-case capital groups retain their explicit unit capitalization.
++noback correct ["\x338d"] "μg"
++noback correct ["\x339a"] "nm"
++noback correct ["\x339c"] "mm"
++noback correct ["\x33be"] "kW"
++noback correct ["\x33bf"] "MW"

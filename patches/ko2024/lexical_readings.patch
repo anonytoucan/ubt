@@ -1,0 +1,112 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -1364,24 +1364,36 @@
+ # G1-표기가 우세한 베이스만 채택; 나머지(ac,cd,sd,al,...)는 무표기가 우세 —
+ # 전사-분산으로 문서화 (양쪽 표기 공존, 상한 측정 대상)
+ noback context `#1=0[]"GD" @356-56-6-6#1=1
+-noback context `#1=0[]"IMM" @356-56-6-6#1=1
+-noback context `#1=0[]"NEC" @356-56-6-6#1=1
+-noback context `#1=0[]"PD" @356-56-6-6#1=1
++noback context `#1=0[]"IMM"!%latin @356-56-6-6#1=1
++noback context `#1=0[]"IMM"~ @356-56-6-6#1=1
++noback context `#1=0[]"NEC"!%latin @356-56-6-6#1=1
++noback context `#1=0[]"NEC"~ @356-56-6-6#1=1
++noback context `#1=0[]"PD"!%latin @356-56-6-6#1=1
++noback context `#1=0[]"PD"~ @356-56-6-6#1=1
+ noback context `#1=0[]"BRL" @356-56-6-6#1=1
+ noback context `#1=0%realspace[]"GD" @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"IMM" @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"NEC" @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"PD" @356-56-6-6#1=1
++noback context `#1=0%realspace[]"IMM"!%latin @356-56-6-6#1=1
++noback context `#1=0%realspace[]"IMM"~ @356-56-6-6#1=1
++noback context `#1=0%realspace[]"NEC"!%latin @356-56-6-6#1=1
++noback context `#1=0%realspace[]"NEC"~ @356-56-6-6#1=1
++noback context `#1=0%realspace[]"PD"!%latin @356-56-6-6#1=1
++noback context `#1=0%realspace[]"PD"~ @356-56-6-6#1=1
+ noback context `#1=0%realspace[]"BRL" @356-56-6-6#1=1
+ noback context #1=0%openafter[]"GD" @356-56-6-6#1=1
+-noback context #1=0%openafter[]"IMM" @356-56-6-6#1=1
+-noback context #1=0%openafter[]"NEC" @356-56-6-6#1=1
+-noback context #1=0%openafter[]"PD" @356-56-6-6#1=1
++noback context #1=0%openafter[]"IMM"!%latin @356-56-6-6#1=1
++noback context #1=0%openafter[]"IMM"~ @356-56-6-6#1=1
++noback context #1=0%openafter[]"NEC"!%latin @356-56-6-6#1=1
++noback context #1=0%openafter[]"NEC"~ @356-56-6-6#1=1
++noback context #1=0%openafter[]"PD"!%latin @356-56-6-6#1=1
++noback context #1=0%openafter[]"PD"~ @356-56-6-6#1=1
+ noback context #1=0%openafter[]"BRL" @356-56-6-6#1=1
+ noback context #1=0%openafter%realspace[]"GD" @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"IMM" @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"NEC" @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"PD" @356-56-6-6#1=1
++noback context #1=0%openafter%realspace[]"IMM"!%latin @356-56-6-6#1=1
++noback context #1=0%openafter%realspace[]"IMM"~ @356-56-6-6#1=1
++noback context #1=0%openafter%realspace[]"NEC"!%latin @356-56-6-6#1=1
++noback context #1=0%openafter%realspace[]"NEC"~ @356-56-6-6#1=1
++noback context #1=0%openafter%realspace[]"PD"!%latin @356-56-6-6#1=1
++noback context #1=0%openafter%realspace[]"PD"~ @356-56-6-6#1=1
+ noback context #1=0%openafter%realspace[]"BRL" @356-56-6-6#1=1
+ # 수의 자릿점 쉼표: ⠂(2) — 쉼표 일반형(5)과 구분
+ # (쉼표+숫자 동시 소비: 쉼표만 소비하면 다음 숫자에 ⠼ 재발화)
+@@ -1390,9 +1402,12 @@
+ # 앞 글자가 로마자가 아니면 ⠴ (+대문자표). PRE-형 오프너가 앞 글자에서 불발(다음절 축약·
+ # 문맥 규칙으로 소비, openafter 밖 기호 △▲@#+・/× 등, 문장 첫머리 두문자어)해도 성립.
+ noback context #1=0_1!%latin[]"GD" @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"IMM" @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"NEC" @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"PD" @356-56-6-6#1=1
++noback context #1=0_1!%latin[]"IMM"!%latin @356-56-6-6#1=1
++noback context #1=0_1!%latin[]"IMM"~ @356-56-6-6#1=1
++noback context #1=0_1!%latin[]"NEC"!%latin @356-56-6-6#1=1
++noback context #1=0_1!%latin[]"NEC"~ @356-56-6-6#1=1
++noback context #1=0_1!%latin[]"PD"!%latin @356-56-6-6#1=1
++noback context #1=0_1!%latin[]"PD"~ @356-56-6-6#1=1
+ noback context #1=0_1!%latin[]"BRL" @356-56-6-6#1=1
+ noback context #1=0_1!%latin[]%ucase%ucase @356-6-6#1=1
+ noback context #1=0_1!%latin[]%ucase @356-6#1=1
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -47,6 +47,42 @@
+ 
+ 
+ multind 56-6 nocontractsign capsletter
++# Additional whole-word readings; use the ordinary UEB contraction result.
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] postech ^ 1234-135-34-15-16-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] postech ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1234-135-34-15-16
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] red ^ 1235-1246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] red ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1235-1246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] open ^ 135-1234-26-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] open ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 135-1234-26
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] skin ^ 234-13-35-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] skin ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 234-13-35
++# UEB 10.12.2: lexical readings as words; no_contract remains effective.
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] kaist ^ 13-1-24-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] kaist ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 13-1-24-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] naver ^ 1345-1-1236-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] naver ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1345-1-1236-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] cash ^ 14-1-146-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] cash ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 14-1-146
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] now ^ 1345-246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] now ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1345-246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] tech ^ 2345-15-16-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] tech ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2345-15-16
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] power ^ 1234-246-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] power ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1234-246-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] tower ^ 2345-246-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] tower ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2345-246-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] flow ^ 124-123-246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] flow ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 124-123-246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] show ^ 146-246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] show ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 146-246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] start ^ 34-345-2345-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] start ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 34-345-2345
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] fortran ^ 123456-2345-1235-1-1345-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] fortran ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123456-2345-1235-1-1345
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] asean ^ 1-234-2-1345-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] asean ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1-234-2-1345
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] inxs ^ 35-1346-234-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] inxs ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 35-1346-234
+ 
+ # [ko-graft disabled] seqdelimiter -—
+ # [ko-graft disabled] seqdelimiter ‐   \x2010

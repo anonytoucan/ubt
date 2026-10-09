@@ -1,0 +1,14 @@
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -4593,3 +4593,11 @@
+ nofor always . 56-256
+ nofor always ! 56-235
+ nofor always ? 56-236
++
++# Uppercase IT followed by Korean prose is an initialism, not the English
++# wordsign "it". The attribute-led rule precedes the UEB match rule; a
++# literal-led context loses that precedence. Keep a left Roman-word boundary.
++# Sentence-initial zero-width openers still prevent this attribute-led rule
++# from running; that engine limitation is measured separately, not hidden.
++attribute initiali I
++noback context #1=1_1!%latin[%initiali"T"]%realspace%hangall @24-2345

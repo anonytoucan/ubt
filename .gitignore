@@ -1,0 +1,16 @@
+*.egg-info/
+__pycache__/
+.pytest_cache/
+*.log
+tmp/
+wandb/
+
+# large artifacts and outputs (README, "Setup")
+/work/
+/datasets/
+/paper/
+/out/
+
+# NIKL Korean-Braille parallel corpus and anything derived from it: licence-bound, local only
+data_nikl/
+patches/ko2024/*.local.json

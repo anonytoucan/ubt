@@ -1,0 +1,4 @@
+opencc_TSCharacters.txt — OpenCC's Traditional->Simplified character table (TSCharacters.txt),
+from OpenCC (https://github.com/BYVoid/OpenCC), Apache License 2.0, as shipped in
+opencc-python-reimplemented 0.1.7 (sha256 6b5a0a799bea2bb22c001f635eaa3fc2904310f0c08addbff275477a80ecf09a).
+Used unmodified by ubt.metrics.textnorm (the Simplified/Traditional fold of the Chinese CER).

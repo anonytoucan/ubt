@@ -1,0 +1,122 @@
+# data-u1 unified dataset config, used by scripts/data/build_unified.py and scripts/data/verify_unified.py.
+# Counts are full-scale; --scale multiplies train targets, floors and dev, --eval-scale (default --scale) eval cells.
+
+data_root: datasets            # sources under <data_root>/data
+out_default: datasets/data_u1
+max_workers: 48                              # hard cap
+
+engine:
+  # pinned liblouis build (env UBT_LOUIS_TABLES / UBT_LOUIS_LIB override)
+  louis_tables: work/liblouis/share/liblouis/tables
+  louis_version: "3.38.0"
+  # Korean 2024 table (env KO2024_TABLES_DIR / KO2024_TABLE_FILE override), labelled ko-2024-g2.ctb.
+  # certified: true (or KO2024_CERTIFIED=1) needs a matching <KO2024_TABLES_DIR>/ko2024_certificate.json
+  # (checks C1-C3 passed); without one the build fails.
+  ko2024_tables_dir: work/ko2024_tables
+  ko2024_table_file: ko-2020-g2.ctb
+  ko2024_certified: false
+  nemeth_jar: datasets/tools/latex2nemeth/latex2nemeth.jar   # v1.1.3
+
+# ---------------------------------------------------------------- training split
+train_targets:           # 1,005,000 docs in total
+  S1: 430000             # single-code, 1 sent .40 / 2-3 .40 / 4-8 .20, floors below
+  S1b: 150000            # per-table deep wiki pairs (12 tables, 12,500 each)
+  S2: 120000             # intra-code switching (light .67 / heavy .33)
+  S3_k2: 90000
+  S3_k3: 40000
+  S3_k4: 25000
+  S3p: 15000             # k=2, 4-8 sentences per segment
+  S4a: 25000             # Nemeth standalone + in UEB prose
+  S4b: 0                 # Korean math braille, excluded from training
+  S5: 10000              # URL / e-mail / DOI / arXiv / ISBN in en-ueb-g2
+  S6: 40000              # snippets, 5 buckets
+  S7: 60000              # NIKL dev (human braille, ko-2024-g2 label)
+dev:                     # generated before train, from its own carved source lines
+  n: 2000                # spread over the non-math strata by target share
+  math: 500              # spread over S4a/S4b by target (S4b = 0 -> all S4a)
+  # Dev source lines are seeded blocks carved out of every train pool before any row is built (S1b: a prefix of
+  # its reserved pool; S7: NIKL dev ids unused by train). Train rows sharing units with a dev row are rejected.
+  source: {frac: 0.03, min_lines: 40, max_lines: 4000, max_frac: 0.10, block: 8}
+
+floor:
+  failing_min: 3000
+  other_min: 300
+  # Weak codes get failing_min: greedy CER >= 1.0% with the code given, plus 9 boundary codes (58 ids).
+  # 3.34 ids are successor-mapped (hu.tbl -> hu-hu-g1.ctb, ko-2020-g2.ctb -> ko-2024-g2.ctb).
+  failing_codes_source: "per-code greedy CER >= 1.0% (53 codes) + 9 boundary codes"
+  failing_codes: [
+    afr-za-g2.ctb, chr-us-g1.ctb, da-dk-g16-lit_1993.ctb, da-dk-g26-lit_1993.ctb,
+    da-dk-g26.ctb, da-dk-g26_1993.ctb, da-dk-g26l-lit_1993.ctb, da-dk-g28.ctb,
+    da-dk-g28_1993.ctb, de-g0-detailed.utb, de-g0.utb, de-g1-detailed.ctb, de-g1.ctb,
+    de-g2-detailed.ctb, de-g2.ctb, he-IL.utb, hu-hu-g2.ctb, hu.tbl, iu-ca-g1.ctb,
+    ja-kantenji-ucs2.utb, kk.utb, km-g1.utb, kn.tbl, ko-2006-g1.ctb, ko-2006-g2.ctb,
+    ko-2020-g2.ctb, ko-g1.ctb, ko-g2.ctb, ms-my-g2.ctb, my-g2.ctb, no-no-g2.ctb,
+    no-no-g3.ctb, or.tbl, pl.tbl, ru-litbrl.ctb, ru-ru-g1.ctb, sah.utb, sv-g2.ctb,
+    th-g0.utb, th-g1.utb, th-g2.ctb, tr-g1.ctb, tr-g2.tbl, ur-pk-g2.ctb,
+    vi-saigon-g1.ctb, vi-vn-g1.ctb, vi-vn-g2.ctb, zh-hk.ctb, zh-tw.ctb, zh_CHN.tbl,
+    zhcn-cbs.ctb, zhcn-g1.ctb, zhcn-g2.ctb,
+    ba.utb, bg.utb, da-dk-g28l_1993.ctb, fr-bfu-g2.ctb, uz-g1.utb]
+
+s1b:
+  # pool language (wiki_A shard) -> tables; each reserved line goes to one table
+  tables:
+    cmn: [zh-tw.ctb, zh_CHN.tbl, zh-hk.ctb, zhcn-cbs.ctb]
+    ko: [ko-g1.ctb, ko-2006-g1.ctb, ko-g2.ctb, ko-2006-g2.ctb, ko-2024-g2.ctb]
+    th: [th-g0.utb, th-g1.utb, th-g2.ctb]
+  # reserved lines = sum(per-table targets) x overdraw, capped at max_frac of the wiki_A pool;
+  # cmn is higher because zhcn-cbs and zh-hk accept only ~20-37% of lines under the strict checks.
+  reserve_overdraw: {cmn: 3.0, ko: 1.4, th: 1.4}
+  reserve_max_frac: 0.5
+  block: 64
+
+eval:                    # ubt.eval_grid cell design
+  core_head_n: 45
+  core_head_docs: 200
+  core_tail_docs: 100
+  snippet_groups: 20
+  snippet_per_cell: 300
+  mixed_per_cell: 400
+  k2p_per_cell: 400
+  intra_per_cell: 500
+  kodisc_pairs: 500
+  kodisc_tables: [ko-2024-g2.ctb, ko-2006-g2.ctb]
+  zeroshot_per_table: 200
+  zeroshot_mixed: 500
+  noise_base: 2000
+  math_nemeth: 1000
+  math_kmath: 0          # Korean math eval excluded, like S4b
+
+# ---------------------------------------------------------------- inventory / planning
+# (from configs/generation.yaml, unchanged unless noted)
+single_length: {one_sent: 0.40, two_three_sent: 0.40, paragraph: 0.20}
+intra_switch:
+  natural_first: true
+  splice: {en_term: 0.6, en_phrase: 0.2, digits_dates: 0.2}
+  density: {light: 0.67, heavy: 0.33}
+inter_mixed:
+  regimes: {anchor: 0.60, uniform: 0.25, confusable: 0.15}
+  anchor_langs: {en: 0.50, fr: 0.12, es: 0.08, ru: 0.08, ar: 0.08, cmn: 0.06, de: 0.04, pt: 0.04}
+holdout_languages: [hr, mt, sw]
+expected_holdout_tables: [hr-g1.tbl, mt.ctb, sw-ke-g1-2.ctb, sw-ke-g1-3.ctb, sw-ke-g1-4.ctb,
+                          sw-ke-g1-5.ctb, sw-ke-g1.utb, sw-ke-g2.ctb]
+head_langs: [en, cmn, es, ar, hi, pt, fr, ru, bn, de, ko, vi, it, tr, ja]
+head_share: 0.28
+# Draw from wiki_A first (source only; weights still use head_langs): th has far more wiki than FLORES lines
+# and its three tables carry the 3,000 floor.
+extra_wiki_first: [th]
+script_groups:
+  Hangul: [ko]
+  Han: [cmn, yue]
+  Cyrillic: [ru, uk, bg, sr, mk]
+  Arabic: [ar, fa, ur]
+  Devanagari: [hi, mr, ne]
+status_overrides_path: configs/currency_overrides.yaml
+alpha: 0.7
+status_factors: {current: 1.0, parallel: 0.6, pending: 0.5, superseded: 0.15, excluded: 0.0}
+# Usability probe: a table whose own source sentences pass the strict checks below min_accept is excluded.
+usability_probe: {n_sentences: 400, min_accept: 0.02}
+empirical_alias_dedup:
+  min_pairwise_collision: 0.999
+  n_sentences: 2000
+  # re-measured on 3.38 at every build; the 3.34 list is kept for comparison only
+  prior_exclude: [sr-g1.ctb, ja-kantenji.utb, no-no-8dot.utb]

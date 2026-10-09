@@ -1,0 +1,24 @@
+# Character-scoped no_contract must not become sticky word-level state.
+# Run with lou_checkyaml and LOUIS_TABLEPATH pointing at the fork source root.
+display: tables/unicode.dis
+table: |
+  space \s 0
+  letter a 1
+  letter b 12
+  letter c 14
+  letter d 145
+  punctuation - 36
+  always ab 1234
+  always cd 124
+  noback context ["\s"] @0
+  noback context ["-"] @36
+flags: {testmode: forward}
+tests:
+  - [ab cd, "⠏⠀⠋"]
+  - [ab cd, "⠁⠃⠀⠋", {typeform: {no_contract: '++   '}}]
+  - [ab cd, "⠏⠀⠉⠙", {typeform: {no_contract: '   ++'}}]
+  - [ab cd, "⠁⠃⠀⠉⠙", {typeform: {no_contract: '++ ++'}}]
+  - [ab-cd, "⠁⠃⠤⠋", {typeform: {no_contract: '++   '}}]
+  - [abcd, "⠁⠃⠋", {typeform: {no_contract: '++  '}}]
+  - [ab cd ab, "⠁⠃⠀⠋⠀⠁⠃", {typeform: {no_contract: '++    ++'}}]
+  - [ab cd ab, "⠏⠀⠉⠙⠀⠏", {typeform: {no_contract: '   ++   '}}]

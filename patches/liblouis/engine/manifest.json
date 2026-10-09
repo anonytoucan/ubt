@@ -1,0 +1,45 @@
+{
+ "description": "liblouis translator and table-compiler patches; apply in order to the upstream commit after ../korean_2020_tables.patch (scripts/liblouis/build_liblouis.sh). Build with --enable-ucs4.",
+ "upstream_commit": "d7501beae07f23a2feb74c249d31166d3b48bb87",
+ "korean_2020_tables_patch_sha256": "60fd4544bbef87f5a3a26af12a5dccb8cff2c0c6693c93a3055b391faa0d2335",
+ "patches": [
+  {
+   "file": "no_contract_scope.patch",
+   "sha256": "267c84134d49f582da1b6970653fd4136a77ed2f7f95514ee6abb582b7d2184c"
+  },
+  {
+   "file": "native_roman_scope.patch",
+   "sha256": "1f61f434229b6d047807cbb6367b09f12e88d622c4940069b4fde90efb2fd40f"
+  },
+  {
+   "file": "context_shortform_boundaries.patch",
+   "sha256": "55de133a36c47f20ccc8dbb867264a55e67da531e028fd0165305f451f51ae4d"
+  },
+  {
+   "file": "notallcaps_match.patch",
+   "sha256": "885f6c6ee1d524e65a31b6089e3b838220cb860059f99a86c2b0b0dcd81591c6"
+  },
+  {
+   "file": "short_mixed_caps.patch",
+   "sha256": "b061dabaf62fbffae6f7718eea61ff1d0fd0d740f58d1349fd7d8f309ff587ab"
+  }
+ ],
+ "final_source_sha256": {
+  "doc/liblouis.texi": "93bbdf002825ac36ceee8f4cc4ec66ffc3f1e232b3198719ca5b6165b60ec90a",
+  "liblouis/compileTranslationTable.c": "22150699e0089010808aae48dc9b84262c7c6fdbe5628bf0877fc15d46967405",
+  "liblouis/internal.h": "526cb40c0b0ff8a50107f417df064ef27b9b4bb6cade5709bce426c34d9eddde",
+  "liblouis/lou_translateString.c": "d9673a6d277731c25640108f27f0f745baeef84d76190f935a4775065d14291c",
+  "tests/Makefile.am": "7e17a7229567314e88f1ce48cd743092e5e5a6626c9d89be182a377f305246e1",
+  "tests/braille-specs/en-ueb.yaml": "c8644014cadcc15d9b9f6fb7afd031170c7d59746fa740804cceea89bde4b6c9",
+  "tests/yaml/context_shortform_boundaries.yaml": "023a10c1daeb2f995a972f7beed01a0796beea04917cbed5a27721efd99fb83a",
+  "tests/yaml/native_roman_scope.yaml": "faf873f86b38a722312980220508aabd59aa045706b74d0c85609ea8c23d2305",
+  "tests/yaml/notallcaps_match.yaml": "931a8e46ae7b46e02542eed03da9129afc36500b6ad884933d776fa81ff0c01d",
+  "tests/yaml/short_mixed_caps.yaml": "b484e1a0de02d8719520f6ef02dcfaaf73bd82e05e6223d0386de5ba8e52842c"
+ },
+ "library_sha256": "c30ae3e5006c011ea0f06752d8fbcc88b0536565a0d260465cfaf37ba51668ec",
+ "upstream_checks": {
+  "total": 68,
+  "passed": 68,
+  "skipped": 0
+ }
+}

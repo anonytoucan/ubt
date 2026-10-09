@@ -1,0 +1,1501 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -391,33 +391,33 @@
+ noback context #4=1["\x2019"] @6-3-356-3#4=0
+ noback context #4=1["\x201d"] @6-3-356#4=0
+ # Uppercase passages: three or more plain uppercase words. #4 is independent of Roman and pronunciation state.
+-noback context `#4=0[]%ucase%ucase.%realspace%ucase.%realspace%ucase.!%latin @356-6-6-6#1=1#4=1
+-noback context #4=0_1!%latin[]%ucase%ucase.%realspace%ucase.%realspace%ucase.!%latin @6#4=1
+-noback context `#4=0[]%ucase%ucase.%realspace%ucase.%realspace%ucase.~ @356-6-6-6#1=1#4=1
+-noback context #4=0_1!%latin[]%ucase%ucase.%realspace%ucase.%realspace%ucase.~ @6#4=1
++noback context `#4=0[]%ucase%ucase.%realspace%ucase.%realspace%ucase.!%latin @356-6-6-6#1=1#4=1#5=0
++noback context #4=0_1!%latin[]%ucase%ucase.%realspace%ucase.%realspace%ucase.!%latin @6#4=1#5=0
++noback context `#4=0[]%ucase%ucase.%realspace%ucase.%realspace%ucase.~ @356-6-6-6#1=1#4=1#5=0
++noback context #4=0_1!%latin[]%ucase%ucase.%realspace%ucase.%realspace%ucase.~ @6#4=1#5=0
+ noback context #4=1_1%ucase[%realspace]%ucase.!%latin @0
+ noback context #4=1_1%ucase[%realspace]%ucase.~ @0
+ noback context #4=1_1%ucase[%realspace]%closeafter @6-3-256-0#4=0#1=0#2=0
+ noback context #4=1_1%ucase[%realspace]$d @6-3-0#4=0
+ noback context #4=1_1%ucase[%realspace]%lcase @6-3-0#4=0
+-noback context #4=1_1%ucase[%realspace]%ucase%lcase @6-3-0-6#4=0
++noback context #4=1_1%ucase[%realspace]%ucase%lcase @6-3-0-6#4=0#5=0
+ noback context #4=1%ucase[%realspace]%ucase.!%latin @0
+ noback context #4=1%ucase[%realspace]%ucase.~ @0
+ noback context #4=1%ucase[%realspace]%closeafter @6-3-256-0#4=0#1=0#2=0
+ noback context #4=1%ucase[%realspace]$d @6-3-0#4=0
+ noback context #4=1%ucase[%realspace]%lcase @6-3-0#4=0
+-noback context #4=1%ucase[%realspace]%ucase%lcase @6-3-0-6#4=0
++noback context #4=1%ucase[%realspace]%ucase%lcase @6-3-0-6#4=0#5=0
+ noback context #4=1%ucase[]%closeafter @6-3-256#4=0#1=0#2=0
+ noback context #4=1%ucase[]~ @6-3-256#4=0#1=0#2=0
+ noback context #4=1_1%ucase[]%closeafter @6-3-256#4=0#1=0#2=0
+-noback context #4=1_1%ucase[]!%ucase @6-3#4=0
++noback context #4=1_1%ucase[]!%ucase @6-3#4=0#5=1
+ # An ellipsis closes the Roman passage without an extra terminator.
+ noback context #1=1%latin[%realspace]"..." @0#1=0#2=0
+ noback context #1=1_1%latin[%realspace]"..." @0#1=0#2=0
+ # ═══ 구간 상태기 선두 규칙(단일 글자 규칙 326행보다 먼저 평가) ═══
+ # 문장 첫머리 오프너: '.'·','·숫자 PRE 규칙(m.Club, I.A.5)보다 먼저
+-noback context `#1=0[]%ucase%ucase @356-6-6#1=1
+-noback context `#1=0[]%ucase @356-6#1=1
++noback context `#1=0[]%ucase%ucase @356-6-6#1=1#5=0
++noback context `#1=0[]%ucase @356-6#1=1#5=0
+ noback context `#1=0[]%latin @356#1=1
+ # 한글 자모·한글 전용 기호를 만나면 구간 종료(ㅎAE ㄴAM, HS 2007→HS 2017, SMART〈Subtract)
+ noback context #1=1[]%kend #1=0#2=0
+@@ -1400,54 +1400,54 @@
+ # 로마자(제29-30항)→UEB grade-1 word indicator ⠰ (shortform-충돌 어두). NIKL 전수에서
+ # G1-표기가 우세한 베이스만 채택; 나머지(ac,cd,sd,al,...)는 무표기가 우세 —
+ # 전사-분산으로 문서화 (양쪽 표기 공존, 상한 측정 대상)
+-noback context `#1=0[]"GD" @356-56-6-6#1=1
+-noback context `#1=0[]"IMM"!%latin @356-56-6-6#1=1
+-noback context `#1=0[]"IMM"~ @356-56-6-6#1=1
+-noback context `#1=0[]"NEC"!%latin @356-56-6-6#1=1
+-noback context `#1=0[]"NEC"~ @356-56-6-6#1=1
+-noback context `#1=0[]"PD"!%latin @356-56-6-6#1=1
+-noback context `#1=0[]"PD"~ @356-56-6-6#1=1
+-noback context `#1=0[]"BRL" @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"GD" @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"IMM"!%latin @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"IMM"~ @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"NEC"!%latin @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"NEC"~ @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"PD"!%latin @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"PD"~ @356-56-6-6#1=1
+-noback context `#1=0%realspace[]"BRL" @356-56-6-6#1=1
+-noback context #1=0%openafter[]"GD" @356-56-6-6#1=1
+-noback context #1=0%openafter[]"IMM"!%latin @356-56-6-6#1=1
+-noback context #1=0%openafter[]"IMM"~ @356-56-6-6#1=1
+-noback context #1=0%openafter[]"NEC"!%latin @356-56-6-6#1=1
+-noback context #1=0%openafter[]"NEC"~ @356-56-6-6#1=1
+-noback context #1=0%openafter[]"PD"!%latin @356-56-6-6#1=1
+-noback context #1=0%openafter[]"PD"~ @356-56-6-6#1=1
+-noback context #1=0%openafter[]"BRL" @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"GD" @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"IMM"!%latin @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"IMM"~ @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"NEC"!%latin @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"NEC"~ @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"PD"!%latin @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"PD"~ @356-56-6-6#1=1
+-noback context #1=0%openafter%realspace[]"BRL" @356-56-6-6#1=1
++noback context `#1=0[]"GD" @356-56-6-6#1=1#5=0
++noback context `#1=0[]"IMM"!%latin @356-56-6-6#1=1#5=0
++noback context `#1=0[]"IMM"~ @356-56-6-6#1=1#5=0
++noback context `#1=0[]"NEC"!%latin @356-56-6-6#1=1#5=0
++noback context `#1=0[]"NEC"~ @356-56-6-6#1=1#5=0
++noback context `#1=0[]"PD"!%latin @356-56-6-6#1=1#5=0
++noback context `#1=0[]"PD"~ @356-56-6-6#1=1#5=0
++noback context `#1=0[]"BRL" @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"GD" @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"IMM"!%latin @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"IMM"~ @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"NEC"!%latin @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"NEC"~ @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"PD"!%latin @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"PD"~ @356-56-6-6#1=1#5=0
++noback context `#1=0%realspace[]"BRL" @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"GD" @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"IMM"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"IMM"~ @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"NEC"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"NEC"~ @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"PD"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"PD"~ @356-56-6-6#1=1#5=0
++noback context #1=0%openafter[]"BRL" @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"GD" @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"IMM"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"IMM"~ @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"NEC"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"NEC"~ @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"PD"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"PD"~ @356-56-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]"BRL" @356-56-6-6#1=1#5=0
+ # 수의 자릿점 쉼표: ⠂(2) — 쉼표 일반형(5)과 구분
+ # (쉼표+숫자 동시 소비: 쉼표만 소비하면 다음 숫자에 ⠼ 재발화)
+ 
+ # ═══ 구간 밖(#1=0) 대체 오프너 — 글자 위치 ═══
+ # 앞 글자가 로마자가 아니면 ⠴ (+대문자표). PRE-형 오프너가 앞 글자에서 불발(다음절 축약·
+ # 문맥 규칙으로 소비, openafter 밖 기호 △▲@#+・/× 등, 문장 첫머리 두문자어)해도 성립.
+-noback context #1=0_1!%latin[]"GD" @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"IMM"!%latin @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"IMM"~ @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"NEC"!%latin @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"NEC"~ @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"PD"!%latin @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"PD"~ @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]"BRL" @356-56-6-6#1=1
+-noback context #1=0_1!%latin[]%ucase%ucase @356-6-6#1=1
+-noback context #1=0_1!%latin[]%ucase @356-6#1=1
++noback context #1=0_1!%latin[]"GD" @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"IMM"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"IMM"~ @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"NEC"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"NEC"~ @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"PD"!%latin @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"PD"~ @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]"BRL" @356-56-6-6#1=1#5=0
++noback context #1=0_1!%latin[]%ucase%ucase @356-6-6#1=1#5=0
++noback context #1=0_1!%latin[]%ucase @356-6#1=1#5=0
+ # 소문자 첫 글자 + 대문자(iOS, iPhone, mRNA): 첫 글자 위치의 빈-초점 오프너가 PRE-형 단어 중간
+ # 대문자표(%lcase[]"A")를 선점하므로, 첫 글자를 소비하며 대문자표까지 적는다(글자별 문자열 규칙).
+ noback context #1=0_1!%latin["a"]%ucase%ucase @356-1#1=1
+@@ -1550,8 +1550,8 @@
+ noback context #1=1_1%capsprev["X"%realspace]$d @6-1346-0
+ noback context #1=1_1%capsprev["Y"%realspace]$d @6-13456-0
+ noback context #1=1_1%capsprev["Z"%realspace]$d @6-1356-0
+-noback context #1=1_1%ucase%ucase[]%lcase @6-3
+-noback context #1=1_1%capsprev[]%ucase%ucase @6-6
++noback context #1=1_1%ucase%ucase[]%lcase @6-3#5=1
++noback context #1=1_1%capsprev[]%ucase%ucase @6-6#5=0
+ noback context #1=1_1%capsprev["A"]"."%latin @6-1
+ noback context #1=1_1%capsprev["B"]"."%latin @6-12
+ noback context #1=1_1%capsprev["C"]"."%latin @6-14
+@@ -1630,7 +1630,7 @@
+ noback context #1=1_1%capsprev["X"]~ @6-1346-256#1=0#2=0
+ noback context #1=1_1%capsprev["Y"]~ @6-13456-256#1=0#2=0
+ noback context #1=1_1%capsprev["Z"]~ @6-1356-256#1=0#2=0
+-noback context #1=1_1%capsprev[]%ucase @6
++noback context #1=1_1%capsprev[]%ucase @6#5=0
+ noback context %latin[%realspace]$d @0
+ # 하이픈 뒤 대문자 (Submarine-Launched)
+ # 로마자 묶음 안의 수 뒤 쉼표·쌍점은 UEB 부호(쉼표 ⠂, 쌍점 ⠒).
+@@ -1663,20 +1663,20 @@
+ noback context _2%latin$d[":"]$d.%realspace%latin @25
+ noback context #4=1_3%latin%realspace$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _3%latin%realspace$d[":"]$d.%realspace%latin @25
+-noback context _2%latin$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _3%latin%realspace$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _2%latin$d[":"%realspace]%ucase @25-0-6
+-noback context _3%latin%realspace$d[":"%realspace]%ucase @25-0-6
++noback context _2%latin$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _3%latin%realspace$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _2%latin$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _3%latin%realspace$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _2%latin$d[":"%realspace]%lcase @25-0
+ noback context _3%latin%realspace$d[":"%realspace]%lcase @25-0
+-noback context #4=1_2%latin$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _2%latin$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_3%latin%realspace$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _3%latin%realspace$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_2%latin$d[":"]%ucase @6-3-25-6#4=0
+-noback context _2%latin$d[":"]%ucase @25-6
+-noback context #4=1_3%latin%realspace$d[":"]%ucase @6-3-25-6#4=0
+-noback context _3%latin%realspace$d[":"]%ucase @25-6
++noback context #4=1_2%latin$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _2%latin$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_3%latin%realspace$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _3%latin%realspace$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_2%latin$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _2%latin$d[":"]%ucase @25-6#5=0
++noback context #4=1_3%latin%realspace$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _3%latin%realspace$d[":"]%ucase @25-6#5=0
+ noback context #4=1_2%latin$d[":"]%lcase @6-3-25#4=0
+ noback context _2%latin$d[":"]%lcase @25
+ noback context #4=1_3%latin%realspace$d[":"]%lcase @6-3-25#4=0
+@@ -1697,20 +1697,20 @@
+ noback context _3%latin%numsep1$d[":"]$d.%realspace%latin @25
+ noback context #4=1_4%latin%realspace%numsep1$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _4%latin%realspace%numsep1$d[":"]$d.%realspace%latin @25
+-noback context _3%latin%numsep1$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _4%latin%realspace%numsep1$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _3%latin%numsep1$d[":"%realspace]%ucase @25-0-6
+-noback context _4%latin%realspace%numsep1$d[":"%realspace]%ucase @25-0-6
++noback context _3%latin%numsep1$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _4%latin%realspace%numsep1$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _3%latin%numsep1$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _4%latin%realspace%numsep1$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _3%latin%numsep1$d[":"%realspace]%lcase @25-0
+ noback context _4%latin%realspace%numsep1$d[":"%realspace]%lcase @25-0
+-noback context #4=1_3%latin%numsep1$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _3%latin%numsep1$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_4%latin%realspace%numsep1$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _4%latin%realspace%numsep1$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_3%latin%numsep1$d[":"]%ucase @6-3-25-6#4=0
+-noback context _3%latin%numsep1$d[":"]%ucase @25-6
+-noback context #4=1_4%latin%realspace%numsep1$d[":"]%ucase @6-3-25-6#4=0
+-noback context _4%latin%realspace%numsep1$d[":"]%ucase @25-6
++noback context #4=1_3%latin%numsep1$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _3%latin%numsep1$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_4%latin%realspace%numsep1$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _4%latin%realspace%numsep1$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_3%latin%numsep1$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _3%latin%numsep1$d[":"]%ucase @25-6#5=0
++noback context #4=1_4%latin%realspace%numsep1$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _4%latin%realspace%numsep1$d[":"]%ucase @25-6#5=0
+ noback context #4=1_3%latin%numsep1$d[":"]%lcase @6-3-25#4=0
+ noback context _3%latin%numsep1$d[":"]%lcase @25
+ noback context #4=1_4%latin%realspace%numsep1$d[":"]%lcase @6-3-25#4=0
+@@ -1731,20 +1731,20 @@
+ noback context _4%latin%numsep2$d[":"]$d.%realspace%latin @25
+ noback context #4=1_5%latin%realspace%numsep2$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _5%latin%realspace%numsep2$d[":"]$d.%realspace%latin @25
+-noback context _4%latin%numsep2$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _5%latin%realspace%numsep2$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _4%latin%numsep2$d[":"%realspace]%ucase @25-0-6
+-noback context _5%latin%realspace%numsep2$d[":"%realspace]%ucase @25-0-6
++noback context _4%latin%numsep2$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _5%latin%realspace%numsep2$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _4%latin%numsep2$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _5%latin%realspace%numsep2$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _4%latin%numsep2$d[":"%realspace]%lcase @25-0
+ noback context _5%latin%realspace%numsep2$d[":"%realspace]%lcase @25-0
+-noback context #4=1_4%latin%numsep2$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _4%latin%numsep2$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_5%latin%realspace%numsep2$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _5%latin%realspace%numsep2$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_4%latin%numsep2$d[":"]%ucase @6-3-25-6#4=0
+-noback context _4%latin%numsep2$d[":"]%ucase @25-6
+-noback context #4=1_5%latin%realspace%numsep2$d[":"]%ucase @6-3-25-6#4=0
+-noback context _5%latin%realspace%numsep2$d[":"]%ucase @25-6
++noback context #4=1_4%latin%numsep2$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _4%latin%numsep2$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_5%latin%realspace%numsep2$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _5%latin%realspace%numsep2$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_4%latin%numsep2$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _4%latin%numsep2$d[":"]%ucase @25-6#5=0
++noback context #4=1_5%latin%realspace%numsep2$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _5%latin%realspace%numsep2$d[":"]%ucase @25-6#5=0
+ noback context #4=1_4%latin%numsep2$d[":"]%lcase @6-3-25#4=0
+ noback context _4%latin%numsep2$d[":"]%lcase @25
+ noback context #4=1_5%latin%realspace%numsep2$d[":"]%lcase @6-3-25#4=0
+@@ -1765,20 +1765,20 @@
+ noback context _5%latin%numsep3$d[":"]$d.%realspace%latin @25
+ noback context #4=1_6%latin%realspace%numsep3$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _6%latin%realspace%numsep3$d[":"]$d.%realspace%latin @25
+-noback context _5%latin%numsep3$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _6%latin%realspace%numsep3$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _5%latin%numsep3$d[":"%realspace]%ucase @25-0-6
+-noback context _6%latin%realspace%numsep3$d[":"%realspace]%ucase @25-0-6
++noback context _5%latin%numsep3$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _6%latin%realspace%numsep3$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _5%latin%numsep3$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _6%latin%realspace%numsep3$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _5%latin%numsep3$d[":"%realspace]%lcase @25-0
+ noback context _6%latin%realspace%numsep3$d[":"%realspace]%lcase @25-0
+-noback context #4=1_5%latin%numsep3$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _5%latin%numsep3$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_6%latin%realspace%numsep3$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _6%latin%realspace%numsep3$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_5%latin%numsep3$d[":"]%ucase @6-3-25-6#4=0
+-noback context _5%latin%numsep3$d[":"]%ucase @25-6
+-noback context #4=1_6%latin%realspace%numsep3$d[":"]%ucase @6-3-25-6#4=0
+-noback context _6%latin%realspace%numsep3$d[":"]%ucase @25-6
++noback context #4=1_5%latin%numsep3$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _5%latin%numsep3$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_6%latin%realspace%numsep3$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _6%latin%realspace%numsep3$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_5%latin%numsep3$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _5%latin%numsep3$d[":"]%ucase @25-6#5=0
++noback context #4=1_6%latin%realspace%numsep3$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _6%latin%realspace%numsep3$d[":"]%ucase @25-6#5=0
+ noback context #4=1_5%latin%numsep3$d[":"]%lcase @6-3-25#4=0
+ noback context _5%latin%numsep3$d[":"]%lcase @25
+ noback context #4=1_6%latin%realspace%numsep3$d[":"]%lcase @6-3-25#4=0
+@@ -1799,20 +1799,20 @@
+ noback context _6%latin%numsep4$d[":"]$d.%realspace%latin @25
+ noback context #4=1_7%latin%realspace%numsep4$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _7%latin%realspace%numsep4$d[":"]$d.%realspace%latin @25
+-noback context _6%latin%numsep4$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _7%latin%realspace%numsep4$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _6%latin%numsep4$d[":"%realspace]%ucase @25-0-6
+-noback context _7%latin%realspace%numsep4$d[":"%realspace]%ucase @25-0-6
++noback context _6%latin%numsep4$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _7%latin%realspace%numsep4$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _6%latin%numsep4$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _7%latin%realspace%numsep4$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _6%latin%numsep4$d[":"%realspace]%lcase @25-0
+ noback context _7%latin%realspace%numsep4$d[":"%realspace]%lcase @25-0
+-noback context #4=1_6%latin%numsep4$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _6%latin%numsep4$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_7%latin%realspace%numsep4$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _7%latin%realspace%numsep4$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_6%latin%numsep4$d[":"]%ucase @6-3-25-6#4=0
+-noback context _6%latin%numsep4$d[":"]%ucase @25-6
+-noback context #4=1_7%latin%realspace%numsep4$d[":"]%ucase @6-3-25-6#4=0
+-noback context _7%latin%realspace%numsep4$d[":"]%ucase @25-6
++noback context #4=1_6%latin%numsep4$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _6%latin%numsep4$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_7%latin%realspace%numsep4$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _7%latin%realspace%numsep4$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_6%latin%numsep4$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _6%latin%numsep4$d[":"]%ucase @25-6#5=0
++noback context #4=1_7%latin%realspace%numsep4$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _7%latin%realspace%numsep4$d[":"]%ucase @25-6#5=0
+ noback context #4=1_6%latin%numsep4$d[":"]%lcase @6-3-25#4=0
+ noback context _6%latin%numsep4$d[":"]%lcase @25
+ noback context #4=1_7%latin%realspace%numsep4$d[":"]%lcase @6-3-25#4=0
+@@ -1833,20 +1833,20 @@
+ noback context _7%latin%numsep5$d[":"]$d.%realspace%latin @25
+ noback context #4=1_8%latin%realspace%numsep5$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _8%latin%realspace%numsep5$d[":"]$d.%realspace%latin @25
+-noback context _7%latin%numsep5$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _8%latin%realspace%numsep5$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _7%latin%numsep5$d[":"%realspace]%ucase @25-0-6
+-noback context _8%latin%realspace%numsep5$d[":"%realspace]%ucase @25-0-6
++noback context _7%latin%numsep5$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _8%latin%realspace%numsep5$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _7%latin%numsep5$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _8%latin%realspace%numsep5$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _7%latin%numsep5$d[":"%realspace]%lcase @25-0
+ noback context _8%latin%realspace%numsep5$d[":"%realspace]%lcase @25-0
+-noback context #4=1_7%latin%numsep5$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _7%latin%numsep5$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_8%latin%realspace%numsep5$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _8%latin%realspace%numsep5$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_7%latin%numsep5$d[":"]%ucase @6-3-25-6#4=0
+-noback context _7%latin%numsep5$d[":"]%ucase @25-6
+-noback context #4=1_8%latin%realspace%numsep5$d[":"]%ucase @6-3-25-6#4=0
+-noback context _8%latin%realspace%numsep5$d[":"]%ucase @25-6
++noback context #4=1_7%latin%numsep5$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _7%latin%numsep5$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_8%latin%realspace%numsep5$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _8%latin%realspace%numsep5$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_7%latin%numsep5$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _7%latin%numsep5$d[":"]%ucase @25-6#5=0
++noback context #4=1_8%latin%realspace%numsep5$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _8%latin%realspace%numsep5$d[":"]%ucase @25-6#5=0
+ noback context #4=1_7%latin%numsep5$d[":"]%lcase @6-3-25#4=0
+ noback context _7%latin%numsep5$d[":"]%lcase @25
+ noback context #4=1_8%latin%realspace%numsep5$d[":"]%lcase @6-3-25#4=0
+@@ -1867,20 +1867,20 @@
+ noback context _8%latin%numsep6$d[":"]$d.%realspace%latin @25
+ noback context #4=1_9%latin%realspace%numsep6$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _9%latin%realspace%numsep6$d[":"]$d.%realspace%latin @25
+-noback context _8%latin%numsep6$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _9%latin%realspace%numsep6$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _8%latin%numsep6$d[":"%realspace]%ucase @25-0-6
+-noback context _9%latin%realspace%numsep6$d[":"%realspace]%ucase @25-0-6
++noback context _8%latin%numsep6$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _9%latin%realspace%numsep6$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _8%latin%numsep6$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _9%latin%realspace%numsep6$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _8%latin%numsep6$d[":"%realspace]%lcase @25-0
+ noback context _9%latin%realspace%numsep6$d[":"%realspace]%lcase @25-0
+-noback context #4=1_8%latin%numsep6$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _8%latin%numsep6$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_9%latin%realspace%numsep6$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _9%latin%realspace%numsep6$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_8%latin%numsep6$d[":"]%ucase @6-3-25-6#4=0
+-noback context _8%latin%numsep6$d[":"]%ucase @25-6
+-noback context #4=1_9%latin%realspace%numsep6$d[":"]%ucase @6-3-25-6#4=0
+-noback context _9%latin%realspace%numsep6$d[":"]%ucase @25-6
++noback context #4=1_8%latin%numsep6$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _8%latin%numsep6$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_9%latin%realspace%numsep6$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _9%latin%realspace%numsep6$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_8%latin%numsep6$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _8%latin%numsep6$d[":"]%ucase @25-6#5=0
++noback context #4=1_9%latin%realspace%numsep6$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _9%latin%realspace%numsep6$d[":"]%ucase @25-6#5=0
+ noback context #4=1_8%latin%numsep6$d[":"]%lcase @6-3-25#4=0
+ noback context _8%latin%numsep6$d[":"]%lcase @25
+ noback context #4=1_9%latin%realspace%numsep6$d[":"]%lcase @6-3-25#4=0
+@@ -1901,20 +1901,20 @@
+ noback context _9%latin%numsep7$d[":"]$d.%realspace%latin @25
+ noback context #4=1_10%latin%realspace%numsep7$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _10%latin%realspace%numsep7$d[":"]$d.%realspace%latin @25
+-noback context _9%latin%numsep7$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _10%latin%realspace%numsep7$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _9%latin%numsep7$d[":"%realspace]%ucase @25-0-6
+-noback context _10%latin%realspace%numsep7$d[":"%realspace]%ucase @25-0-6
++noback context _9%latin%numsep7$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _10%latin%realspace%numsep7$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _9%latin%numsep7$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _10%latin%realspace%numsep7$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _9%latin%numsep7$d[":"%realspace]%lcase @25-0
+ noback context _10%latin%realspace%numsep7$d[":"%realspace]%lcase @25-0
+-noback context #4=1_9%latin%numsep7$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _9%latin%numsep7$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_10%latin%realspace%numsep7$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _10%latin%realspace%numsep7$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_9%latin%numsep7$d[":"]%ucase @6-3-25-6#4=0
+-noback context _9%latin%numsep7$d[":"]%ucase @25-6
+-noback context #4=1_10%latin%realspace%numsep7$d[":"]%ucase @6-3-25-6#4=0
+-noback context _10%latin%realspace%numsep7$d[":"]%ucase @25-6
++noback context #4=1_9%latin%numsep7$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _9%latin%numsep7$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_10%latin%realspace%numsep7$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _10%latin%realspace%numsep7$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_9%latin%numsep7$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _9%latin%numsep7$d[":"]%ucase @25-6#5=0
++noback context #4=1_10%latin%realspace%numsep7$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _10%latin%realspace%numsep7$d[":"]%ucase @25-6#5=0
+ noback context #4=1_9%latin%numsep7$d[":"]%lcase @6-3-25#4=0
+ noback context _9%latin%numsep7$d[":"]%lcase @25
+ noback context #4=1_10%latin%realspace%numsep7$d[":"]%lcase @6-3-25#4=0
+@@ -1935,20 +1935,20 @@
+ noback context _10%latin%numsep8$d[":"]$d.%realspace%latin @25
+ noback context #4=1_11%latin%realspace%numsep8$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _11%latin%realspace%numsep8$d[":"]$d.%realspace%latin @25
+-noback context _10%latin%numsep8$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _11%latin%realspace%numsep8$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _10%latin%numsep8$d[":"%realspace]%ucase @25-0-6
+-noback context _11%latin%realspace%numsep8$d[":"%realspace]%ucase @25-0-6
++noback context _10%latin%numsep8$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _11%latin%realspace%numsep8$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _10%latin%numsep8$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _11%latin%realspace%numsep8$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _10%latin%numsep8$d[":"%realspace]%lcase @25-0
+ noback context _11%latin%realspace%numsep8$d[":"%realspace]%lcase @25-0
+-noback context #4=1_10%latin%numsep8$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _10%latin%numsep8$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_11%latin%realspace%numsep8$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _11%latin%realspace%numsep8$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_10%latin%numsep8$d[":"]%ucase @6-3-25-6#4=0
+-noback context _10%latin%numsep8$d[":"]%ucase @25-6
+-noback context #4=1_11%latin%realspace%numsep8$d[":"]%ucase @6-3-25-6#4=0
+-noback context _11%latin%realspace%numsep8$d[":"]%ucase @25-6
++noback context #4=1_10%latin%numsep8$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _10%latin%numsep8$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_11%latin%realspace%numsep8$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _11%latin%realspace%numsep8$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_10%latin%numsep8$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _10%latin%numsep8$d[":"]%ucase @25-6#5=0
++noback context #4=1_11%latin%realspace%numsep8$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _11%latin%realspace%numsep8$d[":"]%ucase @25-6#5=0
+ noback context #4=1_10%latin%numsep8$d[":"]%lcase @6-3-25#4=0
+ noback context _10%latin%numsep8$d[":"]%lcase @25
+ noback context #4=1_11%latin%realspace%numsep8$d[":"]%lcase @6-3-25#4=0
+@@ -1969,20 +1969,20 @@
+ noback context _11%latin%numsep9$d[":"]$d.%realspace%latin @25
+ noback context #4=1_12%latin%realspace%numsep9$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _12%latin%realspace%numsep9$d[":"]$d.%realspace%latin @25
+-noback context _11%latin%numsep9$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _12%latin%realspace%numsep9$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _11%latin%numsep9$d[":"%realspace]%ucase @25-0-6
+-noback context _12%latin%realspace%numsep9$d[":"%realspace]%ucase @25-0-6
++noback context _11%latin%numsep9$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _12%latin%realspace%numsep9$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _11%latin%numsep9$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _12%latin%realspace%numsep9$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _11%latin%numsep9$d[":"%realspace]%lcase @25-0
+ noback context _12%latin%realspace%numsep9$d[":"%realspace]%lcase @25-0
+-noback context #4=1_11%latin%numsep9$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _11%latin%numsep9$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_12%latin%realspace%numsep9$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _12%latin%realspace%numsep9$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_11%latin%numsep9$d[":"]%ucase @6-3-25-6#4=0
+-noback context _11%latin%numsep9$d[":"]%ucase @25-6
+-noback context #4=1_12%latin%realspace%numsep9$d[":"]%ucase @6-3-25-6#4=0
+-noback context _12%latin%realspace%numsep9$d[":"]%ucase @25-6
++noback context #4=1_11%latin%numsep9$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _11%latin%numsep9$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_12%latin%realspace%numsep9$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _12%latin%realspace%numsep9$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_11%latin%numsep9$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _11%latin%numsep9$d[":"]%ucase @25-6#5=0
++noback context #4=1_12%latin%realspace%numsep9$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _12%latin%realspace%numsep9$d[":"]%ucase @25-6#5=0
+ noback context #4=1_11%latin%numsep9$d[":"]%lcase @6-3-25#4=0
+ noback context _11%latin%numsep9$d[":"]%lcase @25
+ noback context #4=1_12%latin%realspace%numsep9$d[":"]%lcase @6-3-25#4=0
+@@ -2003,20 +2003,20 @@
+ noback context _12%latin%numsep10$d[":"]$d.%realspace%latin @25
+ noback context #4=1_13%latin%realspace%numsep10$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _13%latin%realspace%numsep10$d[":"]$d.%realspace%latin @25
+-noback context _12%latin%numsep10$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _13%latin%realspace%numsep10$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _12%latin%numsep10$d[":"%realspace]%ucase @25-0-6
+-noback context _13%latin%realspace%numsep10$d[":"%realspace]%ucase @25-0-6
++noback context _12%latin%numsep10$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _13%latin%realspace%numsep10$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _12%latin%numsep10$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _13%latin%realspace%numsep10$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _12%latin%numsep10$d[":"%realspace]%lcase @25-0
+ noback context _13%latin%realspace%numsep10$d[":"%realspace]%lcase @25-0
+-noback context #4=1_12%latin%numsep10$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _12%latin%numsep10$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_13%latin%realspace%numsep10$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _13%latin%realspace%numsep10$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_12%latin%numsep10$d[":"]%ucase @6-3-25-6#4=0
+-noback context _12%latin%numsep10$d[":"]%ucase @25-6
+-noback context #4=1_13%latin%realspace%numsep10$d[":"]%ucase @6-3-25-6#4=0
+-noback context _13%latin%realspace%numsep10$d[":"]%ucase @25-6
++noback context #4=1_12%latin%numsep10$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _12%latin%numsep10$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_13%latin%realspace%numsep10$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _13%latin%realspace%numsep10$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_12%latin%numsep10$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _12%latin%numsep10$d[":"]%ucase @25-6#5=0
++noback context #4=1_13%latin%realspace%numsep10$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _13%latin%realspace%numsep10$d[":"]%ucase @25-6#5=0
+ noback context #4=1_12%latin%numsep10$d[":"]%lcase @6-3-25#4=0
+ noback context _12%latin%numsep10$d[":"]%lcase @25
+ noback context #4=1_13%latin%realspace%numsep10$d[":"]%lcase @6-3-25#4=0
+@@ -2037,20 +2037,20 @@
+ noback context _13%latin%numsep11$d[":"]$d.%realspace%latin @25
+ noback context #4=1_14%latin%realspace%numsep11$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _14%latin%realspace%numsep11$d[":"]$d.%realspace%latin @25
+-noback context _13%latin%numsep11$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _14%latin%realspace%numsep11$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _13%latin%numsep11$d[":"%realspace]%ucase @25-0-6
+-noback context _14%latin%realspace%numsep11$d[":"%realspace]%ucase @25-0-6
++noback context _13%latin%numsep11$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _14%latin%realspace%numsep11$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _13%latin%numsep11$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _14%latin%realspace%numsep11$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _13%latin%numsep11$d[":"%realspace]%lcase @25-0
+ noback context _14%latin%realspace%numsep11$d[":"%realspace]%lcase @25-0
+-noback context #4=1_13%latin%numsep11$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _13%latin%numsep11$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_14%latin%realspace%numsep11$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _14%latin%realspace%numsep11$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_13%latin%numsep11$d[":"]%ucase @6-3-25-6#4=0
+-noback context _13%latin%numsep11$d[":"]%ucase @25-6
+-noback context #4=1_14%latin%realspace%numsep11$d[":"]%ucase @6-3-25-6#4=0
+-noback context _14%latin%realspace%numsep11$d[":"]%ucase @25-6
++noback context #4=1_13%latin%numsep11$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _13%latin%numsep11$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_14%latin%realspace%numsep11$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _14%latin%realspace%numsep11$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_13%latin%numsep11$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _13%latin%numsep11$d[":"]%ucase @25-6#5=0
++noback context #4=1_14%latin%realspace%numsep11$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _14%latin%realspace%numsep11$d[":"]%ucase @25-6#5=0
+ noback context #4=1_13%latin%numsep11$d[":"]%lcase @6-3-25#4=0
+ noback context _13%latin%numsep11$d[":"]%lcase @25
+ noback context #4=1_14%latin%realspace%numsep11$d[":"]%lcase @6-3-25#4=0
+@@ -2071,20 +2071,20 @@
+ noback context _14%latin%numsep12$d[":"]$d.%realspace%latin @25
+ noback context #4=1_15%latin%realspace%numsep12$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _15%latin%realspace%numsep12$d[":"]$d.%realspace%latin @25
+-noback context _14%latin%numsep12$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _15%latin%realspace%numsep12$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _14%latin%numsep12$d[":"%realspace]%ucase @25-0-6
+-noback context _15%latin%realspace%numsep12$d[":"%realspace]%ucase @25-0-6
++noback context _14%latin%numsep12$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _15%latin%realspace%numsep12$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _14%latin%numsep12$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _15%latin%realspace%numsep12$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _14%latin%numsep12$d[":"%realspace]%lcase @25-0
+ noback context _15%latin%realspace%numsep12$d[":"%realspace]%lcase @25-0
+-noback context #4=1_14%latin%numsep12$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _14%latin%numsep12$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_15%latin%realspace%numsep12$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _15%latin%realspace%numsep12$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_14%latin%numsep12$d[":"]%ucase @6-3-25-6#4=0
+-noback context _14%latin%numsep12$d[":"]%ucase @25-6
+-noback context #4=1_15%latin%realspace%numsep12$d[":"]%ucase @6-3-25-6#4=0
+-noback context _15%latin%realspace%numsep12$d[":"]%ucase @25-6
++noback context #4=1_14%latin%numsep12$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _14%latin%numsep12$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_15%latin%realspace%numsep12$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _15%latin%realspace%numsep12$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_14%latin%numsep12$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _14%latin%numsep12$d[":"]%ucase @25-6#5=0
++noback context #4=1_15%latin%realspace%numsep12$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _15%latin%realspace%numsep12$d[":"]%ucase @25-6#5=0
+ noback context #4=1_14%latin%numsep12$d[":"]%lcase @6-3-25#4=0
+ noback context _14%latin%numsep12$d[":"]%lcase @25
+ noback context #4=1_15%latin%realspace%numsep12$d[":"]%lcase @6-3-25#4=0
+@@ -2105,20 +2105,20 @@
+ noback context _15%latin%numsep13$d[":"]$d.%realspace%latin @25
+ noback context #4=1_16%latin%realspace%numsep13$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _16%latin%realspace%numsep13$d[":"]$d.%realspace%latin @25
+-noback context _15%latin%numsep13$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _16%latin%realspace%numsep13$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _15%latin%numsep13$d[":"%realspace]%ucase @25-0-6
+-noback context _16%latin%realspace%numsep13$d[":"%realspace]%ucase @25-0-6
++noback context _15%latin%numsep13$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _16%latin%realspace%numsep13$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _15%latin%numsep13$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _16%latin%realspace%numsep13$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _15%latin%numsep13$d[":"%realspace]%lcase @25-0
+ noback context _16%latin%realspace%numsep13$d[":"%realspace]%lcase @25-0
+-noback context #4=1_15%latin%numsep13$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _15%latin%numsep13$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_16%latin%realspace%numsep13$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _16%latin%realspace%numsep13$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_15%latin%numsep13$d[":"]%ucase @6-3-25-6#4=0
+-noback context _15%latin%numsep13$d[":"]%ucase @25-6
+-noback context #4=1_16%latin%realspace%numsep13$d[":"]%ucase @6-3-25-6#4=0
+-noback context _16%latin%realspace%numsep13$d[":"]%ucase @25-6
++noback context #4=1_15%latin%numsep13$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _15%latin%numsep13$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_16%latin%realspace%numsep13$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _16%latin%realspace%numsep13$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_15%latin%numsep13$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _15%latin%numsep13$d[":"]%ucase @25-6#5=0
++noback context #4=1_16%latin%realspace%numsep13$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _16%latin%realspace%numsep13$d[":"]%ucase @25-6#5=0
+ noback context #4=1_15%latin%numsep13$d[":"]%lcase @6-3-25#4=0
+ noback context _15%latin%numsep13$d[":"]%lcase @25
+ noback context #4=1_16%latin%realspace%numsep13$d[":"]%lcase @6-3-25#4=0
+@@ -2139,20 +2139,20 @@
+ noback context _16%latin%numsep14$d[":"]$d.%realspace%latin @25
+ noback context #4=1_17%latin%realspace%numsep14$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _17%latin%realspace%numsep14$d[":"]$d.%realspace%latin @25
+-noback context _16%latin%numsep14$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _17%latin%realspace%numsep14$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _16%latin%numsep14$d[":"%realspace]%ucase @25-0-6
+-noback context _17%latin%realspace%numsep14$d[":"%realspace]%ucase @25-0-6
++noback context _16%latin%numsep14$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _17%latin%realspace%numsep14$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _16%latin%numsep14$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _17%latin%realspace%numsep14$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _16%latin%numsep14$d[":"%realspace]%lcase @25-0
+ noback context _17%latin%realspace%numsep14$d[":"%realspace]%lcase @25-0
+-noback context #4=1_16%latin%numsep14$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _16%latin%numsep14$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_17%latin%realspace%numsep14$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _17%latin%realspace%numsep14$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_16%latin%numsep14$d[":"]%ucase @6-3-25-6#4=0
+-noback context _16%latin%numsep14$d[":"]%ucase @25-6
+-noback context #4=1_17%latin%realspace%numsep14$d[":"]%ucase @6-3-25-6#4=0
+-noback context _17%latin%realspace%numsep14$d[":"]%ucase @25-6
++noback context #4=1_16%latin%numsep14$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _16%latin%numsep14$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_17%latin%realspace%numsep14$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _17%latin%realspace%numsep14$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_16%latin%numsep14$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _16%latin%numsep14$d[":"]%ucase @25-6#5=0
++noback context #4=1_17%latin%realspace%numsep14$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _17%latin%realspace%numsep14$d[":"]%ucase @25-6#5=0
+ noback context #4=1_16%latin%numsep14$d[":"]%lcase @6-3-25#4=0
+ noback context _16%latin%numsep14$d[":"]%lcase @25
+ noback context #4=1_17%latin%realspace%numsep14$d[":"]%lcase @6-3-25#4=0
+@@ -2173,20 +2173,20 @@
+ noback context _17%latin%numsep15$d[":"]$d.%realspace%latin @25
+ noback context #4=1_18%latin%realspace%numsep15$d[":"]$d.%realspace%latin @6-3-25#4=0
+ noback context _18%latin%realspace%numsep15$d[":"]$d.%realspace%latin @25
+-noback context _17%latin%numsep15$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _18%latin%realspace%numsep15$d[":"%realspace]%ucase%ucase @25-0-6-6
+-noback context _17%latin%numsep15$d[":"%realspace]%ucase @25-0-6
+-noback context _18%latin%realspace%numsep15$d[":"%realspace]%ucase @25-0-6
++noback context _17%latin%numsep15$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _18%latin%realspace%numsep15$d[":"%realspace]%ucase%ucase @25-0-6-6#5=0
++noback context _17%latin%numsep15$d[":"%realspace]%ucase @25-0-6#5=0
++noback context _18%latin%realspace%numsep15$d[":"%realspace]%ucase @25-0-6#5=0
+ noback context _17%latin%numsep15$d[":"%realspace]%lcase @25-0
+ noback context _18%latin%realspace%numsep15$d[":"%realspace]%lcase @25-0
+-noback context #4=1_17%latin%numsep15$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _17%latin%numsep15$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_18%latin%realspace%numsep15$d[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context _18%latin%realspace%numsep15$d[":"]%ucase%ucase @25-6-6
+-noback context #4=1_17%latin%numsep15$d[":"]%ucase @6-3-25-6#4=0
+-noback context _17%latin%numsep15$d[":"]%ucase @25-6
+-noback context #4=1_18%latin%realspace%numsep15$d[":"]%ucase @6-3-25-6#4=0
+-noback context _18%latin%realspace%numsep15$d[":"]%ucase @25-6
++noback context #4=1_17%latin%numsep15$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _17%latin%numsep15$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_18%latin%realspace%numsep15$d[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context _18%latin%realspace%numsep15$d[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1_17%latin%numsep15$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _17%latin%numsep15$d[":"]%ucase @25-6#5=0
++noback context #4=1_18%latin%realspace%numsep15$d[":"]%ucase @6-3-25-6#4=0#5=0
++noback context _18%latin%realspace%numsep15$d[":"]%ucase @25-6#5=0
+ noback context #4=1_17%latin%numsep15$d[":"]%lcase @6-3-25#4=0
+ noback context _17%latin%numsep15$d[":"]%lcase @25
+ noback context #4=1_18%latin%realspace%numsep15$d[":"]%lcase @6-3-25#4=0
+@@ -2387,104 +2387,104 @@
+ # 대문자 기호만 적는다(BBC1, BBC3 → ⠂ ⠠⠠⠃⠃⠉; Apple, Google → ⠂ ⠠⠛). UEB 쉼표 규칙들만
+ # 쉼표+공백 앞에서 쉼표를 소비하므로(한국 쉼표는 ","%realspace[] 오프너가 공백까지 소비)
+ # 이 lookback은 UEB 쉼표 뒤에서만 성립한다.
+-noback context _1","[%realspace]%ucase%ucase @0-6-6
++noback context _1","[%realspace]%ucase%ucase @0-6-6#5=0
+ 
+ # Standing-alone letters at the end of a quoted Roman list.
+ noback context #1=1_1","[%realspace]%gonel"\x2019"!%latin @0-56
+ noback context #1=1_1","[%realspace]%gonel"\x2019"~ @0-56
+-noback context #1=1_1","[%realspace]%goneu"\x2019"!%latin @0-56-6
+-noback context #1=1_1","[%realspace]%goneu"\x2019"~ @0-56-6
++noback context #1=1_1","[%realspace]%goneu"\x2019"!%latin @0-56-6#5=0
++noback context #1=1_1","[%realspace]%goneu"\x2019"~ @0-56-6#5=0
+ noback context #1=1_1","[%realspace]%gonel"\x201d"!%latin @0-56
+ noback context #1=1_1","[%realspace]%gonel"\x201d"~ @0-56
+-noback context #1=1_1","[%realspace]%goneu"\x201d"!%latin @0-56-6
+-noback context #1=1_1","[%realspace]%goneu"\x201d"~ @0-56-6
++noback context #1=1_1","[%realspace]%goneu"\x201d"!%latin @0-56-6#5=0
++noback context #1=1_1","[%realspace]%goneu"\x201d"~ @0-56-6#5=0
+ # Preserve standing-alone single-letter grade-1 indicator after a comma.
+-noback context _1","[%realspace]%goneu!%latdig @0-56-6
+-noback context _1","[%realspace]"A" @0-6
+-noback context _1","[%realspace]"B" @0-6
+-noback context _1","[%realspace]"C" @0-6
+-noback context _1","[%realspace]"D" @0-6
+-noback context _1","[%realspace]"E" @0-6
+-noback context _1","[%realspace]"F" @0-6
+-noback context _1","[%realspace]"G" @0-6
+-noback context _1","[%realspace]"H" @0-6
+-noback context _1","[%realspace]"I" @0-6
+-noback context _1","[%realspace]"J" @0-6
+-noback context _1","[%realspace]"K" @0-6
+-noback context _1","[%realspace]"L" @0-6
+-noback context _1","[%realspace]"M" @0-6
+-noback context _1","[%realspace]"N" @0-6
+-noback context _1","[%realspace]"O" @0-6
+-noback context _1","[%realspace]"P" @0-6
+-noback context _1","[%realspace]"Q" @0-6
+-noback context _1","[%realspace]"R" @0-6
+-noback context _1","[%realspace]"S" @0-6
+-noback context _1","[%realspace]"T" @0-6
+-noback context _1","[%realspace]"U" @0-6
+-noback context _1","[%realspace]"V" @0-6
+-noback context _1","[%realspace]"W" @0-6
+-noback context _1","[%realspace]"X" @0-6
+-noback context _1","[%realspace]"Y" @0-6
+-noback context _1","[%realspace]"Z" @0-6
++noback context _1","[%realspace]%goneu!%latdig @0-56-6#5=0
++noback context _1","[%realspace]"A" @0-6#5=0
++noback context _1","[%realspace]"B" @0-6#5=0
++noback context _1","[%realspace]"C" @0-6#5=0
++noback context _1","[%realspace]"D" @0-6#5=0
++noback context _1","[%realspace]"E" @0-6#5=0
++noback context _1","[%realspace]"F" @0-6#5=0
++noback context _1","[%realspace]"G" @0-6#5=0
++noback context _1","[%realspace]"H" @0-6#5=0
++noback context _1","[%realspace]"I" @0-6#5=0
++noback context _1","[%realspace]"J" @0-6#5=0
++noback context _1","[%realspace]"K" @0-6#5=0
++noback context _1","[%realspace]"L" @0-6#5=0
++noback context _1","[%realspace]"M" @0-6#5=0
++noback context _1","[%realspace]"N" @0-6#5=0
++noback context _1","[%realspace]"O" @0-6#5=0
++noback context _1","[%realspace]"P" @0-6#5=0
++noback context _1","[%realspace]"Q" @0-6#5=0
++noback context _1","[%realspace]"R" @0-6#5=0
++noback context _1","[%realspace]"S" @0-6#5=0
++noback context _1","[%realspace]"T" @0-6#5=0
++noback context _1","[%realspace]"U" @0-6#5=0
++noback context _1","[%realspace]"V" @0-6#5=0
++noback context _1","[%realspace]"W" @0-6#5=0
++noback context _1","[%realspace]"X" @0-6#5=0
++noback context _1","[%realspace]"Y" @0-6#5=0
++noback context _1","[%realspace]"Z" @0-6#5=0
+ # 쉼표+공백 뒤 latin run 오프너 (쉼표는 openafter 제외 유지)
+-noback context #1=0","%realspace[]%ucase%ucase @356-6-6#1=1
+-noback context #1=0","%realspace[]%ucase @356-6#1=1
++noback context #1=0","%realspace[]%ucase%ucase @356-6-6#1=1#5=0
++noback context #1=0","%realspace[]%ucase @356-6#1=1#5=0
+ noback context #1=0","%realspace[]%latin @356#1=1
+ # run 내 마침표 (D.COY, co.kr): 종료/재개시 없이 ⠲ + caps만
+-noback context #4=1%latin["."]%ucase%ucase @6-3-256-6-6#4=0
+-noback context %latin["."]%ucase%ucase @256-6-6
+-noback context #4=1%latin["."]"A" @6-3-256-6#4=0
+-noback context %latin["."]"A" @256-6
+-noback context #4=1%latin["."]"B" @6-3-256-6#4=0
+-noback context %latin["."]"B" @256-6
+-noback context #4=1%latin["."]"C" @6-3-256-6#4=0
+-noback context %latin["."]"C" @256-6
+-noback context #4=1%latin["."]"D" @6-3-256-6#4=0
+-noback context %latin["."]"D" @256-6
+-noback context #4=1%latin["."]"E" @6-3-256-6#4=0
+-noback context %latin["."]"E" @256-6
+-noback context #4=1%latin["."]"F" @6-3-256-6#4=0
+-noback context %latin["."]"F" @256-6
+-noback context #4=1%latin["."]"G" @6-3-256-6#4=0
+-noback context %latin["."]"G" @256-6
+-noback context #4=1%latin["."]"H" @6-3-256-6#4=0
+-noback context %latin["."]"H" @256-6
+-noback context #4=1%latin["."]"I" @6-3-256-6#4=0
+-noback context %latin["."]"I" @256-6
+-noback context #4=1%latin["."]"J" @6-3-256-6#4=0
+-noback context %latin["."]"J" @256-6
+-noback context #4=1%latin["."]"K" @6-3-256-6#4=0
+-noback context %latin["."]"K" @256-6
+-noback context #4=1%latin["."]"L" @6-3-256-6#4=0
+-noback context %latin["."]"L" @256-6
+-noback context #4=1%latin["."]"M" @6-3-256-6#4=0
+-noback context %latin["."]"M" @256-6
+-noback context #4=1%latin["."]"N" @6-3-256-6#4=0
+-noback context %latin["."]"N" @256-6
+-noback context #4=1%latin["."]"O" @6-3-256-6#4=0
+-noback context %latin["."]"O" @256-6
+-noback context #4=1%latin["."]"P" @6-3-256-6#4=0
+-noback context %latin["."]"P" @256-6
+-noback context #4=1%latin["."]"Q" @6-3-256-6#4=0
+-noback context %latin["."]"Q" @256-6
+-noback context #4=1%latin["."]"R" @6-3-256-6#4=0
+-noback context %latin["."]"R" @256-6
+-noback context #4=1%latin["."]"S" @6-3-256-6#4=0
+-noback context %latin["."]"S" @256-6
+-noback context #4=1%latin["."]"T" @6-3-256-6#4=0
+-noback context %latin["."]"T" @256-6
+-noback context #4=1%latin["."]"U" @6-3-256-6#4=0
+-noback context %latin["."]"U" @256-6
+-noback context #4=1%latin["."]"V" @6-3-256-6#4=0
+-noback context %latin["."]"V" @256-6
+-noback context #4=1%latin["."]"W" @6-3-256-6#4=0
+-noback context %latin["."]"W" @256-6
+-noback context #4=1%latin["."]"X" @6-3-256-6#4=0
+-noback context %latin["."]"X" @256-6
+-noback context #4=1%latin["."]"Y" @6-3-256-6#4=0
+-noback context %latin["."]"Y" @256-6
+-noback context #4=1%latin["."]"Z" @6-3-256-6#4=0
+-noback context %latin["."]"Z" @256-6
++noback context #4=1%latin["."]%ucase%ucase @6-3-256-6-6#4=0#5=0
++noback context %latin["."]%ucase%ucase @256-6-6#5=0
++noback context #4=1%latin["."]"A" @6-3-256-6#4=0#5=0
++noback context %latin["."]"A" @256-6#5=0
++noback context #4=1%latin["."]"B" @6-3-256-6#4=0#5=0
++noback context %latin["."]"B" @256-6#5=0
++noback context #4=1%latin["."]"C" @6-3-256-6#4=0#5=0
++noback context %latin["."]"C" @256-6#5=0
++noback context #4=1%latin["."]"D" @6-3-256-6#4=0#5=0
++noback context %latin["."]"D" @256-6#5=0
++noback context #4=1%latin["."]"E" @6-3-256-6#4=0#5=0
++noback context %latin["."]"E" @256-6#5=0
++noback context #4=1%latin["."]"F" @6-3-256-6#4=0#5=0
++noback context %latin["."]"F" @256-6#5=0
++noback context #4=1%latin["."]"G" @6-3-256-6#4=0#5=0
++noback context %latin["."]"G" @256-6#5=0
++noback context #4=1%latin["."]"H" @6-3-256-6#4=0#5=0
++noback context %latin["."]"H" @256-6#5=0
++noback context #4=1%latin["."]"I" @6-3-256-6#4=0#5=0
++noback context %latin["."]"I" @256-6#5=0
++noback context #4=1%latin["."]"J" @6-3-256-6#4=0#5=0
++noback context %latin["."]"J" @256-6#5=0
++noback context #4=1%latin["."]"K" @6-3-256-6#4=0#5=0
++noback context %latin["."]"K" @256-6#5=0
++noback context #4=1%latin["."]"L" @6-3-256-6#4=0#5=0
++noback context %latin["."]"L" @256-6#5=0
++noback context #4=1%latin["."]"M" @6-3-256-6#4=0#5=0
++noback context %latin["."]"M" @256-6#5=0
++noback context #4=1%latin["."]"N" @6-3-256-6#4=0#5=0
++noback context %latin["."]"N" @256-6#5=0
++noback context #4=1%latin["."]"O" @6-3-256-6#4=0#5=0
++noback context %latin["."]"O" @256-6#5=0
++noback context #4=1%latin["."]"P" @6-3-256-6#4=0#5=0
++noback context %latin["."]"P" @256-6#5=0
++noback context #4=1%latin["."]"Q" @6-3-256-6#4=0#5=0
++noback context %latin["."]"Q" @256-6#5=0
++noback context #4=1%latin["."]"R" @6-3-256-6#4=0#5=0
++noback context %latin["."]"R" @256-6#5=0
++noback context #4=1%latin["."]"S" @6-3-256-6#4=0#5=0
++noback context %latin["."]"S" @256-6#5=0
++noback context #4=1%latin["."]"T" @6-3-256-6#4=0#5=0
++noback context %latin["."]"T" @256-6#5=0
++noback context #4=1%latin["."]"U" @6-3-256-6#4=0#5=0
++noback context %latin["."]"U" @256-6#5=0
++noback context #4=1%latin["."]"V" @6-3-256-6#4=0#5=0
++noback context %latin["."]"V" @256-6#5=0
++noback context #4=1%latin["."]"W" @6-3-256-6#4=0#5=0
++noback context %latin["."]"W" @256-6#5=0
++noback context #4=1%latin["."]"X" @6-3-256-6#4=0#5=0
++noback context %latin["."]"X" @256-6#5=0
++noback context #4=1%latin["."]"Y" @6-3-256-6#4=0#5=0
++noback context %latin["."]"Y" @256-6#5=0
++noback context #4=1%latin["."]"Z" @6-3-256-6#4=0#5=0
++noback context %latin["."]"Z" @256-6#5=0
+ noback context #4=1%latin["."]%lcase @6-3-256#4=0
+ noback context %latin["."]%lcase @256
+ 
+@@ -2492,35 +2492,35 @@
+ # (b) 단독 글자: UEB 기호 1자표 ⠰ (a·i·o 제외) — 2024 제32항 예 ‘a, b, c’, 제34항 ‘k, t, p’,
+ #     제36항 George V, v-x (PDF p.27-30). ⠰ 는 대문자표 앞.
+ # (주의: 부정 속성 !%x 는 문자열 끝에서 거짓이 되므로 끝(~) 형을 따로 둔다)
+-noback context #1=1_1%latin[%realspace]%goneu!%latdig @0-56-6
++noback context #1=1_1%latin[%realspace]%goneu!%latdig @0-56-6#5=0
+ noback context #1=1_1%latin[%realspace]%gonel!%latdig @0-56
+-noback context #1=1_1%latin[%realspace]%goneu~ @0-56-6
++noback context #1=1_1%latin[%realspace]%goneu~ @0-56-6#5=0
+ noback context #1=1_1%latin[%realspace]%gonel~ @0-56
+-noback context #1=1_1!%latin%realspace[]%goneu!%latdig @56-6
++noback context #1=1_1!%latin%realspace[]%goneu!%latdig @56-6#5=0
+ noback context #1=1_1!%latin%realspace[]%gonel!%latdig @56
+-noback context #1=1_1!%latin%realspace[]%goneu~ @56-6
++noback context #1=1_1!%latin%realspace[]%goneu~ @56-6#5=0
+ noback context #1=1_1!%latin%realspace[]%gonel~ @56
+-noback context #1=1%gonepre[]%goneu!%latdig @56-6
++noback context #1=1%gonepre[]%goneu!%latdig @56-6#5=0
+ noback context #1=1%gonepre[]%gonel!%latdig @56
+-noback context #1=1%gonepre[]%goneu~ @56-6
++noback context #1=1%gonepre[]%goneu~ @56-6#5=0
+ noback context #1=1%gonepre[]%gonel~ @56
+ # (c) 숫자 뒤: a-j 소문자는 ⠰ (1998b, 350e), 대문자는 대문자표만 (B1A4, 4MATIC)
+ noback context #1=1$d[]%atoj @56
+-noback context #1=1$d[]%ucase%ucase @6-6
+-noback context #1=1$d[]%ucase @6
++noback context #1=1$d[]%ucase%ucase @6-6#5=0
++noback context #1=1$d[]%ucase @6#5=0
+ # (d) 비로마자 뒤 단어 머리 대문자표: 공백(앞이 비로마자)·구분자 뒤
+-noback context #1=1_1!%latin%realspace[]%ucase%ucase @6-6
+-noback context #1=1_1!%latin%realspace[]%ucase @6
+-noback context #1=1%sepx[]%ucase%ucase @6-6
+-noback context #1=1%sepx[]%ucase @6
++noback context #1=1_1!%latin%realspace[]%ucase%ucase @6-6#5=0
++noback context #1=1_1!%latin%realspace[]%ucase @6#5=0
++noback context #1=1%sepx[]%ucase%ucase @6-6#5=0
++noback context #1=1%sepx[]%ucase @6#5=0
+ # UEB 괄호(2024 제32항 예 ‘(a), (e)’ PDF p.28): 구간 안에서, 괄호 안이 로마자를 포함하고
+ # 한글·괄호가 없을 때. 괄호를 초점으로 소비하므로 뒤 글자의 대문자표·⠰ 를 함께 적는다.
+-noback context #1=1["("]%goneu")" @5-126-56-6#2=1
++noback context #1=1["("]%goneu")" @5-126-56-6#2=1#5=0
+ noback context #1=1["("]%gonel")" @5-126-56#2=1
+-noback context #1=1["("]%ucase%ucase")" @5-126-6-6#2=1
+-noback context #1=1["("]%ucase%ucase%pin.")" @5-126-6-6#2=1
+-noback context #1=1["("]%ucase")" @5-126-6#2=1
+-noback context #1=1["("]%ucase%pin.")" @5-126-6#2=1
++noback context #1=1["("]%ucase%ucase")" @5-126-6-6#2=1#5=0
++noback context #1=1["("]%ucase%ucase%pin.")" @5-126-6-6#2=1#5=0
++noback context #1=1["("]%ucase")" @5-126-6#2=1#5=0
++noback context #1=1["("]%ucase%pin.")" @5-126-6#2=1#5=0
+ noback context #1=1["("]%latin")" @5-126#2=1
+ noback context #1=1["("]%latin%pin.")" @5-126#2=1
+ noback context #1=1%latin[%realspace]"("%latin")" @0
+@@ -2534,35 +2534,35 @@
+ noback context #2=1[")"]%hangall @5-345-256#1=0#2=0
+ noback context #4=1#2=1[")"]%realspace%hangall @6-3-5-345-256#1=0#2=0#4=0
+ noback context #2=1[")"]%realspace%hangall @5-345-256#1=0#2=0
+-noback context #4=1#2=1[")"]%ucase%ucase @6-3-5-345-6-6#2=0#4=0
+-noback context #2=1[")"]%ucase%ucase @5-345-6-6#2=0
+-noback context #4=1#2=1[")"]%ucase @6-3-5-345-6#2=0#4=0
+-noback context #2=1[")"]%ucase @5-345-6#2=0
++noback context #4=1#2=1[")"]%ucase%ucase @6-3-5-345-6-6#2=0#4=0#5=0
++noback context #2=1[")"]%ucase%ucase @5-345-6-6#2=0#5=0
++noback context #4=1#2=1[")"]%ucase @6-3-5-345-6#2=0#4=0#5=0
++noback context #2=1[")"]%ucase @5-345-6#2=0#5=0
+ noback context #4=1#2=1[")"] @6-3-5-345#2=0#4=0
+ noback context #2=1[")"] @5-345#2=0
+ # 한글 괄호로 묶인 로마자(제34항)의 닫는 괄호: 구간 종료(종료표 없음). 뒤에 로마자가 바로/공백
+ # 뒤에 오면 닫는 괄호에서 새 구간을 연다(PRE-형: 괄호를 소비하지 않아 뒤 글자 위치가 비어 있음)
+-noback context #1=1")"[]"GD" @356-56-6-6
+-noback context #1=1")"[]"IMM" @356-56-6-6
+-noback context #1=1")"[]"NEC" @356-56-6-6
+-noback context #1=1")"[]"PD" @356-56-6-6
+-noback context #1=1")"[]"BRL" @356-56-6-6
+-noback context #1=1")"%realspace[]"GD" @356-56-6-6
+-noback context #1=1")"%realspace[]"IMM" @356-56-6-6
+-noback context #1=1")"%realspace[]"NEC" @356-56-6-6
+-noback context #1=1")"%realspace[]"PD" @356-56-6-6
+-noback context #1=1")"%realspace[]"BRL" @356-56-6-6
+-noback context #1=1")"[]%ucase%ucase @356-6-6
+-noback context #1=1")"[]%ucase @356-6
++noback context #1=1")"[]"GD" @356-56-6-6#5=0
++noback context #1=1")"[]"IMM" @356-56-6-6#5=0
++noback context #1=1")"[]"NEC" @356-56-6-6#5=0
++noback context #1=1")"[]"PD" @356-56-6-6#5=0
++noback context #1=1")"[]"BRL" @356-56-6-6#5=0
++noback context #1=1")"%realspace[]"GD" @356-56-6-6#5=0
++noback context #1=1")"%realspace[]"IMM" @356-56-6-6#5=0
++noback context #1=1")"%realspace[]"NEC" @356-56-6-6#5=0
++noback context #1=1")"%realspace[]"PD" @356-56-6-6#5=0
++noback context #1=1")"%realspace[]"BRL" @356-56-6-6#5=0
++noback context #1=1")"[]%ucase%ucase @356-6-6#5=0
++noback context #1=1")"[]%ucase @356-6#5=0
+ noback context #1=1")"[]%latin @356
+-noback context #1=1")"%realspace[]%ucase%ucase @356-6-6
+-noback context #1=1")"%realspace[]%ucase @356-6
++noback context #1=1")"%realspace[]%ucase%ucase @356-6-6#5=0
++noback context #1=1")"%realspace[]%ucase @356-6#5=0
+ noback context #1=1")"%realspace[]%latin @356
+ noback context #4=1#1=1[")"] @6-3-6-356#1=0#4=0
+ noback context #1=1[")"] @6-356#1=0
+ # & 가 로마자 앞에서 구간을 시작: 앰퍼샌드 앞에 로마자표
+-noback context #1=0["&"]%ucase%ucase @356-4-12346-6-6#1=1
+-noback context #1=0["&"]%ucase @356-4-12346-6#1=1
++noback context #1=0["&"]%ucase%ucase @356-4-12346-6-6#1=1#5=0
++noback context #1=0["&"]%ucase @356-4-12346-6#1=1#5=0
+ noback context #1=0["&"]%latin @356-4-12346#1=1
+ # = 와 수의 부호 +, - 는 한글 점자 수학 기호(⠒⠒ ⠢ ⠤)로 적으므로 구간이 끝난다
+ noback context #1=1["="] @25-25#1=0#2=0
+@@ -2570,24 +2570,24 @@
+ noback context #1=1_1%realspace["-"]$d @36#1=0#2=0
+ # 닫는 따옴표(’ ”)로 묶인 로마자(제34항)도 따옴표에서 구간이 끝난다.
+ # 뒤에 로마자가 붙으면(Life’s) 아포스트로피이므로 제외.
+-noback context #1=1"\x2019"%realspace[]"GD" @356-56-6-6
+-noback context #1=1"\x2019"%realspace[]"IMM" @356-56-6-6
+-noback context #1=1"\x2019"%realspace[]"NEC" @356-56-6-6
+-noback context #1=1"\x2019"%realspace[]"PD" @356-56-6-6
+-noback context #1=1"\x2019"%realspace[]"BRL" @356-56-6-6
+-noback context #1=1"\x201d"%realspace[]"GD" @356-56-6-6
+-noback context #1=1"\x201d"%realspace[]"IMM" @356-56-6-6
+-noback context #1=1"\x201d"%realspace[]"NEC" @356-56-6-6
+-noback context #1=1"\x201d"%realspace[]"PD" @356-56-6-6
+-noback context #1=1"\x201d"%realspace[]"BRL" @356-56-6-6
+-noback context #1=1"\x2019"%realspace[]%ucase%ucase @356-6-6
+-noback context #1=1"\x2019"%realspace[]%ucase @356-6
++noback context #1=1"\x2019"%realspace[]"GD" @356-56-6-6#5=0
++noback context #1=1"\x2019"%realspace[]"IMM" @356-56-6-6#5=0
++noback context #1=1"\x2019"%realspace[]"NEC" @356-56-6-6#5=0
++noback context #1=1"\x2019"%realspace[]"PD" @356-56-6-6#5=0
++noback context #1=1"\x2019"%realspace[]"BRL" @356-56-6-6#5=0
++noback context #1=1"\x201d"%realspace[]"GD" @356-56-6-6#5=0
++noback context #1=1"\x201d"%realspace[]"IMM" @356-56-6-6#5=0
++noback context #1=1"\x201d"%realspace[]"NEC" @356-56-6-6#5=0
++noback context #1=1"\x201d"%realspace[]"PD" @356-56-6-6#5=0
++noback context #1=1"\x201d"%realspace[]"BRL" @356-56-6-6#5=0
++noback context #1=1"\x2019"%realspace[]%ucase%ucase @356-6-6#5=0
++noback context #1=1"\x2019"%realspace[]%ucase @356-6#5=0
+ noback context #1=1"\x2019"%realspace[]%latin @356
+-noback context #1=1"\x201d"%realspace[]%ucase%ucase @356-6-6
+-noback context #1=1"\x201d"%realspace[]%ucase @356-6
++noback context #1=1"\x201d"%realspace[]%ucase%ucase @356-6-6#5=0
++noback context #1=1"\x201d"%realspace[]%ucase @356-6#5=0
+ noback context #1=1"\x201d"%realspace[]%latin @356
+-noback context #1=1"\x201d"[]%ucase%ucase @356-6-6
+-noback context #1=1"\x201d"[]%ucase @356-6
++noback context #1=1"\x201d"[]%ucase%ucase @356-6-6#5=0
++noback context #1=1"\x201d"[]%ucase @356-6#5=0
+ noback context #4=1#1=1["\x2019"]!%latin @6-3-356-3#1=0#4=0
+ noback context #1=1["\x2019"]!%latin @356-3#1=0
+ noback context #4=1#1=1["\x2019"]~ @6-3-356-3#1=0#4=0
+@@ -2598,18 +2598,18 @@
+ noback context #1=1["%"]%hangall @356-1234-0#1=0
+ noback context #1=1["%"]"," @356-1234#1=0
+ # 구간 안 쌍점·쌍반점·느낌표·물음표·마침표 뒤에 로마자가 이어지면 UEB 부호, 종료표 없음
+-noback context #4=1#1=1%latin[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context #1=1%latin[":"]%ucase%ucase @25-6-6
+-noback context #4=1#1=1%latin[":"]%ucase @6-3-25-6#4=0
+-noback context #1=1%latin[":"]%ucase @25-6
++noback context #4=1#1=1%latin[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context #1=1%latin[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1#1=1%latin[":"]%ucase @6-3-25-6#4=0#5=0
++noback context #1=1%latin[":"]%ucase @25-6#5=0
+ noback context #4=1#1=1%latin[":"]%latin @6-3-25#4=0
+ noback context #1=1%latin[":"]%latin @25
+ noback context #4=1#1=1%latin[":"]%realspace%latin @6-3-25#4=0
+ noback context #1=1%latin[":"]%realspace%latin @25
+-noback context #4=1#1=1_1%latin[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context #1=1_1%latin[":"]%ucase%ucase @25-6-6
+-noback context #4=1#1=1_1%latin[":"]%ucase @6-3-25-6#4=0
+-noback context #1=1_1%latin[":"]%ucase @25-6
++noback context #4=1#1=1_1%latin[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context #1=1_1%latin[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1#1=1_1%latin[":"]%ucase @6-3-25-6#4=0#5=0
++noback context #1=1_1%latin[":"]%ucase @25-6#5=0
+ noback context #4=1#1=1_1%latin[":"]%latin @6-3-25#4=0
+ noback context #1=1_1%latin[":"]%latin @25
+ noback context #4=1#1=1_1%latin[":"]%realspace%latin @6-3-25#4=0
+@@ -2621,10 +2621,10 @@
+ noback context #1=1_1%latin[%realspace]":"%latin @0
+ noback context #4=1#1=1_1%realspace[":"]%realspace%latin @6-3-25#4=0
+ noback context #1=1_1%realspace[":"]%realspace%latin @25
+-noback context #4=1#1=1_1%realspace[":"]%ucase%ucase @6-3-25-6-6#4=0
+-noback context #1=1_1%realspace[":"]%ucase%ucase @25-6-6
+-noback context #4=1#1=1_1%realspace[":"]%ucase @6-3-25-6#4=0
+-noback context #1=1_1%realspace[":"]%ucase @25-6
++noback context #4=1#1=1_1%realspace[":"]%ucase%ucase @6-3-25-6-6#4=0#5=0
++noback context #1=1_1%realspace[":"]%ucase%ucase @25-6-6#5=0
++noback context #4=1#1=1_1%realspace[":"]%ucase @6-3-25-6#4=0#5=0
++noback context #1=1_1%realspace[":"]%ucase @25-6#5=0
+ noback context #4=1#1=1_1%realspace[":"]%latin @6-3-25#4=0
+ noback context #1=1_1%realspace[":"]%latin @25
+ noback context #4=1#1=1%latin[";"]%realspace%latin @6-3-23#4=0
+@@ -2652,10 +2652,10 @@
+ noback context #1=1%latin[]"~"%hangall @256#1=0#2=0
+ noback context #1=1_1%latin[]"~"%hangall @256#1=0#2=0
+ # 구간 안 마침표(go.kr, S.I.VILLAGE): 앞 글자가 축약으로 소비된 경우의 lookback 형
+-noback context #4=1#1=1_1%latin["."]%ucase%ucase @6-3-256-6-6#4=0
+-noback context #1=1_1%latin["."]%ucase%ucase @256-6-6
+-noback context #4=1#1=1_1%latin["."]%ucase @6-3-256-6#4=0
+-noback context #1=1_1%latin["."]%ucase @256-6
++noback context #4=1#1=1_1%latin["."]%ucase%ucase @6-3-256-6-6#4=0#5=0
++noback context #1=1_1%latin["."]%ucase%ucase @256-6-6#5=0
++noback context #4=1#1=1_1%latin["."]%ucase @6-3-256-6#4=0#5=0
++noback context #1=1_1%latin["."]%ucase @256-6#5=0
+ noback context #4=1#1=1_1%latin["."]%lcase @6-3-256#4=0
+ noback context #1=1_1%latin["."]%lcase @256
+ # 구간 안 쉼표: 뒤에 로마자/숫자가 이어지면 UEB 쉼표 ⠂(제32항 apples, bananas; 4p, 6p; Rg1, Rb1)
+@@ -2666,26 +2666,26 @@
+ noback context #4=1#1=1[","]%latin @6-3-2#4=0
+ noback context #1=1[","]%latin @2
+ # 가운뎃점: 구간 종료, 뒤 로마자는 새 구간(⠴). PRE-형 오프너(가운뎃점에서) + 그 밖의 경우 종료만.
+-noback context #1=1%mdot[]"GD" @356-56-6-6
+-noback context #1=1%mdot[]"IMM" @356-56-6-6
+-noback context #1=1%mdot[]"NEC" @356-56-6-6
+-noback context #1=1%mdot[]"PD" @356-56-6-6
+-noback context #1=1%mdot[]"BRL" @356-56-6-6
+-noback context #1=1%mdot[]%ucase%ucase @356-6-6
+-noback context #1=1%mdot[]%ucase @356-6
++noback context #1=1%mdot[]"GD" @356-56-6-6#5=0
++noback context #1=1%mdot[]"IMM" @356-56-6-6#5=0
++noback context #1=1%mdot[]"NEC" @356-56-6-6#5=0
++noback context #1=1%mdot[]"PD" @356-56-6-6#5=0
++noback context #1=1%mdot[]"BRL" @356-56-6-6#5=0
++noback context #1=1%mdot[]%ucase%ucase @356-6-6#5=0
++noback context #1=1%mdot[]%ucase @356-6#5=0
+ noback context #1=1%mdot[]%latin @356
+ noback context #1=1[%mdot] @5-23#1=0#2=0
+-noback context `#1=0[]%ucase%ucase @356-6-6#1=1
+-noback context `#1=0[]%ucase @356-6#1=1
++noback context `#1=0[]%ucase%ucase @356-6-6#1=1#5=0
++noback context `#1=0[]%ucase @356-6#1=1#5=0
+ noback context `#1=0[]%latin @356#1=1
+-noback context `#1=0%realspace[]%ucase%ucase @356-6-6#1=1
+-noback context `#1=0%realspace[]%ucase @356-6#1=1
++noback context `#1=0%realspace[]%ucase%ucase @356-6-6#1=1#5=0
++noback context `#1=0%realspace[]%ucase @356-6#1=1#5=0
+ noback context `#1=0%realspace[]%latin @356#1=1
+-noback context #1=0%openafter[]%ucase%ucase @356-6-6#1=1
+-noback context #1=0%openafter[]%ucase @356-6#1=1
++noback context #1=0%openafter[]%ucase%ucase @356-6-6#1=1#5=0
++noback context #1=0%openafter[]%ucase @356-6#1=1#5=0
+ noback context #1=0%openafter[]%latin @356#1=1
+-noback context #1=0%openafter%realspace[]%ucase%ucase @356-6-6#1=1
+-noback context #1=0%openafter%realspace[]%ucase @356-6#1=1
++noback context #1=0%openafter%realspace[]%ucase%ucase @356-6-6#1=1#5=0
++noback context #1=0%openafter%realspace[]%ucase @356-6#1=1#5=0
+ noback context #1=0%openafter%realspace[]%latin @356#1=1
+ # mid-run caps (예: iPhone, KakaoTALK) + 제29항 대문자 종료표 ⠠⠄
+ # 스트림 초두 앵커 변형 (class-PRE 룰은 입력 초두에서 발화하지 않음 — 기존 관찰과 동일)
+@@ -2694,118 +2694,118 @@
+ # %openafter$s 오프너가 공백까지 소비하므로 여기 도달하지 않음.
+ # 공백 위치 caps: _1 lookback으로 선행 문자(소비돼도 원입력) 판별 —
+ # 한글 뒤면 새 run(⠴), latin 뒤면 run 연속(제32항 first-to-last)
+-noback context #1=0_1%hangall[%realspace]%ucase%ucase @0-356-6-6#1=1
+-noback context #1=0_1%hangall[%realspace]"A" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"B" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"C" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"D" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"E" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"F" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"G" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"H" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"I" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"J" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"K" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"L" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"M" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"N" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"O" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"P" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"Q" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"R" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"S" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"T" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"U" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"V" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"W" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"X" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"Y" @0-356-6#1=1
+-noback context #1=0_1%hangall[%realspace]"Z" @0-356-6#1=1
++noback context #1=0_1%hangall[%realspace]%ucase%ucase @0-356-6-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"A" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"B" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"C" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"D" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"E" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"F" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"G" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"H" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"I" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"J" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"K" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"L" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"M" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"N" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"O" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"P" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"Q" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"R" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"S" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"T" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"U" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"V" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"W" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"X" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"Y" @0-356-6#1=1#5=0
++noback context #1=0_1%hangall[%realspace]"Z" @0-356-6#1=1#5=0
+ noback context #1=0_1%hangall[%realspace]%latin @0-356#1=1
+-noback context #1=1_1%latin[%realspace]%ucase%ucase @0-6-6
+-noback context #1=1_1%latin[%realspace]"A" @0-6
+-noback context #1=1_1%latin[%realspace]"B" @0-6
+-noback context #1=1_1%latin[%realspace]"C" @0-6
+-noback context #1=1_1%latin[%realspace]"D" @0-6
+-noback context #1=1_1%latin[%realspace]"E" @0-6
+-noback context #1=1_1%latin[%realspace]"F" @0-6
+-noback context #1=1_1%latin[%realspace]"G" @0-6
+-noback context #1=1_1%latin[%realspace]"H" @0-6
+-noback context #1=1_1%latin[%realspace]"I" @0-6
+-noback context #1=1_1%latin[%realspace]"J" @0-6
+-noback context #1=1_1%latin[%realspace]"K" @0-6
+-noback context #1=1_1%latin[%realspace]"L" @0-6
+-noback context #1=1_1%latin[%realspace]"M" @0-6
+-noback context #1=1_1%latin[%realspace]"N" @0-6
+-noback context #1=1_1%latin[%realspace]"O" @0-6
+-noback context #1=1_1%latin[%realspace]"P" @0-6
+-noback context #1=1_1%latin[%realspace]"Q" @0-6
+-noback context #1=1_1%latin[%realspace]"R" @0-6
+-noback context #1=1_1%latin[%realspace]"S" @0-6
+-noback context #1=1_1%latin[%realspace]"T" @0-6
+-noback context #1=1_1%latin[%realspace]"U" @0-6
+-noback context #1=1_1%latin[%realspace]"V" @0-6
+-noback context #1=1_1%latin[%realspace]"W" @0-6
+-noback context #1=1_1%latin[%realspace]"X" @0-6
+-noback context #1=1_1%latin[%realspace]"Y" @0-6
+-noback context #1=1_1%latin[%realspace]"Z" @0-6
++noback context #1=1_1%latin[%realspace]%ucase%ucase @0-6-6#5=0
++noback context #1=1_1%latin[%realspace]"A" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"B" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"C" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"D" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"E" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"F" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"G" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"H" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"I" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"J" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"K" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"L" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"M" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"N" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"O" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"P" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"Q" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"R" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"S" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"T" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"U" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"V" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"W" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"X" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"Y" @0-6#5=0
++noback context #1=1_1%latin[%realspace]"Z" @0-6#5=0
+ # 영숫자 혼합 run (제35항: B1A4, B2B — 숫자가 run을 끊지 않음): 숫자를
+ # 포커스로 소비하며 수표를 명시 발화 (PRE 복사는 numsign 기계를 우회)
+ # 대문자 경계를 넘는 UEB 축약 금지: 소문자->대문자(MoU, iN, ByteDance, ToF)와
+ # 종료표 직전 대문자 2자(HUGgy, ACCex): 커서 글자만 PRE-복사(출력 없음)로 넘긴다
+ noback context %lcase[]%ucase #6=0
+-noback context `%ucase%ucase[]"a" @6-3
+-noback context `%ucase%ucase[]"b" @6-3
+-noback context `%ucase%ucase[]"c" @6-3
+-noback context `%ucase%ucase[]"d" @6-3
+-noback context `%ucase%ucase[]"e" @6-3
+-noback context `%ucase%ucase[]"f" @6-3
+-noback context `%ucase%ucase[]"g" @6-3
+-noback context `%ucase%ucase[]"h" @6-3
+-noback context `%ucase%ucase[]"i" @6-3
+-noback context `%ucase%ucase[]"j" @6-3
+-noback context `%ucase%ucase[]"k" @6-3
+-noback context `%ucase%ucase[]"l" @6-3
+-noback context `%ucase%ucase[]"m" @6-3
+-noback context `%ucase%ucase[]"n" @6-3
+-noback context `%ucase%ucase[]"o" @6-3
+-noback context `%ucase%ucase[]"p" @6-3
+-noback context `%ucase%ucase[]"q" @6-3
+-noback context `%ucase%ucase[]"r" @6-3
+-noback context `%ucase%ucase[]"s" @6-3
+-noback context `%ucase%ucase[]"t" @6-3
+-noback context `%ucase%ucase[]"u" @6-3
+-noback context `%ucase%ucase[]"v" @6-3
+-noback context `%ucase%ucase[]"w" @6-3
+-noback context `%ucase%ucase[]"x" @6-3
+-noback context `%ucase%ucase[]"y" @6-3
+-noback context `%ucase%ucase[]"z" @6-3
+-noback context %ucase%ucase[]"a" @6-3
+-noback context %ucase%ucase[]"b" @6-3
+-noback context %ucase%ucase[]"c" @6-3
+-noback context %ucase%ucase[]"d" @6-3
+-noback context %ucase%ucase[]"e" @6-3
+-noback context %ucase%ucase[]"f" @6-3
+-noback context %ucase%ucase[]"g" @6-3
+-noback context %ucase%ucase[]"h" @6-3
+-noback context %ucase%ucase[]"i" @6-3
+-noback context %ucase%ucase[]"j" @6-3
+-noback context %ucase%ucase[]"k" @6-3
+-noback context %ucase%ucase[]"l" @6-3
+-noback context %ucase%ucase[]"m" @6-3
+-noback context %ucase%ucase[]"n" @6-3
+-noback context %ucase%ucase[]"o" @6-3
+-noback context %ucase%ucase[]"p" @6-3
+-noback context %ucase%ucase[]"q" @6-3
+-noback context %ucase%ucase[]"r" @6-3
+-noback context %ucase%ucase[]"s" @6-3
+-noback context %ucase%ucase[]"t" @6-3
+-noback context %ucase%ucase[]"u" @6-3
+-noback context %ucase%ucase[]"v" @6-3
+-noback context %ucase%ucase[]"w" @6-3
+-noback context %ucase%ucase[]"x" @6-3
+-noback context %ucase%ucase[]"y" @6-3
+-noback context %ucase%ucase[]"z" @6-3
++noback context `%ucase%ucase[]"a" @6-3#5=1
++noback context `%ucase%ucase[]"b" @6-3#5=1
++noback context `%ucase%ucase[]"c" @6-3#5=1
++noback context `%ucase%ucase[]"d" @6-3#5=1
++noback context `%ucase%ucase[]"e" @6-3#5=1
++noback context `%ucase%ucase[]"f" @6-3#5=1
++noback context `%ucase%ucase[]"g" @6-3#5=1
++noback context `%ucase%ucase[]"h" @6-3#5=1
++noback context `%ucase%ucase[]"i" @6-3#5=1
++noback context `%ucase%ucase[]"j" @6-3#5=1
++noback context `%ucase%ucase[]"k" @6-3#5=1
++noback context `%ucase%ucase[]"l" @6-3#5=1
++noback context `%ucase%ucase[]"m" @6-3#5=1
++noback context `%ucase%ucase[]"n" @6-3#5=1
++noback context `%ucase%ucase[]"o" @6-3#5=1
++noback context `%ucase%ucase[]"p" @6-3#5=1
++noback context `%ucase%ucase[]"q" @6-3#5=1
++noback context `%ucase%ucase[]"r" @6-3#5=1
++noback context `%ucase%ucase[]"s" @6-3#5=1
++noback context `%ucase%ucase[]"t" @6-3#5=1
++noback context `%ucase%ucase[]"u" @6-3#5=1
++noback context `%ucase%ucase[]"v" @6-3#5=1
++noback context `%ucase%ucase[]"w" @6-3#5=1
++noback context `%ucase%ucase[]"x" @6-3#5=1
++noback context `%ucase%ucase[]"y" @6-3#5=1
++noback context `%ucase%ucase[]"z" @6-3#5=1
++noback context %ucase%ucase[]"a" @6-3#5=1
++noback context %ucase%ucase[]"b" @6-3#5=1
++noback context %ucase%ucase[]"c" @6-3#5=1
++noback context %ucase%ucase[]"d" @6-3#5=1
++noback context %ucase%ucase[]"e" @6-3#5=1
++noback context %ucase%ucase[]"f" @6-3#5=1
++noback context %ucase%ucase[]"g" @6-3#5=1
++noback context %ucase%ucase[]"h" @6-3#5=1
++noback context %ucase%ucase[]"i" @6-3#5=1
++noback context %ucase%ucase[]"j" @6-3#5=1
++noback context %ucase%ucase[]"k" @6-3#5=1
++noback context %ucase%ucase[]"l" @6-3#5=1
++noback context %ucase%ucase[]"m" @6-3#5=1
++noback context %ucase%ucase[]"n" @6-3#5=1
++noback context %ucase%ucase[]"o" @6-3#5=1
++noback context %ucase%ucase[]"p" @6-3#5=1
++noback context %ucase%ucase[]"q" @6-3#5=1
++noback context %ucase%ucase[]"r" @6-3#5=1
++noback context %ucase%ucase[]"s" @6-3#5=1
++noback context %ucase%ucase[]"t" @6-3#5=1
++noback context %ucase%ucase[]"u" @6-3#5=1
++noback context %ucase%ucase[]"v" @6-3#5=1
++noback context %ucase%ucase[]"w" @6-3#5=1
++noback context %ucase%ucase[]"x" @6-3#5=1
++noback context %ucase%ucase[]"y" @6-3#5=1
++noback context %ucase%ucase[]"z" @6-3#5=1
+ 
+ # 종료표: context (PRE=letter-class 안전) + 양성 열거 → 제34항(닫는/여는 부호 앞 생략) 자연 성립
+ noback context #1=1%latin[]%closeafter @256#1=0#2=0
+@@ -2866,9 +2866,22 @@
+ # Internal end marker: ensure contractions consuming the final Roman letters
+ # still visit a position at which the passage can be closed.
+ sign \xe007 0
++# The internal EOF marker is also a word boundary for UEB contractions.
++seqdelimiter \xe007
+ noback correct %latin[]~ "\xe007"
+ noback context #4=1["\xe007"] @6-3-256#1=0#2=0#4=0
+ noback context #1=1["\xe007"] @256#1=0#2=0
+ noback context ["\xe007"] #6=0
+ 
+ include ko-2020-spacing.cti
++
++#5 tracks whether the current capital-word terminator was already emitted.
++# Capital termination after a contraction consumed the last two capitals.
++noback context #1=1#5=0_2%ucase%ucase[]%capsprev @6-3#5=1
++
++# Roman parenthesized-letter list: open the passage before its first parenthesis.
++noback context #1=0["("]%ucase"),"%realspace"("%latin")" @356-5-126-6#1=1#2=1
++noback context #1=0["("]%lcase"),"%realspace"("%latin")" @356-5-126#1=1#2=1
++noback context #1=1_1")"[","]%realspace"("%latin")" @2
++noback context #1=1_1","[%realspace]"("%latin")" @0
++
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -47,6 +47,118 @@
+ 
+ 
+ multind 56-6 nocontractsign capsletter
++# Further ordinary English word readings, from en-ueb-g2.
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] best ^ 12-15-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] best ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 12-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] rest ^ 1235-15-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] rest ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1235-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] west ^ 2456-15-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] west ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2456-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] forest ^ 123456-15-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] forest ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123456-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] last ^ 123-1-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] last ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123-1-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] lost ^ 123-135-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] lost ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123-135-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] most ^ 134-135-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] most ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 134-135-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] host ^ 125-135-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] host ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 125-135-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] cost ^ 14-135-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] cost ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 14-135-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] post ^ 1234-135-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] post ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1234-135-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] list ^ 123-24-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] list ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123-24-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] trust ^ 2345-1235-136-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] trust ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2345-1235-136-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] burst ^ 12-136-1235-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] burst ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 12-136-1235-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] world ^ 456-2456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] world ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 456-2456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] order ^ 135-1235-145-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] order ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 135-1235-145-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] border ^ 12-135-1235-145-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] border ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 12-135-1235-145-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] summer ^ 234-136-134-134-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] summer ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 234-136-134-134-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] winter ^ 2456-35-2345-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] winter ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2456-35-2345-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] water ^ 2456-1-2345-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] water ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2456-1-2345-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] river ^ 1235-24-1236-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] river ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1235-24-1236-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] rover ^ 1235-135-1236-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] rover ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1235-135-1236-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] silver ^ 234-24-123-1236-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] silver ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 234-24-123-1236-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] never ^ 1345-5-15-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] never ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1345-5-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] ever ^ 5-15-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] ever ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 5-15
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] over ^ 135-1236-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] over ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 135-1236-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] under ^ 5-136-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] under ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 5-136
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] other ^ 135-2346-1235-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] other ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 135-2346-1235
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] another ^ 1-1345-135-2346-1235-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] another ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1-1345-135-2346-1235
++
++# Additional lexical word readings, from unmodified en-ueb-g2; no_contract is respected.
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] tiger ^ 2345-24-1245-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] tiger ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2345-24-1245-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] star ^ 34-345-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] star ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 34-345
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] bar ^ 12-345-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] bar ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 12-345
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] toast ^ 2345-135-1-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] toast ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2345-135-1-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] gambler ^ 1245-1-134-12-123-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] gambler ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1245-1-134-12-123-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] youth ^ 13456-1256-1456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] youth ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 13456-1256-1456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] master ^ 134-1-34-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] master ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 134-1-34-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] yellow ^ 13456-15-123-123-246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] yellow ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 13456-15-123-123-246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] ghost ^ 126-135-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] ghost ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 126-135-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] watcher ^ 2456-1-2345-16-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] watcher ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2456-1-2345-16-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] lived ^ 123-24-1236-1246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] lived ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123-24-1236-1246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] winner ^ 2456-35-1345-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] winner ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2456-35-1345-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] east ^ 15-1-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] east ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 15-1-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] snow ^ 234-1345-246-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] snow ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 234-1345-246
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] punch ^ 1234-136-1345-16-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] punch ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1234-136-1345-16
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] part ^ 5-1234-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] part ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 5-1234
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] test ^ 2345-15-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] test ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 2345-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] earth ^ 15-345-1456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] earth ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 15-345-1456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] better ^ 12-15-2345-2345-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] better ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 12-15-2345-2345-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] flash ^ 124-123-1-146-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] flash ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 124-123-1-146
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] rush ^ 1235-136-146-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] rush ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1235-136-146
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] zest ^ 1356-15-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] zest ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1356-15-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] lover ^ 123-135-1236-12456-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] lover ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 123-135-1236-12456
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] push ^ 1234-136-146-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] push ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 1234-136-146
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] fast ^ 124-1-34-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] fast ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 124-1-34
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] fever ^ 124-5-15-256
++match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] fever ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 124-5-15
++
+ # Whole-word readings for Korean research-institute names; UEB output, no_contract respected.
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] kiost ^ 13-24-135-34-256
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] kiost ![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] 13-24-135-34

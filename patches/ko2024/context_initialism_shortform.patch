@@ -1,0 +1,495 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -550,221 +550,43 @@
+ noback context [%dquote] @356#1=0
+ # 2자 전대문자 두문자어는 철자 (경계-POST 한정: 긴 caps어 내부 미발화)
+ # AR: 구간 밖(#1=0) 형
+-noback context #1=1_1%capsprev["AR"]%closeafter @1-1235-256#1=0#2=0
+-noback context #1=1_1%capsprev["AR"]%realspace @1-1235
+-noback context #1=1_1%capsprev["AR"]~ @1-1235-256#1=0#2=0
+-noback context #1=1_1%capsprev["AR"]%openafter @1-1235
+-noback context #1=1_1%capsprev["ED"]%closeafter @15-145-256#1=0#2=0
+-noback context #1=1_1%capsprev["ED"]%realspace @15-145
+-noback context #1=1_1%capsprev["ED"]~ @15-145-256#1=0#2=0
+-noback context #1=1_1%capsprev["ED"]%openafter @15-145
+-noback context #1=1_1%capsprev["ER"]%closeafter @15-1235-256#1=0#2=0
+-noback context #1=1_1%capsprev["ER"]%realspace @15-1235
+-noback context #1=1_1%capsprev["ER"]~ @15-1235-256#1=0#2=0
+-noback context #1=1_1%capsprev["ER"]%openafter @15-1235
+-noback context #1=1_1%capsprev["OW"]%closeafter @135-2456-256#1=0#2=0
+-noback context #1=1_1%capsprev["OW"]%realspace @135-2456
+-noback context #1=1_1%capsprev["OW"]~ @135-2456-256#1=0#2=0
+-noback context #1=1_1%capsprev["OW"]%openafter @135-2456
+-noback context #1=1_1%capsprev["OU"]%closeafter @135-136-256#1=0#2=0
+-noback context #1=1_1%capsprev["OU"]%realspace @135-136
+-noback context #1=1_1%capsprev["OU"]~ @135-136-256#1=0#2=0
+-noback context #1=1_1%capsprev["OU"]%openafter @135-136
+-noback context #1=1_1%capsprev["SH"]%closeafter @234-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["SH"]%realspace @234-125
+-noback context #1=1_1%capsprev["SH"]~ @234-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["SH"]%openafter @234-125
+-noback context #1=1_1%capsprev["ST"]%closeafter @234-2345-256#1=0#2=0
+-noback context #1=1_1%capsprev["ST"]%realspace @234-2345
+-noback context #1=1_1%capsprev["ST"]~ @234-2345-256#1=0#2=0
+-noback context #1=1_1%capsprev["ST"]%openafter @234-2345
+-noback context #1=1_1%capsprev["CH"]%closeafter @14-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["CH"]%realspace @14-125
+-noback context #1=1_1%capsprev["CH"]~ @14-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["CH"]%openafter @14-125
+-noback context #1=1_1%capsprev["WH"]%closeafter @2456-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["WH"]%realspace @2456-125
+-noback context #1=1_1%capsprev["WH"]~ @2456-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["WH"]%openafter @2456-125
+-noback context #1=1_1%capsprev["TH"]%closeafter @2345-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["TH"]%realspace @2345-125
+-noback context #1=1_1%capsprev["TH"]~ @2345-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["TH"]%openafter @2345-125
+-noback context #1=1_1%capsprev["IN"]%closeafter @24-1345-256#1=0#2=0
+-noback context #1=1_1%capsprev["IN"]%realspace @24-1345
+-noback context #1=1_1%capsprev["IN"]~ @24-1345-256#1=0#2=0
+-noback context #1=1_1%capsprev["IN"]%openafter @24-1345
+-noback context #1=1_1%capsprev["EN"]%closeafter @15-1345-256#1=0#2=0
+-noback context #1=1_1%capsprev["EN"]%realspace @15-1345
+-noback context #1=1_1%capsprev["EN"]~ @15-1345-256#1=0#2=0
+-noback context #1=1_1%capsprev["EN"]%openafter @15-1345
+-noback context #1=1_1%capsprev["EA"]%closeafter @15-1-256#1=0#2=0
+-noback context #1=1_1%capsprev["EA"]%realspace @15-1
+-noback context #1=1_1%capsprev["EA"]~ @15-1-256#1=0#2=0
+-noback context #1=1_1%capsprev["EA"]%openafter @15-1
+-noback context #1=1_1%capsprev["GH"]%closeafter @1245-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["GH"]%realspace @1245-125
+-noback context #1=1_1%capsprev["GH"]~ @1245-125-256#1=0#2=0
+-noback context #1=1_1%capsprev["GH"]%openafter @1245-125
+-noback context #1=1["AR"]%closeafter @1-1235-256#1=0
+-noback context #1=1["AR"]%realspace @1-1235
+-noback context #1=1["AR"]~ @1-1235-256#1=0
+ # ED: 구간 밖(#1=0) 형
+-noback context #1=1["ED"]%closeafter @15-145-256#1=0
+-noback context #1=1["ED"]%realspace @15-145
+-noback context #1=1["ED"]~ @15-145-256#1=0
+ # ER: 구간 밖(#1=0) 형
+-noback context #1=1["ER"]%closeafter @15-1235-256#1=0
+-noback context #1=1["ER"]%realspace @15-1235
+-noback context #1=1["ER"]~ @15-1235-256#1=0
+ # OW: 구간 밖(#1=0) 형
+-noback context #1=1["OW"]%closeafter @135-2456-256#1=0
+-noback context #1=1["OW"]%realspace @135-2456
+-noback context #1=1["OW"]~ @135-2456-256#1=0
+ # OU: 구간 밖(#1=0) 형
+-noback context #1=1["OU"]%closeafter @135-136-256#1=0
+-noback context #1=1["OU"]%realspace @135-136
+-noback context #1=1["OU"]~ @135-136-256#1=0
+ # SH: 구간 밖(#1=0) 형
+-noback context #1=1["SH"]%closeafter @234-125-256#1=0
+-noback context #1=1["SH"]%realspace @234-125
+-noback context #1=1["SH"]~ @234-125-256#1=0
+ # ST: 구간 밖(#1=0) 형
+-noback context #1=1["ST"]%closeafter @234-2345-256#1=0
+-noback context #1=1["ST"]%realspace @234-2345
+-noback context #1=1["ST"]~ @234-2345-256#1=0
+ # CH: 구간 밖(#1=0) 형
+-noback context #1=1["CH"]%closeafter @14-125-256#1=0
+-noback context #1=1["CH"]%realspace @14-125
+-noback context #1=1["CH"]~ @14-125-256#1=0
+ # WH: 구간 밖(#1=0) 형
+-noback context #1=1["WH"]%closeafter @2456-125-256#1=0
+-noback context #1=1["WH"]%realspace @2456-125
+-noback context #1=1["WH"]~ @2456-125-256#1=0
+ # TH: 구간 밖(#1=0) 형
+-noback context #1=1["TH"]%closeafter @2345-125-256#1=0
+-noback context #1=1["TH"]%realspace @2345-125
+-noback context #1=1["TH"]~ @2345-125-256#1=0
+ # IN: 구간 밖(#1=0) 형
+-noback context #1=1["IN"]%closeafter @24-1345-256#1=0
+-noback context #1=1["IN"]%realspace @24-1345
+-noback context #1=1["IN"]~ @24-1345-256#1=0
+ # EN: 구간 밖(#1=0) 형
+-noback context #1=1["EN"]%closeafter @15-1345-256#1=0
+-noback context #1=1["EN"]%realspace @15-1345
+-noback context #1=1["EN"]~ @15-1345-256#1=0
+ # EA: 구간 밖(#1=0) 형
+-noback context #1=1["EA"]%closeafter @15-1-256#1=0
+-noback context #1=1["EA"]%realspace @15-1
+-noback context #1=1["EA"]~ @15-1-256#1=0
+ # GH: 구간 밖(#1=0) 형
+-noback context #1=1["GH"]%closeafter @1245-125-256#1=0
+-noback context #1=1["GH"]%realspace @1245-125
+-noback context #1=1["GH"]~ @1245-125-256#1=0
+-noback context #1=1["AR"]%openafter @1-1235
+-noback context #1=1["ED"]%openafter @15-145
+-noback context #1=1["ER"]%openafter @15-1235
+-noback context #1=1["OW"]%openafter @135-2456
+-noback context #1=1["OU"]%openafter @135-136
+-noback context #1=1["SH"]%openafter @234-125
+-noback context #1=1["ST"]%openafter @234-2345
+-noback context #1=1["CH"]%openafter @14-125
+-noback context #1=1["WH"]%openafter @2456-125
+-noback context #1=1["TH"]%openafter @2345-125
+-noback context #1=1["IN"]%openafter @24-1345
+-noback context #1=1["EN"]%openafter @15-1345
+-noback context #1=1["EA"]%openafter @15-1
+-noback context #1=1["GH"]%openafter @1245-125
+ # 두문자어 철자 예외 (NIKL: 철자형 우세 >=2x, n>=15): 대문자 literal-focus
+ # context (대소구분). 소비가 closer를 건너뛰므로 종료표는 POST별 결합 발화
+ # MOU: 구간 밖(#1=0) 형
+-noback context #1=1["MOU"]%closeafter @134-135-136-256#1=0
+-noback context #1=1["MOU"]~ @134-135-136-256#1=0
+-noback context #1=1["MOU"] @134-135-136
+ # WHO: 구간 밖(#1=0) 형
+-noback context #1=1["WHO"]%closeafter @2456-125-135-256#1=0
+-noback context #1=1["WHO"]~ @2456-125-135-256#1=0
+-noback context #1=1["WHO"] @2456-125-135
+ # ARS: 구간 밖(#1=0) 형
+-noback context #1=1["ARS"]%closeafter @1-1235-234-256#1=0
+-noback context #1=1["ARS"]~ @1-1235-234-256#1=0
+-noback context #1=1["ARS"] @1-1235-234
+ # LED: 구간 밖(#1=0) 형
+-noback context #1=1["LED"]%closeafter @123-15-145-256#1=0
+-noback context #1=1["LED"]~ @123-15-145-256#1=0
+-noback context #1=1["LED"] @123-15-145
+ # IND: 구간 밖(#1=0) 형
+-noback context #1=1["IND"]%closeafter @24-1345-145-256#1=0
+-noback context #1=1["IND"]~ @24-1345-145-256#1=0
+-noback context #1=1["IND"] @24-1345-145
+ # AED: 구간 밖(#1=0) 형
+-noback context #1=1["AED"]%closeafter @1-15-145-256#1=0
+-noback context #1=1["AED"]~ @1-15-145-256#1=0
+-noback context #1=1["AED"] @1-15-145
+ # USTR: 구간 밖(#1=0) 형
+-noback context #1=1["USTR"]%closeafter @136-234-2345-1235-256#1=0
+-noback context #1=1["USTR"]~ @136-234-2345-1235-256#1=0
+-noback context #1=1["USTR"] @136-234-2345-1235
+ # NST: 구간 밖(#1=0) 형
+-noback context #1=1["NST"]%closeafter @1345-234-2345-256#1=0
+-noback context #1=1["NST"]~ @1345-234-2345-256#1=0
+-noback context #1=1["NST"] @1345-234-2345
+ # QLED: 구간 밖(#1=0) 형
+-noback context #1=1["QLED"]%closeafter @12345-123-15-145-256#1=0
+-noback context #1=1["QLED"]~ @12345-123-15-145-256#1=0
+-noback context #1=1["QLED"] @12345-123-15-145
+ # ERP: 구간 밖(#1=0) 형
+-noback context #1=1["ERP"]%closeafter @15-1235-1234-256#1=0
+-noback context #1=1["ERP"]~ @15-1235-1234-256#1=0
+-noback context #1=1["ERP"] @15-1235-1234
+ # ETH: 구간 밖(#1=0) 형
+-noback context #1=1["ETH"]%closeafter @15-2345-125-256#1=0
+-noback context #1=1["ETH"]~ @15-2345-125-256#1=0
+-noback context #1=1["ETH"] @15-2345-125
+ # VAR: 구간 밖(#1=0) 형
+-noback context #1=1["VAR"]%closeafter @1236-1-1235-256#1=0
+-noback context #1=1["VAR"]~ @1236-1-1235-256#1=0
+-noback context #1=1["VAR"] @1236-1-1235
+ # ENM: 구간 밖(#1=0) 형
+-noback context #1=1["ENM"]%closeafter @15-1345-134-256#1=0
+-noback context #1=1["ENM"]~ @15-1345-134-256#1=0
+-noback context #1=1["ENM"] @15-1345-134
+ # UST: 구간 밖(#1=0) 형
+-noback context #1=1["UST"]%closeafter @136-234-2345-256#1=0
+-noback context #1=1["UST"]~ @136-234-2345-256#1=0
+-noback context #1=1["UST"] @136-234-2345
+ # SOFC: 구간 밖(#1=0) 형
+-noback context #1=1["SOFC"]%closeafter @234-135-124-14-256#1=0
+-noback context #1=1["SOFC"]~ @234-135-124-14-256#1=0
+-noback context #1=1["SOFC"] @234-135-124-14
+ # ERA: 구간 밖(#1=0) 형
+-noback context #1=1["ERA"]%closeafter @15-1235-1-256#1=0
+-noback context #1=1["ERA"]~ @15-1235-1-256#1=0
+-noback context #1=1["ERA"] @15-1235-1
+ # OST: 구간 밖(#1=0) 형
+-noback context #1=1["OST"]%closeafter @135-234-2345-256#1=0
+-noback context #1=1["OST"]~ @135-234-2345-256#1=0
+-noback context #1=1["OST"] @135-234-2345
+ # EDGC: 구간 밖(#1=0) 형
+-noback context #1=1["EDGC"]%closeafter @15-145-1245-14-256#1=0
+-noback context #1=1["EDGC"]~ @15-145-1245-14-256#1=0
+-noback context #1=1["EDGC"] @15-145-1245-14
+ # EDSCG: 구간 밖(#1=0) 형
+-noback context #1=1["EDSCG"]%closeafter @15-145-234-14-1245-256#1=0
+-noback context #1=1["EDSCG"]~ @15-145-234-14-1245-256#1=0
+-noback context #1=1["EDSCG"] @15-145-234-14-1245
+ # OFAC: 구간 밖(#1=0) 형
+-noback context #1=1["OFAC"]%closeafter @135-124-1-14-256#1=0
+-noback context #1=1["OFAC"]~ @135-124-1-14-256#1=0
+-noback context #1=1["OFAC"] @135-124-1-14
+ # THC: 구간 밖(#1=0) 형
+-noback context #1=1["THC"]%closeafter @2345-125-14-256#1=0
+-noback context #1=1["THC"]~ @2345-125-14-256#1=0
+-noback context #1=1["THC"] @2345-125-14
+ # STO: 구간 밖(#1=0) 형
+-noback context #1=1["STO"]%closeafter @234-2345-135-256#1=0
+-noback context #1=1["STO"]~ @234-2345-135-256#1=0
+-noback context #1=1["STO"] @234-2345-135
+ # 전 한글 음절 클래스 (8번째 슬롯): % 등 기호+한글 blank 규약용
+ attribute hangall 가각갂갃간갅갆갇갈갉갊갋갌갍갎갏감갑값갓갔강갖갗갘같갚갛개객갞갟갠갡갢갣갤갥갦갧갨갩갪갫갬갭갮갯갰갱갲갳갴갵갶갷갸갹갺갻갼갽갾갿걀걁걂걃걄걅걆걇걈걉걊걋걌걍걎걏걐걑걒걓걔걕걖걗걘걙걚걛걜걝걞걟걠걡걢걣걤걥걦걧걨걩걪걫걬걭걮걯거걱걲걳건걵걶걷걸걹걺걻걼걽걾걿검겁겂것겄겅겆겇겈겉겊겋게겍겎겏겐겑겒겓겔겕겖겗겘겙겚겛겜겝겞겟겠겡겢겣겤겥겦겧겨격겪겫견겭겮겯결겱겲겳겴겵겶겷겸겹겺겻겼경겾겿곀곁곂곃계곅곆곇
+ attribute hangall 곈곉곊곋곌곍곎곏곐곑곒곓곔곕곖곗곘곙곚곛곜곝곞곟고곡곢곣곤곥곦곧골곩곪곫곬곭곮곯곰곱곲곳곴공곶곷곸곹곺곻과곽곾곿관괁괂괃괄괅괆괇괈괉괊괋괌괍괎괏괐광괒괓괔괕괖괗괘괙괚괛괜괝괞괟괠괡괢괣괤괥괦괧괨괩괪괫괬괭괮괯괰괱괲괳괴괵괶괷괸괹괺괻괼괽괾괿굀굁굂굃굄굅굆굇굈굉굊굋굌굍굎굏교굑굒굓굔굕굖굗굘굙굚굛굜굝굞굟굠굡굢굣굤굥굦굧굨굩굪굫구국굮굯군굱굲굳굴굵굶굷굸굹굺굻굼굽굾굿궀궁궂궃궄궅궆궇궈궉궊궋권궍궎궏
+@@ -840,37 +662,9 @@
+ # G1-표기가 우세한 베이스만 채택; 나머지(ac,cd,sd,al,...)는 무표기가 우세 —
+ # 전사-분산으로 문서화 (양쪽 표기 공존, 상한 측정 대상)
+ noback context `#1=0[]"GD" @356-56#1=1
+-noback context `#1=0[]"IMM"!%latin @356-56#1=1
+-noback context `#1=0[]"IMM"~ @356-56#1=1
+-noback context `#1=0[]"NEC"!%latin @356-56#1=1
+-noback context `#1=0[]"NEC"~ @356-56#1=1
+-noback context `#1=0[]"PD"!%latin @356-56#1=1
+-noback context `#1=0[]"PD"~ @356-56#1=1
+-noback context `#1=0[]"BRL" @356-56#1=1
+ noback context `#1=0%realspace[]"GD" @356-56#1=1
+-noback context `#1=0%realspace[]"IMM"!%latin @356-56#1=1
+-noback context `#1=0%realspace[]"IMM"~ @356-56#1=1
+-noback context `#1=0%realspace[]"NEC"!%latin @356-56#1=1
+-noback context `#1=0%realspace[]"NEC"~ @356-56#1=1
+-noback context `#1=0%realspace[]"PD"!%latin @356-56#1=1
+-noback context `#1=0%realspace[]"PD"~ @356-56#1=1
+-noback context `#1=0%realspace[]"BRL" @356-56#1=1
+ noback context #1=0%openafter[]"GD" @356-56#1=1
+-noback context #1=0%openafter[]"IMM"!%latin @356-56#1=1
+-noback context #1=0%openafter[]"IMM"~ @356-56#1=1
+-noback context #1=0%openafter[]"NEC"!%latin @356-56#1=1
+-noback context #1=0%openafter[]"NEC"~ @356-56#1=1
+-noback context #1=0%openafter[]"PD"!%latin @356-56#1=1
+-noback context #1=0%openafter[]"PD"~ @356-56#1=1
+-noback context #1=0%openafter[]"BRL" @356-56#1=1
+ noback context #1=0%openafter%realspace[]"GD" @356-56#1=1
+-noback context #1=0%openafter%realspace[]"IMM"!%latin @356-56#1=1
+-noback context #1=0%openafter%realspace[]"IMM"~ @356-56#1=1
+-noback context #1=0%openafter%realspace[]"NEC"!%latin @356-56#1=1
+-noback context #1=0%openafter%realspace[]"NEC"~ @356-56#1=1
+-noback context #1=0%openafter%realspace[]"PD"!%latin @356-56#1=1
+-noback context #1=0%openafter%realspace[]"PD"~ @356-56#1=1
+-noback context #1=0%openafter%realspace[]"BRL" @356-56#1=1
+ # 수의 자릿점 쉼표: ⠂(2) — 쉼표 일반형(5)과 구분
+ # (쉼표+숫자 동시 소비: 쉼표만 소비하면 다음 숫자에 ⠼ 재발화)
+ 
+@@ -878,13 +672,6 @@
+ # 앞 글자가 로마자가 아니면 ⠴ (+대문자표). PRE-형 오프너가 앞 글자에서 불발(다음절 축약·
+ # 문맥 규칙으로 소비, openafter 밖 기호 △▲@#+・/× 등, 문장 첫머리 두문자어)해도 성립.
+ noback context #1=0_1!%latin[]"GD" @356-56#1=1
+-noback context #1=0_1!%latin[]"IMM"!%latin @356-56#1=1
+-noback context #1=0_1!%latin[]"IMM"~ @356-56#1=1
+-noback context #1=0_1!%latin[]"NEC"!%latin @356-56#1=1
+-noback context #1=0_1!%latin[]"NEC"~ @356-56#1=1
+-noback context #1=0_1!%latin[]"PD"!%latin @356-56#1=1
+-noback context #1=0_1!%latin[]"PD"~ @356-56#1=1
+-noback context #1=0_1!%latin[]"BRL" @356-56#1=1
+ noback context #1=0_1!%latin[]%ucase%ucase @356#1=1
+ noback context #1=0_1!%latin[]%ucase @356#1=1
+ # 소문자 첫 글자 + 대문자(iOS, iPhone, mRNA): 첫 글자 위치의 빈-초점 오프너가 PRE-형 단어 중간
+@@ -1481,15 +1268,7 @@
+ # 한글 괄호로 묶인 로마자(제34항)의 닫는 괄호: 구간 종료(종료표 없음). 뒤에 로마자가 바로/공백
+ # 뒤에 오면 닫는 괄호에서 새 구간을 연다(PRE-형: 괄호를 소비하지 않아 뒤 글자 위치가 비어 있음)
+ noback context #1=1")"[]"GD" @356-56
+-noback context #1=1")"[]"IMM" @356-56
+-noback context #1=1")"[]"NEC" @356-56
+-noback context #1=1")"[]"PD" @356-56
+-noback context #1=1")"[]"BRL" @356-56
+ noback context #1=1")"%realspace[]"GD" @356-56
+-noback context #1=1")"%realspace[]"IMM" @356-56
+-noback context #1=1")"%realspace[]"NEC" @356-56
+-noback context #1=1")"%realspace[]"PD" @356-56
+-noback context #1=1")"%realspace[]"BRL" @356-56
+ noback context #1=1")"[]%ucase%ucase @356
+ noback context #1=1")"[]%ucase @356
+ noback context #1=1")"[]%latin @356
+@@ -1508,15 +1287,7 @@
+ # 닫는 따옴표(’ ”)로 묶인 로마자(제34항)도 따옴표에서 구간이 끝난다.
+ # 뒤에 로마자가 붙으면(Life’s) 아포스트로피이므로 제외.
+ noback context #1=1"\x2019"%realspace[]"GD" @356-56
+-noback context #1=1"\x2019"%realspace[]"IMM" @356-56
+-noback context #1=1"\x2019"%realspace[]"NEC" @356-56
+-noback context #1=1"\x2019"%realspace[]"PD" @356-56
+-noback context #1=1"\x2019"%realspace[]"BRL" @356-56
+ noback context #1=1"\x201d"%realspace[]"GD" @356-56
+-noback context #1=1"\x201d"%realspace[]"IMM" @356-56
+-noback context #1=1"\x201d"%realspace[]"NEC" @356-56
+-noback context #1=1"\x201d"%realspace[]"PD" @356-56
+-noback context #1=1"\x201d"%realspace[]"BRL" @356-56
+ noback context #1=1"\x2019"%realspace[]%ucase%ucase @356
+ noback context #1=1"\x2019"%realspace[]%ucase @356
+ noback context #1=1"\x2019"%realspace[]%latin @356
+@@ -1563,10 +1334,6 @@
+ noback context #1=1[","]%latin @2
+ # 가운뎃점: 구간 종료, 뒤 로마자는 새 구간(⠴). PRE-형 오프너(가운뎃점에서) + 그 밖의 경우 종료만.
+ noback context #1=1%mdot[]"GD" @356-56
+-noback context #1=1%mdot[]"IMM" @356-56
+-noback context #1=1%mdot[]"NEC" @356-56
+-noback context #1=1%mdot[]"PD" @356-56
+-noback context #1=1%mdot[]"BRL" @356-56
+ noback context #1=1%mdot[]%ucase%ucase @356
+ noback context #1=1%mdot[]%ucase @356
+ noback context #1=1%mdot[]%latin @356
+@@ -1909,3 +1676,9 @@
+ noback context #1=1["\x2019"]%latin @356-3
+ noback context #1=1["\x2019"] @356-3#1=0#2=0
+ noback context #1=1["\x201d"] @356#1=0#2=0
++
++# Complete initialisms, not suffix overrides of unrelated words.
++noback context `#1=1["OLED"]!%latin @135-123-15-145
++noback context #1=1_1!%latin["OLED"]!%latin @135-123-15-145
++noback context `#1=1["PER"]!%latin @1234-15-1235
++noback context #1=1_1!%latin["PER"]!%latin @1234-15-1235
+--- a/ko-2020-spacing.cti
++++ b/ko-2020-spacing.cti
+@@ -141,3 +141,10 @@
+ noback correct _1"》"[%realspace1-9]"."~ ?
+ noback correct _1"〉"[%realspace1-9]"."~ ?
+ 
++
++# An isolated Korean X:Y pair is a ratio/contrast label, not running prose.
++noback correct `[%hangall1-9":"%hangall1-9]~ *
++# A colon in running Korean text has a following blank; numeric ratios are excluded.
++noback correct _1":"[]%hangall "\s"
++noback correct _1%hangall[]"+" "\s"
++noback correct _1"+"[]%hangall "\s"
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -46,6 +46,7 @@
+ #   author: Krzysztof Drewniak <krzysdrewniak@gmail.com>
+ 
+ 
++nocontractsign 56
+ multind 56-6 nocontractsign capsletter
+ # Further ordinary English word readings, from en-ueb-g2.
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz] best ^ 12-15-34-256
+@@ -206,8 +207,8 @@
+ # [ko-graft disabled] seqdelimiter —   \x2014
+ seqdelimiter ―   \x2015
+ 
+-# [ko-graft disabled] seqbeforechars ([{"“'‘
+-# [ko-graft disabled] seqafterchars  )]}"”'’.,;:.!?…
++seqbeforechars ([{"“'‘
++seqafterchars  )]}"”'’.,;:.!?…
+ seqafterpattern 'd
+ seqafterpattern 'll
+ seqafterpattern 're
+@@ -351,53 +352,53 @@
+ nofor word you've 13456-3-1236-15
+ nofor word you’ve 13456-3-1236-15
+ 
+-contraction b
+-contraction c
+-contraction d
+-contraction e
+-contraction f
+-contraction g
+-contraction h
+-contraction j
+-contraction k
+-contraction l
+-contraction m
+-contraction n
+-contraction p
+-contraction q
+-contraction r
+-contraction s
+-contraction t
+-contraction u
+-contraction v
+-contraction w
+-contraction x
+-contraction y
+-contraction z
+-
+-contraction B
+-contraction C
+-contraction D
+-contraction E
+-contraction F
+-contraction G
+-contraction H
+-contraction J
+-contraction K
+-contraction L
+-contraction M
+-contraction N
+-contraction P
+-contraction Q
+-contraction R
+-contraction S
+-contraction T
+-contraction U
+-contraction V
+-contraction W
+-contraction X
+-contraction Y
+-contraction Z
++# Single letters retain Korean context indicators: contraction b
++# Single letters retain Korean context indicators: contraction c
++# Single letters retain Korean context indicators: contraction d
++# Single letters retain Korean context indicators: contraction e
++# Single letters retain Korean context indicators: contraction f
++# Single letters retain Korean context indicators: contraction g
++# Single letters retain Korean context indicators: contraction h
++# Single letters retain Korean context indicators: contraction j
++# Single letters retain Korean context indicators: contraction k
++# Single letters retain Korean context indicators: contraction l
++# Single letters retain Korean context indicators: contraction m
++# Single letters retain Korean context indicators: contraction n
++# Single letters retain Korean context indicators: contraction p
++# Single letters retain Korean context indicators: contraction q
++# Single letters retain Korean context indicators: contraction r
++# Single letters retain Korean context indicators: contraction s
++# Single letters retain Korean context indicators: contraction t
++# Single letters retain Korean context indicators: contraction u
++# Single letters retain Korean context indicators: contraction v
++# Single letters retain Korean context indicators: contraction w
++# Single letters retain Korean context indicators: contraction x
++# Single letters retain Korean context indicators: contraction y
++# Single letters retain Korean context indicators: contraction z
++
++# Single letters retain Korean context indicators: contraction B
++# Single letters retain Korean context indicators: contraction C
++# Single letters retain Korean context indicators: contraction D
++# Single letters retain Korean context indicators: contraction E
++# Single letters retain Korean context indicators: contraction F
++# Single letters retain Korean context indicators: contraction G
++# Single letters retain Korean context indicators: contraction H
++# Single letters retain Korean context indicators: contraction J
++# Single letters retain Korean context indicators: contraction K
++# Single letters retain Korean context indicators: contraction L
++# Single letters retain Korean context indicators: contraction M
++# Single letters retain Korean context indicators: contraction N
++# Single letters retain Korean context indicators: contraction P
++# Single letters retain Korean context indicators: contraction Q
++# Single letters retain Korean context indicators: contraction R
++# Single letters retain Korean context indicators: contraction S
++# Single letters retain Korean context indicators: contraction T
++# Single letters retain Korean context indicators: contraction U
++# Single letters retain Korean context indicators: contraction V
++# Single letters retain Korean context indicators: contraction W
++# Single letters retain Korean context indicators: contraction X
++# Single letters retain Korean context indicators: contraction Y
++# Single letters retain Korean context indicators: contraction Z
+ 
+ 
+ #   10.2   Strong Wordsigns
+@@ -2150,7 +2151,7 @@
+ word fst =         first
+ word fsts =
+ contraction fr     friend
+-contraction gd     good
++# GD uses existing Korean opener indicator.
+ contraction grt    great
+ word herf =        herself
+ contraction hm     him
+@@ -4601,3 +4602,21 @@
+ # from running; that engine limitation is measured separately, not hidden.
+ attribute initiali I
+ noback context #1=1_1!%latin[%initiali"T"]%realspace%hangall @24-2345
++noback context `#1=1[%initiali"T"]%realspace%hangall @24-2345
++
++# Grade-1 shortform disambiguation is bounded by cased letters, not Hangul.
++contractioncasedword
++
++# Attribute-led context preserves existing two-letter initialism readings.
++noback context `#1=1[%ucase_1"IN"]!%latin @24-1345
++noback context `#1=1[%ucase_1"IN"]~ @24-1345
++noback context #1=1_1!%latin[%ucase_1"IN"]!%latin @24-1345
++noback context #1=1_1!%latin[%ucase_1"IN"]~ @24-1345
++noback context `#1=1[%ucase_1"EN"]!%latin @15-1345
++noback context `#1=1[%ucase_1"EN"]~ @15-1345
++noback context #1=1_1!%latin[%ucase_1"EN"]!%latin @15-1345
++noback context #1=1_1!%latin[%ucase_1"EN"]~ @15-1345
++
++# kWh is a unit symbol; do not read Wh as an English groupsign.
++noback context #1=1_1"k"["Wh"]!%latin @2456-125
++noback context #1=1_1"k"["Wh"]~ @2456-125

@@ -1,0 +1,157 @@
+--- a/liblouis/lou_translateString.c
++++ b/liblouis/lou_translateString.c
+@@ -2280,6 +2280,17 @@
+ 						case CTO_Match: {
+ 							widechar *patterns, *pattern;
+ 
++							/* Literal uppercase abbreviations retain their existing rules. */
++							if ((*transRule)->notAllCaps) {
++								int allCaps = *transCharslen > 0;
++								for (int k = 0; k < *transCharslen; k++)
++									if (!checkCharAttr(input->chars[pos + k], CTC_UpperCase, table)) {
++										allCaps = 0;
++										break;
++									}
++								if (allCaps) break;
++							}
++
+ 							if (dontContract || (mode & noContractions)) break;
+ 							if (checkEmphasisChange(pos, *transCharslen, emphasisBuffer))
+ 								break;
+--- a/liblouis/internal.h
++++ b/liblouis/internal.h
+@@ -320,6 +320,7 @@
+ 	CTO_Always,
+ 	CTO_ExactDots,
+ 	CTO_NoCross,
++	CTO_NotAllCaps,
+ 	CTO_Syllable,
+ 	CTO_NoCont,
+ 	CTO_CompBrl,
+@@ -373,6 +374,7 @@
+ 	TranslationTableOffset patterns;			/** before and after patterns */
+ 	TranslationTableOpcode opcode; /** rule for testing validity of replacement */
+ 	char nocross;
++	char notAllCaps;
+ 	short charslen;						 /** length of string to be replaced */
+ 	short dotslen;						 /** length of replacement string */
+ 	widechar charsdots[DEFAULTRULESIZE]; /** find and replacement strings */
+--- a/liblouis/compileTranslationTable.c
++++ b/liblouis/compileTranslationTable.c
+@@ -244,6 +244,7 @@
+ 	"always",
+ 	"exactdots",
+ 	"nocross",
++	"notallcaps",
+ 	"syllable",
+ 	"nocont",
+ 	"compbrl",
+@@ -1022,6 +1023,7 @@
+ 	r->after = after;
+ 	r->before = before;
+ 	r->nocross = 0;
++	r->notAllCaps = 0;
+ 	if (ruleChars)
+ 		memcpy(&r->charsdots[0], &ruleChars->chars[0],
+ 				CHARSIZE * (r->charslen = ruleChars->length));
+@@ -2889,8 +2891,8 @@
+ 	CharsString emphClass;
+ 	TranslationTableCharacterAttributes after = 0;
+ 	TranslationTableCharacterAttributes before = 0;
+-	int noback, nofor, nocross;
+-	noback = nofor = nocross = 0;
++	int noback, nofor, nocross, notAllCaps;
++	noback = nofor = nocross = notAllCaps = 0;
+ doOpcode:
+ 	if (!getToken(file, &token, NULL)) return 1;				  /* blank line */
+ 	if (token.chars[0] == '#' || token.chars[0] == '<') return 1; /* comment */
+@@ -2910,6 +2912,10 @@
+ 		return 1;
+ 	}
+ 	opcode = getOpcode(file, &token);
++	if (notAllCaps && opcode != CTO_Match) {
++		compileError(file, "notallcaps must immediately precede match.");
++		return 0;
++	}
+ 	switch (opcode) {
+ 	case CTO_Macro: {
+ 		const Macro *macro;
+@@ -2934,6 +2940,9 @@
+ 		if (!parseChars(file, &includedFile, &token)) return 0;
+ 		return includeFile(file, &includedFile, table, displayTable);
+ 	}
++	case CTO_NotAllCaps:
++		notAllCaps = 1;
++		goto doOpcode;
+ 	case CTO_NoBack:
+ 		if (nofor) {
+ 			compileError(file, "%s already specified.", _lou_findOpcodeName(CTO_NoFor));
+@@ -3146,6 +3155,7 @@
+ 			rule = (TranslationTableRule *)&(*table)->ruleArea[ruleOffset];
+ 			memcpy(&(*table)->ruleArea[patternsOffset], patterns, len * sizeof(widechar));
+ 			rule->patterns = patternsOffset;
++			rule->notAllCaps = notAllCaps;
+ 			ok = 1;
+ 		CTO_Match_cleanup:
+ 			free(patterns);
+--- a/doc/liblouis.texi
++++ b/doc/liblouis.texi
+@@ -2163,6 +2163,15 @@
+ @emph{somewhat experimental}.
+ 
+ @table @code
++@opcode{notallcaps, match rule}
++This modifier must immediately precede @code{match}. It skips that rule
++when every character in its matched text has the uppercase attribute.
++It allows a mixed-script table to extend ordinary word contractions
++without extending them to uppercase abbreviations. Other rules remain
++available as fallbacks. The modifier does not affect capitalization
++indicators, explicit @code{no_contract} typeforms, or unmodified tables.
++Like @code{match}, it applies only in forward translation.
++
+ @opcode{match, pre-pattern characters post-pattern dots}
+ 
+ This opcode allows for matching a string of characters via @emph{pre}
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -228,6 +228,7 @@
+ 
+ dist_yaml_TESTS =				\
+ 	yaml/context_shortform_boundaries.yaml	\
++	yaml/notallcaps_match.yaml		\
+ 	yaml/native_roman_scope.yaml		\
+ 	yaml/attribute.yaml			\
+ 	yaml/back_cont_then_punc.yaml		\
+--- /dev/null
++++ b/tests/yaml/notallcaps_match.yaml
+@@ -0,0 +1,30 @@
++display: tables/unicode.dis
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  notallcaps match ^|%_ good ^|%_ 1245-145
++flags: {testmode: forward}
++tests:
++  - [good, "⠛⠙"]
++  - [Good, "⠠⠛⠙"]
++  - [GOOD, "⠠⠠⠛⠕⠕⠙"]
++  - [good, "⠛⠕⠕⠙", {typeform: {no_contract: "++++"}}]
++  - [Good, "⠠⠛⠕⠕⠙", {typeform: {no_contract: "++++"}}]
++  - [goodness, "⠛⠕⠕⠙⠝⠑⠎⠎"]
++  - [xgood, "⠭⠛⠕⠕⠙"]
++  - [good good, "⠛⠙⠀⠛⠙"]
++
++table: |
++  include tables/spaces.uti
++  include tables/latinLetterDef6Dots.uti
++  capsletter 6
++  begcapsword 6-6
++  endcapsword 6-3
++  match ^|%_ good ^|%_ 1245-145
++flags: {testmode: forward}
++tests:
++  - [GOOD, "⠠⠠⠛⠙"]
++  - [Good, "⠠⠛⠙"]

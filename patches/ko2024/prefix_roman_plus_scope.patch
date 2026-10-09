@@ -1,0 +1,255 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -1448,6 +1448,12 @@
+ # Math operators
+ # ═══════════════════════════════════════════════════════
+ 
++# A single attached plus in a Roman passage uses the Roman symbol and scope.
++# Repeated plus signs keep the existing notation and spacing.
++noback context #1=1_1%latin["+"]%hangall @5-235-256#1=0#2=0
++noback context #1=1_1%latin["+"]%realspace%hangall @5-235-256#1=0#2=0
++noback context #1=1_1%latin["+"]!"+" @5-235
++noback context #1=1_1%latin["+"]~ @5-235
+ math + 26
+ math = 25-25
+ math \x00d7 16
+--- a/ko-2020-spacing.cti
++++ b/ko-2020-spacing.cti
+@@ -147,7 +147,8 @@
+ # A colon in running Korean text has a following blank; numeric ratios are excluded.
+ noback correct _1":"[]%hangall "\s"
+ noback correct _1%hangall[]"+" "\s"
+-noback correct _1"+"[]%hangall "\s"
++noback correct _2!%latin"+"[]%hangall "\s"
++noback correct `"+"[]%hangall "\s"
+ 
+ # Korean labels and explanations around equals and semicolons.
+ noback correct _1%hangall[]"=" "\s"
+--- a/ko-2020-ueb-contractions.cti
++++ b/ko-2020-ueb-contractions.cti
+@@ -854,95 +854,157 @@
+ sufword subbing 234-136-12-12-346
+ 
+ # be   10.6.1   10.6.2   10.6.3   10.6.4
++# Korean-facing word starts use the same UEB prefix rules and exceptions.
++# The added notallcaps variants exclude identifiers and preserve all-cap readings.
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Aa][Pp][Rr][Oo][Nn] 23
+ empmatchafter match %[^_~]%<* be [Aa][Pp][Rr][Oo][Nn] 23
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beata ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-1
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beatae ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-1-15
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beati ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-24
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Aa][Tt][Ii]![Nn] 23               beati*
+ empmatchafter match %[^_~]%<* be [Aa][Tt][Ii]![Nn] 23               beati*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Aa][Tt][Rr] 23                    bea*
+ empmatchafter match %[^_~]%<* be [Aa][Tt][Rr] 23                    bea*
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beatus ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1-2345-136-234
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beche ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-16-15
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beches ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-16-15-234
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bech [DTdt] 12-15-16
+ empmatchafter match %[^_~]%<* bech [DTdt] 12-15-16
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beclome [Tt][Hh] =    beclomethasone
+ empmatchafter match %[^_~]%<* beclome [Tt][Hh] =    beclomethasone
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beconas [AEIOUYaeiouy] =
+ empmatchafter match %[^_~]%<* beconas [AEIOUYaeiouy] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Cc]([HLRhlr])?[AEIOUYaeiouy] 23                   bec*
+ empmatchafter match %[^_~]%<* be [Cc]([HLRhlr])?[AEIOUYaeiouy] 23                   bec*
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bede ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-1246-15
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beden ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-1246-26
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bedes ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-1246-15-234
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][AIOUaiou] 23                        bed*
+ empmatchafter match %[^_~]%<* be [Dd][AIOUaiou] 23                        bed*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bede [Gg]([Uu]?)[Aa][Rr] 12-1246-15
+ empmatchafter match %[^_~]%<* bede [Gg]([Uu]?)[Aa][Rr] 12-1246-15
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bede [Hh][Oo][Uu][Ss] 12-1246-15
+ empmatchafter match %[^_~]%<* bede [Hh][Oo][Uu][Ss] 12-1246-15
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bede ([Ss]?)(([Ww][Oo])?)[Mm]([Aa]|[Ee])[Nn] 12-1246-15
+ empmatchafter match %[^_~]%<* bede ([Ss]?)(([Ww][Oo])?)[Mm]([Aa]|[Ee])[Nn] 12-1246-15
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Ee] 23            bede*
+ empmatchafter match %[^_~]%<* be [Dd][Ee] 23            bede*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bediver [Ee] 12-1246-24-1236-12456
+ empmatchafter match %[^_~]%<* bediver [Ee] 12-1246-24-1236-12456
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bedou [Ii][Nn] 12-1246-1256
+ empmatchafter match %[^_~]%<* bedou [Ii][Nn] 12-1246-1256
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bed ([Ee]?)[Rr][AEae]([Ii]?)[Ll] 12-1246
+ empmatchafter match %[^_~]%<* bed ([Ee]?)[Rr][AEae]([Ii]?)[Ll] 12-1246
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Aa] 23                    bedr*
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Aa] 23                    bedr*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Ee][Nn][Cc][Hh] 23
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Ee][Nn][Cc][Hh] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Ee][Ss][Ss] 23
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Ee][Ss][Ss] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bed [Rr][Ii][Dd] 12-1246
+ empmatchafter match %[^_~]%<* bed [Rr][Ii][Dd] 12-1246
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Ii] 23
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Ii] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Oo][Pp] 23
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Oo][Pp] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Oo][Ww] 23
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Oo][Ww] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Rr][Uu] 23
+ empmatchafter match %[^_~]%<* be [Dd][Rr][Uu] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bedu [Ii][Nn] 12-1246-136
+ empmatchafter match %[^_~]%<* bedu [Ii][Nn] 12-1246-136
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Ww][Aa][Rr][Ff] 23
+ empmatchafter match %[^_~]%<* be [Dd][Ww][Aa][Rr][Ff] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Dd][Ww][Ee][Ll][LTlt] 23
+ empmatchafter match %[^_~]%<* be [Dd][Ww][Ee][Ll][LTlt] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Ee][Ll][Zz] 23                    bee*
+ empmatchafter match %[^_~]%<* be [Ee][Ll][Zz] 23                    bee*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Ff]([LRlr])?[AEIOUYaeiouy] 23                   bef*
+ empmatchafter match %[^_~]%<* be [Ff]([LRlr])?[AEIOUYaeiouy] 23                   bef*
+ sufword beghard 12-15-1245-125-345-145  H is sometimes aspirate
+ match %[^_~]%<* begler [Bb][Ee][GYgy] 12-15-1245-123-12456
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Gg]![BDFGMPQSTVbdfgmpqstv] 23                     beg*
+ empmatchafter match %[^_~]%<* be [Gg]![BDFGMPQSTVbdfgmpqstv] 23                     beg*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beh [BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz] =
+ empmatchafter match %[^_~]%<* beh [BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [HYhy][AEIOUYaeiouy] 23                   beh* or bey*
+ empmatchafter match %[^_~]%<* be [HYhy][AEIOUYaeiouy] 23                   beh* or bey*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bein ['’] 23-24-1345
+ empmatchafter match %[^_~]%<* bein ['’] 23-24-1345
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bein ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-35
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] beins ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-35-234
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Ii][Nn] 23                        bei*
+ empmatchafter match %[^_~]%<* be [Ii][Nn] 23                        bei*
+ sufword bekesy =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bek [HKRThkrt][AIai] =
+ empmatchafter match %[^_~]%<* bek [HKRThkrt][AIai] =
+ sufword belafon =      -te
+ sufword belamour 12-15-123-1-134-1256-1235
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] belemn ([AEIOUYaeiouy]*)[DTdt] =      e.g. -nid, -nite, -noid
+ empmatchafter match %[^_~]%<* belemn ([AEIOUYaeiouy]*)[DTdt] =      e.g. -nid, -nite, -noid
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] belom [Aa][Nn][Cc] =
+ empmatchafter match %[^_~]%<* belom [Aa][Nn][Cc] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] belomy [Ss] =
+ empmatchafter match %[^_~]%<* belomy [Ss] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] belone ([Ss]|['’][Ss])?%>*%[_~^] =
+ empmatchafter match %[^_~]%<* belone ([Ss]|['’][Ss])?%>*%[_~^] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] belon [EOeo][Pp][Hh][Oo] =
+ empmatchafter match %[^_~]%<* belon [EOeo][Pp][Hh][Oo] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] belon ([AEIOUYaeiouy]*)[DTdt] =      e.g. -nid, -nite, -noid
+ empmatchafter match %[^_~]%<* belon ([AEIOUYaeiouy]*)[DTdt] =      e.g. -nid, -nite, -noid
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Ll][AEIOUWYaeiouwy] 23            bel*
+ empmatchafter match %[^_~]%<* be [Ll][AEIOUWYaeiouwy] 23            bel*
+ sufword benadryl 12-26-1-145-1235-13456-123
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] benammi ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-26-1-134-134-24     Normally written hyphenated
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] benefic ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 23-1345-15-124-24-14   Different from below
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Nn][Ee][Ff][Ii][Cc][Ee][Nn] 23    beneficen*
+ empmatchafter match %[^_~]%<* be [Nn][Ee][Ff][Ii][Cc][Ee][Nn] 23    beneficen*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Nn][Ee][Tt](['’]s)?%>*%[_~^] 23   benet
+ empmatchafter match %[^_~]%<* be [Nn][Ee][Tt](['’]s)?%>*%[_~^] 23   benet
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beneven [Tt] 12-26-15-1236-26
+ empmatchafter match %[^_~]%<* beneven [Tt] 12-26-15-1236-26
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Nn][Ee]![DFLTdflt] 23               bene*
+ empmatchafter match %[^_~]%<* be [Nn][Ee]![DFLTdflt] 23               bene*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] ben [Ii][AENOSUaenosu] 12-26
+ empmatchafter match %[^_~]%<* ben [Ii][AENOSUaenosu] 12-26
+ sufword benomyl 12-26-135-134-13456-123
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Nn][AIOUaiou] 23                    ben*
+ empmatchafter match %[^_~]%<* be [Nn][AIOUaiou] 23                    ben*
+ sufword beresford 12-12456-15-234-123456-145
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beresit [Ee] 12-12456-15-234-24-2345
+ empmatchafter match %[^_~]%<* beresit [Ee] 12-12456-15-234-24-2345
+ sufword berewick 12-12456-15-2456-24-14-13
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Rr][Hh][Yy][Mm] 23
+ empmatchafter match %[^_~]%<* be [Rr][Hh][Yy][Mm] 23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beribb [Oo][Nn] 23-1235-24-23
+ empmatchafter match %[^_~]%<* beribb [Oo][Nn] 23-1235-24-23
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] berim [AEIOUYaeiouy] 23-1235-24-134
+ empmatchafter match %[^_~]%<* berim [AEIOUYaeiouy] 23-1235-24-134
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bering [Ee][Dd] 23-1235-346
+ empmatchafter match %[^_~]%<* bering [Ee][Dd] 23-1235-346
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bering [Ll][Ee][Tt] 23-1235-346
+ empmatchafter match %[^_~]%<* bering [Ll][Ee][Tt] 23-1235-346
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Rr][AOUaou] 23                        bere*
+ empmatchafter match %[^_~]%<* be [Rr][AOUaou] 23                        bere*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Rr][Ee]![NTZntz] 23                   ber*
+ empmatchafter match %[^_~]%<* be [Rr][Ee]![NTZntz] 23                   ber*
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] best ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bested ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-1246
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bester ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-12456
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bestest ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-15-34
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] best [Ii][AEae] 12-15-34
+ empmatchafter match %[^_~]%<* best [Ii][AEae] 12-15-34
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] best [Ii][Cc][Uu] 12-15-34
+ empmatchafter match %[^_~]%<* best [Ii][Cc][Uu] 12-15-34
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] besting ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-346
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bestness ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-56-234
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] best [Ss] 12-15-34   bests and bestsell*
+ empmatchafter match %[^_~]%<* best [Ss] 12-15-34   bests and bestsell*
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] besty ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 12-15-34-13456
+ #empmatchafter match %[^_~]%<* be [Ss]![Ss] 23                     bes*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Ss]([CHKLMNPQTWchklmnpqtw])?([Rr])?[AEIOUYaeiouy] 23                     bes*
+ empmatchafter match %[^_~]%<* be [Ss]([CHKLMNPQTWchklmnpqtw])?([Rr])?[AEIOUYaeiouy] 23                     bes*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] betafi [Tt][AEIOUaeiou] =
+ empmatchafter match %[^_~]%<* betafi [Tt][AEIOUaeiou] =
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bete ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] betes ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+@@ -952,26 +1014,37 @@
+ sufword bethroot 12-15-1456-1235-135-135-2345
+ sufword bethuel 12-15-1456-136-15-123
+ sufword bethune 12-15-1456-136-1345-15
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bethylid [Aa][Ee] 23-1456-13456-123-24-145
+ empmatchafter match %[^_~]%<* bethylid [Aa][Ee] 23-1456-13456-123-24-145
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Tt][Hh][IORUWioruw]%a 23
+ empmatchafter match %[^_~]%<* be [Tt][Hh][IORUWioruw]%a 23
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] betonies ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] betony ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match - betula [Cc] =
+ match - betul [Ii][Nn] =
+ #empmatchafter match %[^_~]%<* be [Tt]![CHJKSTZchjkstz'’] 23               bet*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Tt]([RWrw])?[AEIOUYaeiouy] 23                   bet*
+ empmatchafter match %[^_~]%<* be [Tt]([RWrw])?[AEIOUYaeiouy] 23                   bet*
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] beun [Ii] 23-136-1345 
+ empmatchafter match %[^_~]%<* beun [Ii] 23-136-1345 
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [Vv][Uu][Ee] 23
+ empmatchafter match %[^_~]%<* be [Vv][Uu][Ee] 23
+ sufword bewick =
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bewit ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] bewits ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bew [BCDFGJKLMNPQSTVWXZbcdfgjklmnpqstvwxz] =
+ empmatchafter match %[^_~]%<* bew [BCDFGJKLMNPQSTVWXZbcdfgjklmnpqstvwxz] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bex [BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz] =
+ empmatchafter match %[^_~]%<* bex [BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz] =
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] bey [AOao][Nn]([Ss]?)[Tt] 23-13456
+ empmatchafter match %[^_~]%<* bey [AOao][Nn]([Ss]?)[Tt] 23-13456
+ sufword beyer 12-15-13456-12456
+ 
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [BCEFGHIJKLMPQSTUVWXYZbcefghijklmpqstuvwxyz]([Ss]|['’][Ss])?%>*%[_~^] =   3 letter words
+ empmatchafter match %[^_~]%<* be [BCEFGHIJKLMPQSTUVWXYZbcefghijklmpqstuvwxyz]([Ss]|['’][Ss])?%>*%[_~^] =   3 letter words
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [BFJKMPQVWXZbfjkmpqvwxz][BFJKMPQVWXZbfjkmpqvwxz] =   "be" is not the first syllable
+ empmatchafter match %[^_~]%<* be [BFJKMPQVWXZbfjkmpqvwxz][BFJKMPQVWXZbfjkmpqvwxz] =   "be" is not the first syllable
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] be [BJKMOPQWXZbjkmopqwxz] 23
+ empmatchafter match %[^_~]%<* be [BJKMOPQWXZbjkmopqwxz] 23
+ 
+ nofor sufword be 23
+@@ -999,9 +1072,13 @@
+ sufword arccosine 345-14-14-135-234-35-15
+ 
+ # con   10.6.1   10.6.2   10.6.3   10.6.4
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] con [Cc]![HVhv] 25
+ empmatchafter match %[^_~]%<* con [Cc]![HVhv] 25
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] con [Ee][Ss][Tt] 25
+ empmatchafter match %[^_~]%<* con [Ee][Ss][Tt] 25
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] con [Ss]%a 25  [Cc][Oo][Nn][Ss]  "mod cons" 10.6.4
+ empmatchafter match %[^_~]%<* con [Ss]%a 25  [Cc][Oo][Nn][Ss]  "mod cons" 10.6.4
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] con [ABDFGHIJLMNOPQRTUVWXYZabdfghijlmnopqrtuvwxyz] 25
+ empmatchafter match %[^_~]%<* con [ABDFGHIJLMNOPQRTUVWXYZabdfghijlmnopqrtuvwxyz] 25
+ 
+ sufword conakry 14-135-1345-1-13-1235-13456
+@@ -1018,10 +1095,15 @@
+ match ^|!%a dishi ([Ee]([Rr]|([Ss][Tt]))) 145-24-146-24
+ match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] dishy ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'’] 145-24-146-13456
+ empmatchafter match ^|!%a diss ^|!%a =    word diss
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] dis [Cc]([HLRhlr]?)[AEIOUYaeiouy] 256
+ empmatchafter match %[^_~]%<* dis [Cc]([HLRhlr]?)[AEIOUYaeiouy] 256
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] dis [Hh][Ee]![DSVdsv] 256
+ empmatchafter match %[^_~]%<* dis [Hh][Ee]![DSVdsv] 256
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] dis [Hh]![BCDEFGHIKLMNPRTWbcdefghiklmnprtw'’] 256
+ empmatchafter match %[^_~]%<* dis [Hh]![BCDEFGHIKLMNPRTWbcdefghiklmnprtw'’] 256
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] dis [Pp]![Ii] 256
+ empmatchafter match %[^_~]%<* dis [Pp]![Ii] 256
++empmatchafter notallcaps match ^|![ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_./@'’] dis [ABDEFGIJLMNOQRSTUVWXYZabdefgijlmnoqrstuvwxyz] 256
+ empmatchafter match %[^_~]%<* dis [ABDEFGIJLMNOQRSTUVWXYZabdefgijlmnoqrstuvwxyz] 256
+ 
+ nofor begword dis 256

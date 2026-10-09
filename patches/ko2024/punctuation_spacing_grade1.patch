@@ -1,0 +1,171 @@
+--- a/ko-2020-base.cti
++++ b/ko-2020-base.cti
+@@ -2388,6 +2388,16 @@
+ # 쉼표+공백 앞에서 쉼표를 소비하므로(한국 쉼표는 ","%realspace[] 오프너가 공백까지 소비)
+ # 이 lookback은 UEB 쉼표 뒤에서만 성립한다.
+ noback context _1","[%realspace]%ucase%ucase @0-6-6
++
++# Standing-alone letters at the end of a quoted Roman list.
++noback context #1=1_1","[%realspace]%gonel"\x2019"!%latin @0-56
++noback context #1=1_1","[%realspace]%gonel"\x2019"~ @0-56
++noback context #1=1_1","[%realspace]%goneu"\x2019"!%latin @0-56-6
++noback context #1=1_1","[%realspace]%goneu"\x2019"~ @0-56-6
++noback context #1=1_1","[%realspace]%gonel"\x201d"!%latin @0-56
++noback context #1=1_1","[%realspace]%gonel"\x201d"~ @0-56
++noback context #1=1_1","[%realspace]%goneu"\x201d"!%latin @0-56-6
++noback context #1=1_1","[%realspace]%goneu"\x201d"~ @0-56-6
+ # Preserve standing-alone single-letter grade-1 indicator after a comma.
+ noback context _1","[%realspace]%goneu!%latdig @0-56-6
+ noback context _1","[%realspace]"A" @0-6
+@@ -2860,3 +2870,5 @@
+ noback context #4=1["\xe007"] @6-3-256#1=0#2=0#4=0
+ noback context #1=1["\xe007"] @256#1=0#2=0
+ noback context ["\xe007"] #6=0
++
++include ko-2020-spacing.cti
+--- a/ko-2020-spacing.cti
++++ b/ko-2020-spacing.cti
+@@ -0,0 +1,143 @@
++# Punctuation spacing: source-driven correct-pass rules.
++
++# Section: middot
++noback correct _1!%realspace[%realspace1-9]"\x00B7" ?
++noback correct _1"\x00B7"[%realspace1-9]!%realspace ?
++noback correct _1!%realspace[%realspace1-9]"\x2027" ?
++noback correct _1"\x2027"[%realspace1-9]!%realspace ?
++noback correct _1!%realspace[%realspace1-9]"\x30FB" ?
++noback correct _1"\x30FB"[%realspace1-9]!%realspace ?
++noback correct _1!%realspace[%realspace1-9]"\x2219" ?
++noback correct _1"\x2219"[%realspace1-9]!%realspace ?
++
++# Section: brackets
++noback correct _1"("[%realspace1-9]")" "\s"
++noback correct _1"("[%realspace1-9]"]" "\s"
++noback correct _1"("[%realspace1-9]"}" "\s"
++noback correct _1"("[%realspace1-9]"’" "\s"
++noback correct _1"("[%realspace1-9]"”" "\s"
++noback correct _1"("[%realspace1-9]"」" "\s"
++noback correct _1"("[%realspace1-9]"』" "\s"
++noback correct _1"("[%realspace1-9]"》" "\s"
++noback correct _1"("[%realspace1-9]"〉" "\s"
++noback correct _1"["[%realspace1-9]")" "\s"
++noback correct _1"["[%realspace1-9]"]" "\s"
++noback correct _1"["[%realspace1-9]"}" "\s"
++noback correct _1"["[%realspace1-9]"’" "\s"
++noback correct _1"["[%realspace1-9]"”" "\s"
++noback correct _1"["[%realspace1-9]"」" "\s"
++noback correct _1"["[%realspace1-9]"』" "\s"
++noback correct _1"["[%realspace1-9]"》" "\s"
++noback correct _1"["[%realspace1-9]"〉" "\s"
++noback correct _1"{"[%realspace1-9]")" "\s"
++noback correct _1"{"[%realspace1-9]"]" "\s"
++noback correct _1"{"[%realspace1-9]"}" "\s"
++noback correct _1"{"[%realspace1-9]"’" "\s"
++noback correct _1"{"[%realspace1-9]"”" "\s"
++noback correct _1"{"[%realspace1-9]"」" "\s"
++noback correct _1"{"[%realspace1-9]"』" "\s"
++noback correct _1"{"[%realspace1-9]"》" "\s"
++noback correct _1"{"[%realspace1-9]"〉" "\s"
++noback correct _1"‘"[%realspace1-9]")" "\s"
++noback correct _1"‘"[%realspace1-9]"]" "\s"
++noback correct _1"‘"[%realspace1-9]"}" "\s"
++noback correct _1"‘"[%realspace1-9]"’" "\s"
++noback correct _1"‘"[%realspace1-9]"”" "\s"
++noback correct _1"‘"[%realspace1-9]"」" "\s"
++noback correct _1"‘"[%realspace1-9]"』" "\s"
++noback correct _1"‘"[%realspace1-9]"》" "\s"
++noback correct _1"‘"[%realspace1-9]"〉" "\s"
++noback correct _1"“"[%realspace1-9]")" "\s"
++noback correct _1"“"[%realspace1-9]"]" "\s"
++noback correct _1"“"[%realspace1-9]"}" "\s"
++noback correct _1"“"[%realspace1-9]"’" "\s"
++noback correct _1"“"[%realspace1-9]"”" "\s"
++noback correct _1"“"[%realspace1-9]"」" "\s"
++noback correct _1"“"[%realspace1-9]"』" "\s"
++noback correct _1"“"[%realspace1-9]"》" "\s"
++noback correct _1"“"[%realspace1-9]"〉" "\s"
++noback correct _1"「"[%realspace1-9]")" "\s"
++noback correct _1"「"[%realspace1-9]"]" "\s"
++noback correct _1"「"[%realspace1-9]"}" "\s"
++noback correct _1"「"[%realspace1-9]"’" "\s"
++noback correct _1"「"[%realspace1-9]"”" "\s"
++noback correct _1"「"[%realspace1-9]"」" "\s"
++noback correct _1"「"[%realspace1-9]"』" "\s"
++noback correct _1"「"[%realspace1-9]"》" "\s"
++noback correct _1"「"[%realspace1-9]"〉" "\s"
++noback correct _1"『"[%realspace1-9]")" "\s"
++noback correct _1"『"[%realspace1-9]"]" "\s"
++noback correct _1"『"[%realspace1-9]"}" "\s"
++noback correct _1"『"[%realspace1-9]"’" "\s"
++noback correct _1"『"[%realspace1-9]"”" "\s"
++noback correct _1"『"[%realspace1-9]"」" "\s"
++noback correct _1"『"[%realspace1-9]"』" "\s"
++noback correct _1"『"[%realspace1-9]"》" "\s"
++noback correct _1"『"[%realspace1-9]"〉" "\s"
++noback correct _1"《"[%realspace1-9]")" "\s"
++noback correct _1"《"[%realspace1-9]"]" "\s"
++noback correct _1"《"[%realspace1-9]"}" "\s"
++noback correct _1"《"[%realspace1-9]"’" "\s"
++noback correct _1"《"[%realspace1-9]"”" "\s"
++noback correct _1"《"[%realspace1-9]"」" "\s"
++noback correct _1"《"[%realspace1-9]"』" "\s"
++noback correct _1"《"[%realspace1-9]"》" "\s"
++noback correct _1"《"[%realspace1-9]"〉" "\s"
++noback correct _1"〈"[%realspace1-9]")" "\s"
++noback correct _1"〈"[%realspace1-9]"]" "\s"
++noback correct _1"〈"[%realspace1-9]"}" "\s"
++noback correct _1"〈"[%realspace1-9]"’" "\s"
++noback correct _1"〈"[%realspace1-9]"”" "\s"
++noback correct _1"〈"[%realspace1-9]"」" "\s"
++noback correct _1"〈"[%realspace1-9]"』" "\s"
++noback correct _1"〈"[%realspace1-9]"》" "\s"
++noback correct _1"〈"[%realspace1-9]"〉" "\s"
++noback correct _1"("[%realspace1-9] ?
++noback correct _1"["[%realspace1-9] ?
++noback correct _1"{"[%realspace1-9] ?
++noback correct _1"‘"[%realspace1-9] ?
++noback correct _1"“"[%realspace1-9] ?
++noback correct _1"「"[%realspace1-9] ?
++noback correct _1"『"[%realspace1-9] ?
++noback correct _1"《"[%realspace1-9] ?
++noback correct _1"〈"[%realspace1-9] ?
++noback correct _1!%realspace[%realspace1-9]")" ?
++noback correct _1!%realspace[%realspace1-9]"]" ?
++noback correct _1!%realspace[%realspace1-9]"}" ?
++noback correct _1!%realspace[%realspace1-9]"’" ?
++noback correct _1!%realspace[%realspace1-9]"”" ?
++noback correct _1!%realspace[%realspace1-9]"」" ?
++noback correct _1!%realspace[%realspace1-9]"』" ?
++noback correct _1!%realspace[%realspace1-9]"》" ?
++noback correct _1!%realspace[%realspace1-9]"〉" ?
++
++# Section: colon (before-space only)
++noback correct _1!%realspace[%realspace1-9]":" ?
++
++# Section: commaperiod
++noback correct _1!%realspace[%realspace1-9]","%realspace ?
++noback correct _1%hangall[%realspace1-9]"."%realspace ?
++noback correct _1%hangall[%realspace1-9]"."~ ?
++noback correct _1%latin[%realspace1-9]"."%realspace ?
++noback correct _1%latin[%realspace1-9]"."~ ?
++noback correct _1$d[%realspace1-9]"."%realspace ?
++noback correct _1$d[%realspace1-9]"."~ ?
++noback correct _1")"[%realspace1-9]"."%realspace ?
++noback correct _1"]"[%realspace1-9]"."%realspace ?
++noback correct _1"}"[%realspace1-9]"."%realspace ?
++noback correct _1"’"[%realspace1-9]"."%realspace ?
++noback correct _1"”"[%realspace1-9]"."%realspace ?
++noback correct _1"」"[%realspace1-9]"."%realspace ?
++noback correct _1"』"[%realspace1-9]"."%realspace ?
++noback correct _1"》"[%realspace1-9]"."%realspace ?
++noback correct _1"〉"[%realspace1-9]"."%realspace ?
++noback correct _1")"[%realspace1-9]"."~ ?
++noback correct _1"]"[%realspace1-9]"."~ ?
++noback correct _1"}"[%realspace1-9]"."~ ?
++noback correct _1"’"[%realspace1-9]"."~ ?
++noback correct _1"”"[%realspace1-9]"."~ ?
++noback correct _1"」"[%realspace1-9]"."~ ?
++noback correct _1"』"[%realspace1-9]"."~ ?
++noback correct _1"》"[%realspace1-9]"."~ ?
++noback correct _1"〉"[%realspace1-9]"."~ ?
++
